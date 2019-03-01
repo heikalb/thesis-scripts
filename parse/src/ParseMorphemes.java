@@ -18,26 +18,41 @@ public class ParseMorphemes
     public static void main (String[] args) throws IOException
     {
         // Corpus file
-        FileReader fileReader = new FileReader("../data/query_results_all_joined_sents.tsv");
+        FileReader fileReader = new FileReader("../data/query_results_all_joined_sents_.tsv");
         BufferedReader br = new BufferedReader(fileReader);
 
         // For Turkish morphological processing
         TurkishMorphology morphology = TurkishMorphology.createWithDefaults();
 
+        //Collect parses
+        ArrayList<List> parses = new ArrayList();
+
+        int i = 0;
+
         // Go through lines in file
         String line;
-        while ((line = br.readLine()) != null)
+        while ((line = br.readLine()) != null && i < 5)
         {
+            String sentence = line.split("\t")[0];
+            List<WordAnalysis> analyses = morphology.analyzeSentence(sentence);
+            SentenceAnalysis result = morphology.disambiguate(sentence, analyses);
+            parses.add(result.bestAnalysis());
 
+            i++;
         }
 
-        String sentence = "Bol baharatlı bir yemek yaptıralım.";
-        List<WordAnalysis> analyses = morphology.analyzeSentence(sentence);
-        SentenceAnalysis result = morphology.disambiguate(sentence, analyses);
+        // Save data
+        File saveFile = new File("parses.txt");
+        FileWriter writer = new FileWriter(saveFile);
 
-        Log.info("\nAfter ambiguity resolution : ");
-        result.bestAnalysis().forEach(Log::info);
 
+        for(List parseList: parses)
+        {
+            writer.append(parseList.toString() + '\n');
+        }
+
+        writer.flush();
+        writer.close();
         System.exit(0);
     }
 }
