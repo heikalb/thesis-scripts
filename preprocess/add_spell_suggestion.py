@@ -37,6 +37,7 @@ suggestions = {
     r'[au]+can$':       'acaksın',
     r'mıycak':          'mayacak',
     r'miycek':          'meyecek',
+    r'olucak':          'meyecek',
 }
 
 
