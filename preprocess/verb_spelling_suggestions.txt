@@ -642,10 +642,7 @@ gonuşmuşlar konuşmuşlar
 konuşuyim konuşayım konuşuyum
 konuşyorsan konuşuyorsan konuyorsan
 konuşmuyom konuşmuyorum konuşmuyor
-
-
-
-konuşabiliyolardır 
+konuşabiliyolardır
 konuşyoruz konuşuyoruz konuyoruz
 konuşanıyazanı 
 gonuşurlar konuşurlar

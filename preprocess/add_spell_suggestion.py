@@ -13,7 +13,7 @@ suggestions = {
     r'ıo':              'ıyor',
     r'io':              'iyor',
     r'iyo$':            'iyor',
-    r'uyo$':            'uyor',
+    r'[uü]yo$':         'uyor',
     r'iyom$':           'iyorum',
     r'uyom$':           'uyorum',
     r'iyon$':           'iyorsun',
@@ -37,7 +37,6 @@ suggestions = {
     r'[au]+can$':       'acaksın',
     r'mıycak':          'mayacak',
     r'miycek':          'meyecek',
-    r'olucak':          'meyecek',
 }
 
 

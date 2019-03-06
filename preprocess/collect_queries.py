@@ -7,8 +7,11 @@ import csv
 
 spell_corrections = open('verb_spelling_suggestions_2.txt').read().split('\n')
 spell_corrections = [line.split() for line in spell_corrections]
-spell_corrections = [l for l in spell_corrections if not (l[0] == '#' or l[0] == '@' or len(l) > 2)]
+spell_corrections = [l for l in spell_corrections if not (l[0] == '#' or l[0] == '@' or len(l) < 2)]
 sentence_punct = ['.', '!', '?']
+
+window_corrections = open('window_corrections.txt').read().split('\n')
+window_corrections = [wc.split('\t') for wc in window_corrections]
 
 
 # Apply spelling correction based on spell correction suggestion file
@@ -69,6 +72,7 @@ def to_one_sentence(sentence, target_i):
 
     return ' '.join(left_sent + right_sent), len(left_sent)
 
+
 # Remove punctuation from a string
 def depunctuate(st):
     st = st.split()
@@ -81,6 +85,14 @@ def depunctuate(st):
             new_sent.append(''.join(new_word))
 
     return ' '.join(new_sent)
+
+
+def window_correction(window, target):
+    for wc in window_corrections:
+        if wc[1] == window:
+            return wc[2]
+
+    return target
 
 
 def main():
@@ -111,7 +123,7 @@ def main():
                 rows.append([single_sent[0], main_word, single_sent[1]])
 
     # Save data
-    with open('../data/query_results_all_joined_sents_.tsv', 'w') as f:
+    with open('../data/query_results_all_joined_sents.tsv', 'w') as f:
         csv_writer = csv.writer(f, delimiter='\t')
         for r in rows:
             csv_writer.writerow(r)
