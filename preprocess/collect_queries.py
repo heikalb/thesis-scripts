@@ -10,7 +10,7 @@ spell_corrections = [line.split() for line in spell_corrections]
 spell_corrections = [l for l in spell_corrections if not (l[0] == '#' or l[0] == '@' or len(l) < 2)]
 sentence_punct = ['.', '!', '?']
 
-window_corrections = open('window_corrections.txt').read().split('\n')
+window_corrections = open('window_corrections.tsv').read().split('\n')
 window_corrections = [wc.split('\t') for wc in window_corrections]
 
 
@@ -87,12 +87,14 @@ def depunctuate(st):
     return ' '.join(new_sent)
 
 
-def window_correction(window, target):
+def window_correction(orig_window):
     for wc in window_corrections:
-        if wc[1] == window:
-            return wc[2]
+        if wc[1] == orig_window[1]:
+            ret = wc[0:2] + wc[5:8]
+            window_corrections.remove(wc)
+            return ret
 
-    return target
+    return orig_window
 
 
 def main():
@@ -100,7 +102,7 @@ def main():
     
     for i in range(20):
         # Open file
-        with open('../data/query_results_/tnc_query_result_{0}.tsv'.format(i)) as f:
+        with open('../data/query_results/tnc_query_result_{0}.tsv'.format(i)) as f:
             csv_reader = csv.reader(f, delimiter='\t')
 
             first_row = True
@@ -109,6 +111,10 @@ def main():
                 if first_row:
                     first_row = False
                     continue
+
+                # Apply correction to certain data windows
+                if window_corrections:
+                    row = window_correction(row)
 
                 # Spell correct target verb
                 main_word = apply_correction(depunctuate(row[3]))
