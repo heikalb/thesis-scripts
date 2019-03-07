@@ -15,7 +15,7 @@ def get_verb_indices():
 
 def main():
     verb_parses = []
-    parses = open('parses.txt', 'r').read().split('\n')
+    parses = open('parses_all.txt', 'r').read().split('\n')
     indices = get_verb_indices()
 
     c = 0
@@ -30,7 +30,7 @@ def main():
             print(i)
     print(c)
 
-    with open('verb_parses.txt', 'w') as f:
+    with open('parses_verbs.txt', 'w') as f:
         f.write('\n'.join(verb_parses))
 
 
