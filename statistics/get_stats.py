@@ -4,14 +4,14 @@ import re
 import colloc_measures as cm
 
 
-def main():
+def main(right_parse_sign, suffix_boundary, mboundary, key_separator):
     # Open file of parses
-    parse_file = open('../parse/morph_parses.csv')
-    csv_reader = csv.reader(parse_file)
+    parses = open('../parse/parses_verbs.txt', 'r').read().split('\n')
+    parses = [p.split() for p in parses]
 
     # Stats
-    suffix_counts = defaultdict(int)
-    cooccurence_counts = defaultdict(int)
+    suff_freq = defaultdict(int)
+    cooc_freq = defaultdict(int)
     num_suffixes = 0
     mutual_infos = {}
     t_scores = {}
@@ -19,84 +19,77 @@ def main():
     chi_squared = {}
 
     # Go through parses
-    for row in csv_reader:
-        # Skip unparseable words
-        if row[2] == 'parse_not_found':
+    for parse in parses:
+        # Skip wrong parses
+        if right_parse_sign not in parse[0]:
             continue
 
-        # Only consider non-null morphemes
-        parse = row[1]
-        suffixes = [s for s in parse.split('_') if '[' in s or ']' in s]
-
-        # Put back 3.Sg null morphemes
-        if parse[-4:] == 'A3sg':
-            suffixes.append('A3sg')
+        # Get suffixes, exclude stems
+        suffixes = re.split(suffix_boundary, parse[1])[1:]
 
         # Collapse allomorphs
-        suffixes = [re.sub(r'\(.*\)', '', s) for s in suffixes]
+        suffixes = [re.sub(mboundary, '', s) for s in suffixes]
 
-        # Count suffix co-occurrences
+        # Count suffix (co)occurrences
         num_suffixes += len(suffixes)
+
         for i in range(len(suffixes)):
             # Updata single suffix count
-            suffix_counts[suffixes[i]] += 1
+            suff_freq[suffixes[i]] += 1
 
-            # Update count for co-occurring pair
+            # Update count for co-occurring pairs
             for j in range(i + 1, len(suffixes)):
-                curr_key = '{0} & {1}'.format(suffixes[i], suffixes[j])
-                cooccurence_counts[curr_key] += 1
+                curr_key = '{0}{1}{2}'.format(suffixes[i], key_separator, suffixes[j])
+                cooc_freq[curr_key] += 1
 
     # Get association measures
-    for k in cooccurence_counts:
-        morpheme_pair = k.split(' & ')
-        morph_1, morph_2 = morpheme_pair[0], morpheme_pair[1]
+    for k in cooc_freq:
+        m1, m2 = k.split(key_separator)
 
-        mutual_infos[k] = (cm.mutual_info(cooccurence_counts, suffix_counts, k, morph_1, morph_2, num_suffixes),
-                           suffix_counts[morph_1], suffix_counts[morph_2])
+        mutual_infos[k] = (cm.mutual_info(suff_freq[m1], suff_freq[m2], cooc_freq[k], num_suffixes),
+                           suff_freq[m1], suff_freq[m2])
 
-        t_scores[k] = (cm.t_score(cooccurence_counts, suffix_counts, k, morph_1, morph_2, num_suffixes),
-                              suffix_counts[morph_1], suffix_counts[morph_2])
+        t_scores[k] = (cm.t_score(suff_freq[m1], suff_freq[m2], cooc_freq[k], num_suffixes),
+                       suff_freq[m1], suff_freq[m2])
 
-        dice_coeff[k] = (cm.dice_coeff(cooccurence_counts, suffix_counts, k, morph_1, morph_2),
-                     suffix_counts[morph_1], suffix_counts[morph_2])
+        dice_coeff[k] = (cm.dice_coeff(suff_freq[m1], suff_freq[m2], cooc_freq[k]),
+                         suff_freq[m1], suff_freq[m2])
 
-        chi_squared[k] = (cm.chi_squared(cooccurence_counts, suffix_counts, k, morph_1, morph_2, num_suffixes),
-                       suffix_counts[morph_1], suffix_counts[morph_2])
-
-
+        chi_squared[k] = (cm.chi_squared(suff_freq[m1], suff_freq[m2], cooc_freq[k], num_suffixes, m1, m2, cooc_freq),
+                          suff_freq[m1], suff_freq[m2])
 
     # Save data
     with open('cooccurrence_count.csv', 'w') as f:
         csv_writer = csv.writer(f)
 
-        for k in cooccurence_counts:
-            csv_writer.writerow([k, cooccurence_counts[k]])
+        for k in cooc_freq:
+            csv_writer.writerow([k, cooc_freq[k]])
 
     with open('suffix_count.csv', 'w') as f:
         csv_writer = csv.writer(f)
 
-        for k in suffix_counts:
-            csv_writer.writerow([k, suffix_counts[k]])
+        for k in suff_freq:
+            csv_writer.writerow([k, suff_freq[k]])
 
-    with open('mutual_info.csv', 'w') as f:
+    with open('mutual_info/mutual_info.csv', 'w') as f:
         csv_writer = csv.writer(f)
 
         for k in mutual_infos:
             csv_writer.writerow([k, mutual_infos[k][0], mutual_infos[k][1], mutual_infos[k][2]])
 
-    with open('t_scores_.csv', 'w') as f:
+    with open('t_scores/t_scores.csv', 'w') as f:
         csv_writer = csv.writer(f)
 
         for k in t_scores:
             csv_writer.writerow([k, t_scores[k][0], t_scores[k][1], t_scores[k][2]])
 
-    with open('dice_coeff.csv', 'w') as f:
+    with open('dice_coeff/dice_coeff.csv', 'w') as f:
         csv_writer = csv.writer(f)
 
         for k in dice_coeff:
             csv_writer.writerow([k, dice_coeff[k][0], dice_coeff[k][1], dice_coeff[k][2]])
 
-    with open('chi_squared.csv', 'w') as f:
+    with open('chi_squared/chi_squared.csv', 'w') as f:
         csv_writer = csv.writer(f)
 
         for k in chi_squared:
@@ -104,5 +97,5 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    main(right_parse_sign='Verb', suffix_boundary=r'[\|\+]', mboundary=r'.*:', key_separator='__')
     exit(0)

@@ -1,472 +1,770 @@
-Past & A3sg,6724
-Aor & A3sg,4385
-Narr & Cop,1283
-Narr & A3pl,397
-A3pl & Cop,184
-FutPart & P2sg,433
-Fut & A1sg,264
-Narr & A3sg,3563
-Fut & A3sg,1922
-Past & A3pl,519
-Narr & Past,873
-Neg & Past,1106
-Neg & A3sg,3685
-Cond & A3sg,793
-PastPart & P2pl,262
-Neg & Aor,955
-Inf & P3sg,4602
-Neg & PresPart,332
-PastPart & P3sg,3028
-PastPart & P2sg,1693
-PastPart & Acc,1143
-P2sg & Acc,1458
-Opt & A1pl,935
-Prog & Cop,795
-Prog & A3sg,4870
-Neg & Inf,386
-Neg & Hastily,1
-Hastily & Aor,12
-Hastily & A3sg,20
-Past & Cond,39
-PastPart & Dat,150
-P2sg & Dat,328
-Able & Neg,1354
-Able & Aor,1359
-Able & A3sg,1534
-Aor & Past,513
-Neg & FutPart,131
-Neg & P2sg,221
-Neg & Dat,70
-FutPart & Dat,116
-Neg & Narr,417
-PastPart & Abl,366
-P2sg & Abl,153
-Past & A1sg,2483
-Able & FutPart,338
-Able & P2sg,157
-Able & Acc,137
-FutPart & Acc,353
-Neg & Fut,223
-Neg & AfterDoingSo,20
-Neg & Prog,842
-Able & Prog,427
-Aor & Cond,709
-Neces & Past,33
-Neces & A3sg,242
-Neces & Cop,242
-Inf & Cop,396
-P3sg & Cop,132
-Neg & PastPart,468
-Neg & Acc,171
-PresPart & A3pl,704
-PresPart & Dat,120
-A3pl & Dat,341
-PastPart & Gen,81
-P2sg & Gen,607
-Neg & Cop,199
-Fut & Cop,423
-PastPart & P1sg,670
-P1sg & Acc,162
-Inf & Gen,759
-P3sg & Gen,190
-PresPart & P2sg,242
-Prog & A1sg,1414
-Able & Past,409
-Able & A1pl,228
-Aor & A1pl,476
-Past & A1pl,1172
-Neg & When,23
-Inf & Dat,727
-P3sg & Dat,451
-Inf & P1pl,275
-Fut & Past,200
-Neg & Abl,39
-Able & Inf,419
-PastPart & P3pl,471
-Neg & P1pl,42
-PastPart & P1pl,824
-Able & PresPart,156
-Aor & A1sg,646
-Inf & Ins,366
-Neg & P3sg,441
-Inf & Acc,1446
-Cond & A1sg,190
-Neg & Desr,86
-Neg & A1sg,721
-Desr & Past,47
-Desr & A1sg,38
-Past & A2sg,382
-Narr & A1sg,166
-Inf & A3pl,1967
-Inf & P1sg,126
-A3pl & P1sg,75
-Inf & Abl,204
-P3sg & Abl,112
-Desr & A3sg,81
-Able & PastPart,180
-Able & P3sg,392
-Able & By,4
-PastPart & By,6
-P3sg & By,6
-PastPart & A3pl,336
-A3pl & P2sg,1090
-A3pl & Gen,111
-Cond & Past,88
-Past & A2pl,262
-Neg & A2sg,167
-Neg & Opt,1576
-Opt & A3sg,1588
-Prog & A2sg,429
-Prog & Past,1014
-Prog & A2pl,205
-P3sg & Acc,592
-A3pl & Acc,421
-Able & A2sg,103
-Aor & A2sg,270
-P1pl & Acc,116
-FutPart & P3sg,442
-Neg & A1pl,293
-FutPart & Abl,27
-Pass & Able,828
-Pass & Neg,905
-Pass & Aor,1066
-Pass & Past,737
-Pass & A3sg,3350
-Prog & A3pl,467
-Aor & A3pl,526
-Pass & Inf,2565
-Pass & P3sg,2898
-PresPart & P3pl,59
-A3pl & P3pl,562
-Aor & A2pl,264
-Inf & P2sg,1112
-Neg & Cond,120
-Able & A3pl,178
-Able & P3pl,64
-Opt & A1sg,226
-Fut & A1pl,188
-P2pl & Acc,66
-Able & Fut,293
-P3sg & Ins,116
-Inf & P3pl,497
-P3pl & Cop,13
-Neg & Gen,27
-PresPart & P3sg,31
-Aor & Narr,76
-FutPart & P2pl,41
-Fut & A2pl,73
-Prog & A1pl,847
-Pass & Prog,733
-Pass & Cop,1017
-Desr & Narr,3
-Hastily & Narr,5
-Hastily & Cop,1
-A3pl & Past,129
-A3pl & A3sg,172
-PastPart & Cop,12
-FutPart & A3pl,102
-A3pl & Abl,138
-A3pl & Cond,29
-Inf & P2pl,137
-Cond & A2sg,110
-Opt & A2sg,4
-Able & A1sg,356
-Neg & A3pl,283
-Neg & P3pl,43
-Pass & PresPart,1373
-A3pl & P1pl,109
-P1pl & Gen,24
-Fut & A2sg,99
-FutPart & P3pl,65
-Fut & A3pl,108
-Neg & A2pl,212
-Aor & While,862
-PastPart & Loc,518
-P2sg & Loc,357
-PresPart & Loc,17
-A3pl & Loc,187
-Able & Cop,162
-Fut & Cond,40
-FutPart & P1pl,94
-Prog & Cond,137
-Able & Narr,136
-Cond & A2pl,176
-P1sg & Gen,37
-FutPart & P1sg,58
-P1sg & Dat,32
-P1pl & Dat,33
-Inf & Without,1
-Without & P2sg,1
-Neg & P2pl,17
-Neces & A1sg,33
-P1pl & Cop,6
-Inf & Loc,672
-P3sg & Loc,234
-Neg & Neces,47
-Able & Cond,74
-Narr & P3sg,6
-Able & A2pl,114
-Cond & A1pl,189
-Neces & A2sg,15
-Pass & Narr,1157
-Pass & PastPart,773
-Pass & P2sg,459
-Pass & Loc,277
-PresPart & Abl,40
-Able & Dat,37
-Narr & A1pl,145
-Aor & Cop,1
-Desr & A1pl,26
-P1sg & Abl,18
-Able & Gen,24
-FutPart & Gen,24
-PresPart & Acc,5
-Neg & ByDoingSo,14
-Fut & Narr,24
-Narr & A2pl,32
-Prog & Narr,98
-PresPart & Cop,9
-Inf & PointQual,32
-P3sg & PointQual,14
-Loc & PointQual,34
-Inf & Past,71
-Inf & A3sg,86
-P3sg & Past,22
-P3sg & A3sg,24
-P2pl & Dat,18
-PastPart & Ins,16
-Opt & A2pl,3
-Cond & A3pl,23
-P2pl & Gen,9
-A1sg & Cop,8
-Neg & Loc,13
-Narr & Cond,41
-Neces & A2pl,16
-Neg & P1sg,47
-Narr & A2sg,77
-Hastily & Past,14
-Aor & P3sg,1
-Pass & Opt,112
-Pass & Fut,578
-Pass & Cond,171
-Pass & Abl,88
-Pass & FutPart,199
-Pass & Dat,269
-Pass & Neces,250
-Able & Opt,11
-Pass & Acc,410
-Pass & P1pl,8
-Pass & A3pl,163
-Pass & A2pl,6
-Able & Abl,24
-P2sg & Cop,3
-Abl & Cop,1
-Pass & Gen,110
-Pass & While,68
-Narr & While,14
-Pass & A1sg,10
-FutPart & Narr,4
-FutPart & A3sg,28
-A3pl & Narr,14
-Caus & Pass,595
-Caus & Narr,232
-Caus & Cop,115
-Caus & A3pl,154
-Pass & AfterDoingSo,72
-Able & P1pl,58
-Pass & ByDoingSo,146
-Caus & ByDoingSo,83
-A3pl & While,14
-Caus & Past,433
-Caus & A3sg,809
-Able & Loc,10
-Caus & Neg,401
-Caus & A1sg,170
-Caus & Able,206
-Caus & Prog,304
-Caus & Inf,518
-Caus & Aor,292
-Able & P1sg,42
-Aor & AsIf,12
-Caus & Fut,121
-P1pl & Abl,23
-Able & P2pl,15
-Caus & P3sg,355
-Caus & Acc,114
-Pass & Pass,5
-Able & Pass,5
-Neg & SinceDoingSo,2
-Caus & PastPart,268
-Caus & P2sg,83
-P1sg & Ins,9
-Pass & When,33
-Pass & A2sg,4
-Opt & Past,1
-Pass & Ins,45
-Caus & FutPart,44
-Caus & Dat,20
-Caus & While,28
-P1pl & Loc,119
-Caus & A2sg,59
-Caus & Opt,112
-Neg & Imp,2
-Caus & P3pl,36
-Pass & P3pl,44
-Caus & AfterDoingSo,107
-Narr & P2pl,1
-Neg & AsLongAs,16
-FutPart & Past,24
-Caus & PresPart,243
-Pass & A1pl,18
-Caus & A1pl,164
-Inf & Cond,13
-Abl & Cond,9
-Abl & A3sg,10
-A3pl & Ins,110
-P2sg & Ins,2
-Caus & WithoutHavingDoneSo,24
-A2sg & Cop,3
-Neces & A1pl,62
-Able & While,3
-Able & Ins,5
-Neg & Ins,8
-P2pl & Loc,53
-Pass & P2pl,1
-PresPart & Past,4
-PresPart & A3sg,7
-Caus & Imp,5
-Caus & Cond,42
-Pass & P1sg,7
-Narr & AsIf,4
-Able & Neces,14
-P3sg & Cond,1
-PresPart & Ins,15
-Caus & A2pl,67
-FutPart & Ins,1
-Pass & WithoutHavingDoneSo,38
-A3pl & P2pl,34
-PastPart & Past,4
-PastPart & A3sg,6
-P3pl & Past,2
-P3pl & A3sg,2
-FutPart & Loc,3
-P1sg & Loc,89
-Able & AfterDoingSo,3
-Prog & While,3
-Caus & Caus,300
-P3pl & Ins,37
-P2pl & Abl,7
-Caus & Gen,26
-Desr & A2sg,14
-Caus & P2pl,23
-Caus & P1sg,27
-Caus & P1pl,40
-Pass & AsLongAs,19
-Hastily & A3pl,3
-Pass & Desr,3
-Neg & While,5
-Hastily & A2pl,2
-PresPart & P2pl,1
-Narr & Loc,3
-Aor & Loc,1
-PastPart & Cond,2
-P2sg & Cond,2
-P2sg & A3sg,2
-Loc & Cond,3
-Loc & A3sg,3
-Inf & While,2
-Loc & While,2
-Acc & A3pl,1
-Loc & Cop,2
-Agt & P1sg,1
-Desr & A3pl,8
-Hastily & A1sg,6
-Inf & Narr,3
-P3sg & Narr,1
-Fut & While,3
-P2pl & Ins,5
-Desr & A2pl,5
-Able & AsLongAs,1
-Caus & Loc,22
-Caus & Neces,28
-Caus & Abl,24
-Caus & AsIf,2
-Caus & Ins,8
-PresPart & Cond,3
-Caus & PointQual,2
-A3pl & PointQual,5
-FutPart & Cop,4
-Caus & When,5
-Caus & Desr,2
-Hastily & Cond,3
-Hastily & Prog,3
-Neces & A3pl,2
-Narr & P2sg,10
-Cond & Narr,3
-Caus & Hastily,2
-Hastily & A1pl,1
-P1pl & Ins,7
-PresPart & P1pl,5
-PresPart & Gen,3
-A2pl & Cop,2
-Inf & A1sg,6
-P3sg & A1sg,6
-Inf & A2sg,1
-Dat & Past,1
-Dat & A2sg,1
-P1sg & Past,1
-P1sg & A3sg,1
-PresPart & A1sg,1
-PresPart & A1pl,1
-A3pl & A1pl,1
-Inf & Acquire,1
-Narr & Without,1
-P2sg & PointQual,1
-PresPart & PointQual,4
-Narr & Dat,5
-Pass & SinceDoingSo,1
-PointQual & Acc,1
-P1pl & Past,1
-P1pl & A3sg,1
-Able & Desr,5
-PastPart & PointQual,1
-P1pl & PointQual,2
-Hastily & PastPart,2
-Hastily & P2sg,1
-Hastily & Acc,1
-Neces & Narr,2
-Recip & Past,8
-Recip & A1pl,7
-Recip & Prog,2
-Recip & A3pl,7
-Recip & Aor,1
-Recip & While,1
-Recip & Inf,2
-Recip & Loc,1
-Recip & AfterDoingSo,1
-Recip & PastPart,1
-Recip & P2sg,1
-Recip & Acc,1
-Recip & Neg,1
-Recip & WithoutHavingDoneSo,1
-Recip & Cond,1
-Recip & When,1
-Pass & Hastily,1
-Hastily & P1sg,1
-Neg & Equ,2
-Inf & Equ,2
-Equ & P3sg,2
-Equ & Dat,2
-Hastily & Inf,1
-Hastily & A2sg,1
-A1pl & Cop,2
-Able & PointQual,1
-Able & When,5
-P1sg & PointQual,1
-Narr & Acc,2
-P2pl & Cop,1
-PresPart & A2sg,1
-Narr & Abl,1
-Able & ByDoingSo,3
-Pass & PointQual,3
-Abl & Past,1
+PastPart→Adj__P3sg,1010
+Inf2→Noun__A3sg,10136
+Inf2→Noun__P3sg,4819
+Inf2→Noun__Zero→Verb,177
+Inf2→Noun__Pres,146
+Inf2→Noun__Cop,146
+A3sg__P3sg,6626
+A3sg__Zero→Verb,522
+A3sg__Pres,419
+A3sg__A3sg,517
+A3sg__Cop,3491
+P3sg__Zero→Verb,126
+P3sg__Pres,107
+P3sg__A3sg,126
+P3sg__Cop,107
+Zero→Verb__Pres,445
+Zero→Verb__A3sg,547
+Zero→Verb__Cop,444
+Pres__A3sg,439
+Pres__Cop,444
+Desr__A3sg,330
+Fut__A3sg,1979
+Aor__A3sg,4209
+Neg__Aor,889
+Neg__Cond,113
+Neg__A3sg,2997
+Aor__Cond,711
+Cond__A3sg,545
+PastPart→Noun__A3sg,4914
+PastPart→Noun__Acc,2295
+A3sg__Acc,3881
+Desr__Past,148
+Past__A3sg,6809
+Narr__A3sg,4551
+Narr__Cop,1301
+Neg__Prog1,900
+Prog1__A3sg,5478
+Imp__A2sg,2459
+Imp__A3sg,603
+Inf2→Noun__Dat,2031
+A3sg__Dat,2145
+Able→Verb__Aor,1100
+Able→Verb__A3sg,1825
+Neg__PresPart→Adj,246
+PresPart→Noun__A3pl,607
+PresPart→Noun__Abl,35
+A3pl__Abl,127
+PastPart→Noun__P2sg,868
+PastPart→Noun__Loc,510
+A3sg__P2sg,1324
+A3sg__Loc,1372
+P2sg__Loc,170
+PastPart→Noun__P2pl,178
+A3sg__P2pl,308
+P2pl__Acc,82
+Neg__Desr,98
+Inf2→Noun__A3pl,1692
+Inf2→Noun__P2sg,514
+Inf2→Noun__Abl,424
+A3pl__P2sg,373
+P2sg__Abl,68
+Inf1→Noun__A3sg,5741
+PastPart→Noun__P3sg,1833
+P3sg__Acc,1222
+Desr__A1sg,103
+Neg__PastPart→Adj,95
+Neg__P1sg,48
+PastPart→Adj__P1sg,255
+Able→Verb__Prog1,213
+PastPart→Noun__Dat,189
+P3sg__Dat,607
+Inf2→Noun__P3pl,433
+A3sg__P3pl,441
+P2sg__Acc,762
+Fut__Narr,35
+Neg__Past,1015
+Prog2__A3sg,917
+Prog2__Cop,872
+Able→Verb__A3pl,115
+Aor__A3pl,464
+PastPart→Noun__A3pl,560
+A3pl__P3sg,474
+P2sg__Dat,151
+Neg__AfterDoingSo→Adv,16
+Inf2→Noun__P1pl,276
+A3sg__P1pl,716
+P1pl__Dat,34
+Inf2→Noun__Acc,1543
+Neg__PastPart→Noun,322
+Neg__P3sg,331
+Neg__Acc,225
+FutPart→Adj__P3sg,168
+Imp__A3pl,69
+PastPart→Noun__P3pl,298
+A3pl__P3pl,377
+Fut__Cond,39
+PresPart→Noun__P2sg,83
+P3sg__Loc,400
+Able→Verb__FutPart→Noun,216
+Able→Verb__P2sg,54
+Able→Verb__Dat,22
+FutPart→Noun__A3sg,917
+FutPart→Noun__P2sg,229
+FutPart→Noun__Dat,108
+A3pl__Acc,566
+Fut__A2sg,232
+PresPart→Noun__A3sg,162
+PresPart→Noun__P3sg,44
+Prog1__A1pl,946
+Prog1__A1sg,1691
+Inf1→Noun__Abl,202
+A3sg__Abl,913
+Neg__P2sg,105
+Past__A1sg,3062
+Imp__A2pl,845
+Fut__Cop,390
+PastPart→Noun__P1pl,480
+P1pl__Acc,124
+Neg__Imp,632
+Fut__Past,229
+Aor__A1sg,883
+Aor__A2sg,282
+Neg__A2pl,188
+Inf2→Noun__Gen,812
+A3sg__Gen,836
+P3sg__Gen,242
+Neg__Inf2→Noun,185
+Inf1→Noun__Loc,330
+Aor__Past,559
+PastPart→Adj__P1pl,325
+Pass→Verb__PresPart→Adj,1618
+FutPart→Noun__P3sg,401
+FutPart→Noun__Abl,31
+P3sg__Abl,187
+Neg__A1sg,669
+Neg__When→Adv,20
+Opt__A1pl,919
+Able→Verb__Past,176
+Prog1__Past,1308
+Prog1__Cond,162
+Unable__Prog1,266
+Unable__A2pl,37
+Prog1__A2pl,280
+Neg__Fut,210
+Neg__Cop,139
+Neg__Narr,325
+Aor__A2pl,308
+Cond__A2pl,148
+Able→Verb__A1pl,150
+Fut__A1sg,537
+Narr__A3pl,366
+A3pl__Cop,157
+Neces__A3sg,469
+Unable__Past,328
+Unable__A1sg,298
+Able→Verb__P3sg,275
+Able→Verb__Abl,8
+FutPart→Noun__A3pl,108
+PastPart→Noun__Abl,345
+Able→Verb__Inf1→Noun,172
+Desr__A1pl,88
+Prog1__A3pl,800
+A3pl__Past,286
+Neces__Past,36
+Neg__Abl,28
+Aor__A1pl,560
+Pass→Verb__Able→Verb,562
+Pass→Verb__Aor,1190
+Pass→Verb__A3sg,8125
+Neg__Gen,27
+PastPart→Noun__Gen,133
+P2sg__Gen,272
+Cond__A1pl,123
+Pass→Verb__FutPart→Noun,198
+Pass→Verb__P3sg,2935
+Pass→Verb__Acc,613
+FutPart→Noun__Acc,578
+Unable__Aor,445
+Unable__A3sg,775
+Hastily→Verb__Narr,3
+Hastily→Verb__Past,16
+Hastily→Verb__A3sg,27
+Narr__Past,912
+Able→Verb__FutPart→Adj,51
+Able→Verb__Acc,162
+Unable__PastPart→Noun,110
+Unable__Acc,85
+Fut__A2pl,96
+Prog1__A2sg,555
+Neg__Neces,53
+Neces__A3pl,19
+Neg__Able→Verb,24
+Neg__Dat,47
+Neg__A3pl,283
+Able→Verb__Prog2,58
+Able→Verb__Cop,111
+Desr__A3pl,44
+Fut__A1pl,375
+Neces__Cop,281
+Neg__PresPart→Noun,47
+PresPart→Noun__Acc,28
+Past__A1pl,1258
+Narr__A1pl,125
+Past__A3pl,492
+P1pl__Loc,134
+PresPart→Noun__Dat,113
+Opt__A1sg,255
+Neg__P1pl,31
+Inf1→Noun__Zero→Verb,337
+Inf1→Noun__Pres,275
+Inf1→Noun__Cop,275
+Unable__Fut,61
+Unable__A3pl,98
+Unable__Cop,63
+Fut__A3pl,119
+Neg__FutPart→Noun,53
+FutPart→Adj__P3pl,9
+PresPart→Noun__P3pl,35
+P3pl__Abl,31
+Able→Verb__A1sg,157
+Pass→Verb__Imp,183
+Pass→Verb__A2sg,135
+Unable__When→Adv,5
+Hastily→Verb__Imp,7
+PresPart→Noun__Gen,82
+A3pl__Gen,229
+Narr__A1sg,204
+Inf2→Noun__With→Adj,21
+A3sg__With→Adj,21
+PastPart→Adj__P3pl,105
+Pass→Verb__Inf2→Noun,2466
+Pass→Verb__Loc,289
+Inf2→Noun__Loc,674
+Able→Verb__PastPart→Noun,42
+Able→Verb__Equ,4
+PastPart→Noun__Equ,7
+A3sg__Equ,10
+P3sg__Equ,6
+Unable__P1pl,18
+A3pl__P1pl,98
+Cond__A2sg,92
+Able→Verb__A2pl,103
+Able→Verb__Gen,20
+FutPart→Noun__Gen,33
+Neg__P2pl,21
+Inf1→Noun__Ins,121
+A3sg__Ins,300
+PastPart→Noun__P1sg,442
+A3sg__P1sg,609
+P1sg__Acc,144
+Able→Verb__Desr,25
+P3pl__Acc,166
+Inf2→Noun__P2pl,131
+Opt__A3sg,400
+Neg__P3pl,37
+A3pl__Dat,309
+Able→Verb__Narr,43
+PastPart→Adj__P2pl,96
+Neg__Zero→Verb,10
+Inf2→Noun__Past,30
+A3sg__Past,78
+P3pl__Zero→Verb,13
+P3pl__Past,2
+P3pl__A3sg,13
+Zero→Verb__Past,82
+Neg__A2sg,560
+P2pl__Zero→Verb,2
+P2pl__Pres,2
+P2pl__A3sg,2
+P2pl__Cop,2
+P2pl__Loc,41
+Neg__AsLongAs→Adv,9
+Neces__A1pl,66
+A3pl__Cond,39
+Neg__Pres,7
+Able→Verb__Cond,29
+Cond__A1sg,77
+Neg__A1pl,220
+P3pl__Pres,11
+P3pl__Cop,11
+PastPart→Noun__Zero→Verb,9
+PastPart→Noun__Pres,6
+PastPart→Noun__Cop,6
+Able→Verb__P3pl,22
+FutPart→Noun__P3pl,51
+Inf2→Noun__P1sg,188
+P1sg__Dat,71
+Pass→Verb__Neg,677
+Pass→Verb__Prog1,550
+Able→Verb__Inf2→Noun,200
+Able→Verb__A2sg,51
+Desr__A2sg,60
+Past__A2sg,478
+Neg__While→Adv,8
+Aor__While→Adv,788
+Prog1__Narr,146
+P3pl__Dat,64
+P3pl__Gen,40
+Unable__A1pl,115
+Unable__Prog2,24
+Unable__Desr,5
+Prog1__Cop,30
+Unable__Cond,29
+Unable__Inf1→Noun,15
+Neg__Opt,364
+A3pl__Loc,154
+P3pl__Loc,27
+PastPart→Adj__P2sg,55
+P1sg__Gen,33
+Able→Verb__Ins,3
+FutPart→Noun__Ins,1
+P3sg__Ins,136
+PresPart→Noun__Loc,11
+Cop__A3pl,82
+Past__A2pl,289
+Neg__Inf1→Noun,103
+Narr__A2pl,38
+A2pl__Cop,13
+Pass→Verb__Fut,576
+Pass→Verb__Cop,1077
+Pass→Verb__Narr,1204
+Pass→Verb__Past,823
+Aor__Narr,95
+FutPart→Adj__P2pl,22
+Unable__FutPart→Noun,53
+Unable__P3sg,136
+Unable__Dat,16
+P1sg__Zero→Verb,1
+P1sg__Pres,1
+P1sg__A3sg,1
+P1sg__Cop,1
+Dat__Zero→Verb,1
+Dat__Pres,1
+Dat__A3sg,1
+Dat__Cop,1
+Neces__Narr,6
+P3sg__Past,19
+Inf1→Noun__Past,47
+Able→Verb__Fut,239
+P1sg__Loc,98
+P2sg__Equ,2
+Desr__A2pl,26
+Unable__PastPart→Adj,43
+Unable__P3pl,11
+Inf2→Noun__Ins,227
+Prog2__A3pl,73
+Unable__Inf2→Noun,60
+P1pl__Gen,30
+Pass→Verb__Unable,299
+Unable__PresPart→Adj,90
+Past__Cond,48
+A1sg__Cond,4
+Unable__P1sg,20
+P1sg__Abl,21
+Neg__Ins,6
+A3pl__Zero→Verb,27
+A3pl__Pres,23
+A3pl__A3sg,26
+PresPart→Noun__Ins,16
+A3pl__Ins,81
+Pass→Verb__PastPart→Noun,635
+Hastily→Verb__Prog1,9
+A1sg__Cop,7
+Unable__A2sg,61
+Opt__Past,2
+Unable__ByDoingSo→Adv,4
+Unable__P2sg,38
+Pass→Verb__Dat,303
+PastPart→Noun__Narr,1
+A3pl__Narr,38
+P1pl__Zero→Verb,6
+P1pl__Narr,1
+P1pl__A3sg,6
+Zero→Verb__Narr,6
+Pass→Verb__Neces,273
+Neg__Loc,7
+NarrPart→Adj__Zero→Verb,9
+NarrPart→Adj__Pres,4
+NarrPart→Adj__A3pl,9
+NarrPart→Adj__Cop,4
+Zero→Verb__A3pl,4
+Pres__A3pl,4
+Pass→Verb__P2sg,255
+Pass→Verb__Abl,133
+Pass→Verb__Prog2,293
+Pass→Verb__PastPart→Adj,128
+Pass→Verb__P3pl,41
+FutPart→Adj__P2sg,5
+Caus→Verb__Caus→Verb,20
+Caus→Verb__Inf1→Noun,286
+Caus→Verb__A3sg,2127
+FutPart→Noun__P1pl,53
+Unable__Narr,115
+Pass→Verb__ByDoingSo→Adv,138
+Caus→Verb__Past,581
+Caus→Verb__A1sg,343
+Caus→Verb__PresPart→Adj,264
+Pass→Verb__A3pl,161
+Pass→Verb__Gen,118
+Pass→Verb__While→Adv,67
+Caus→Verb__Neg,456
+Caus→Verb__Imp,386
+Caus→Verb__A2sg,406
+Pass→Verb__Cond,133
+Pass→Verb__Opt,114
+Caus→Verb__Pass→Verb,678
+Caus→Verb__Narr,219
+Caus→Verb__Prog2,54
+Caus→Verb__Cop,142
+Repeat→Verb__Imp,2
+Repeat→Verb__A3sg,2
+Caus→Verb__Inf2→Noun,379
+Caus→Verb__P3sg,352
+Caus→Verb__Unable,103
+Caus→Verb__Aor,425
+Caus→Verb__Fut,183
+Pass→Verb__NarrPart→Adj,19
+EverSince→Verb__PastPart→Adj,1
+EverSince→Verb__P1sg,1
+Pass→Verb__FutPart→Adj,54
+Pass→Verb__AfterDoingSo→Adv,74
+Pass→Verb__Inf1→Noun,107
+Able→Verb__PresPart→Adj,54
+Able→Verb__P1pl,32
+FutPart→Adj__P1pl,28
+Pass→Verb__A1sg,20
+Neg__Prog2,36
+Pass→Verb__Ins,59
+Prog2__Past,29
+Caus→Verb__FutPart→Adj,10
+Caus→Verb__P1sg,53
+FutPart→Adj__P1sg,2
+Hastily→Verb__A2pl,2
+Caus→Verb__Acc,180
+Caus→Verb__A3pl,207
+FutPart→Noun__P2pl,30
+Able→Verb__Opt,10
+Opt__A2sg,5
+Caus→Verb__PastPart→Noun,207
+Caus→Verb__Abl,26
+Caus→Verb__Prog1,411
+Caus→Verb__Neces,39
+Caus→Verb__A1pl,119
+Caus→Verb__FutPart→Noun,49
+Able→Verb__PastPart→Adj,12
+Aor__AsIf→Adv,16
+A3sg__AsIf→Adv,19
+Pass→Verb__PresPart→Noun,103
+Unable__PresPart→Noun,11
+Unable__Gen,13
+Neces__A2pl,9
+Able→Verb__AorPart→Adj,5
+Pass→Verb__Zero→Verb,73
+Narr__A2sg,85
+Caus→Verb__P2sg,65
+Pass→Verb__Desr,38
+Unable__While→Adv,3
+Pass→Verb__Pres,62
+PresPart→Noun__Zero→Verb,16
+PresPart→Noun__Pres,11
+PresPart→Noun__Cop,10
+Pass→Verb__WithoutHavingDoneSo→Adv,32
+Neces__A1sg,26
+Pass→Verb__Zero→Noun,12
+NarrPart→Adj__Zero→Noun,19
+NarrPart→Adj__Abl,3
+Zero→Noun__A3pl,8
+Zero→Noun__Abl,3
+Caus→Verb__Able→Verb,147
+Pass→Verb__When→Adv,37
+Unable__FutPart→Adj,15
+Inf1→Noun__Cond,13
+A3sg__Cond,19
+Abl__Zero→Verb,13
+Abl__Cond,12
+Abl__A3sg,12
+Zero→Verb__Cond,22
+Caus→Verb__P2pl,21
+P2pl__Dat,25
+Pass→Verb__AorPart→Adj,15
+Caus→Verb__Opt,225
+Caus→Verb__ByDoingSo→Adv,53
+Narr__Cond,47
+Loc__Zero→Verb,18
+Loc__Past,4
+Loc__A3sg,17
+Pass→Verb__P1sg,4
+Hastily→Verb__PresPart→Adj,3
+Unable__Neces,2
+Neg__FutPart→Adj,11
+Pass→Verb__P1pl,6
+Caus→Verb__Dat,75
+FutPart→Noun__P1sg,50
+Caus→Verb__Zero→Verb,14
+Caus→Verb__A2pl,62
+Able→Verb__P2pl,13
+Narr__AsIf→Adv,5
+Caus→Verb__PresPart→Noun,27
+Hastily→Verb__A2sg,5
+FeelLike→Noun__A3sg,7
+FeelLike→Noun__P2pl,1
+Prog2__A1pl,9
+Unable__Abl,13
+EverSince→Verb__PresPart→Adj,1
+A3pl__P2pl,35
+Caus→Verb__AfterDoingSo→Adv,45
+Unable__Zero→Verb,7
+Unable__Pres,4
+P1pl__Abl,15
+Caus→Verb__WithoutHavingDoneSo→Adv,3
+NarrPart→Adj__A3sg,17
+NarrPart→Adj__P2pl,1
+Zero→Noun__A3sg,22
+Zero→Noun__P2pl,1
+When→Adv__Zero→Noun,10
+When→Adv__A3sg,10
+When→Adv__Dat,10
+Zero→Noun__Dat,13
+Unable__AfterDoingSo→Adv,3
+A3sg__A3pl,3
+PresPart→Noun__P2pl,2
+Opt__A2pl,3
+A3pl__P1sg,74
+Pass→Verb__Rel→Adj,7
+Inf2→Noun__Rel→Adj,28
+A3sg__Rel→Adj,28
+P3sg__Rel→Adj,14
+Loc__Rel→Adj,33
+Pass→Verb__EverSince→Verb,3
+EverSince→Verb__Prog2,2
+EverSince→Verb__A3sg,8
+EverSince→Verb__Cop,2
+Caus→Verb__PastPart→Adj,74
+P2pl__Abl,7
+PastPart→Noun__Ins,15
+P3pl__Ins,21
+Able→Verb__P1sg,14
+Unable__P2pl,9
+Pass→Verb__Hastily→Verb,1
+Able→Verb__While→Adv,2
+Unable__Able→Verb,5
+Ins__Zero→Verb,1
+Ins__Pres,1
+Ins__A3sg,1
+Ins__Cop,1
+Able→Verb__Zero→Verb,14
+Able→Verb__Pres,11
+NarrPart→Adj__Gen,4
+Zero→Noun__Gen,4
+Neg__SinceDoingSo→Adv,3
+A2sg__Cop,7
+Caus→Verb__Gen,40
+Neces__While→Adv,1
+Caus→Verb__P1pl,24
+Caus→Verb__Cond,29
+NarrPart→Adj__Cond,2
+Narr__While→Adv,14
+Neces__A2sg,10
+Pass→Verb__A2pl,4
+With→Adj__Zero→Verb,2
+With→Adj__Pres,2
+With→Adj__A3sg,2
+With→Adj__Cop,2
+PastPart→Noun__Cond,2
+P2sg__Zero→Verb,1
+P2sg__Cond,1
+P2sg__A3sg,1
+Loc__Cond,3
+Able→Verb__Neces,13
+Neg__ByDoingSo→Adv,6
+Able→Verb__Loc,4
+Pass→Verb__SinceDoingSo→Adv,1
+Past__Past,1
+Caus→Verb__P3pl,52
+A2sg__Cond,1
+Prog2__A2pl,2
+P2pl__Gen,9
+Able→Verb__Neg,14
+PresPart→Noun__Cond,4
+PresPart→Noun__A2pl,1
+A3pl__A2pl,1
+Abl__A2pl,1
+Zero→Verb__A2pl,1
+FeelLike→Noun__Zero→Verb,1
+FeelLike→Noun__Narr,1
+A3sg__Narr,5
+P1sg__Ins,6
+Aor__Cop,16
+FutPart→Noun__Zero→Verb,8
+FutPart→Noun__Narr,2
+Hastily→Verb__Aor,7
+Hastily→Verb__A1sg,6
+Caus→Verb__While→Adv,84
+NarrPart→Adj__Acc,3
+Zero→Noun__Acc,3
+Fut__While→Adv,2
+Cond__A3pl,1
+NarrPart→Adj__P3pl,1
+Zero→Noun__P3pl,1
+Hastily→Verb__Desr,2
+Hastily→Verb__A1pl,1
+Pass→Verb__AsLongAs→Adv,14
+Caus→Verb__Desr,28
+Loc__Pres,11
+Loc__Cop,11
+Desr__Narr,3
+FeelLike→Noun__P1sg,3
+EverSince→Verb__PastPart→Noun,3
+EverSince→Verb__P2sg,1
+EverSince→Verb__Acc,2
+P1pl__Pres,2
+P1pl__Cop,2
+EverSince→Verb__Past,2
+Pass→Verb__A1pl,16
+Able→Verb__PresPart→Noun,3
+EverSince→Verb__Prog1,2
+Hastily→Verb__Fut,2
+Start→Verb__Past,1
+Start→Verb__A3sg,1
+Hastily→Verb__A3pl,4
+Prog2__Narr,1
+NarrPart→Adj__P2sg,2
+Zero→Noun__P2sg,2
+Unable__Imp,2
+A3pl__While→Adv,5
+Inf3→Noun__A3sg,3
+Inf3→Noun__Gen,1
+A3pl__Rel→Adj,5
+PresPart→Noun__P1pl,4
+Inf2→Noun__Cond,1
+P1pl__Ins,7
+Caus→Verb__Pres,12
+Imp__Past,1
+Prog2__A1sg,2
+PresPart→Noun__Equ,1
+P3pl__Equ,1
+FeelLike→Noun__P1pl,1
+Caus→Verb__Loc,41
+P2sg__Ins,1
+EverSince→Verb__A1pl,1
+P1pl__Past,2
+A1pl__Cop,2
+FutPart→Noun__Pres,3
+FutPart→Noun__Cop,3
+Unable__Opt,4
+P1pl__Rel→Adj,2
+Hastily→Verb__Opt,2
+FutPart→Noun__Loc,1
+NarrPart→Adj__While→Adv,1
+Zero→Verb__While→Adv,2
+Hastily→Verb__Inf1→Noun,1
+Hastily→Verb__Abl,1
+FutPart→Noun__While→Adv,1
+A3sg__While→Adv,1
+FutPart→Noun__Past,2
+Neg__NarrPart→Adj,2
+Neg__Zero→Noun,1
+Zero→Noun__Zero→Verb,1
+Zero→Noun__Pres,1
+Zero→Noun__Cop,1
+Gen__Zero→Verb,1
+Gen__Pres,1
+Gen__A3sg,1
+Gen__Cop,1
+Caus→Verb__AorPart→Adj,3
+NarrPart→Adj__A1sg,2
+Zero→Verb__A1sg,2
+Pres__A1sg,1
+PresPart→Noun__Past,1
+Pass→Verb__FeelLike→Adj,2
+P1sg__Equ,1
+NarrPart→Adj__Past,2
+EverSince→Verb__P3sg,1
+EverSince→Verb__Abl,1
+Recip→Verb__Neg,271
+Recip→Verb__Fut,106
+Recip→Verb__Past,262
+Recip→Verb__A3sg,1569
+Recip→Verb__Imp,124
+Recip→Verb__A2sg,99
+Recip→Verb__A1pl,138
+Recip→Verb__A3pl,221
+Recip→Verb__Desr,15
+P1pl__Cond,1
+Stay→Verb__Past,4
+Stay→Verb__A3sg,1
+Stay→Verb__A3pl,1
+Recip→Verb__Inf2→Noun,353
+Recip→Verb__P3sg,357
+Stay→Verb__A2sg,1
+Recip→Verb__Aor,199
+Recip→Verb__While→Adv,11
+Recip→Verb__Prog2,44
+Stay→Verb__Prog1,1
+Stay→Verb__A1sg,1
+Recip→Verb__Prog1,259
+Recip→Verb__ByDoingSo→Adv,58
+Recip→Verb__A2pl,59
+PresPart→Noun__Rel→Adj,1
+NarrPart→Adj__Dat,3
+Able→Verb__Imp,8
+Caus→Verb__Rel→Adj,3
+P1sg__Rel→Adj,1
+Caus→Verb__When→Adv,2
+Neg__AorPart→Adj,3
+Caus→Verb__AsLongAs→Adv,5
+Caus→Verb__Ins,10
+P2pl__Ins,2
+Caus→Verb__Hastily→Verb,1
+Caus→Verb__NarrPart→Adj,1
+NarrPart→Adj__Ness→Noun,1
+Ness→Noun__A3sg,1
+Inf3→Noun__P3sg,1
+Inf3→Noun__Equ,2
+Inf3→Noun__P2sg,1
+NarrPart→Adj__P3sg,2
+Zero→Noun__P3sg,2
+Pass→Verb__WithoutBeingAbleToHaveDoneSo→Adv,2
+Inf1→Noun__A3pl,1
+Loc__A3pl,1
+Inf1→Noun__Rel→Adj,4
+NarrPart→Adj__Ins,1
+Zero→Noun__Ins,1
+PresPart→Noun__A2sg,1
+A3sg__A2sg,1
+Zero→Verb__A2sg,1
+Pres__A2sg,1
+Abl__Pres,1
+Abl__Cop,1
+Recip→Verb__Inf1→Noun,392
+Recip→Verb__Ins,14
+Recip→Verb__Neces,32
+Recip→Verb__A1sg,124
+Recip→Verb__Acc,215
+Recip→Verb__PresPart→Adj,223
+Recip→Verb__P2sg,62
+Recip→Verb__Gen,51
+Recip→Verb__Abl,60
+Recip→Verb__Unable,64
+Recip→Verb__Caus→Verb,96
+Recip→Verb__Able→Verb,100
+Recip→Verb__Pass→Verb,435
+Recip→Verb__Narr,104
+Recip→Verb__PastPart→Adj,123
+Recip→Verb__P1pl,67
+Recip→Verb__Opt,104
+Recip→Verb__NarrPart→Adj,11
+Recip→Verb__PastPart→Noun,254
+Recip→Verb__FutPart→Noun,58
+Recip→Verb__Cop,96
+Recip→Verb__Loc,16
+Recip→Verb__AsLongAs→Adv,12
+Recip→Verb__AfterDoingSo→Adv,27
+Recip→Verb__PresPart→Noun,17
+Recip→Verb__Dat,38
+Recip→Verb__P3pl,50
+Recip→Verb__Cond,29
+Recip→Verb__Zero→Verb,24
+Recip→Verb__Pres,23
+Recip→Verb__P1sg,52
+Recip→Verb__P2pl,20
+Recip→Verb__AorPart→Adj,13
+Recip→Verb__When→Adv,8
+Recip→Verb__FutPart→Adj,15
+Recip→Verb__AsIf→Adv,1
+Recip→Verb__WithoutHavingDoneSo→Adv,3
+Recip→Verb__SinceDoingSo→Adv,1
+Recip→Verb__Rel→Adj,1
+Inf1→Noun__Narr,2
+Unable__AorPart→Adj,3
