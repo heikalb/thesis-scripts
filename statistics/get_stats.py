@@ -21,10 +21,6 @@ def colloc_stats(right_parse_sign, suffix_boundary, mboundary, key_separator, qu
     # Stats
     suff_freq = defaultdict(int)
     cooc_freq = defaultdict(int)
-    mutual_infos = {}
-    t_scores = {}
-    dice_coeff = {}
-    chi_squared = {}
 
     # Go through parses
     for parse in parses:
@@ -58,22 +54,6 @@ def colloc_stats(right_parse_sign, suffix_boundary, mboundary, key_separator, qu
             args = [suff_freq[m1], suff_freq[m2], cooc_freq[k], num_suffixes, m1, m2, cooc_freq]
             measure_dict[msr][k] = (measure_funct[msr](*args), suff_freq[m1], suff_freq[m2])
 
-    """
-    # Get association measures
-    for k in cooc_freq:
-        mutual_infos[k] = (cm.mutual_info(suff_freq[m1], suff_freq[m2], cooc_freq[k], num_suffixes),
-                           suff_freq[m1], suff_freq[m2])
-
-        t_scores[k] = (cm.t_score(suff_freq[m1], suff_freq[m2], cooc_freq[k], num_suffixes),
-                       suff_freq[m1], suff_freq[m2])
-
-        dice_coeff[k] = (cm.dice_coeff(suff_freq[m1], suff_freq[m2], cooc_freq[k]),
-                         suff_freq[m1], suff_freq[m2])
-
-        chi_squared[k] = (cm.chi_squared(suff_freq[m1], suff_freq[m2], cooc_freq[k], num_suffixes, m1, m2, cooc_freq),
-                          suff_freq[m1], suff_freq[m2])
-    """
-
     # Save data
     with open('cooccurrence_count/cooccurrence_count_{0}.csv'.format(query_term), 'w') as f:
         csv_writer = csv.writer(f)
@@ -93,32 +73,6 @@ def colloc_stats(right_parse_sign, suffix_boundary, mboundary, key_separator, qu
 
             for k in measure_dict[msr]:
                 csv_writer.writerow([k, measure_dict[msr][k][0], measure_dict[msr][k][1], measure_dict[msr][k][2]])
-
-    """
-    with open('mutual_info/mutual_info_{0}.csv'.format(query_term), 'w') as f:
-        csv_writer = csv.writer(f)
-
-        for k in mutual_infos:
-            csv_writer.writerow([k, mutual_infos[k][0], mutual_infos[k][1], mutual_infos[k][2]])
-
-    with open('t_scores/t_scores_{0}.csv'.format(query_term), 'w') as f:
-        csv_writer = csv.writer(f)
-
-        for k in t_scores:
-            csv_writer.writerow([k, t_scores[k][0], t_scores[k][1], t_scores[k][2]])
-
-    with open('dice_coeff/dice_coeff_{0}.csv'.format(query_term), 'w') as f:
-        csv_writer = csv.writer(f)
-
-        for k in dice_coeff:
-            csv_writer.writerow([k, dice_coeff[k][0], dice_coeff[k][1], dice_coeff[k][2]])
-
-    with open('chi_squared/chi_squared_{0}.csv'.format(query_term), 'w') as f:
-        csv_writer = csv.writer(f)
-
-        for k in chi_squared:
-            csv_writer.writerow([k, chi_squared[k][0], chi_squared[k][1], chi_squared[k][2]])
-    """
 
 
 def main():
