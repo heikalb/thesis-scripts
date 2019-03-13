@@ -1,7 +1,16 @@
+"""
+Get various collocation statistics from the corpus
+Heikal Badrulhisham <heikal93@gmail.com>, 2019
+"""
+
 import csv
 from collections import defaultdict
 import re
 import colloc_measures as cm
+
+measures = ['mutual_information', 't_score', 'dice_coefficient', 'chi_squared']
+measure_funct = dict(zip(measures, [cm.mutual_info, cm.t_score, cm.dice_coeff, cm.chi_squared]))
+measure_dict = dict(zip(measures, [dict() for m in measures]))
 
 
 def colloc_stats(right_parse_sign, suffix_boundary, mboundary, key_separator, query_term=""):
@@ -12,7 +21,6 @@ def colloc_stats(right_parse_sign, suffix_boundary, mboundary, key_separator, qu
     # Stats
     suff_freq = defaultdict(int)
     cooc_freq = defaultdict(int)
-    num_suffixes = 0
     mutual_infos = {}
     t_scores = {}
     dice_coeff = {}
@@ -31,8 +39,6 @@ def colloc_stats(right_parse_sign, suffix_boundary, mboundary, key_separator, qu
         suffixes = [re.sub(mboundary, '', s) for s in suffixes]
 
         # Count suffix (co)occurrences
-        num_suffixes += len(suffixes)
-
         for i in range(len(suffixes)):
             # Updata single suffix count
             suff_freq[suffixes[i]] += 1
@@ -42,10 +48,19 @@ def colloc_stats(right_parse_sign, suffix_boundary, mboundary, key_separator, qu
                 curr_key = '{0}{1}{2}'.format(suffixes[i], key_separator, suffixes[j])
                 cooc_freq[curr_key] += 1
 
+    num_suffixes = sum(suff_freq[s] for s in suff_freq)
+
     # Get association measures
     for k in cooc_freq:
         m1, m2 = k.split(key_separator)
 
+        for msr in measures:
+            args = [suff_freq[m1], suff_freq[m2], cooc_freq[k], num_suffixes, m1, m2, cooc_freq]
+            measure_dict[msr][k] = (measure_funct[msr](*args), suff_freq[m1], suff_freq[m2])
+
+    """
+    # Get association measures
+    for k in cooc_freq:
         mutual_infos[k] = (cm.mutual_info(suff_freq[m1], suff_freq[m2], cooc_freq[k], num_suffixes),
                            suff_freq[m1], suff_freq[m2])
 
@@ -57,6 +72,7 @@ def colloc_stats(right_parse_sign, suffix_boundary, mboundary, key_separator, qu
 
         chi_squared[k] = (cm.chi_squared(suff_freq[m1], suff_freq[m2], cooc_freq[k], num_suffixes, m1, m2, cooc_freq),
                           suff_freq[m1], suff_freq[m2])
+    """
 
     # Save data
     with open('cooccurrence_count/cooccurrence_count_{0}.csv'.format(query_term), 'w') as f:
@@ -71,6 +87,14 @@ def colloc_stats(right_parse_sign, suffix_boundary, mboundary, key_separator, qu
         for k in suff_freq:
             csv_writer.writerow([k, suff_freq[k]])
 
+    for msr in measures:
+        with open('{0}/{0}_{1}.csv'.format(msr, query_term), 'w') as f:
+            csv_writer = csv.writer(f)
+
+            for k in measure_dict[msr]:
+                csv_writer.writerow([k, measure_dict[msr][k][0], measure_dict[msr][k][1], measure_dict[msr][k][2]])
+
+    """
     with open('mutual_info/mutual_info_{0}.csv'.format(query_term), 'w') as f:
         csv_writer = csv.writer(f)
 
@@ -94,6 +118,7 @@ def colloc_stats(right_parse_sign, suffix_boundary, mboundary, key_separator, qu
 
         for k in chi_squared:
             csv_writer.writerow([k, chi_squared[k][0], chi_squared[k][1], chi_squared[k][2]])
+    """
 
 
 def main():
