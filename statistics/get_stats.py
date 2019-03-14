@@ -16,8 +16,8 @@ def new_dir(dir_name):
 
 def colloc_stats(right_parse_sign, suffix_boundary, mboundary, key_separator, query_term=""):
     # Statistics
-    measures = ['mutual_information', 't_score', 'dice_coefficient', 'chi_squared']
-    measure_funct = dict(zip(measures, [cm.mutual_info, cm.t_score, cm.dice_coeff, cm.chi_squared]))
+    measures = ['mutual_information', 't_score', 'dice_coefficient', 'chi_squared', 'relative_risk']
+    measure_funct = dict(zip(measures, [cm.mutual_info, cm.t_score, cm.dice_coeff, cm.chi_squared, cm.rel_risk]))
     measure_dict = dict(zip(measures, [dict() for m in measures]))
     abs_msr = {'suff_freq': defaultdict(int), 'cooc_freq': defaultdict(int)}
 
@@ -54,8 +54,8 @@ def colloc_stats(right_parse_sign, suffix_boundary, mboundary, key_separator, qu
         m1, m2 = k.split(key_separator)
 
         for msr in measures:
-            args = [abs_msr['suff_freq'][m1], abs_msr['suff_freq'][m2], abs_msr['cooc_freq'][k],
-                    num_suffixes, m1, m2, abs_msr['cooc_freq']]
+            args = [abs_msr['suff_freq'][m1], abs_msr['suff_freq'][m2], abs_msr['cooc_freq'][k], num_suffixes,
+                    m1, m2, abs_msr['cooc_freq']]
             measure_dict[msr][k] = (measure_funct[msr](*args), abs_msr['suff_freq'][m1], abs_msr['suff_freq'][m2])
 
     # Save data
