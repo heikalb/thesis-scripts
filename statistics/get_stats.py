@@ -7,10 +7,16 @@ import csv
 from collections import defaultdict
 import re
 import colloc_measures as cm
+import os
 
 measures = ['mutual_information', 't_score', 'dice_coefficient', 'chi_squared']
 measure_funct = dict(zip(measures, [cm.mutual_info, cm.t_score, cm.dice_coeff, cm.chi_squared]))
 measure_dict = dict(zip(measures, [dict() for m in measures]))
+
+
+def new_dir(dir_name):
+    if not os.path.isdir(dir_name):
+        os.mkdir(dir_name)
 
 
 def colloc_stats(right_parse_sign, suffix_boundary, mboundary, key_separator, query_term=""):
@@ -55,12 +61,14 @@ def colloc_stats(right_parse_sign, suffix_boundary, mboundary, key_separator, qu
             measure_dict[msr][k] = (measure_funct[msr](*args), suff_freq[m1], suff_freq[m2])
 
     # Save data
+    new_dir('cooccurrence_count')
     with open('cooccurrence_count/cooccurrence_count_{0}.csv'.format(query_term), 'w') as f:
         csv_writer = csv.writer(f)
 
         for k in cooc_freq:
             csv_writer.writerow([k, cooc_freq[k]])
 
+    new_dir('suffix_count')
     with open('suffix_count/suffix_count_{0}.csv'.format(query_term), 'w') as f:
         csv_writer = csv.writer(f)
 
@@ -68,6 +76,7 @@ def colloc_stats(right_parse_sign, suffix_boundary, mboundary, key_separator, qu
             csv_writer.writerow([k, suff_freq[k]])
 
     for msr in measures:
+        new_dir(msr)
         with open('{0}/{0}_{1}.csv'.format(msr, query_term), 'w') as f:
             csv_writer = csv.writer(f)
 
