@@ -22,7 +22,7 @@ def t_score(f_s1, f_s2, f_s1s2, total, *misc):
     s_sq = x_bar*(1-x_bar)
 
     return (x_bar - mu)/math.sqrt(s_sq/total)
-    #return 1 - f_s1*f_s2/f_s1s2
+    # return 1 - f_s1*f_s2/f_s1s2
 
 
 def dice_coeff(f_s1, f_s2, f_s1s2, *misc):
@@ -44,8 +44,28 @@ def chi_squared(f_s1, f_s2, f_s1s2, total, s1, s2, pairs):
 
 
 def rel_risk(f_s1, f_s2, f_s1s2, total, s1, s2, pairs):
-    a = f_s1s2/total
-    b = len([k for k in pairs if s1 in k and s2 not in k])/total
-    c = len([k for k in pairs if s1 not in k and s2 in k])/total
-    d = len([k for k in pairs if s1 not in k and s2 not in k])/total
-    return (a/(a+b))/(c/(c+d))
+    a = f_s1s2
+    b = len([k for k in pairs if s1 in k and s2 not in k])
+    c = len([k for k in pairs if s1 not in k and s2 in k])
+    d = len([k for k in pairs if s1 not in k and s2 not in k])
+
+    # log_confidence_interval = math.log((a/b)/(c/d), 2) - 1.96*math.sqrt(1/a + 1/c)
+
+    try:
+        return (a/(a+b))/(c/(c+d))
+    except Exception:
+        return 1000000
+
+
+def odds_ratio(f_s1, f_s2, f_s1s2, total, s1, s2, pairs):
+    a = f_s1s2
+    b = len([k for k in pairs if s1 in k and s2 not in k])
+    c = len([k for k in pairs if s1 not in k and s2 in k])
+    d = len([k for k in pairs if s1 not in k and s2 not in k])
+    condp_s2_s1 = a/(a + b)
+    condp_s2_nots1 = c/(c + d)
+
+    try:
+        return (condp_s2_s1/(1-condp_s2_s1))/(condp_s2_nots1/(1-condp_s2_nots1))
+    except Exception:
+        return 1000000
