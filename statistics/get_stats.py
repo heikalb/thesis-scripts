@@ -28,31 +28,28 @@ def colloc_stats(right_parse_sign, suffix_boundary, mboundary, key_separator, qu
 
     # Go through parses
     for parse in parses:
-        # Skip parses for a different stem or wrong parses (parse[0] is the dictionary form of the verb)
+        # Skip parses for a different stem or wrong parses
         if query_term not in parse[0] or right_parse_sign not in parse[0]:
             continue
 
-        # Get suffixes, exclude stems
+        # Get suffixes, exclude stems. Collapse allomorphs
         suffixes = re.split(suffix_boundary, parse[1])[1:]
-
-        # Collapse allomorphs
         suffixes = [re.sub(mboundary, '', s) for s in suffixes]
 
         # Count suffix (co)occurrences
         for i in range(len(suffixes)):
-            # Updata single suffix count
             abs_msr['suff_freq'][suffixes[i]] += 1
 
-            # Update count for co-occurring pairs
             for j in range(i + 1, len(suffixes)):
-                curr_key = '{0}{1}{2}'.format(suffixes[i], key_separator, suffixes[j])
-                abs_msr['cooc_freq'][curr_key] += 1
+                # curr_key = '{0}{1}{2}'.format(suffixes[i], key_separator, suffixes[j])
+                curr_pair = (suffixes[i], suffixes[j])
+                abs_msr['cooc_freq'][curr_pair] += 1
 
     num_suffixes = sum(abs_msr['suff_freq'][s] for s in abs_msr['suff_freq'])
 
     # Get association measures
     for k in abs_msr['cooc_freq']:
-        m1, m2 = k.split(key_separator)
+        m1, m2 = k
 
         for msr in measures:
             args = [abs_msr['suff_freq'][m1], abs_msr['suff_freq'][m2], abs_msr['cooc_freq'][k], num_suffixes,

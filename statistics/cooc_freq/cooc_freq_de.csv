@@ -1,314 +1,314 @@
-Prog1__A3sg,620
-Inf1→Noun__A3sg,452
-Neg__Aor,30
-Neg__A3pl,14
-Aor__A3pl,3
-PastPart→Adj__P1sg,39
-Past__A3pl,69
-Past__A1sg,645
-Neg__A1sg,45
-Aor__A1sg,24
-Past__A3sg,1177
-Neg__Fut,10
-Neg__A3sg,62
-Fut__A3sg,61
-PastPart→Noun__A3sg,162
-PastPart→Noun__P2pl,15
-A3sg__P2pl,15
-Aor__A3sg,195
-Past__A1pl,69
-Pass→Verb__PastPart→Noun,11
-Pass→Verb__A3sg,159
-Pass→Verb__P2sg,5
-Pass→Verb__Loc,6
-PastPart→Noun__P2sg,23
-PastPart→Noun__Loc,20
-A3sg__P2sg,28
-A3sg__Loc,21
-P2sg__Loc,6
-Able→Verb__FutPart→Adj,6
-Able→Verb__P3sg,2
-FutPart→Adj__P3sg,3
-Able→Verb__FutPart→Noun,2
-Able→Verb__A3sg,51
-Able→Verb__P1pl,6
-FutPart→Noun__A3sg,13
-FutPart→Noun__P1pl,2
-A3sg__P1pl,32
-Aor__While→Adv,108
-Pass→Verb__Imp,18
-Pass→Verb__A2sg,18
-Imp__A2sg,18
-PastPart→Noun__P3sg,55
-A3sg__P3sg,74
-Inf2→Noun__A3sg,71
-Inf2→Noun__Dat,22
-A3sg__Dat,36
-Prog1__A3pl,94
-Narr__Past,62
-Narr__A1sg,15
-Opt__A1pl,65
-Prog1__A2sg,67
-Narr__A3sg,207
-PastPart→Adj__P3sg,12
-PastPart→Noun__P1pl,32
-Prog1__A1sg,209
-Neg__Desr,7
-Desr__A3sg,17
-Aor__Cond,28
-Aor__A2sg,11
-Cond__A2sg,9
-Pass→Verb__Prog1,15
-Pass→Verb__Past,32
-Prog1__Past,115
-Desr__A1sg,16
-Prog1__A2pl,24
-Neg__Past,47
-Inf1→Noun__Zero→Verb,84
-Inf1→Noun__Pres,76
-Inf1→Noun__Cop,76
-A3sg__Zero→Verb,87
-A3sg__Pres,76
-A3sg__A3sg,87
-A3sg__Cop,192
-Zero→Verb__Pres,76
-Zero→Verb__A3sg,87
-Zero→Verb__Cop,76
-Pres__A3sg,76
-Pres__Cop,76
-Aor__AsIf→Adv,7
-A3sg__AsIf→Adv,7
-P3sg__Loc,6
-Past__A2pl,19
-Fut__Past,22
-Fut__A2sg,17
-Past__A2sg,49
-Narr__A3pl,34
-Pass→Verb__Aor,76
-PastPart→Adj__P1pl,29
-Fut__A1sg,30
-Pass→Verb__Able→Verb,20
-Able→Verb__Aor,68
-Imp__A3sg,9
-Aor__Past,19
-Neg__Prog1,30
-PastPart→Adj__P2pl,8
-Narr__Cop,20
-Pass→Verb__PresPart→Adj,57
-Pass→Verb__Neg,11
-Pass→Verb__Fut,19
-Aor__A1pl,39
-Able→Verb__A2pl,4
-Aor__A2pl,19
-Neg__Narr,15
-A3pl__Past,13
-PastPart→Adj__P2sg,9
-Cond__A2pl,16
-PastPart→Noun__Dat,12
-P2pl__Dat,2
-Inf1→Noun__Ins,11
-A3sg__Ins,14
-FutPart→Noun__P1sg,4
-FutPart→Noun__Acc,11
-A3sg__P1sg,28
-A3sg__Acc,54
-P1sg__Acc,9
-P2pl__Loc,1
-Pass→Verb__Inf2→Noun,6
-Pass→Verb__P3sg,11
-Pass→Verb__Abl,3
-Inf2→Noun__P3sg,22
-Inf2→Noun__Abl,10
-A3sg__Abl,19
-P3sg__Abl,2
-Aor__Narr,3
-Narr__A2sg,8
-Prog1__Cond,8
-Prog1__A1pl,47
-Cond__A1pl,6
-Fut__Cop,3
-Desr__Past,8
-Desr__A2sg,6
-Able→Verb__Prog1,7
-Able→Verb__A1sg,20
-Cond__A1sg,5
-PastPart→Noun__P1sg,20
-PastPart→Noun__Acc,38
-PastPart→Noun__A3pl,17
-PastPart→Noun__P3pl,5
-A3pl__P3pl,5
-Fut__A2pl,5
-Inf2→Noun__P2sg,1
-Pass→Verb__Cond,1
-Cond__A3sg,9
-Neg__Imp,4
-Neg__A2pl,6
-Imp__A2pl,7
-PastPart→Adj__P3pl,5
-Inf2→Noun__Acc,10
-P3sg__Acc,15
-PastPart→Noun__Abl,8
-P2sg__Abl,2
-Pass→Verb__Desr,2
-Able→Verb__Neg,14
-Able→Verb__A3pl,2
-Able→Verb__Past,10
-Inf2→Noun__Gen,3
-A3sg__Gen,9
-Inf1→Noun__Abl,1
-Able→Verb__Neces,2
-Neces__A3sg,7
-Neg__Cop,1
-Opt__A1sg,4
-Desr__A3pl,6
-Narr__A1pl,6
-Desr__A2pl,3
-Able→Verb__A1pl,19
-P1sg__Loc,3
-Pass→Verb__When→Adv,10
-Pass→Verb__Unable,3
-Unable__Aor,2
-Unable__Past,1
-Unable__A3sg,3
-Neg__A2sg,10
-Narr__Cond,2
-Pass→Verb__ByDoingSo→Adv,4
-Prog2__A3sg,18
-Prog2__Cop,17
-Pass→Verb__Acc,4
-Neg__A1pl,3
-A3pl__P3sg,6
-A3pl__Acc,7
-Pass→Verb__Narr,5
-Pass→Verb__Cop,11
-A3pl__P1pl,2
-Prog1__Cop,2
-Prog1__Narr,10
-P1pl__Loc,4
-Neg__Inf2→Noun,2
-Able→Verb__Inf1→Noun,2
-Able→Verb__Zero→Verb,1
-Able→Verb__Pres,1
-Able→Verb__Cop,2
-Desr__A1pl,9
-Fut__A3pl,4
-P2sg__Dat,4
-PresPart→Noun__A3pl,20
-PresPart→Noun__Dat,10
-A3pl__Dat,8
-Pass→Verb__Prog2,11
-P3sg__Dat,8
-Narr__While→Adv,3
-Past__Cond,6
-Able→Verb__Fut,10
-Inf2→Noun__With→Adj,1
-A3sg__With→Adj,1
-Neg__PresPart→Adj,1
-Inf1→Noun__Past,8
-A3sg__Past,10
-Zero→Verb__Past,10
-NarrPart→Adj__Zero→Noun,1
-NarrPart→Adj__A3pl,1
-Zero→Noun__A3pl,1
-Neces__A1sg,1
-Caus→Verb__Caus→Verb,8
-Caus→Verb__Neg,6
-Caus→Verb__Aor,4
-Caus→Verb__A1sg,4
-Pass→Verb__PastPart→Adj,1
-Fut__A1pl,4
-Pass→Verb__Dat,2
-PastPart→Noun__Gen,5
-Caus→Verb__Inf1→Noun,2
-Caus→Verb__A3sg,6
-Able→Verb__PastPart→Adj,1
-Narr__A2pl,4
-Able→Verb__P2pl,1
-Neg__FutPart→Adj,1
-Neg__P2pl,1
-FutPart→Adj__P2pl,1
-PresPart→Noun__A3sg,6
-PresPart→Noun__P2sg,1
-Inf2→Noun__P1sg,4
-P1sg__Dat,2
-Neg__PastPart→Noun,3
-Neg__P2sg,1
-Neg__Dat,1
-Inf2→Noun__P2pl,2
-Able→Verb__A2sg,3
-P2pl__Acc,4
-A3pl__P2sg,1
-Prog2__Past,2
-A3sg__P3pl,2
-Caus→Verb__Fut,2
-FutPart→Noun__P2sg,4
-P2sg__Acc,8
-Caus→Verb__Past,4
-Caus→Verb__A2sg,2
-Pass→Verb__Gen,1
-P3sg__Gen,1
-FutPart→Adj__P1pl,3
-Able→Verb__Cond,1
-Inf2→Noun__Zero→Verb,2
-Inf2→Noun__Past,2
-P3sg__Zero→Verb,2
-P3sg__Past,2
-P3sg__A3sg,2
-Able→Verb__PastPart→Noun,2
-Able→Verb__Acc,1
-Neces__Cop,2
-A3pl__P2pl,2
-Inf2→Noun__P3pl,1
-Unable__Desr,1
-P1sg__Abl,1
-Prog2__A3pl,1
-Cop__A3pl,1
-PresPart→Noun__P3sg,1
-PresPart→Noun__Acc,2
-P1sg__Gen,1
-PresPart→Noun__Gen,4
-Caus→Verb__PresPart→Noun,2
-Caus→Verb__A3pl,2
-Caus→Verb__Dat,2
-Inf2→Noun__Ins,2
-P3sg__Ins,1
-PresPart→Noun__Abl,1
-PresPart→Noun__Zero→Verb,1
-PresPart→Noun__Cond,1
-PresPart→Noun__A2pl,1
-A3pl__Abl,1
-A3pl__Zero→Verb,1
-A3pl__Cond,1
-A3pl__A2pl,1
-Abl__Zero→Verb,1
-Abl__Cond,1
-Abl__A2pl,1
-Zero→Verb__Cond,1
-Zero→Verb__A2pl,1
-Neg__P3sg,2
-Neg__Acc,1
-A3pl__Gen,3
-A3pl__Cop,3
-A1sg__Cond,1
-Pass→Verb__NarrPart→Adj,1
-Neg__Opt,1
-Opt__A2pl,1
-Fut__Cond,1
-Neg__AfterDoingSo→Adv,1
-Caus→Verb__PresPart→Adj,2
-Pass→Verb__PresPart→Noun,2
-FeelLike→Noun__A3sg,2
-FeelLike→Noun__Zero→Verb,1
-FeelLike→Noun__Narr,1
-A3sg__Narr,1
-Zero→Verb__Narr,1
-Pass→Verb__Ins,1
-PresPart→Noun__Ins,1
-P1sg__Ins,1
-FutPart→Noun__P3sg,2
-Able→Verb__PresPart→Adj,1
-Pass→Verb__AfterDoingSo→Adv,1
-Inf1→Noun__Loc,1
-PresPart→Noun__P3pl,1
-Able→Verb__Abl,1
-Neg__Abl,1
+"('Prog1', 'A3sg')",620
+"('Inf1→Noun', 'A3sg')",452
+"('Neg', 'Aor')",30
+"('Neg', 'A3pl')",14
+"('Aor', 'A3pl')",3
+"('PastPart→Adj', 'P1sg')",39
+"('Past', 'A3pl')",69
+"('Past', 'A1sg')",645
+"('Neg', 'A1sg')",45
+"('Aor', 'A1sg')",24
+"('Past', 'A3sg')",1177
+"('Neg', 'Fut')",10
+"('Neg', 'A3sg')",62
+"('Fut', 'A3sg')",61
+"('PastPart→Noun', 'A3sg')",162
+"('PastPart→Noun', 'P2pl')",15
+"('A3sg', 'P2pl')",15
+"('Aor', 'A3sg')",195
+"('Past', 'A1pl')",69
+"('Pass→Verb', 'PastPart→Noun')",11
+"('Pass→Verb', 'A3sg')",159
+"('Pass→Verb', 'P2sg')",5
+"('Pass→Verb', 'Loc')",6
+"('PastPart→Noun', 'P2sg')",23
+"('PastPart→Noun', 'Loc')",20
+"('A3sg', 'P2sg')",28
+"('A3sg', 'Loc')",21
+"('P2sg', 'Loc')",6
+"('Able→Verb', 'FutPart→Adj')",6
+"('Able→Verb', 'P3sg')",2
+"('FutPart→Adj', 'P3sg')",3
+"('Able→Verb', 'FutPart→Noun')",2
+"('Able→Verb', 'A3sg')",51
+"('Able→Verb', 'P1pl')",6
+"('FutPart→Noun', 'A3sg')",13
+"('FutPart→Noun', 'P1pl')",2
+"('A3sg', 'P1pl')",32
+"('Aor', 'While→Adv')",108
+"('Pass→Verb', 'Imp')",18
+"('Pass→Verb', 'A2sg')",18
+"('Imp', 'A2sg')",18
+"('PastPart→Noun', 'P3sg')",55
+"('A3sg', 'P3sg')",74
+"('Inf2→Noun', 'A3sg')",71
+"('Inf2→Noun', 'Dat')",22
+"('A3sg', 'Dat')",36
+"('Prog1', 'A3pl')",94
+"('Narr', 'Past')",62
+"('Narr', 'A1sg')",15
+"('Opt', 'A1pl')",65
+"('Prog1', 'A2sg')",67
+"('Narr', 'A3sg')",207
+"('PastPart→Adj', 'P3sg')",12
+"('PastPart→Noun', 'P1pl')",32
+"('Prog1', 'A1sg')",209
+"('Neg', 'Desr')",7
+"('Desr', 'A3sg')",17
+"('Aor', 'Cond')",28
+"('Aor', 'A2sg')",11
+"('Cond', 'A2sg')",9
+"('Pass→Verb', 'Prog1')",15
+"('Pass→Verb', 'Past')",32
+"('Prog1', 'Past')",115
+"('Desr', 'A1sg')",16
+"('Prog1', 'A2pl')",24
+"('Neg', 'Past')",47
+"('Inf1→Noun', 'Zero→Verb')",84
+"('Inf1→Noun', 'Pres')",76
+"('Inf1→Noun', 'Cop')",76
+"('A3sg', 'Zero→Verb')",87
+"('A3sg', 'Pres')",76
+"('A3sg', 'A3sg')",87
+"('A3sg', 'Cop')",192
+"('Zero→Verb', 'Pres')",76
+"('Zero→Verb', 'A3sg')",87
+"('Zero→Verb', 'Cop')",76
+"('Pres', 'A3sg')",76
+"('Pres', 'Cop')",76
+"('Aor', 'AsIf→Adv')",7
+"('A3sg', 'AsIf→Adv')",7
+"('P3sg', 'Loc')",6
+"('Past', 'A2pl')",19
+"('Fut', 'Past')",22
+"('Fut', 'A2sg')",17
+"('Past', 'A2sg')",49
+"('Narr', 'A3pl')",34
+"('Pass→Verb', 'Aor')",76
+"('PastPart→Adj', 'P1pl')",29
+"('Fut', 'A1sg')",30
+"('Pass→Verb', 'Able→Verb')",20
+"('Able→Verb', 'Aor')",68
+"('Imp', 'A3sg')",9
+"('Aor', 'Past')",19
+"('Neg', 'Prog1')",30
+"('PastPart→Adj', 'P2pl')",8
+"('Narr', 'Cop')",20
+"('Pass→Verb', 'PresPart→Adj')",57
+"('Pass→Verb', 'Neg')",11
+"('Pass→Verb', 'Fut')",19
+"('Aor', 'A1pl')",39
+"('Able→Verb', 'A2pl')",4
+"('Aor', 'A2pl')",19
+"('Neg', 'Narr')",15
+"('A3pl', 'Past')",13
+"('PastPart→Adj', 'P2sg')",9
+"('Cond', 'A2pl')",16
+"('PastPart→Noun', 'Dat')",12
+"('P2pl', 'Dat')",2
+"('Inf1→Noun', 'Ins')",11
+"('A3sg', 'Ins')",14
+"('FutPart→Noun', 'P1sg')",4
+"('FutPart→Noun', 'Acc')",11
+"('A3sg', 'P1sg')",28
+"('A3sg', 'Acc')",54
+"('P1sg', 'Acc')",9
+"('P2pl', 'Loc')",1
+"('Pass→Verb', 'Inf2→Noun')",6
+"('Pass→Verb', 'P3sg')",11
+"('Pass→Verb', 'Abl')",3
+"('Inf2→Noun', 'P3sg')",22
+"('Inf2→Noun', 'Abl')",10
+"('A3sg', 'Abl')",19
+"('P3sg', 'Abl')",2
+"('Aor', 'Narr')",3
+"('Narr', 'A2sg')",8
+"('Prog1', 'Cond')",8
+"('Prog1', 'A1pl')",47
+"('Cond', 'A1pl')",6
+"('Fut', 'Cop')",3
+"('Desr', 'Past')",8
+"('Desr', 'A2sg')",6
+"('Able→Verb', 'Prog1')",7
+"('Able→Verb', 'A1sg')",20
+"('Cond', 'A1sg')",5
+"('PastPart→Noun', 'P1sg')",20
+"('PastPart→Noun', 'Acc')",38
+"('PastPart→Noun', 'A3pl')",17
+"('PastPart→Noun', 'P3pl')",5
+"('A3pl', 'P3pl')",5
+"('Fut', 'A2pl')",5
+"('Inf2→Noun', 'P2sg')",1
+"('Pass→Verb', 'Cond')",1
+"('Cond', 'A3sg')",9
+"('Neg', 'Imp')",4
+"('Neg', 'A2pl')",6
+"('Imp', 'A2pl')",7
+"('PastPart→Adj', 'P3pl')",5
+"('Inf2→Noun', 'Acc')",10
+"('P3sg', 'Acc')",15
+"('PastPart→Noun', 'Abl')",8
+"('P2sg', 'Abl')",2
+"('Pass→Verb', 'Desr')",2
+"('Able→Verb', 'Neg')",14
+"('Able→Verb', 'A3pl')",2
+"('Able→Verb', 'Past')",10
+"('Inf2→Noun', 'Gen')",3
+"('A3sg', 'Gen')",9
+"('Inf1→Noun', 'Abl')",1
+"('Able→Verb', 'Neces')",2
+"('Neces', 'A3sg')",7
+"('Neg', 'Cop')",1
+"('Opt', 'A1sg')",4
+"('Desr', 'A3pl')",6
+"('Narr', 'A1pl')",6
+"('Desr', 'A2pl')",3
+"('Able→Verb', 'A1pl')",19
+"('P1sg', 'Loc')",3
+"('Pass→Verb', 'When→Adv')",10
+"('Pass→Verb', 'Unable')",3
+"('Unable', 'Aor')",2
+"('Unable', 'Past')",1
+"('Unable', 'A3sg')",3
+"('Neg', 'A2sg')",10
+"('Narr', 'Cond')",2
+"('Pass→Verb', 'ByDoingSo→Adv')",4
+"('Prog2', 'A3sg')",18
+"('Prog2', 'Cop')",17
+"('Pass→Verb', 'Acc')",4
+"('Neg', 'A1pl')",3
+"('A3pl', 'P3sg')",6
+"('A3pl', 'Acc')",7
+"('Pass→Verb', 'Narr')",5
+"('Pass→Verb', 'Cop')",11
+"('A3pl', 'P1pl')",2
+"('Prog1', 'Cop')",2
+"('Prog1', 'Narr')",10
+"('P1pl', 'Loc')",4
+"('Neg', 'Inf2→Noun')",2
+"('Able→Verb', 'Inf1→Noun')",2
+"('Able→Verb', 'Zero→Verb')",1
+"('Able→Verb', 'Pres')",1
+"('Able→Verb', 'Cop')",2
+"('Desr', 'A1pl')",9
+"('Fut', 'A3pl')",4
+"('P2sg', 'Dat')",4
+"('PresPart→Noun', 'A3pl')",20
+"('PresPart→Noun', 'Dat')",10
+"('A3pl', 'Dat')",8
+"('Pass→Verb', 'Prog2')",11
+"('P3sg', 'Dat')",8
+"('Narr', 'While→Adv')",3
+"('Past', 'Cond')",6
+"('Able→Verb', 'Fut')",10
+"('Inf2→Noun', 'With→Adj')",1
+"('A3sg', 'With→Adj')",1
+"('Neg', 'PresPart→Adj')",1
+"('Inf1→Noun', 'Past')",8
+"('A3sg', 'Past')",10
+"('Zero→Verb', 'Past')",10
+"('NarrPart→Adj', 'Zero→Noun')",1
+"('NarrPart→Adj', 'A3pl')",1
+"('Zero→Noun', 'A3pl')",1
+"('Neces', 'A1sg')",1
+"('Caus→Verb', 'Caus→Verb')",8
+"('Caus→Verb', 'Neg')",6
+"('Caus→Verb', 'Aor')",4
+"('Caus→Verb', 'A1sg')",4
+"('Pass→Verb', 'PastPart→Adj')",1
+"('Fut', 'A1pl')",4
+"('Pass→Verb', 'Dat')",2
+"('PastPart→Noun', 'Gen')",5
+"('Caus→Verb', 'Inf1→Noun')",2
+"('Caus→Verb', 'A3sg')",6
+"('Able→Verb', 'PastPart→Adj')",1
+"('Narr', 'A2pl')",4
+"('Able→Verb', 'P2pl')",1
+"('Neg', 'FutPart→Adj')",1
+"('Neg', 'P2pl')",1
+"('FutPart→Adj', 'P2pl')",1
+"('PresPart→Noun', 'A3sg')",6
+"('PresPart→Noun', 'P2sg')",1
+"('Inf2→Noun', 'P1sg')",4
+"('P1sg', 'Dat')",2
+"('Neg', 'PastPart→Noun')",3
+"('Neg', 'P2sg')",1
+"('Neg', 'Dat')",1
+"('Inf2→Noun', 'P2pl')",2
+"('Able→Verb', 'A2sg')",3
+"('P2pl', 'Acc')",4
+"('A3pl', 'P2sg')",1
+"('Prog2', 'Past')",2
+"('A3sg', 'P3pl')",2
+"('Caus→Verb', 'Fut')",2
+"('FutPart→Noun', 'P2sg')",4
+"('P2sg', 'Acc')",8
+"('Caus→Verb', 'Past')",4
+"('Caus→Verb', 'A2sg')",2
+"('Pass→Verb', 'Gen')",1
+"('P3sg', 'Gen')",1
+"('FutPart→Adj', 'P1pl')",3
+"('Able→Verb', 'Cond')",1
+"('Inf2→Noun', 'Zero→Verb')",2
+"('Inf2→Noun', 'Past')",2
+"('P3sg', 'Zero→Verb')",2
+"('P3sg', 'Past')",2
+"('P3sg', 'A3sg')",2
+"('Able→Verb', 'PastPart→Noun')",2
+"('Able→Verb', 'Acc')",1
+"('Neces', 'Cop')",2
+"('A3pl', 'P2pl')",2
+"('Inf2→Noun', 'P3pl')",1
+"('Unable', 'Desr')",1
+"('P1sg', 'Abl')",1
+"('Prog2', 'A3pl')",1
+"('Cop', 'A3pl')",1
+"('PresPart→Noun', 'P3sg')",1
+"('PresPart→Noun', 'Acc')",2
+"('P1sg', 'Gen')",1
+"('PresPart→Noun', 'Gen')",4
+"('Caus→Verb', 'PresPart→Noun')",2
+"('Caus→Verb', 'A3pl')",2
+"('Caus→Verb', 'Dat')",2
+"('Inf2→Noun', 'Ins')",2
+"('P3sg', 'Ins')",1
+"('PresPart→Noun', 'Abl')",1
+"('PresPart→Noun', 'Zero→Verb')",1
+"('PresPart→Noun', 'Cond')",1
+"('PresPart→Noun', 'A2pl')",1
+"('A3pl', 'Abl')",1
+"('A3pl', 'Zero→Verb')",1
+"('A3pl', 'Cond')",1
+"('A3pl', 'A2pl')",1
+"('Abl', 'Zero→Verb')",1
+"('Abl', 'Cond')",1
+"('Abl', 'A2pl')",1
+"('Zero→Verb', 'Cond')",1
+"('Zero→Verb', 'A2pl')",1
+"('Neg', 'P3sg')",2
+"('Neg', 'Acc')",1
+"('A3pl', 'Gen')",3
+"('A3pl', 'Cop')",3
+"('A1sg', 'Cond')",1
+"('Pass→Verb', 'NarrPart→Adj')",1
+"('Neg', 'Opt')",1
+"('Opt', 'A2pl')",1
+"('Fut', 'Cond')",1
+"('Neg', 'AfterDoingSo→Adv')",1
+"('Caus→Verb', 'PresPart→Adj')",2
+"('Pass→Verb', 'PresPart→Noun')",2
+"('FeelLike→Noun', 'A3sg')",2
+"('FeelLike→Noun', 'Zero→Verb')",1
+"('FeelLike→Noun', 'Narr')",1
+"('A3sg', 'Narr')",1
+"('Zero→Verb', 'Narr')",1
+"('Pass→Verb', 'Ins')",1
+"('PresPart→Noun', 'Ins')",1
+"('P1sg', 'Ins')",1
+"('FutPart→Noun', 'P3sg')",2
+"('Able→Verb', 'PresPart→Adj')",1
+"('Pass→Verb', 'AfterDoingSo→Adv')",1
+"('Inf1→Noun', 'Loc')",1
+"('PresPart→Noun', 'P3pl')",1
+"('Able→Verb', 'Abl')",1
+"('Neg', 'Abl')",1
