@@ -34,7 +34,7 @@ def get_shortest_parse(parse_list):
 
 def main():
     # Get list of verbs
-    verb_file = open('../data/all_verbs_spellchecked.txt', 'rb')
+    verb_file = open('../1_data/all_verbs_spellchecked.txt', 'rb')
     words = verb_file.read().split('\n')
 
     # Morphlogical parses and numbers to track parser performance
@@ -50,7 +50,7 @@ def main():
         parse_status = ''
         parse = ''
 
-        # Get parse information
+        # Get 3_parse information
         if len(curr_parses) == 1:
             one_parse_found += 1
             parse_status = 'parsed_single'
@@ -67,9 +67,9 @@ def main():
         parses.append([w, parse, parse_status])
 
     # Display findings about parser performance
-    print('One parse found: ', one_parse_found)
+    print('One 3_parse found: ', one_parse_found)
     print('Multiple parses found: ', mult_parse_found)
-    print('No parse found: ', no_parse_found)
+    print('No 3_parse found: ', no_parse_found)
 
     with open('morph_parses.csv', 'wb') as f:
         csv_writer = csv.writer(f)

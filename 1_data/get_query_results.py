@@ -51,7 +51,7 @@ def submit_query(search_term):
             time.sleep(1)
 
 
-# Download data file
+# Download 1_data file
 def download_file():
     while not browser.find_elements_by_id('sonuc_paneli'):
         time.sleep(1)
@@ -109,5 +109,5 @@ def main(query_terms, start=0, end=-1):
 
 if __name__ == '__main__':
     query_terms = open('query_terms.txt', 'r').read().split('\n')
-    main(query_terms, start=517)
+    main(query_terms, start=0)
     exit(0)

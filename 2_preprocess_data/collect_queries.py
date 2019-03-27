@@ -102,7 +102,7 @@ def main():
     
     for i in range(20):
         # Open file
-        with open('../data/query_results/tnc_query_result_{0}.tsv'.format(i)) as f:
+        with open('../1_data/query_results/tnc_query_result_{0}.tsv'.format(i)) as f:
             csv_reader = csv.reader(f, delimiter='\t')
 
             first_row = True
@@ -112,7 +112,7 @@ def main():
                     first_row = False
                     continue
 
-                # Apply correction to certain data windows
+                # Apply correction to certain 1_data windows
                 if window_corrections:
                     row = window_correction(row)
 
@@ -128,8 +128,8 @@ def main():
                 # Save processed context window
                 rows.append([single_sent[0], main_word, single_sent[1]])
 
-    # Save data
-    with open('../data/query_results_all_joined_sents.tsv', 'w') as f:
+    # Save 1_data
+    with open('../1_data/query_results_all_joined_sents.tsv', 'w') as f:
         csv_writer = csv.writer(f, delimiter='\t')
         for r in rows:
             csv_writer.writerow(r)

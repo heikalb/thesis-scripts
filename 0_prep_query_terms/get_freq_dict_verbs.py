@@ -42,7 +42,7 @@ def main():
         else:
             stems_.append(s)
 
-    # Save data
+    # Save 1_data
     with open('freq_dict_verbs.txt', 'w') as f:
         f.write('\n'.join(stems_))
 

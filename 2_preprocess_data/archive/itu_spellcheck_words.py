@@ -11,10 +11,10 @@ def main():
     api_token = "sQj6zxcVt7JzWXHNTdRu3QRzc6i8KZz7"
     result = ''
 
-    text = open('../data/all_verbs.txt', 'r').read()
+    text = open('../1_data/all_verbs.txt', 'r').read()
     result += caller.call(tool_name, text, api_token)
 
-    with open('../data/all_verbs_spellchecked.txt', 'w') as f:
+    with open('../1_data/all_verbs_spellchecked.txt', 'w') as f:
         f.write(result)
 
 

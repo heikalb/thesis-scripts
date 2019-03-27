@@ -6,11 +6,8 @@ import colloc_measures as cm
 
 def main():
     # Open file of parses
-    parse_file = open('../parse/morph_parses.csv')
+    parse_file = open('../3_parse/morph_parses.csv')
     csv_reader = csv.reader(parse_file)
-
-    stem = 'önlen'
-    stem2 = 'de'
 
     # Stats
     suffix_counts = defaultdict(int)
@@ -21,17 +18,10 @@ def main():
     dice_coeff = {}
     chi_squared = {}
 
-
-
     # Go through parses
     for row in csv_reader:
         # Skip unparseable words
         if row[2] == 'parse_not_found':
-            continue
-
-        #if not (row[0].startswith(stem) or row[0].startswith(stem2)):
-        #    continue
-        if not row[0].startswith(stem):
             continue
 
         # Only consider non-null morphemes
@@ -73,40 +63,38 @@ def main():
         chi_squared[k] = (cm.chi_squared(cooccurence_counts, suffix_counts, k, morph_1, morph_2, num_suffixes),
                        suffix_counts[morph_1], suffix_counts[morph_2])
 
-
-
-    # Save data
-    with open('cooccurrence_count_{0}.csv'.format(stem), 'w') as f:
+    # Save 1_data
+    with open('cooccurrence_count.csv', 'w') as f:
         csv_writer = csv.writer(f)
 
         for k in cooccurence_counts:
             csv_writer.writerow([k, cooccurence_counts[k]])
 
-    with open('suffix_count_{0}.csv'.format(stem), 'w') as f:
+    with open('suffix_count.csv', 'w') as f:
         csv_writer = csv.writer(f)
 
         for k in suffix_counts:
             csv_writer.writerow([k, suffix_counts[k]])
 
-    with open('mutual_info_{0}.csv'.format(stem), 'w') as f:
+    with open('mutual_info.csv', 'w') as f:
         csv_writer = csv.writer(f)
 
         for k in mutual_infos:
             csv_writer.writerow([k, mutual_infos[k][0], mutual_infos[k][1], mutual_infos[k][2]])
 
-    with open('t_scores.csv_{0}.csv'.format(stem), 'w') as f:
+    with open('t_scores.csv', 'w') as f:
         csv_writer = csv.writer(f)
 
         for k in t_scores:
             csv_writer.writerow([k, t_scores[k][0], t_scores[k][1], t_scores[k][2]])
 
-    with open('dice_coeff.csv_{0}.csv'.format(stem), 'w') as f:
+    with open('dice_coeff.csv', 'w') as f:
         csv_writer = csv.writer(f)
 
         for k in dice_coeff:
             csv_writer.writerow([k, dice_coeff[k][0], dice_coeff[k][1], dice_coeff[k][2]])
 
-    with open('chi_squared.csv_{0}.csv'.format(stem), 'w') as f:
+    with open('chi_squared.csv', 'w') as f:
         csv_writer = csv.writer(f)
 
         for k in chi_squared:

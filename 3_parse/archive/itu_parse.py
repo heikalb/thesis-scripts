@@ -7,7 +7,7 @@ import pipeline_caller
 
 def main():
     results = []
-    sents = open('../data/all_sents_spellchecked.txt', 'r').read().split('\n')
+    sents = open('../1_data/all_sents_spellchecked.txt', 'r').read().split('\n')
 
     caller = pipeline_caller.PipelineCaller()
     tool_name = "morphanalyzer"

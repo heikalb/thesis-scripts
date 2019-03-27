@@ -1,5 +1,5 @@
 """
-Get various collocation statistics from the corpus
+Get various collocation 4_statistics from the corpus
 Heikal Badrulhisham <heikal93@gmail.com>, 2019
 """
 import csv
@@ -23,7 +23,7 @@ def colloc_stats(right_parse_sign, suffix_boundary, mboundary, key_separator, qu
     abs_msr = {'suff_freq': defaultdict(int), 'cooc_freq': defaultdict(int)}
 
     # Open file of parses
-    parses = open('../parse/parses_verbs.txt', 'r').read().split('\n')
+    parses = open('../3_parse/parses_verbs.txt', 'r').read().split('\n')
     parses = [p.split() for p in parses]
 
     # Go through parses
@@ -56,7 +56,7 @@ def colloc_stats(right_parse_sign, suffix_boundary, mboundary, key_separator, qu
                     m1, m2, abs_msr['cooc_freq']]
             measure_dict[msr][k] = (measure_funct[msr](*args), abs_msr['suff_freq'][m1], abs_msr['suff_freq'][m2])
 
-    # Save data
+    # Save 1_data
     for m in abs_msr:
         new_dir(m)
         with open('{0}/{0}_{1}.csv'.format(m, query_term), 'w') as f:
@@ -75,7 +75,7 @@ def colloc_stats(right_parse_sign, suffix_boundary, mboundary, key_separator, qu
 
 
 def main():
-    query_terms = [""] + open('../data/query_terms.txt', 'r').read().split('\n')
+    query_terms = [""] + open('../1_data/query_terms.txt', 'r').read().split('\n')
 
     for qt in query_terms:
         colloc_stats(right_parse_sign='Verb', suffix_boundary=r'[\|\+]', mboundary=r'.*:',
