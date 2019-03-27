@@ -3,7 +3,7 @@ Extract highest frequency verb stems from the text file of the Frequency Diction
 Heikal Badrulhisham <heikal93gmail.com>, 2019
 """
 import re
-
+import argparse
 
 def main():
     # Section of the dictionary with the verb stems
@@ -48,5 +48,6 @@ def main():
 
 
 if __name__ == '__main__':
+    parse = argparse.ArgumentParser()
     main()
     exit(0)
