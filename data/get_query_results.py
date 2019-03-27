@@ -6,7 +6,6 @@ from selenium.common.exceptions import *
 from selenium.webdriver.support.ui import Select
 import time
 
-search_terms = open('query_terms.txt', 'r').read().split('\n')
 url_1 = "https://v3.tnc.org.tr/login"
 url_2 = "https://v3.tnc.org.tr/basic-query"
 email = 'heikal93@gmail.com'
@@ -23,7 +22,10 @@ def sign_in():
             browser.find_element_by_css_selector('input[type=submit]').click()
             break
         except NoSuchElementException:
-            time.sleep(2)
+            time.sleep(1)
+
+    while browser.find_elements_by_name('password'):
+        time.sleep(1)
 
 
 # Open the page with the lemma-based queryy
@@ -32,8 +34,8 @@ def open_query():
         try:
             browser.find_elements_by_css_selector('.btn-group.col-md-12 .btn.btn-default')[1].click()
             break
-        except NoSuchElementException:
-            time.sleep(2)
+        except Exception:
+            time.sleep(1)
 
 
 # Submit query
@@ -45,43 +47,67 @@ def submit_query(search_term):
             pos_options.select_by_value('VB')
             browser.find_element_by_id('submit_button').click()
             break
-        except NoSuchElementException:
-            time.sleep(2)
+        except Exception:
+            time.sleep(1)
 
 
 # Download data file
 def download_file():
+    while not browser.find_elements_by_id('sonuc_paneli'):
+        time.sleep(1)
+
+    j = 0
+    while (not browser.find_elements_by_id('dizilim_yakinlik_data_tablosu')) or not browser.find_elements_by_class_name('odd'):
+        time.sleep(1)
+        j += 1
+        if j >= 10:
+            print('Problem with query')
+            return
+
+    attmpt = 0
+    time.sleep(5)
     while True:
         try:
+            attmpt += 1
             browser.find_elements_by_css_selector('.buttons-csv')[1].click()
+            time.sleep(2)
             break
-        except NoSuchElementException:
-            time.sleep(2)
-        except IndexError:
-            time.sleep(2)
+        except Exception:
+            time.sleep(1)
+
+        if attmpt >= 5:
+            print('Problem with query')
+            return
 
 
-def main(starting_index=0):
+def main(query_terms, start=0, end=-1):
+    if end == -1:
+        end = len(query_terms)
+
     # Open query page
     browser.maximize_window()
     browser.get(url_1)
     sign_in()
-    time.sleep(5)
 
-    for search_term in search_terms[starting_index:]:
-        browser.get(url_2)
-        print('Starting query: ', search_term)
-        # Choose correct query type
-        open_query()
-        # Fill in search parameters
-        submit_query(search_term)
-        # Download TSV file
-        download_file()
-        print('Done: ', search_term)
+    # Submit query and download TSV file
+    i = 0
+    for search_term in query_terms[start:end]:
+        try:
+            print('Starting query {0}: '.format(start + i), search_term)
+            browser.get(url_2)
+            open_query()
+            submit_query(search_term)
+            download_file()
+            print('Done: ', search_term)
+        except ElementNotInteractableException:
+            print('Problem with query')
+
+        i += 1
 
     browser.close()
 
 
 if __name__ == '__main__':
-    main(0)
-    exit()
+    query_terms = open('query_terms.txt', 'r').read().split('\n')
+    main(query_terms, start=517)
+    exit(0)

@@ -35,7 +35,7 @@ public class ParseMorphemes
         }
 
         // Save data
-        File saveFile = new File("parses.txt");
+        File saveFile = new File("parses_all.txt");
         FileWriter writer = new FileWriter(saveFile);
 
 

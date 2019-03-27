@@ -2,14 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="74bfd74b-7a31-4538-b2e2-4693aae3470e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../data/query_results_all_joined_sents_.tsv" beforeDir="false" afterPath="$PROJECT_DIR$/../data/query_results_all_joined_sents_.tsv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/parse/ParseMorphemes.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/parse/ParseMorphemes.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parses.txt" beforeDir="false" afterPath="$PROJECT_DIR$/parses.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reduce_to_verbs.py" beforeDir="false" afterPath="$PROJECT_DIR$/reduce_to_verbs.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/verb_parses.txt" beforeDir="false" afterPath="$PROJECT_DIR$/verb_parses.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../preprocess/add_spell_suggestion.py" beforeDir="false" afterPath="$PROJECT_DIR$/../preprocess/add_spell_suggestion.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../preprocess/collect_queries.py" beforeDir="false" afterPath="$PROJECT_DIR$/../preprocess/collect_queries.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../data/all_verbs.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../data/target_indices.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ParseMorphemes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ParseMorphemes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../preprocess/window_corrections.txt" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -23,8 +19,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ParseMorphemes.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="24" column="23" selection-start-line="24" selection-start-column="23" selection-end-line="24" selection-end-column="23" />
+            <state relative-caret-position="330">
+              <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -144,7 +140,7 @@
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="777" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26171243" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2657512" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -201,8 +197,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ParseMorphemes.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="23" selection-start-line="24" selection-start-column="23" selection-end-line="24" selection-end-column="23" />
+        <state relative-caret-position="330">
+          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
