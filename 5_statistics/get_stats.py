@@ -1,5 +1,5 @@
 """
-Get various collocation 4_statistics from the corpus
+Get various collocation 5_statistics from the corpus
 Heikal Badrulhisham <heikal93@gmail.com>, 2019
 """
 import csv
