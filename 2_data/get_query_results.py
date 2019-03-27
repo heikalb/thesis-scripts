@@ -51,7 +51,7 @@ def submit_query(search_term):
             time.sleep(1)
 
 
-# Download 1_data file
+# Download 2_data file
 def download_file():
     while not browser.find_elements_by_id('sonuc_paneli'):
         time.sleep(1)
