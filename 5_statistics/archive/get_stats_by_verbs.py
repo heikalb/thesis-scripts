@@ -75,7 +75,7 @@ def main():
 
 
 
-    # Save 1_data
+    # Save data
     with open('cooccurrence_count_{0}.csv'.format(stem), 'w') as f:
         csv_writer = csv.writer(f)
 

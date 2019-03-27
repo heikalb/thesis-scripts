@@ -63,7 +63,7 @@ def main():
         chi_squared[k] = (cm.chi_squared(cooccurence_counts, suffix_counts, k, morph_1, morph_2, num_suffixes),
                        suffix_counts[morph_1], suffix_counts[morph_2])
 
-    # Save 1_data
+    # Save data
     with open('cooccurrence_count.csv', 'w') as f:
         csv_writer = csv.writer(f)
 

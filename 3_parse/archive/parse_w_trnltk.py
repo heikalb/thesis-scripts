@@ -34,7 +34,7 @@ def get_shortest_parse(parse_list):
 
 def main():
     # Get list of verbs
-    verb_file = open('../1_data/all_verbs_spellchecked.txt', 'rb')
+    verb_file = open('../2_data/all_verbs_spellchecked.txt', 'rb')
     words = verb_file.read().split('\n')
 
     # Morphlogical parses and numbers to track parser performance

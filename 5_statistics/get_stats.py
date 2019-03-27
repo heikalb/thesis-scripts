@@ -56,7 +56,7 @@ def colloc_stats(right_parse_sign, suffix_boundary, mboundary, key_separator, qu
                     m1, m2, abs_msr['cooc_freq']]
             measure_dict[msr][k] = (measure_funct[msr](*args), abs_msr['suff_freq'][m1], abs_msr['suff_freq'][m2])
 
-    # Save 2_data
+    # Save data
     for m in abs_msr:
         new_dir(m)
         with open('{0}/{0}_{1}.csv'.format(m, query_term), 'w') as f:

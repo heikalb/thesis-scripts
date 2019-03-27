@@ -128,7 +128,7 @@ def main():
                 # Save processed context window
                 rows.append([single_sent[0], main_word, single_sent[1]])
 
-    # Save 2_data
+    # Save data
     with open('../2_data/query_results_all_joined_sents.tsv', 'w') as f:
         csv_writer = csv.writer(f, delimiter='\t')
         for r in rows:
