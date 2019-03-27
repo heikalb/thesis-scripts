@@ -4,6 +4,7 @@ Make lemma-based queries on the TNC web interface based on a given list of lemma
 from selenium import webdriver
 from selenium.common.exceptions import *
 from selenium.webdriver.support.ui import Select
+import argparse
 import time
 
 url_1 = "https://v3.tnc.org.tr/login"
@@ -108,6 +109,13 @@ def main(query_terms, start=0, end=-1):
 
 
 if __name__ == '__main__':
-    query_terms = open('query_terms.txt', 'r').read().split('\n')
-    main(query_terms, start=0)
+    parse = argparse.ArgumentParser(description='Get query results from the TNC')
+    parse.add_argument('-s', '--start', help='Start index on query term list', default=0, required=False, type=int)
+    parse.add_argument('-e', '--end', help='End index on query term list', default=-1, required=False, type=int)
+    parse.add_argument('-f', '--file', help='File path of query terms', default='query_terms.txt', required=False)
+    args = parse.parse_args()
+
+    # query_terms = open('query_terms.txt', 'r').read().split('\n')
+    query_terms = open(args.file, 'r').read().split('\n')
+    main(query_terms, start=args.start, end=args.end)
     exit(0)
