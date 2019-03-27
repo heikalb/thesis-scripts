@@ -7,10 +7,12 @@ from selenium.webdriver.support.ui import Select
 import argparse
 import time
 
+# TNC-related information
 url_1 = "https://v3.tnc.org.tr/login"
 url_2 = "https://v3.tnc.org.tr/basic-query"
 email = 'heikal93@gmail.com'
 password = 'kolipoki'
+# Browser to use
 browser = webdriver.Safari()
 
 
@@ -115,7 +117,6 @@ if __name__ == '__main__':
     parse.add_argument('-f', '--file', help='File path of query terms', default='query_terms.txt', required=False)
     args = parse.parse_args()
 
-    # query_terms = open('query_terms.txt', 'r').read().split('\n')
     query_terms = open(args.file, 'r').read().split('\n')
     main(query_terms, start=args.start, end=args.end)
     exit(0)
