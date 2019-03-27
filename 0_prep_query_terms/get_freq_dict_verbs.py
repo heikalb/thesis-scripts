@@ -3,7 +3,7 @@ Extract highest frequency verb stems from the text file of the Frequency Diction
 Heikal Badrulhisham <heikal93gmail.com>, 2019
 """
 import re
-import argparse
+
 
 def main():
     # Section of the dictionary with the verb stems
@@ -25,10 +25,11 @@ def main():
     stems.sort()
 
     # Spell correction
-    h_words = ['hazırla', 'hisset', 'hesapla', 'bahset', 'harca', 'hızlan', 'hedefle', 'rahatla', 'hohlan', 'hallet', 'zehirle',
-               'haykır', 'heyecan', 'hükmet', 'hafifle', 'havalan', 'hastalan', 'hahla', 'fethet', 'sahiplen', 'hapset',
-               'hareketlen', 'buharlah', 'hıçkır', 'hüphelen', 'mahvet', 'kamah', 'hırpala', 'hatırla']
-    h_correction = {'hohlan': 'hoşlan', 'hahla': 'haşla', 'buharlah': 'buharlaş', 'hüphelen': 'şüphelen', 'kamah': 'kamaş'}
+    h_words = ['hazırla', 'hisset', 'hesapla', 'bahset', 'harca', 'hızlan', 'hedefle', 'rahatla', 'hohlan', 'hallet',
+               'zehirle', 'haykır', 'heyecan', 'hükmet', 'hafifle', 'havalan', 'hastalan', 'hahla', 'fethet', 'sahiplen'
+               , 'hapset', 'hareketlen', 'buharlah', 'hıçkır', 'hüphelen', 'mahvet', 'kamah', 'hırpala', 'hatırla']
+    h_correction = {'hohlan': 'hoşlan', 'hahla': 'haşla', 'buharlah': 'buharlaş', 'hüphelen': 'şüphelen',
+                    'kamah': 'kamaş'}
 
     stems_ = []
 
@@ -48,6 +49,5 @@ def main():
 
 
 if __name__ == '__main__':
-    parse = argparse.ArgumentParser()
     main()
     exit(0)
