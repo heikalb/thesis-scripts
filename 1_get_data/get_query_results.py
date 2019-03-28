@@ -126,6 +126,8 @@ if __name__ == '__main__':
     browsers = {'safari': webdriver.Safari(), 'firefox': None, 'chrome': None}
     browser = browsers[args.browser]
 
-    query_terms = open(args.file, 'r').read().split('\n')
+    with open(args.file, 'r') as f:
+        query_terms = f.read().split('\n')
+
     main(query_terms, start=args.start, end=args.end)
     exit(0)
