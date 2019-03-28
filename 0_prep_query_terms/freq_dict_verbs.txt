@@ -287,7 +287,7 @@ yoğunlaş
 sap
 çözümle
 yor
-adlandır
+adlan
 ez
 iyileş
 hedefle
@@ -326,7 +326,7 @@ pazarla
 sürükle
 ilet
 utan
-bulundur
+bulun
 yapış
 süz
 özetle
@@ -440,7 +440,7 @@ ayaklan
 farket
 çürü
 şiş
-sınıflandır
+sınıflan
 yırt
 yinele
 affet
@@ -452,7 +452,7 @@ zenginleş
 sinirlen
 kıs
 del
-görevlendir
+görevlen
 kastet
 serp
 odaklan
@@ -472,7 +472,7 @@ kirala
 yavaşla
 doğrul
 yanaş
-şaberleş
+haberle
 yumuşa
 depola
 donat
@@ -485,14 +485,14 @@ kıpırda
 bık
 terket
 kirlen
-abart
+abar
 selamla
-kararlaştır
+kararla
 türe
 kıvır
 bük
 işaretle
-şeyecanlan
+heyecanlan
 ürk
 düşle
 fısılda
@@ -505,7 +505,7 @@ kına
 yuvarla
 avla
 çevrele
-sınırlandır
+sınırlan
 kavur
 pekiş
 kovala
@@ -575,7 +575,7 @@ demokratikleş
 hükmet
 eşle
 kaşı
-ödüllendir
+ödüllen
 savrul
 susa
 arzula
@@ -590,10 +590,10 @@ dengele
 mırılda
 fethet
 esirge
-biçimlendir
+biçimlen
 yatış
 katlet
-ilişkilendir
+ilişkilen
 umursa
 devral
 alıkoy
@@ -645,7 +645,7 @@ büyüle
 durakla
 kentleş
 hareketlen
-isimlendir
+isimlen
 beze
 bıçakla
 incit
@@ -655,7 +655,7 @@ zikret
 sertleş
 sırıt
 tükür
-anlamlandır
+anlamlan
 tep
 büz
 atfet
@@ -664,7 +664,7 @@ boşver
 kemir
 sıva
 netleş
-yardımlaş
+yardımla
 çınla
 sarmala
 sabret

@@ -21,16 +21,21 @@ def main():
         stems.append((index, stem_line))
 
     # Account for error in txt file of the dictionary
-    stems.append((699, 'yapılah to strcuture'))
+    stems.append((699, 'yapılaş to strcuture'))
     stems.sort()
 
-    # Spell correction
+    # Spelling and morphological correction
     h_words = ['hazırla', 'hisset', 'hesapla', 'bahset', 'harca', 'hızlan', 'hedefle', 'rahatla', 'hohlan', 'hallet',
                'zehirle', 'haykır', 'heyecan', 'hükmet', 'hafifle', 'havalan', 'hastalan', 'hahla', 'fethet', 'sahiplen'
                , 'hapset', 'hareketlen', 'buharlah', 'hıçkır', 'hüphelen', 'mahvet', 'kamah', 'hırpala', 'hatırla'
                , 'haberleh', 'heyecanlan']
     h_correction = {'hohlan': 'hoşlan', 'hahla': 'haşla', 'buharlah': 'buharlaş', 'hüphelen': 'şüphelen',
                     'kamah': 'kamaş', 'haberleh': 'haberleş'}
+    morph_correction = {'adlandır': 'adlan', 'bulundur': 'bulun', 'sınıflandır': 'sınıflan', 'görevlendir': 'görevlen',
+                        'haberleş': 'haberle', 'abart': 'abar', 'kararlaştır': 'kararla', 'sınırlandır': 'sınırlan',
+                        'ödüllendir': 'ödüllen', 'savrul': 'savrul', 'biçimlendir': 'biçimlen',
+                        'ilişkilendir': 'ilişkilen', 'isimlendir': 'isimlen', 'anlamlandır': 'anlamlan',
+                        'yardımlaş': 'yardımla'}
 
     stems_ = []
 
@@ -38,11 +43,14 @@ def main():
         s = s[1].split()[0]
         s = s.replace('j', 'ğ')
         if s not in h_words:
-            stems_.append(s.replace('h', 'ş'))
+            s = s.replace('h', 'ş')
         elif s in h_correction:
-            stems_.append(h_correction[s])
-        else:
-            stems_.append(s)
+            s = h_correction[s]
+
+        if s in morph_correction:
+            s = morph_correction[s]
+
+        stems_.append(s)
 
     # Save data
     with open('freq_dict_verbs.txt', 'w') as f:
