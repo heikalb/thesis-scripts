@@ -12,7 +12,7 @@ def main():
     api_token = "sQj6zxcVt7JzWXHNTdRu3QRzc6i8KZz7"
     result = ''
 
-    data = open('../2_data/query_results_all_joined_sents.csv')
+    data = open('../d2_data/query_results_all_joined_sents.csv')
     reader = csv.reader(data)
     sents = []
     indices =[]
@@ -21,14 +21,14 @@ def main():
         sents.append(r[0])
         indices.append(r[2])
 
-    with open('../2_data/target_indices.txt', 'w') as f:
+    with open('../d2_data/target_indices.txt', 'w') as f:
         f.write('\n'.join(indices))
 
     for i in range(0, 8):
         text = '\n'.join(sents[i*10000:(i+1)*10000])
         result += caller.call(tool_name, text, api_token)
 
-    with open('../2_data/all_sents_spellchecked.txt', 'w') as f:
+    with open('../d2_data/all_sents_spellchecked.txt', 'w') as f:
         f.write(result)
 
 

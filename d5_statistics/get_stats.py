@@ -1,5 +1,5 @@
 """
-Get various collocation 5_statistics from the corpus
+Get various collocation d5_statistics from the corpus
 Heikal Badrulhisham <heikal93@gmail.com>, 2019
 """
 import csv
@@ -75,7 +75,7 @@ def colloc_stats(right_parse_sign, suffix_boundary, mboundary, key_separator, qu
 
 
 def main():
-    query_terms = [""] + open('../2_data/query_terms.txt', 'r').read().split('\n')
+    query_terms = [""] + open('../d2_data/query_terms.txt', 'r').read().split('\n')
 
     for qt in query_terms:
         colloc_stats(right_parse_sign='Verb', suffix_boundary=r'[\|\+]', mboundary=r'.*:',

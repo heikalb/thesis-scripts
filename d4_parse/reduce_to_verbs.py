@@ -6,7 +6,7 @@ import csv
 
 # Get position of target verbs in the context windows
 def get_verb_indices():
-    with open('../2_data/query_results_all_joined_sents.tsv') as f:
+    with open('../d2_data/query_results_all_joined_sents.tsv') as f:
         reader = csv.reader(f, delimiter='\t')
         indices = [int(row[2]) for row in reader]
 

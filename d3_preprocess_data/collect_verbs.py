@@ -10,7 +10,7 @@ def main():
     words = []
     
     for i in range(20):
-        with open('../2_data/query_results/tnc_query_result_{0}.tsv'.format(i)) as f:
+        with open('../d2_data/query_results/tnc_query_result_{0}.tsv'.format(i)) as f:
             csv_reader = csv.reader(f, delimiter='\t')
             first_row = True
 
@@ -27,7 +27,7 @@ def main():
                 words.append(curr_word)
                 print(curr_word)
                 
-    save_file = open('../2_data/all_verbs.txt', 'w')
+    save_file = open('../d2_data/all_verbs.txt', 'w')
     save_file.write('\n'.join(words))
     save_file.close()
 

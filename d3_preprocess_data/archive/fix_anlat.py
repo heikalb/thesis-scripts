@@ -7,14 +7,14 @@ import csv
 
 saved_lines = []
 
-with open('../2_data/query_results/tnc_query_result_13_attn.csv', 'rb') as f:
+with open('../d2_data/query_results/tnc_query_result_13_attn.csv', 'rb') as f:
     rdr = csv.reader(f)
 
     for row in rdr:
         if 'anlat' in row[3].lower():
             saved_lines.append(row)
 
-with open('../2_data/query_results/tnc_query_result_13.csv', 'wb') as f:
+with open('../d2_data/query_results/tnc_query_result_13.csv', 'wb') as f:
     wrtr = csv.writer(f)
 
     for line in saved_lines:

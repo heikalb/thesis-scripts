@@ -30,9 +30,9 @@ def spellcheck(word):
 
 
 def main():
-    # Gather 2_data from csv
+    # Gather d2_data from csv
     results = []
-    data = open('../2_data/query_results_all_joined_sents.csv')
+    data = open('../d2_data/query_results_all_joined_sents.csv')
     reader = csv.reader(data)
     sents = []
     indices = []
@@ -42,7 +42,7 @@ def main():
         indices.append(r[2])
 
     # Save indices of target verbs
-    with open('../2_data/target_indices.txt', 'w') as f:
+    with open('../d2_data/target_indices.txt', 'w') as f:
         f.write('\n'.join(indices))
 
     # Send contexts to ITU for spellchecking
@@ -57,7 +57,7 @@ def main():
             True
 
         if i % 5000 == 0 or i == len(sents[start:]):
-            with open('../2_data/all_sents_spellchecked{0}.txt'.format(i), 'w') as f:
+            with open('../d2_data/all_sents_spellchecked{0}.txt'.format(i), 'w') as f:
                 f.write('\n'.join(results))
 
             pickle.dump(spellcheck_history, open("spellcheck_history.pkl", 'wb'))
