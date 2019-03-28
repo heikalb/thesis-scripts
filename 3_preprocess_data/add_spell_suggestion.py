@@ -33,6 +33,13 @@ suggestions = {
     r'uyoz$':           'uyoruz',
     r'üyoz$':           'üyoruz',
 
+    r'ioz$':            'iyoruz',
+    r'ıoz$':            'ıyoruz',
+    r'iyoz$':           'iyoruz',
+    r'ıyoz$':           'ıyoruz',
+    r'uyoz$':           'uyoruz',
+    r'üyoz$':           'üyoruz',
+
     r'micek':           'meyecek',
     r'mıcek':           'mayacak',
     r'[uı]cak':         'acak',
@@ -56,12 +63,11 @@ suggestions = {
 
     r'e+cen$':          'eceksin',
     r'[au]+can$':       'acaksın',
-
-    r'canı$':           'cağını',
-    r'ceni$':           'ceğini',
-
-    r'ıyan':           'ayan',
-
+    
+    r'̇z':           'z',
+    r'̇r':           'r',
+    r'̇̇̇ṁ':           'm',
+    r'̇̇̇ẏ':           'y'
 }
 
 
