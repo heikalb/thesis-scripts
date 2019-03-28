@@ -27,9 +27,10 @@ def main():
     # Spell correction
     h_words = ['hazırla', 'hisset', 'hesapla', 'bahset', 'harca', 'hızlan', 'hedefle', 'rahatla', 'hohlan', 'hallet',
                'zehirle', 'haykır', 'heyecan', 'hükmet', 'hafifle', 'havalan', 'hastalan', 'hahla', 'fethet', 'sahiplen'
-               , 'hapset', 'hareketlen', 'buharlah', 'hıçkır', 'hüphelen', 'mahvet', 'kamah', 'hırpala', 'hatırla']
+               , 'hapset', 'hareketlen', 'buharlah', 'hıçkır', 'hüphelen', 'mahvet', 'kamah', 'hırpala', 'hatırla'
+               , 'haberleh', 'heyecanlan']
     h_correction = {'hohlan': 'hoşlan', 'hahla': 'haşla', 'buharlah': 'buharlaş', 'hüphelen': 'şüphelen',
-                    'kamah': 'kamaş'}
+                    'kamah': 'kamaş', 'haberleh': 'haberleş'}
 
     stems_ = []
 
