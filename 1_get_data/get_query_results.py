@@ -52,12 +52,12 @@ def download_file():
         time.sleep(1)
 
     j = 0
-    while (not browser.find_elements_by_id('dizilim_yakinlik_data_tablosu')) or not browser.find_elements_by_class_name('odd'):
+    while (not browser.find_elements_by_id('dizilim_yakinlik_data_tablosu')) or \
+            not browser.find_elements_by_class_name('odd'):
         time.sleep(1)
         j += 1
         if j >= 10:
-            print('Problem with query')
-            return
+            raise Exception
 
     attmpt = 0
     time.sleep(5)
@@ -71,8 +71,7 @@ def download_file():
             time.sleep(1)
 
         if attmpt >= 5:
-            print('Problem with query')
-            return
+            raise Exception
 
 
 def main(query_terms, start=0, end=-1):
@@ -94,9 +93,11 @@ def main(query_terms, start=0, end=-1):
             submit_query(search_term)
             download_file()
             print('Done: ', search_term)
-        except ElementNotInteractableException:
-            print('Problem with query')
-
+        except Exception:
+            # Warn about problem with query, create a file for indication
+            print('Problem with query: ', search_term)
+            decoy_file = open('Problem with query_{0}_{1}.txt'.format(i, search_term), 'w')
+            decoy_file.close()
         i += 1
 
     browser.close()
@@ -122,7 +123,7 @@ if __name__ == '__main__':
     email = args.username
     password = args.password
     # Browser to use
-    browsers = {'safari': webdriver.Safari()} # , 'firefox': webdriver.Firefox(), 'chrome': webdriver.Chrome()}
+    browsers = {'safari': webdriver.Safari(), 'firefox': None, 'chrome': None}
     browser = browsers[args.browser]
 
     query_terms = open(args.file, 'r').read().split('\n')
