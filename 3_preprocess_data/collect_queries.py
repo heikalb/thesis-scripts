@@ -10,9 +10,6 @@ spell_corrections = [line.split() for line in spell_corrections]
 spell_corrections = [l for l in spell_corrections if not (l[0] == '#' or l[0] == '@' or len(l) < 2)]
 sentence_punct = ['.', '!', '?']
 
-window_corrections = open('window_corrections.tsv').read().split('\n')
-window_corrections = [wc.split('\t') for wc in window_corrections]
-
 
 # Apply spelling correction based on spell correction suggestion file
 def apply_correction(target_word):
@@ -87,16 +84,6 @@ def depunctuate(st):
     return ' '.join(new_sent)
 
 
-def window_correction(orig_window):
-    for wc in window_corrections:
-        if wc[1] == orig_window[1]:
-            ret = wc[0:2] + wc[5:8]
-            window_corrections.remove(wc)
-            return ret
-
-    return orig_window
-
-
 def main():
     rows = []
     
@@ -111,10 +98,6 @@ def main():
                 if first_row:
                     first_row = False
                     continue
-
-                # Apply correction to certain 2_data windows
-                if window_corrections:
-                    row = window_correction(row)
 
                 # Spell correct target verb
                 main_word = apply_correction(depunctuate(row[3]))
