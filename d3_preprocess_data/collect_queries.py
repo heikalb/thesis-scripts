@@ -5,16 +5,19 @@ Heikal Badrulhisham <heikal93@gmail.com>, 2019
 """
 import csv
 import os
+import re
 from spelling_sub import suggestions
+
+sentence_punct = ['.', '!', '?']
 
 
 # Apply spelling correction based on spell correction suggestion file
 def apply_correction(target_word):
-    target_word_normalized = target_word.lower()
+    target_word = target_word.lower()
 
-    for sp in suggestions:
-        if sp[0] == target_word_normalized:
-            return sp[1]
+    for sug in suggestions:
+        if re.search(sug, target_word):
+            return re.sub(sug, suggestions[sug], target_word)
 
     return target_word
 
@@ -38,7 +41,6 @@ def to_one_sentence(sentence, target_i):
             break
 
         left_sent.insert(0, tokens[i])
-
         i -= 1
 
     return ' '.join(left_sent + right_sent), len(left_sent)
@@ -46,7 +48,7 @@ def to_one_sentence(sentence, target_i):
 
 # Remove punctuation from a string
 def depunctuate(st):
-    st = st.split()
+    st = st.strip().lower().split()
     new_sent = []
 
     for w in st:
@@ -59,38 +61,49 @@ def depunctuate(st):
 
 
 def main():
-    rows = []
+    save_rows = []
     data_dir = '../d2_data/query_results_freq_dict/'
-    for filename in os.listdir(data_dir):
+    filenames = os.listdir(data_dir)
+    filenames.sort()
 
+    for filename in filenames:
+        # Get data windows
         file = open(os.path.join(data_dir, filename), 'r')
-        csv_reader = csv.writer(file, delimiter='\t')
+        csv_reader = csv.reader(file, delimiter='\t')
+        rows = [r for r in csv_reader]
+        file.close()
+        curr_stem = filename.split('_')[2]
+        print(filename)
 
-        first_row = True
-
-        for row in csv_reader:
-            # Skip first row header of CSV
-            if first_row:
-                first_row = False
-                continue
-
+        # Process data windows, skip first rows
+        for row in rows[1:]:
             # Spell correct target verb, remove punctuations
             main_word = apply_correction(depunctuate(row[3]))
             left_context = depunctuate(row[2])
             right_context = depunctuate(row[4])
-            # Join context windows and target verb, remove punctuation
-            full_sentence = ' '.join([left_context, main_word, right_context])
-            # Reduce context window to one sentence, get  new index of target verb
-            single_sent = to_one_sentence(full_sentence, len(left_context.split()))
-            # Save processed context window
-            rows.append([single_sent[0], main_word, single_sent[1]])
 
-        file.close()
+            # When there are multiple words in the target word column, save the word with the correct stem
+            target_column = main_word.split()
+            if len(target_column) > 1:
+                if left_context.endswith(main_word):
+                    left_context = left_context.replace(main_word, '').strip()
+                elif right_context.startswith(main_word):
+                    right_context = right_context.replace(main_word, '').strip()
+
+                if [w for w in target_column if curr_stem in w]:
+                    main_word = [w for w in target_column if curr_stem in w][0]
+                else:
+                    main_word = target_column[0]
+
+            # Join context windows, reduce to one sentence
+            full_sentence = ' '.join([left_context, main_word, right_context])
+            single_sent = to_one_sentence(full_sentence, len(left_context.split()))
+            save_rows.append([single_sent[0], main_word, single_sent[1]])
 
     # Save data
-    with open('../d2_data/query_results_all_joined_sents.tsv', 'w') as f:
+    with open('../d2_data/freq_dict_query_results_all_joined_sents.tsv', 'w') as f:
         csv_writer = csv.writer(f, delimiter='\t')
-        for r in rows:
+        for r in save_rows:
             csv_writer.writerow(r)
 
 
