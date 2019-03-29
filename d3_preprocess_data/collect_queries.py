@@ -85,10 +85,10 @@ def main():
 
     for filename in filenames:
         # Get data windows
-        file = open(os.path.join(data_dir, filename), 'r')
-        csv_reader = csv.reader(file, delimiter='\t')
+        f = open(os.path.join(data_dir, filename), 'r')
+        csv_reader = csv.reader(f, delimiter='\t')
         rows = [r for r in csv_reader]
-        file.close()
+        f.close()
         curr_stem = filename.split('_')[2]
         print(filename)
 
