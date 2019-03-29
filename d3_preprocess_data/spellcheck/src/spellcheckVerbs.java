@@ -22,7 +22,7 @@ public class spellcheckVerbs
         TurkishSpellChecker spellChecker = new TurkishSpellChecker(morphology);
 
         // File of verbs
-        FileReader fileReader = new FileReader("../../data/all_verbs.txt");
+        FileReader fileReader = new FileReader("../../d2_data/all_verbs.txt");
         BufferedReader br = new BufferedReader(fileReader);
 
         // For keeping track of words that have already been processed
@@ -47,7 +47,7 @@ public class spellcheckVerbs
         }
 
         // Save data
-        FileWriter fr = new FileWriter(new File("../../data/verb_spellcheck.txt"));
+        FileWriter fr = new FileWriter(new File("../d3_preprocess_data/verb_spellcheck.txt"));
         fr.write(String.join("\n", error_corrections));
 
         // Fin
