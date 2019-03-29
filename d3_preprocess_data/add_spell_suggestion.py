@@ -93,7 +93,7 @@ def main():
         new_spelling.append(new_line)
 
     # Save modifications onto a new file
-    with open('verb_spelling_suggestions_2_.txt', 'w') as f:
+    with open('verb_spelling_suggestions_.txt', 'w') as f:
         f.write('\n'.join(new_spelling))
 
 

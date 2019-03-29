@@ -5,7 +5,7 @@ Heikal Badrulhisham <heikal93@gmail.com>, 2019
 """
 import csv
 
-spell_corrections = open('verb_spelling_suggestions_2.txt').read().split('\n')
+spell_corrections = open('verb_spelling_suggestions.txt').read().split('\n')
 spell_corrections = [line.split() for line in spell_corrections]
 spell_corrections = [l for l in spell_corrections if not (l[0] == '#' or l[0] == '@' or len(l) < 2)]
 sentence_punct = ['.', '!', '?']

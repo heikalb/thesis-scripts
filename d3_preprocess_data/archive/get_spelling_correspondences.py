@@ -1,6 +1,6 @@
 import difflib
 
-spellings = open('verb_spelling_suggestions_2.txt', 'r').read().split('\n')
+spellings = open('verb_spelling_suggestions.txt', 'r').read().split('\n')
 changes = []
 
 for sp in spellings:

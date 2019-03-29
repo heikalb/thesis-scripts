@@ -1,6 +1,9 @@
+oluyo oluyor
 olmuyo olmuyor
 olabiliyo olabiliyor
 oluyo oluyor oluyu oluya
+olucaksın olacaksın
+olucak olacak
 olucak olacak Olucak oluca Olucak'a Olucak'ı Ulucak
 oluo oluyor olur Olur olup olun oluş oluk olum olu Oluç Olmo
 olucaksın olacaksın Olucak'san Olucak'çın Olucak'sız Olucak'sın Olucak'tın Olucak'ısın Olucak'sı Olucak'lın Olucak'sım Olucak'ın Olucak'asın Ulucak'sın
@@ -16,7 +19,7 @@ olmuosan olmuyorsan olmuşsan Olmuksa'n
 oliver Oliver Olivier Olive Olive'n Olive'm iliver Olivera Oliver'i Oliver'e oluver
 oluyomuuş oluyormuş
 olucaz olacağız Olucak oluca
-@ olaraktan olanaktan
+# olaraktan olanaktan
 olmıyacaktır olmayacaktır
 olcanı olacağını olanı Olcan olmanı Olcay'ı Olcan'ın Olcan'ım Olca'nım Olca'cı Olcan'sı oncanı Olcar'ı Olca'sı Olca'na Olcan'a Olga'nı solcanı Olcan'cı Alcan'ı alcanı ocanı Orca'nı Orcan'ı Olkan'ı Olca'n Olca'nız Olcan'ız Olca'yı locanı bolcanı ilcanı İlcan'ı Olca'nın Olca'nı Olcan'ı Olca'mı Olcan'lı oltanı Olca'ndı Olcan'dı Olca'lı Okcan'ı
 olucaktır olacaktır Olucak'tır Olucak'tın Olucak'tım Olucak'tık Olucak'tı Ulucak'tır
@@ -32,7 +35,7 @@ olyorsun oluyorsun Olyon'sun
 @ olaraksa olacaksa olanaksa olaraysa
 ediyo ediyor Edi'ye ediye Edi'yi ediyi
 ediliyo ediliyor Edi'liye ediliye Edi'liyi ediliyi
-edecem edeceğım edecek edemem ekecem edece efecem edecim
+edecem edeceğim edecek edemem ekecem edece efecem edecim
 edicez edeceğiz Edi'ce edice
 etmiyo etmiyor
 ediyom ediyorum ediyor Edi'yim ediyim
@@ -63,8 +66,8 @@ edio ediyor edip Edip edin Ediz Edi edi ediş edim Edim Edit Edis Edi'm edik edi
 ediyomuş ediyormuş
 etcektir edecektir etmektir etektir emcektir
 ediyosunuzdur ediyorsunuzdur
-ettiğiniedeceğini 
-# ediceksin edeceksin Edi'ciksin ediciksin Ericek'sin
+# ettiğiniedeceğini
+ediceksin edeceksin Edi'ciksin ediciksin Ericek'sin
 etceklermiş edeceklermiş eteklermiş emceklermiş
 iderek ederek giderek inerek içerek iterek Derek iverek irerek diderek ilerek
 ettiriyolar ettiriyorlar
@@ -80,14 +83,14 @@ ettük ettik üttük öttük
 edemiyosam edemiyorsam
 edicektim edecektim Edi'ciktim ediciktim Ericek'tim
 # ediyorumartık
-#ettirim ettiğim ettirip ettirin ettirir ettirdim etkirim ettiril Etbir'im tetirim
+ettirim ettireyim ettiğim ettirip ettirin ettirir ettirdim etkirim ettiril Etbir'im tetirim
 edecez edeceğiz edecek edemez edece
 ediniyosun ediniyorsun
 etmiyolar etmiyorlar
 ediosunuz ediyorsunuz Elio'sunuz Adios'unuz
 ettiremiyosun ettiremiyorsun
 @ etcen edeceksin etken Evcen etten Etyen etmen etsen Tecen etlen eten ercen ecen
-@ etmiyim etmişim temiyim etiyim Eti'yim etliyim şetmiyim etsiyim Etem'iyim emmiyim emiyim etçiyim etkiyim
+@ etmiyim etmeyeyim etmişim temiyim etiyim Eti'yim etliyim şetmiyim etsiyim Etem'iyim emmiyim emiyim etçiyim etkiyim
 edicekmiş edecekmiş edecekmiş Ericek'miş Edi'cikmiş edicikmiş
 edebiliyo edebiliyor edebiliyi edebiliye
 @ etceniz edeceksiniz etmeniz etseniz erceniz Evcen'iz eteniz eceniz Tecen'iz Etyen'iz etceğiz etkeniz etteniz
@@ -170,13 +173,13 @@ yapyolar yapıyorlar
 yapabilicekleri yapabilecekleri
 yapcakmış yapacakmış yapmakmış yaprakmış Yaprak'mış yapakmış
 yapamıyo yapamıyor
-@ yaptırıyım yaptırırım yaptırımım Yaltır'ıyım yatırıyım yaptırayım yaptırıcım
+@ yaptırıyım yaptırayım yaptırırım yaptırımım Yaltır'ıyım yatırıyım yaptırayım yaptırıcım
 yapıyolardı yapıyorlardı
 yapcaktım yapacaktım yapraktım Yaprak'tım yapaktım
 yaptırtıyom yaptırtıyorum yaptırtıyor
 yapacaz yapacağız yapacak yapamaz yapayaz
 yapmicak yapmayacak
-@ yapam yapan yaşam Yaşam yapma yapar yapım yapay yapmam yapa yapsam yasam lapam çapam sapam Napa'm yafam yapak yalpam yapama Yasa'm tapam mapam Yaaa'm yaram yayam yamam yabam yakam papam
+@ yapam yapayım yapan yaşam Yaşam yapma yapar yapım yapay yapmam yapa yapsam yasam lapam çapam sapam Napa'm yafam yapak yalpam yapama Yasa'm tapam mapam Yaaa'm yaram yayam yamam yabam yakam papam
 yapmıcaz yapmayacağız
 yapmıcakmış yapmayacakmış
 yapıyodunuz yapıyordunuz
@@ -245,13 +248,13 @@ veryoruz veriyoruz
 veri̇yor veriyor
 vermiyecek vermeyecek
 veryosun veriyorsun Vero'sun Verso'sun varyosun
-@ vermesorma
+# vermesorma
 virdik verdik girdik virdi birdik mirdik sirdik kirdik evirdik zirdik irdik vicdik lirdik çirdik virdin virdiz pirdik virdim airdik
 veryorlar veriyorlar
 vermiyenleri vermeyenleri permiyenleri
 vericeğimiz vereceğimiz
 veriliyo veriliyor veriliyi veriliye
-@ vermiyim vermişim veriyim Vern'iyim veremiyim mermiyim Nermi'yim permiyim Perm'iyim verimiyim Verim'iyim Term'iyim Very'iyim vehmiyim germiyim verdiyim Verdi'yim vergiyim Vergi'yim
+@ vermiyim vermeyeyim vermişim veriyim Vern'iyim veremiyim mermiyim Nermi'yim permiyim Perm'iyim verimiyim Verim'iyim Term'iyim Very'iyim vehmiyim germiyim verdiyim Verdi'yim vergiyim Vergi'yim
 vercem vereceğim vermem verem versem hercem şercem ercem Verne'm Merce'm Verde'm
 veriyodu veriyordu periyodu veriyolu
 veriyosunuz veriyorsunuz veriyolunuz
@@ -270,16 +273,16 @@ vericen vereceksin verilen veriden mericen vericin şericen gericen sericen veri
 verceksin vereceksin Gercek'sin merceksin
 veremiyumuşlar veremiyormuşlar
 veriyolarmış veriyorlarmış
-@ veriyisin Very'isin veriyesin veridisin vericisin verimisin Verim'isin verilisin verisisin
+#@ veriyisin Very'isin veriyesin veridisin vericisin verimisin Verim'isin verilisin verisisin
 vermiyosun vermiyorsun
-@ verdirtecez verdirtemez verdirtecek
-@ veriim verdim verim Verim veririm verimi Very'im Vern'im vergim Vergi'm verişim Verim'i verilim vericim verinim veriyim Verdi'm veridim verimim Verim'im
+@ verdirtecez verdirteceğız verdirtemez verdirtecek
+@ veriim vereyim verdim verim Verim veririm verimi Very'im Vern'im vergim Vergi'm verişim Verim'i verilim vericim verinim veriyim Verdi'm veridim verimim Verim'im
 vercekseniz verecekseniz Gercek'seniz mercekseniz
 vercen vereceksin veren versen vermen hercen Verde'n ercen şercen Verne'n Merce'n
-@ veririk veririz veririm verirdik verilik vericik verirlik
+#@ veririk veririz veririm verirdik verilik vericik verirlik
 verilyodu veriliyordu
 vermicek vermeyecek
-@ vermim vermiş verdim verim Verim vermem Very'im Term'im Vern'im Nermi'm Verdi'm mermim germim permim Perm'im vergim Vergi'm verimim Verim'im Verma'm veremim vehmim
+@ vermim vermeyeyim vermiş verdim verim Verim vermem Very'im Term'im Vern'im Nermi'm Verdi'm mermim germim permim Perm'im vergim Vergi'm verimim Verim'im Verma'm veremim vehmim
 verilmiyo verilmiyor
 vericektim verecektim Ericek'tim vericiktim
 vericekti verecekti vericikti Ericek'ti
@@ -321,7 +324,7 @@ diyceksin diyeceksin
 # diyerekten diyelekten
 dedi̇kleri̇mi̇z dediklerimiz
 diosun diyorsun idosun Dion'sun dyosun Dido'sun Adios'un Dior'un Bios'un Dior'sun Diop'sun düosun Dibo'sun dtosun Diop'un Rios'un Rio'sun Diko'sun dosun Dion'un Dino'sun Diao'sun
-@ demeklerin yemeklerin deneklerin emeklerin demeçlerin Emek'lerin temeklerin demelerin Derek'lerin demetlerin
+# demeklerin yemeklerin deneklerin emeklerin demeçlerin Emek'lerin temeklerin demelerin Derek'lerin demetlerin
 diyodur diyordur diyodu Diko'dur Dido'dur diyodun tiyodur diyodum diyoduz Diao'dur Dino'dur Dibo'dur dyodur diyedur
 deyen diyen denen ödeyen deyin desen Desen Leyen delen değen deren deden demen deyken Degen deysen deven deye Daye'n dayen deşen reyen
 diyolaa diyorlar
@@ -362,16 +365,16 @@ demeyi̇z demeyiz
 diyoduk diyorduk diyodu diyodun diyodum diyoduz
 demiyoz demiyor demiyiz
 dimedi demedi diledi demedi dinmedi diredi dimeli dizmedi dilmedi Dimes'i dikmedi ditmedi dişedi
-@ diyok diyor diyot
+#@ diyok diyor diyot
 diceksiniz diyeceksin dibeksiniz Dibek'siniz Çicek'siniz dizeksiniz diesiniz direksiniz dineksiniz Dick'siniz dileksiniz Dilek'siniz
 diyrum diyorum Dior'um
 @ neydidedim
 çıkarıyo çıkarıyor
 çıkıyo çıkıyor çıkıya çıkıyı
-@ çıkartak çıkarak çıkarmak çıkartmak çıkartan çıkarsak çıkarta çıkartsak
+@ çıkartak çıkartacak çıkarak çıkarmak çıkartmak çıkartan çıkarsak çıkarta çıkartsak
 çıkıyon çıkıyor
 çıkartıyosa çıkartıyorsa çıkartıysa çıkartıyorsa
-@ çıkim çekim Çek'im çıkım Çaki'm
+@ çıkim çıkayım çekim Çek'im çıkım Çaki'm
 çıkarıolar çıkariyorlar çıkarırlar çıkarımlar çıkarışlar çıkarılar çıkarınlar
 çıkışıyon çıkışıyorsun çıkışıyor
 çıkarabilcez çıkarabileceğiz
@@ -379,7 +382,7 @@ diyrum diyorum Dior'um
 çıkıo çıkıyor çıkış çıkıp çıkın çıkık çıkıt çıkı çıkıl çıkım
 çıkamıyolarmış çıkamıyorlarmış
 # çıkmışsanki
-@ çıkıym çıkıyı çıkıya çıkım çıkıyım
+@ çıkıym çıkayım çıkıyı çıkıya çıkım çıkıyım
 çıkmıyo çıkmıyor
 çıkıveriyom çıkıveriyorum çıkıveriyor
 çıkarılıyo çıkarılıyor
@@ -390,9 +393,9 @@ diyrum diyorum Dior'um
 çıkıyolar çıkıyorlar çıkıyalar
 çıkamıyosun çıkamıyorsun
 çıkıyodu çıkıyordu
-@ çıkmaktadırçıkacaktır
+# çıkmaktadırçıkacaktır
 çıkartmıyo çıkartmıyor
-@ çıktıçıkıyor
+# çıktıçıkıyor
 çıkartıyo çıkartıyor çıkartıya çıkartıyı
 çıkartıyolar çıkartıyorlar çıkartıyalar
 çıkmayom çıkmıyorum çıkmayım
@@ -432,7 +435,7 @@ diyrum diyorum Dior'um
 çıkartamıcakmışız çıkartmayacakmışız
 çıkıcaktı çıkacaktı çıkıcıktı
 çıkaramıyosun çıkaramıyorsun
-# çıkabilsindi
+#@ çıkabilsindi
 çıkıyolardı çıkıyorlardı
 çikan çıkan çakan rikan Dika'n Çika ikan İkan çukan Tika'n mikan Çigan likan sikan Sika'n çitan Vika'n Çika'nı Çika'm Çika'n Nika'n Nikân Çiya'n Çika'na
 çıkyorum çıkıyorum
@@ -518,7 +521,7 @@ diyrum diyorum Dior'um
 # çalışırlarkırmızı
 çalışcaksın çalışacaksın
 çalışıosun çalışıyorsun
-çalışaraktan 
+# çalışaraktan
 çalışmıcan çalışmayacaksın
 çalışmıyomuş çalışmıyormuş
 çalışyodum çalışıyordum
@@ -549,7 +552,7 @@ diyrum diyorum Dior'um
 çalıştırıyolar çalıştırıyorlar
 çalişiyor çalışıyor çelişiyor
 çalışıyoduk çalışıyorduk
-@ çalışiyi
+@ çalışiyi çalışıyı
 çalışılıyo çalışılıyor
 konuşuyo konuşuyor konuşuyor konuşuyu konuşuya
 konuşuyodum konuşuyorum konuşuyordum konuşuydum
@@ -642,339 +645,339 @@ gonuşmuşlar konuşmuşlar
 konuşuyim konuşayım konuşuyum
 konuşyorsan konuşuyorsan konuyorsan
 konuşmuyom konuşmuyorum konuşmuyor
-konuşabiliyolardır
+konuşabiliyolardır konuşabiliyolardır
 konuşyoruz konuşuyoruz konuyoruz
-konuşanıyazanı 
+# konuşanıyazanı
 gonuşurlar konuşurlar
 gonuşturacak konuşturacak
 gonuştuğun konuştuğun
-konuşyolardı 
+konuşyolardı konuşyorlardı
 konuşuruyoruz konuşuluyoruz konuşturuyoruz
-geçmiyo geçmiyor geçmiyor
-geçiyo geçiyor geçiyor
+geçmiyo geçmiyor geçmiyor geçmiyor
+geçiyo geçiyor geçiyor geçiyor
 geçmiyelim geçmeyelim
 geçtüm geçtim göçtüm Geçti'm güçtüm Güç'tüm
-geçecem geçeceğim geçecek gebecem geçencem geçercem keçecem geçemem
-geçiyon geçiyorsun geçiyor
+geçecem geçeceğim geçeceğim geçecek gebecem geçencem geçercem keçecem geçemem
+geçiyon geçiyorsun geçiyorsun geçiyor
 geçiyosun geçiyorsun
-geçicem geçeceğim gezicem geçicim keçicem gericem
+geçicem geçeceğim geçeceğim gezicem geçicim keçicem gericem
 geçiyodu geçiyordu
-geçmeyim geçmeyi geçmeyin geçeyim geçmedim geçmeyip geçmeyiz geçteyim geçmelim geçmecim geçmeyiş geçimeyim gemeyim geçleyim
-geçiricez geçireceğiz geçirice
-geçeye geçmeye geceye geçene geleye peçeye geçere gebeye geçeme geçeyse keçeye leçeye geçeğe Gere'ye çeçeye geççeye
+@ geçmeyim geçmeyeyim geçmeyi geçmeyin geçeyim geçmedim geçmeyip geçmeyiz geçteyim geçmelim geçmecim geçmeyiş geçimeyim gemeyim geçleyim
+geçiricez geçireceğiz geçireceğiz geçirice
+# geçeye geçmeye geceye geçene geleye peçeye geçere gebeye geçeme geçeyse keçeye leçeye geçeğe Gere'ye çeçeye geççeye
 geçiyodun geçiyordun
 geçiyoduk geçiyorduk
 geçcek geçecek geçmek Gercek geçek geçsek
-geçicez geçeceğiz 
-geçicen geçiren geçinen geçilen gezicen gericen keçicen geçicin geçişen
-geçirio geçiriyor geçirip geçirin geçirir geçiril geçiri geçiriş geçirim
+geçicez geçeceğiz geçeceğiz
+geçicen geçeceksin geçiren geçinen geçilen gezicen gericen keçicen geçicin geçişen
+geçirio geçiriyor geçiriyor geçirip geçirin geçirir geçiril geçiri geçiriş geçirim
 geçyorlar geçiyorlar
 geçiryor geçiyor geçiriyor
-geçmeyecem geçmeyeceğim geçmeyecek
-geçirek geçiren geçerek geçirmek geçirsek geçire
-geçiriyom geçiriyorum geçiriyor geçiriyim
-geçecen geçeceksin geçecek gebecen keçecen geçencen geçercen
+geçmeyecem geçmeyeceğim geçmeyeceğim geçmeyecek
+geçirek geçerek geçiren geçerek geçirmek geçirsek geçire
+geçiriyom geçiriyorum geçiriyorum geçiriyor geçiriyim
+geçecen geçeceksin geçeceksin geçecek gebecen keçecen geçencen geçercen
 geçiriyosun geçiriyorsun
 geçirceksin geçireceksin
-geçindirebiliyo geçindirebiliyor geçindirebiliyor
+# geçindirebiliyo geçindirebiliyor geçindirebiliyor geçindirebiliyor
 geçyordu geçiyordu
-geçmiycek geçmeyecek 
-geçcem geçmem geççem Gence'm gencem gecem geçsem
-geçiryosun 
-geçirmicez geçirmeyeceğiz 
-geçemicek geçemeyecek 
-geçmesitren 
-geçircek geçirmek geçirecek geçirsek
+geçmiycek geçmeyecek geçmeyecek
+geçcem geçeceğim geçmem geççem Gence'm gencem gecem geçsem
+geçiryosun geçiriyorsun
+geçirmicez geçirmeyeceğiz geçirmeyeceğiz
+geçemicek geçemeyecek geçemeyecek
+# geçmesitren
+geçircek geçirecek geçirmek geçirecek geçirsek
 geçiyosa geçiyorsa
 geçiyolar geçiyorlar
-geçircem geçirmem geçercem geçirsem
-geçyormış 
-geçiyodum geçiyorum geçiyordum
+geçircem geçireceğim geçirmem geçercem geçirsem
+geçyormış geçiyormuş
+geçiyodum geçiyordum geçiyorum geçiyordum
 geçiceği geçeceği
-geçiceksiniz geçeceksiniz geçeceksiniz
-geçirmeyim geçirmeyi geçirmedim geçirmeyin geçirmeyiş geçirmeyip geçirimeyim geçirmelim geçirmecim geçirmeyiz geçimeyim geçirteyim geçireyim
-geçilicek geçilecek geçilecek
-geçiştirecem geçiştireceğim geçiştiremem geçiştirecek
-geçiremiyeceğimizdir 
-geçicektir geçecektir geçecektir
-geçiricek geçirecek geçirecek geçirice geçiricik
-geçecez geçeceğiz geçecek geçemez
-geçirerekten 
-geçio geçiyor geçiş geçip geçit geçim geçin geçir geçiz geçil geçi
+geçiceksiniz geçeceksiniz geçeceksiniz geçeceksiniz
+@ geçirmeyim geçirmeyeyim geçirmeyi geçirmedim geçirmeyin geçirmeyiş geçirmeyip geçirimeyim geçirmelim geçirmecim geçirmeyiz geçimeyim geçirteyim geçireyim
+geçilicek geçilecek geçilecek geçilecek
+geçiştirecem geçiştireceğim geçiştireceğim geçiştiremem geçiştirecek
+# geçiremiyeceğimizdir
+geçicektir geçecektir geçecektir geçecektir
+geçiricek geçirecek geçirecek geçirecek geçirice geçiricik
+geçecez geçeceğiz geçeceğiz geçecek geçemez
+# geçirerekten
+geçio geçiyor geçiyor geçiş geçip geçit geçim geçin geçir geçiz geçil geçi
 geçiyosundur geçiyorsundur
 geçiyomuşsun geçiyormuşsun
-geçirecem geçireceğim geçirecek geçiremem
-buharaya Buhara'yı Buhara'ca Buhara'ya Buhara'yla Buhara'ma buharaysa Buhara'ysa Buhara'da Buhayra'ya Buhara'na
-geçiricem geçireceğim geçiricim geçirice geçicicem
-geçenkini geçenlini geçencini geçenini geçinkini
+geçirecem geçireceğim geçireceğim geçirecek geçiremem
+# buharaya Buhara'yı Buhara'ca Buhara'ya Buhara'yla Buhara'ma buharaysa Buhara'ysa Buhara'da Buhayra'ya Buhara'na
+geçiricem geçireceğim geçireceğim geçiricim geçirice geçicicem
+geçenkini geçenki geçenlini geçencini geçenini geçinkini
 geçerkene geçerken geçerlene geçercene
-geçenki geçeni geçenli geçendi geçinki geçenci geçensi
-geçiriyo geçiriyor geçiriyor geçiriyi geçiriye
-geçtiydim geçiydim geçteydim Geçti'yim geçliydim Gent'iydim geççiydim Geyt'iydim Geçti'ydim Geçti'ydin Geet'iydim Geçti'ndim Geçti'ydik geçsiydim Geçiti'ydim geçtirdim Gert'iydim Geçti'ydi
-geçircez geçirmez
+# geçenki geçeni geçenli geçendi geçinki geçenci geçensi
+geçiriyo geçiriyor geçiriyor geçiriyor geçiriyi geçiriye
+# geçtiydim geçiydim geçteydim Geçti'yim geçliydim Gent'iydim geççiydim Geyt'iydim Geçti'ydim Geçti'ydin Geet'iydim Geçti'ndim Geçti'ydik geçsiydim Geçiti'ydim geçtirdim Gert'iydim Geçti'ydi
+geçircez geçireceğiz geçirmez
 geçceksin geçeceksin Gercek'sin geçeksin
-geçirmiyo geçirmiyor geçirmiyor
-geçemiycem 
-geçiyomuşun 
-geçyolar 
+geçirmiyo geçirmiyor geçirmiyor geçirmiyor
+geçemiycem geçemeyeceğim
+geçiyomuşun geçiyormuşsun
+geçyolar geçiyorlar
 geçirceğimi geçireceğimi
-yaşıyoz yaşıyoruz yaşıyor yaşıyız
-yaşıcaksın yaşacaksın 
-yaşanıcak yaşanacak yaşanacak
+yaşıyoz yaşıyoruz yaşıyoruz yaşıyor yaşıyız
+yaşıcaksın yaşacaksın yaşacaksın
+yaşanıcak yaşanacak yaşanacak yaşanacak
 yaşıyan yaşayan taşıyan kaşıyan yaşıysan
 yaşanılamıyacak yaşanılamayacak
 yaşanıyo yaşanıyor
 yaşıyo yaşıyor
 yaşanıcağını yaşanacağını
 yaşamıyolarsa yaşamıyorlarsa
-yaşıyon yaşıyor
-yaşıyarak taşıyarak yaşayarak kaşıyarak
-yaşıycaksın yaşayacaksın 
-yaşıo yaşıyor yaşı yaşın Yaşın yaşım yaşıt Yaşık Yaşıl yaşız
-yaşıyosan yaşıysan yaşıyorsan
+yaşıyon yaşıyorsun yaşıyor
+yaşıyarak yaşayarak taşıyarak yaşayarak kaşıyarak
+yaşıycaksın yaşayacaksın yaşayacaksın
+yaşıo yaşıyor yaşıyor yaşı yaşın Yaşın yaşım yaşıt Yaşık Yaşıl yaşız
+yaşıyosan yaşıyorsan yaşıysan yaşıyorsan
 yaşıyacağımızı yaşayacağımızı taşıyacağımızı kaşıyacağımızı
 yaşıyamam yaşayamam taşıyamam kaşıyamam
 yaşanılcak yaşanılacak yaşanılmak
 yaşıyosunuz yaşıyorsunuz
-yaşıyamazlar taşıyamazlar kaşıyamazlar yaşayamazlar
-yaşıcak yaşacak 
-yaşıcaksınız yaşacaksınız 
+yaşıyamazlar yaşayamazlar taşıyamazlar kaşıyamazlar yaşayamazlar
+yaşıcak yaşayacak yaşacak yaşacak
+yaşıcaksınız yaşacaksınız yaşacaksınız
 yaşıyosun yaşıyorsun
 yaşıyomuş yaşıyormuş
-yaşıcam aşıcam şaşıcam yarıcam
+yaşıcam yaşayacağım aşıcam şaşıcam yarıcam
 yaşariz yaşarız Yaşer'iz Yaşar'ız Yaşari Yaşari'n Yaşari'm
-dayaşamak dayamamak
+# dayaşamak dayamamak
 yaşıyolar yaşıyorlar
-bağdatlı Bağdat'ı Bağdat'la bağdatıl badatlı Bağdat'çı bağdaşlı Bağdat'lı bağdattı Bağdat'tı Bağdat'lık bağdatalı Bağdat'lın Bağdat'sı Bağdat'lım
-yaşadıyedinci 
+# bağdatlı Bağdat'ı Bağdat'la bağdatıl badatlı Bağdat'çı bağdaşlı Bağdat'lı bağdattı Bağdat'tı Bağdat'lık bağdatalı Bağdat'lın Bağdat'sı Bağdat'lım
+# yaşadıyedinci
 yaşamıyo yaşamıyor
 yaşayamıyosun yaşayamıyorsun
-yaşamıcaz yaşamacağız 
+yaşamıcaz yaşamayacağız yaşamacağız
 yaşıyolarsa yaşıyorlarsa
 yaşayoruz yaşıyoruz
-yaşarımda yaşamımda yazarımda Yaşar'ımca Yaşar'ımsa Yaşam'ımda Yanar'ımda yararımda Yaşar'ında Yaşar'cımda aşarımda Başar'ımda başarımda Taşar'ımda Yaşar'ımdan Yaşar'lımda yakarımda Yaşar'ımla yaşlarımda Yaşar'ımda Yaşar'ımdı Yabar'ımda haşarımda kaşarımda Yaşar'sımda Yaşar'ıma yaşatımda
-yaşarkendi 
+# yaşarımda yaşamımda yazarımda Yaşar'ımca Yaşar'ımsa Yaşam'ımda Yanar'ımda yararımda Yaşar'ında Yaşar'cımda aşarımda Başar'ımda başarımda Taşar'ımda Yaşar'ımdan Yaşar'lımda yakarımda Yaşar'ımla yaşlarımda Yaşar'ımda Yaşar'ımdı Yabar'ımda haşarımda kaşarımda Yaşar'sımda Yaşar'ıma yaşatımda
+# yaşarkendi
 yaşayınların yaşayanların yaşayışların
 yaşıyanların yaşayanların taşıyanların kaşıyanların
-yaşıyacak taşıyacak yaşayacak kaşıyacak
+yaşıyacak yaşayacak taşıyacak yaşayacak kaşıyacak
 yaşıyanları yaşayanları taşıyanları kaşıyanları
-yaşanılabilinir 
-koyabileceğiyaşatabileceği 
-yaşıcaz yaşacağız 
+yaşanılabilinir yaşanılabılınır
+# koyabileceğiyaşatabileceği
+yaşıcaz yaşayacağız yaşacağız yaşacağız
 gircek girecek girmek Gercek girsek Giricek
-gircen giren girmen Birce'n bircen girsen gürcen Girne'n gricen
-giryosun Giro'sun
-girecez gireceğiz girecek giremez
-girmicem girmeceğim 
+gircen gireceksin giren girmen Birce'n bircen girsen gürcen Girne'n gricen
+giryosun giriyorsun Giro'sun
+girecez gireceğiz gireceğiz girecek giremez
+girmicem girmeyeceğim girmeceğim girmeceğim
 gi̇rer girer
-giricem gireceğim gricem diricem gidicem iricem miricem giricim Giricek gericem
+giricem gireceğim gireceğim gricem diricem gidicem iricem miricem giricim Giricek gericem
 girmiyomuşuz girmiyormuşuz
 giremiyosam giremiyorsam
-giriyo giriyor giriyor
-girmiyon girmiyorsun girmiyor
-giricekler girecekler girecekler Giricek'iler Giricek'ler Giricek'le Giricek'leş Giricek'len Giricek'eler Giricek'lere Giricek'leri
-girecem gireceğim girecek firecem görecem tirecem giremem gürecem
-girmim girmiş girdim girmem Girl'im cirmim germim Girami'm Firm'im girimim yirmim girim
+giriyo giriyor giriyor giriyor
+girmiyon girmiyorsun girmiyorsun girmiyor
+giricekler girecekler girecekler girecekler Giricek'iler Giricek'ler Giricek'le Giricek'leş Giricek'len Giricek'eler Giricek'lere Giricek'leri
+girecem gireceğim gireceğim girecek firecem görecem tirecem giremem gürecem
+@ girmim girmeyeyim girmiş girdim girmem Girl'im cirmim germim Girami'm Firm'im girimim yirmim girim
 giriyodun giriyordun
-girecen gireceksin girecek firecen tirecen görecen gürecen
+girecen gireceksin gireceksin girecek firecen tirecen görecen gürecen
 girceksin gireceksin Gercek'sin Giricek'sin
-giricek girecek girecek Giricek'e Giricek Giricek'i
-giriyodum giriyorum giriyordum
-girdimiydi girimiydi girdiğiydi girdimeydi girdiliydi girdisiydi girdimindi girdiciydi girdimizdi
-giriyon giriyorsun giriyor
-giriyim girişim biriyim gibiyim gireyim Girik'im Girit'im Jiri'yim iriyim giziyim çiriyim gidiyim Gori'yim Gigi'yim liriyim griyim Agir'iyim geriyim Siri'yim girimim kiriyim Geir'iyim girdiyim piriyim miriyim ziriyim giricim diriyim Girl'iyim
-giriyoz giriyoruz giriyor
-gircem girmem gricem Birce'm bircem gürcem girsem Girne'm
-giryoz 
-girmiyo girmiyor girmiyor
+giricek girecek girecek girecek Giricek'e Giricek Giricek'i
+giriyodum giriyordum giriyorum giriyordum
+#@ girdimiydi girimiydi girdiğiydi girdimeydi girdiliydi girdisiydi girdimindi girdiciydi girdimizdi
+giriyon giriyorsun giriyorsun giriyor
+giriyim gireyim girişim biriyim gibiyim gireyim Girik'im Girit'im Jiri'yim iriyim giziyim çiriyim gidiyim Gori'yim Gigi'yim liriyim griyim Agir'iyim geriyim Siri'yim girimim kiriyim Geir'iyim girdiyim piriyim miriyim ziriyim giricim diriyim Girl'iyim
+giriyoz giriyoruz giriyoruz giriyor
+gircem gireceğim girmem gricem Birce'm bircem gürcem girsem Girne'm
+giryoz giriyoruz
+girmiyo girmiyor girmiyor girmiyor
 giriyosun giriyorsun
-giriosa giriyorsa 
+giriosa giriyorsa giriyorsa
 giriyolar giriyorlar
-giriyom giriyorum giriyor
-giremicen 
-giricekti girecekti girecekti Giricek'si Giricek'li Giricek'tin Giricek'tim Giricek'tir Giricek'çi Giricek'te Giricek'ti Giricek'i Giricek'tik
-giriceksin gireceksin gireceksin Giricek'isin Giricek'si Giricek'tin Giricek'sim Giricek'çin Giricek'sen Giricek'siz Giricek'sin Giricek'esin Giricek'lin Giricek'in
-girebiliyo girebiliyor girebiliyor
-giricen girilen girişen gericen miricen diricen Giricek giricin iricen gidicen gricen
+giriyom giriyorum giriyorum giriyor
+giremicen giremeyeceksin
+giricekti girecekti girecekti girecekti Giricek'si Giricek'li Giricek'tin Giricek'tim Giricek'tir Giricek'çi Giricek'te Giricek'ti Giricek'i Giricek'tik
+giriceksin gireceksin gireceksin gireceksin Giricek'isin Giricek'si Giricek'tin Giricek'sim Giricek'çin Giricek'sen Giricek'siz Giricek'sin Giricek'esin Giricek'lin Giricek'in
+girebiliyo girebiliyor girebiliyor girebiliyor
+giricen gireceksin girilen girişen gericen miricen diricen Giricek giricin iricen gidicen gricen
 giremiyosunuz giremiyorsunuz
-gireceklerdeniz Giricek'lerdeniz giyeceklerdeniz
+# gireceklerdeniz Giricek'lerdeniz giyeceklerdeniz
 girceksiniz gireceksiniz Gercek'siniz Giricek'siniz
 giriyosunuz giriyorsunuz
 giremeez giremez
-girmicen 
-girmezden görmezden girmeden girmemden girmezdin girmenden girmezsen girmezken
-girceksen Giricek'sen gireceksen Gercek'sen
-gircez girmez
+girmicen girmeyeceksin
+# girmezden görmezden girmeden girmemden girmezdin girmenden girmezsen girmezken
+girceksen gireceksin Giricek'sen gireceksen Gercek'sen
+gircez gireceğiz girmez
 gi̇remez giremez
 gircekler girecekler Giricek'ler Gercek'ler
 giremiyosun giremiyorsun
 girmiyelim girmeyelim
-olacakgirme 
+# olacakgirme
 giriyodu giriyordu
 giryorsun giriyorsun
-girebilironları 
-girmicekler girmeyecekler Giricek'ler
-giriveriyo giriveriyor giriveriyor
+# girebilironları
+girmicekler girmeyecekler girmeyecekler Giricek'ler
+giriveriyo giriveriyor giriveriyor giriveriyor
 giremiyomuş giremiyormuş
-giricez gireceğiz Giricek
+giricez gireceğiz gireceğiz Giricek
 giriceğini gireceğini Giricek'ini
-giremiyom giremiyorum giremiyor
-girmicek girmeyecek Giricek
+giremiyom giremiyorum giremiyorum giremiyor
+girmicek girmeyecek girmeyecek Giricek
 giriyosa giriyorsa
 giremiyodun giremiyordun
 giriyomuşsun giriyormuşsun
-girebilyo 
-girdük gördük girdik gürdük
+girebilyo girebiliyor
+girdük girdik gördük girdik gürdük
 giryorum giriyorum
-girmeyim girmeyi girmeyin girmedim girmeyiz girmeyip gireyim girmecim grimeyim girmelim Girl'eyim cirmeyim girimeyim Firm'eyim Girne'yim girmeyiş gurmeyim
-girilmeyu girilmeye girilmeyi
-giriom giriyorum Giro'm girim
+girmeyim girmeyeyim girmeyi girmeyin girmedim girmeyiz girmeyip gireyim girmecim grimeyim girmelim Girl'eyim cirmeyim girimeyim Firm'eyim Girne'yim girmeyiş gurmeyim
+girilmeyu girilmiyor girilmeye girilmeyi
+giriom giriyorum giriyorum Giro'm girim
 bakıyo bakıyor bakıyı bakıya
 bakıyosun bakıyorsun
-bakacaz bakacağız bakacak bakamaz bakayaz bakaca bakacız
+bakacaz bakacağız bakacağız bakacak bakamaz bakayaz bakaca bakacız
 bakıyolar bakıyorlar bakıyalar
-baktıydım baytıydım baktırdım batkıydım batıydım Batı'ydım Baksı'ydım paktıydım bahtıydım Bahtı'ydım Bart'ıydım bastıydım bakıydım taktıydım
-bakıyim bakiyim bakıyım
-bakıcaz bakacağız bakıca
+# baktıydım baytıydım baktırdım batkıydım batıydım Batı'ydım Baksı'ydım paktıydım bahtıydım Bahtı'ydım Bart'ıydım bastıydım bakıydım taktıydım
+bakıyim bakayim bakiyim bakıyım
+bakıcaz bakacağız bakacağız bakıca
 bakıyosunuz bakıyorsunuz
-bakıyon bakıyor
-bakcakmış Bakbak'mış bacakmış bakacakmış bakmakmış
-bakcam bakmam bacam baycam baklam bazcam Bacca'm bakkam baksam bakam Akca'm
-bakmıycaksın bakmayacaksın 
+bakıyon bakıyorsun bakıyor
+bakcakmış bakacakmış Bakbak'mış bacakmış bakacakmış bakmakmış
+bakcam bakacağım bakmam bacam baycam baklam bazcam Bacca'm bakkam baksam bakam Akca'm
+bakmıycaksın bakmayacaksın bakmayacaksın
 bakmasin bakmasın bakmasan
-onaylanmasıbakanlar 
-bakmıcam bakmayacağım 
-bakıyom bakıyor bakıyım
-bakcak bakmak bacak bakacak baksak Bakbak
+# onaylanmasıbakanlar
+bakmıcam bakmayacağım bakmayacağım
+bakıyom bakıyorum bakıyor bakıyım
+bakcak bakacak bakmak bacak bakacak baksak Bakbak
 bakmıyo bakmıyor
-bakamaycaz 
-bakacam bakacak bakaca başkacam bakamam bakacım bakaram babacam bağacam kakacam bakayam
-bah baş bak baz bal bağ şah bab ban ah bay bar bas Ba bae mah vah bad kah baha Baha hah bat Bach bam nah baht dah bap Ba'm bav Ba'n baf pah gah Beah Bahr Bath bai aah sah bahş Bahn baç
+bakamaycaz bakamayacağız
+bakacam bakacağım bakacak bakaca başkacam bakamam bakacım bakaram babacam bağacam kakacam bakayam
+bah bak baş bak baz bal bağ şah bab ban ah bay bar bas Ba bae mah vah bad kah baha Baha hah bat Bach bam nah baht dah bap Ba'm bav Ba'n baf pah gah Beah Bahr Bath bai aah sah bahş Bahn baç
 baktıydı Bart'ıydı bahtıydı Bahtı'ydı taktıydı Baksı'ydı baytıydı bastıydı paktıydı baktırdı batkıydı batıydı Batı'ydı bakıydı
-bağarmadan ağarmadan bağırmadan başarmadan
+# bağarmadan ağarmadan bağırmadan başarmadan
 bakılmıyo bakılmıyor
-bakcan bakan Bağcan baksan Akcan baklan Baklan Bacca'n bazcan bacan Balcan Baycan baycan bakman Akca'n
-bakcaktım bacaktım bakacaktım Bakbak'tım
-bakıyodum bakıyorum bakıyordum
+bakcan bakacaksın bakan Bağcan baksan Akcan baklan Baklan Bacca'n bazcan bacan Balcan Baycan baycan bakman Akca'n
+bakcaktım bakacaktım bacaktım bakacaktım Bakbak'tım
+bakıyodum bakıyordum bakıyorum bakıyordum
 bakk bak bank baki baka Bakü Bask Back akk Balk Hakk bark Baek bakı Bakû
-bakıcan bakılan bakıdan bazıcan bakışan batıcan bakınan bakıca bakıcın balkıcan bakırcan
+bakıcan bakacaksın bakılan bakıdan bazıcan bakışan batıcan bakınan bakıca bakıcın balkıcan bakırcan
 bakıyodu bakıyordu
-bakmıcaksın bakmacaksın 
+bakmıcaksın bakmayacaksın bakmacaksın bakmacaksın
 bakıyok bakıyor
-bakıcaksın bakacaksın bakacaksın bakıncaksın bakıcıksın
-bakup Yakup bakıp Backup Bakû'n Bakû Bakû'm
+bakıcaksın bakacaksın bakacaksın bakacaksın bakıncaksın bakıcıksın
+bakup bakıp Yakup bakıp Backup Bakû'n Bakû Bakû'm
 bakıyoduk bakıyorduk
-bakangiden 
-bakacan bakacaksın babacan bakacak başkacan bakaca bakaran bakayan kakacan bağacan bakacın
+# bakangiden
+bakacan bakacaksın bakacaksın babacan bakacak başkacan bakaca bakaran bakayan kakacan bağacan bakacın
 bakmıyom bakmıyor
 bakıyomuş bakıyormuş
 bakyordu bakıyordu
 bakabiliyosunuz bakabiliyorsunuz
 bakcaksın bakacaksın bacaksın Bakbak'sın
-bakyo banyo
-bakmıyodum bakmıyorum bakmıyordum
+bakyo bakıyor banyo
+bakmıyodum bakmıyordum bakmıyorum bakmıyordum
 bağarsın bakarsın çağarsın Çağar'sın yağarsın dağarsın başarsın Başar'sın ağarsın Ağar'sın Tağar'sın bağrasın bağırsın baharsın batarsın boğarsın Bazar'sın basarsın bağamsın Ba'larsın balarsın Bağarası'n zağarsın bağansın sağarsın banarsın bağlarsın bayarsın Bayar'sın bağasın bağdarsın
-bakıom bakiyorum bakım
-bakıo bakıyor bakım bakın bakış bakır bakıp bakı bakıl
-baksındı Baas'ındı Banks'ındı Bass'ındı Baksı'nı baskındı Bask'ındı Baksı'ndır faksındı vaksındı Taks'ındı Maks'ındı Oaks'ındı Saks'ındı saksındı Baksı'ydı raksındı Baksı'ndı bakındı Baksı'ndık Baksı'mdı basındı Baksı'nda Baksı'ndım aksındı Aksın'dı
-bakcaklar bacaklar bakacaklar Bakbak'lar
-baktıydın batkıydın bastıydın Baksı'ydın bakıydın taktıydın batıydın Batı'ydın Bart'ıydın bahtıydın Bahtı'ydın paktıydın baytıydın baktırdın
-bakıosun bakıyorsun 
+bakıom bakiyorum bakiyorum bakım
+bakıo bakıyor bakıyor bakım bakın bakış bakır bakıp bakı bakıl
+#@ baksındı Baas'ındı Banks'ındı Bass'ındı Baksı'nı baskındı Bask'ındı Baksı'ndır faksındı vaksındı Taks'ındı Maks'ındı Oaks'ındı Saks'ındı saksındı Baksı'ydı raksındı Baksı'ndı bakındı Baksı'ndık Baksı'mdı basındı Baksı'nda Baksı'ndım aksındı Aksın'dı
+bakcaklar bakacaklar bacaklar bakacaklar Bakbak'lar
+# baktıydın batkıydın bastıydın Baksı'ydın bakıydın taktıydın batıydın Batı'ydın Bart'ıydın bahtıydın Bahtı'ydın paktıydın baytıydın baktırdın
+bakıosun bakıyorsun bakıyorsun
 bakıyolarmış bakıyorlarmış
-baktik taktik baktık laktik batik Baek'tik bektik haktik biktik
-bakamicam 
-bırakmıyım Bırak'çıyım bırakımıyım Bırak'ıyım Bırak'lıyım Bırak'sıyım bırakmışım Bırak'mışım
+baktik baktık taktik baktık laktik batik Baek'tik bektik haktik biktik
+bakamicam bakamayacağım
+bırakmıyım bırakmayayım Bırak'çıyım bırakımıyım Bırak'ıyım Bırak'lıyım Bırak'sıyım bırakmışım Bırak'mışım
 bıraktıydı bıraktırdı Bırak'lıydı Bırak'ıydı Bırak'taydı Bırak'çıydı Bırak'sıydı
-bırakıyom bırakıyor Bırak'ıyım
-bırakak bırakan bırakmak bıraksak Bırak'sak bıraka Bırak'a
+bırakıyom bırakıyorum bırakıyor Bırak'ıyım
+bırakak bırakarak bırakan bırakmak bıraksak Bırak'sak bıraka Bırak'a
 bırakamıyo bırakamıyor
 bırakıyoduk bırakıyorduk
-bırakacan bırakacaksın bırakacak
-bırakıcak bırakacak bırakacak
+bırakacan bırakacaksın bırakacaksın bırakacak
+bırakıcak bırakacak bırakacak bırakacak
 bırakıyo bırakıyor
 bırakıyosun bırakıyorsun
 bırakmıyalım bırakmayalım
-bırakmıcan 
-bırakıcaktım bırakacaktım bırakacaktım
-bırakacam bırakacak bırakamam
+bırakmıcan bırakmayacaksın
+bırakıcaktım bırakacaktım bırakacaktım bırakacaktım
+bırakacam bırakacağım bırakacak bırakamam
 bırakıyolar bırakıyorlar
-bırakıcaz bırakacağız 
+bırakıcaz bırakacağız bırakacağız
 bırakıyodu bırakıyordu
-birakiyor birikiyor
+birakiyor bırakiyor birikiyor
 bırakmıyo bırakmıyor
 birakan bırakan Birkan Birak'ın Birak'san Birak'lan Birak'a biralan barakan biraran Birak'tan biradan
-bırakıyım bırakırım bırakayım Bırak'ıyız bırakıdım bırakımım Bırak'ınım Bırak'ıyım Bırak'lıyım Kırak'ıyım Bırak'ayım Barak'ıyım Bırak'çıyım Irak'ıyım Birak'ıyım Borak'ıyım borakıyım Bırak'sıyım bırakışım bırakıcım Burak'ıyım Bırak'ıydım
+bırakıyım bırakayım bırakırım bırakayım Bırak'ıyız bırakıdım bırakımım Bırak'ınım Bırak'ıyım Bırak'lıyım Kırak'ıyım Bırak'ayım Barak'ıyım Bırak'çıyım Irak'ıyım Birak'ıyım Borak'ıyım borakıyım Bırak'sıyım bırakışım bırakıcım Burak'ıyım Bırak'ıydım
 bırakmıyosun bırakmıyorsun
 bırakcaksın bırakacaksın
 bırakıyolarmış bırakıyorlarmış
 bırakyor bırakıyor
-birakip birikip
+birakip bırakıp birikip
 bırakyorlar bırakıyorlar
-biraktiktan 
+biraktiktan bıraktıktan
 bırakıyomuş bırakıyormuş
-bırakmamacasına 
-bırakacaz bırakacağız bırakacak bırakamaz bırakayaz
+# bırakmamacasına
+bırakacaz bırakacağız bırakacağız bırakacak bırakamaz bırakayaz
 bırakmıyosa bırakmıyorsa
-bırakmıcaksın bırakmacaksın 
-bırakmıcaktım bırakmacaktım 
-bırakıosun bırakıyorsun 
+bırakmıcaksın bırakmayacaksın bırakmacaksın bırakmacaksın
+bırakmıcaktım bırakmayacaktım bırakmacaktım bırakmacaktım
+bırakıosun bırakıyorsun bırakıyorsun
 bırakyorsun bırakıyorsun
-bırakıcaksınız bırakacaksınız bırakacaksınız
+bırakıcaksınız bırakacaksınız bırakacaksınız bırakacaksınız
 bırakıyosunuz bırakıyorsunuz
-birakmayasin 
-bırakmışam bırakmışsam Bırak'mışsam bırakmışa bırakmışım Bırak'mışım
-bırakıverdiydi 
-bırakmıycaklar bırakmayacaklar 
+birakmayasin bırakmayin
+bırakmışam bırakmışım bırakmışsam Bırak'mışsam bırakmışa bırakmışım Bırak'mışım
+# bırakıverdiydi
+bırakmıycaklar bırakmayacaklar bırakmayacaklar
 anlamıyosun anlamıyorsun
 anlıyan anlayan anlıdan ansıyan anlılan anlıysan anlıya
-anlatacam anlatacak anlatamam
+anlatacam anlatacağım anlatacak anlatamam
 anlatıyo anlatıyor anlatıyı anlatıya
 anlatıyodu anlatıyordu
 anlatim anlatım
-anlamıyom anlamıyor anlamıyım
-anlıcağın 
-anlatıcaz anlatacağız anlatıca
-anlatcaz anlatmaz
+anlamıyom anlamıyorum anlamıyor anlamıyım
+anlıcağın anlacağın
+anlatıcaz anlatacağız anlatacağız anlatıca
+anlatcaz anlatacağız anlatmaz
 anlarsin anlarsın anlarsan
-anlayacam anlayacak anlayamam
-anlatabiliyom anlatabiliyorum anlatabiliyor
+anlayacam anlayacağım anlayacak anlayamam
+anlatabiliyom anlatabiliyorum anlatabiliyorum anlatabiliyor
 anlatcaksın anlatacaksın
 anlıyarak anlayarak ansıyarak
-anlaşıyoz anlaşıyoruz anlaşıyor
+anlaşıyoz anlaşıyoruz anlaşıyoruz anlaşıyor
 anlamıyo anlamıyor
 anlıyolar anlıyorlar
-anlamıyorumyüzü 
-anlatcak anlatmak anlatacak anlatsak
+# anlamıyorumyüzü
+anlatcak anlatacak anlatmak anlatacak anlatsak
 anlıyosun anlıyorsun
-anlatıyoree 
+anlatıyoree anlatıyor
 anlaşılıyo anlaşılıyor
 anlaşılmıyo anlaşılmıyor
 anlamıyomuş anlamıyormuş
 anlatamıyosun anlatamıyorsun
-anlatacaz anlatacağız anlatacak anlatamaz anlatayaz
+anlatacaz anlatacağız anlatacağız anlatacak anlatamaz anlatayaz
 anlatmağa anlatmaya anlatmama anlatmasa anlatmana anlatmaca anlatmada
-anlaşılacam anlaşılacak anlaşılamam
-anlatildi 
+anlaşılacam anlaşılacağım anlaşılacak anlaşılamam
+anlatildi anlatıldı
 anlıyamadık anlayamadık ansıyamadık
-anlayabiliyo anlayabiliyor anlayabiliyor
+anlayabiliyo anlayabiliyor anlayabiliyor anlayabiliyor
 anlamıyolar anlamıyorlar
-anlatmıcan 
+anlatmıcan anlatmayacağım
 anlamıyolarsa anlamıyorlarsa
-anlayacan anlayacaksın anlayacak
-anlamıyon anlamıyor
+anlayacan anlayacaksın anlayacaksın anlayacak
+anlamıyon anlamıyorsun anlamıyor
 anlıyamıyorum anlayamıyorum ansıyamıyorum
 anlatıyolar anlatıyorlar anlatıyalar
-anlıycam anlıysam
+anlıycam anlayacağım anlıysam
 anlatiyor anlatıyor
 anlatıyosun anlatıyorsun
-anlatıyon anlatıyor
-anlaşmaekonomik 
+anlatıyon anlatıyorsun anlatıyor
+# anlaşmaekonomik
 anlıyabiliyoruz anlayabiliyoruz ansıyabiliyoruz
-anlamıcaktır anlamacaktır 
+anlamıcaktır anlamayacaktır anlamacaktır anlamacaktır
 anlaşıyoduk anlaşıyorduk
 annadın anladın Anna'mdın Anna'ydın ağnadın Anna'nın anmadın Anna'lın Anna'cın Anna'sın Anad'ın Anna'dır Anna'mın Anna'dan Anand'ın anandın
-anlıcak anlacak anlıca
+anlıcak anlacak anlacak anlıca
 anlıyanlar anlayanlar ansıyanlar
-anlıycak anlayacak anlıysak
-anlatabiliyo anlatabiliyor anlatabiliyor
-anlaş
+anlıycak anlayacak anlayacak anlıysak
+anlatabiliyo anlatabiliyor anlatabiliyor anlatabiliyor
+#anlaş
