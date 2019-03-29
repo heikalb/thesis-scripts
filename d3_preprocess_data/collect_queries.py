@@ -60,6 +60,23 @@ def depunctuate(st):
     return ' '.join(new_sent)
 
 
+def fix_columns(left, mid, right, stem):
+    mid_words = mid.split()
+
+    if len(mid_words) > 1:
+        if left.endswith(mid):
+            left = left.replace(mid, '').strip()
+        elif right.startswith(mid):
+            right = right.replace(mid, '').strip()
+
+        if [w for w in mid_words if stem in w]:
+            mid = [w for w in mid_words if stem in w][0]
+        else:
+            mid = mid_words[0]
+
+    return left, mid, right
+
+
 def main():
     save_rows = []
     data_dir = '../d2_data/query_results_freq_dict/'
@@ -82,18 +99,8 @@ def main():
             left_context = depunctuate(row[2])
             right_context = depunctuate(row[4])
 
-            # When there are multiple words in the target word column, save the word with the correct stem
-            target_column = main_word.split()
-            if len(target_column) > 1:
-                if left_context.endswith(main_word):
-                    left_context = left_context.replace(main_word, '').strip()
-                elif right_context.startswith(main_word):
-                    right_context = right_context.replace(main_word, '').strip()
-
-                if [w for w in target_column if curr_stem in w]:
-                    main_word = [w for w in target_column if curr_stem in w][0]
-                else:
-                    main_word = target_column[0]
+            # Fix main columns with multiple words. Fix cases of main words duplicated in context windows.
+            left_context, main_word, right_context = fix_columns(left_context, main_word, right_context, curr_stem)
 
             # Join context windows, reduce to one sentence
             full_sentence = ' '.join([left_context, main_word, right_context])
@@ -101,7 +108,7 @@ def main():
             save_rows.append([single_sent[0], main_word, single_sent[1]])
 
     # Save data
-    with open('../d2_data/freq_dict_query_results_all_joined_sents.tsv', 'w') as f:
+    with open('../d2_data/freq_dict_query_results_joined.tsv', 'w') as f:
         csv_writer = csv.writer(f, delimiter='\t')
         for r in save_rows:
             csv_writer.writerow(r)
