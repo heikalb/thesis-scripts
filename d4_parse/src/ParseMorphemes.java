@@ -15,7 +15,49 @@ public class ParseMorphemes
     public static void main (String[] args) throws IOException
     {
         // Corpus file
-        FileReader fileReader = new FileReader("../data/query_results_all_joined_sents_.tsv");
+        File[] query_files = new File("../d2_data/joined/").listFiles();
+        int i = 0;
+        for(File f: query_files)
+        {
+            String dataFile = f.getName();
+            FileReader fileReader = new FileReader("../d2_data/joined/" + dataFile);
+            BufferedReader br = new BufferedReader(fileReader);
+
+            // For Turkish morphological processing
+            TurkishMorphology morphology = TurkishMorphology.createWithDefaults();
+
+            //Collect parses
+            ArrayList<List> parses = new ArrayList();
+
+            // Go through lines in file
+            String line;
+            while ((line = br.readLine()) != null)
+            {
+                String sentence = line.split("\t")[0];
+                List<WordAnalysis> analyses = morphology.analyzeSentence(sentence);
+                SentenceAnalysis result = morphology.disambiguate(sentence, analyses);
+                parses.add(result.bestAnalysis());
+            }
+
+            // Save data
+            String path = "parses/" + dataFile.split("_")[0] +"_" + dataFile.split("_")[1] + "_parses.txt";
+            File saveFile = new File(path);
+            FileWriter writer = new FileWriter(saveFile);
+            System.out.println(i + ": " + path);
+
+            for(List parseList: parses)
+                writer.append(parseList.toString() + '\n');
+
+            writer.flush();
+            writer.close();
+            i++;
+        }
+
+
+
+        /*
+        String dataFile = "../d2_data/freq_dict_query_results_joined.tsv";
+        FileReader fileReader = new FileReader(dataFile);
         BufferedReader br = new BufferedReader(fileReader);
 
         // For Turkish morphological processing
@@ -32,12 +74,13 @@ public class ParseMorphemes
             List<WordAnalysis> analyses = morphology.analyzeSentence(sentence);
             SentenceAnalysis result = morphology.disambiguate(sentence, analyses);
             parses.add(result.bestAnalysis());
+            System.out.println(result.bestAnalysis());
         }
 
         // Save data
-        File saveFile = new File("parses_all.txt");
+        // File saveFile = new File("parses_all.txt");
+        File saveFile = new File("parses_all_freq_dict.txt");
         FileWriter writer = new FileWriter(saveFile);
-
 
         for(List parseList: parses)
             writer.append(parseList.toString() + '\n');
@@ -45,5 +88,6 @@ public class ParseMorphemes
         writer.flush();
         writer.close();
         System.exit(0);
+        */
     }
 }
