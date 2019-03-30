@@ -85,10 +85,11 @@ def main():
 
     for filename in filenames:
         # Get data windows
-        f = open(os.path.join(data_dir, filename), 'r')
-        csv_reader = csv.reader(f, delimiter='\t')
-        rows = [r for r in csv_reader]
-        f.close()
+        with open(os.path.join(data_dir, filename), 'r') as f:
+            f = open(os.path.join(data_dir, filename), 'r')
+            csv_reader = csv.reader(f, delimiter='\t')
+            rows = [r for r in csv_reader]
+
         curr_stem = filename.split('_')[2]
         print(filename)
 
@@ -107,11 +108,21 @@ def main():
             single_sent = to_one_sentence(full_sentence, len(left_context.split()))
             save_rows.append([single_sent[0], main_word, single_sent[1]])
 
+        # Save data
+        with open('../d2_data/joined/{0}_{1}_{2}.tsv'.format(filename[:3], curr_stem, 'joined'), 'w') as f:
+            csv_writer = csv.writer(f, delimiter='\t')
+            for r in save_rows:
+                csv_writer.writerow(r)
+
+        save_rows.clear()
+        rows.clear()
+    """
     # Save data
     with open('../d2_data/freq_dict_query_results_joined.tsv', 'w') as f:
         csv_writer = csv.writer(f, delimiter='\t')
         for r in save_rows:
             csv_writer.writerow(r)
+    """
 
 
 if __name__ == "__main__":
