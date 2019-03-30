@@ -77,9 +77,15 @@ def fix_columns(left, mid, right, stem):
     return left, mid, right
 
 
-def main():
+def save_file(fname, data_list):
+    with open(fname, 'w') as f:
+        csv_writer = csv.writer(f, delimiter='\t')
+        for r in data_list:
+            csv_writer.writerow(r)
+
+
+def main(data_dir, all_in_one_file=False):
     save_rows = []
-    data_dir = '../d2_data/query_results_freq_dict/'
     filenames = os.listdir(data_dir)
     filenames.sort()
 
@@ -108,23 +114,17 @@ def main():
             single_sent = to_one_sentence(full_sentence, len(left_context.split()))
             save_rows.append([single_sent[0], main_word, single_sent[1]])
 
-        # Save data
-        with open('../d2_data/joined/{0}_{1}_{2}.tsv'.format(filename[:3], curr_stem, 'joined'), 'w') as f:
-            csv_writer = csv.writer(f, delimiter='\t')
-            for r in save_rows:
-                csv_writer.writerow(r)
+        if not all_in_one_file:
+            # Save data in individual files
+            save_file('../d2_data/joined/{0}_{1}_{2}.tsv'.format(filename[:3], curr_stem, 'joined', save_rows))
+            save_rows.clear()
+            rows.clear()
 
-        save_rows.clear()
-        rows.clear()
-    """
-    # Save data
-    with open('../d2_data/freq_dict_query_results_joined.tsv', 'w') as f:
-        csv_writer = csv.writer(f, delimiter='\t')
-        for r in save_rows:
-            csv_writer.writerow(r)
-    """
+    # Save all data in one file
+    save_file('../d2_data/freq_dict_query_results_joined.tsv', save_rows)
 
 
 if __name__ == "__main__":
-    main()
+    query_dir = '../d2_data/query_results_freq_dict/'
+    main(query_dir, False)
     exit(0)
