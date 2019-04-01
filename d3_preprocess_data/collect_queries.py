@@ -116,12 +116,13 @@ def main(data_dir, all_in_one_file=False):
 
         if not all_in_one_file:
             # Save data in individual files
-            save_file('../d2_data/joined/{0}_{1}_{2}.tsv'.format(filename[:3], curr_stem, 'joined', save_rows))
+            save_file('../d2_data/joined/{0}_{1}_{2}.tsv'.format(filename[:3], curr_stem, 'joined'), save_rows)
             save_rows.clear()
             rows.clear()
 
     # Save all data in one file
-    save_file('../d2_data/freq_dict_query_results_joined.tsv', save_rows)
+    if all_in_one_file:
+        save_file('../d2_data/freq_dict_query_results_joined.tsv', save_rows)
 
 
 if __name__ == "__main__":
