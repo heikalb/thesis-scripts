@@ -8,23 +8,20 @@ import re
 import colloc_measures as cm
 import os
 
+# Statistics
+measures = ['mutual_information', 't_score', 'dice_coefficient', 'chi_squared', 'relative_risk', 'odds_ratio']
+measure_funct = dict(zip(measures, [cm.mutual_info, cm.t_score, cm.dice_coeff, cm.chi_squared, cm.rel_risk,
+                                    cm.odds_ratio]))
+
 
 def new_dir(dir_name):
     if not os.path.isdir(dir_name):
         os.mkdir(dir_name)
 
 
-def colloc_stats(right_parse_sign, suffix_boundary, mboundary, key_separator, query_term=""):
-    # Statistics
-    measures = ['mutual_information', 't_score', 'dice_coefficient', 'chi_squared', 'relative_risk', 'odds_ratio']
-    measure_funct = dict(zip(measures, [cm.mutual_info, cm.t_score, cm.dice_coeff, cm.chi_squared, cm.rel_risk,
-                                        cm.odds_ratio]))
+def colloc_stats(right_parse_sign, suffix_boundary, mboundary, query_term="", faffix=""):
     measure_dict = dict(zip(measures, [dict() for m in measures]))
     abs_msr = {'suff_freq': defaultdict(int), 'cooc_freq': defaultdict(int)}
-
-    # Open file of parses
-    parses = open('../3_parse/parses_verbs.txt', 'r').read().split('\n')
-    parses = [p.split() for p in parses]
 
     # Go through parses
     for parse in parses:
@@ -57,31 +54,35 @@ def colloc_stats(right_parse_sign, suffix_boundary, mboundary, key_separator, qu
             measure_dict[msr][k] = (measure_funct[msr](*args), abs_msr['suff_freq'][m1], abs_msr['suff_freq'][m2])
 
     # Save data
-    for m in abs_msr:
-        new_dir(m)
-        with open('{0}/{0}_{1}.csv'.format(m, query_term), 'w') as f:
+    for msr in abs_msr:
+        new_dir(msr)
+        with open('{0}/{1}_{2}_{0}.csv'.format(msr, faffix, query_term), 'w') as f:
             csv_writer = csv.writer(f)
 
-            for k in abs_msr[m]:
-                csv_writer.writerow([k, abs_msr[m][k]])
+            for k in abs_msr[msr]:
+                csv_writer.writerow([k, abs_msr[msr][k]])
 
     for msr in measures:
         new_dir(msr)
-        with open('{0}/{0}_{1}.csv'.format(msr, query_term), 'w') as f:
+        with open('{0}/{1}_{2}_{0}.csv'.format(msr, faffix, query_term), 'w') as f:
             csv_writer = csv.writer(f)
 
             for k in measure_dict[msr]:
                 csv_writer.writerow([k, measure_dict[msr][k][0], measure_dict[msr][k][1], measure_dict[msr][k][2]])
 
 
-def main():
-    query_terms = [""] + open('../d2_data/query_terms.txt', 'r').read().split('\n')
-
-    for qt in query_terms:
-        colloc_stats(right_parse_sign='Verb', suffix_boundary=r'[\|\+]', mboundary=r'.*:',
-                     key_separator='__', query_term=qt)
-
-
 if __name__ == "__main__":
-    main()
+    # Open file of parses
+    with open('../d4_parse/verbs_parses.txt', 'r') as f:
+        parses = [p.split() for p in f.read().split('\n')]
+
+    query_terms = [""] + open('../d0_prep_query_terms/freq_dict_verbs.txt', 'r').read().split('\n')
+    query_terms.remove('savrul')
+    f_i = [""] + [('00'+str(i))[-3:] for i in range(len(query_terms))]
+
+    i = 0
+    for qt in query_terms:
+        colloc_stats(right_parse_sign='Verb', suffix_boundary=r'[\|\+]', mboundary=r'.*:', query_term=qt, faffix=f_i[i])
+        i += 1
+
     exit(0)
