@@ -2,11 +2,12 @@
 Reduce the file of parses to parses of target verbs only.
 """
 import csv
+import os
 
 
 # Get position of target verbs in the context windows
-def get_verb_indices():
-    with open('../d2_data/query_results_all_joined_sents.tsv') as f:
+def get_verb_indices(fpath):
+    with open(fpath) as f:
         reader = csv.reader(f, delimiter='\t')
         indices = [int(row[2]) for row in reader]
 
@@ -14,24 +15,36 @@ def get_verb_indices():
 
 
 def main():
+    # Get individual verb parse files
+    parse_dir_path = 'parses/'
+    parse_fnames = [fn for fn in os.listdir(parse_dir_path) if 'parses.txt' in fn]
+    parse_fnames.sort()
     verb_parses = []
-    parses = open('parses_all.txt', 'r').read().split('\n')
-    indices = get_verb_indices()
+    parse_errors = []
+     
+    for fname in parse_fnames:
+        print(fname)
+        parses = open(os.path.join(parse_dir_path, fname), 'r').read().split('\n')
 
-    c = 0
+        # Get indices of target verbs
+        fnum = fname.split('_')[0]
+        stem = fname.split('_')[1]
+        indices = get_verb_indices('../d2_data/joined/{0}_{1}_joined.tsv'.format(fnum, stem))
 
-    for i in range(len(indices)):
-        curr_word_parses = [p for p in parses[i][1:-1].split(', ') if ':Punc' not in p]
-        verb_parses.append(curr_word_parses[indices[i]])
+        # Get target verbs and parses with errors
+        for i in range(len(indices)):
+            crnt_parses = [p for p in parses[i][1:-1].split(', ') if ':Punc' not in p]
+            verb_parses.append(crnt_parses[indices[i]])
 
-        if 'Verb' not in curr_word_parses[indices[i]]:
-            print(curr_word_parses[indices[i]])
-            c += 1
-            print(i)
-    print(c)
+            if 'UNK' in crnt_parses[indices[i]]:
+                parse_errors.append(crnt_parses[indices[i]])
 
-    with open('parses_verbs.txt', 'w') as f:
+    # Save data
+    with open('verbs_parses.txt', 'w') as f:
         f.write('\n'.join(verb_parses))
+
+    with open('parse_errors.txt', 'w') as f:
+        f.write('\n'.join(parse_errors))
 
 
 if __name__ == '__main__':

@@ -38,7 +38,6 @@ def colloc_stats(right_parse_sign, suffix_boundary, mboundary, query_term="", fa
             abs_msr['suff_freq'][suffixes[i]] += 1
 
             for j in range(i + 1, len(suffixes)):
-                # curr_key = '{0}{1}{2}'.format(suffixes[i], key_separator, suffixes[j])
                 curr_pair = (suffixes[i], suffixes[j])
                 abs_msr['cooc_freq'][curr_pair] += 1
 
@@ -51,7 +50,12 @@ def colloc_stats(right_parse_sign, suffix_boundary, mboundary, query_term="", fa
         for msr in measures:
             args = [abs_msr['suff_freq'][m1], abs_msr['suff_freq'][m2], abs_msr['cooc_freq'][k], num_suffixes,
                     m1, m2, abs_msr['cooc_freq']]
-            measure_dict[msr][k] = (measure_funct[msr](*args), abs_msr['suff_freq'][m1], abs_msr['suff_freq'][m2])
+            stat = measure_funct[msr](*args)
+
+            if type(stat) == tuple:
+                measure_dict[msr][k] = (stat[0], stat[1][0], stat[1][1], abs_msr['suff_freq'][m1], abs_msr['suff_freq'][m2])
+            else:
+                measure_dict[msr][k] = (stat, abs_msr['suff_freq'][m1], abs_msr['suff_freq'][m2])
 
     # Save data
     for msr in abs_msr:
@@ -68,7 +72,7 @@ def colloc_stats(right_parse_sign, suffix_boundary, mboundary, query_term="", fa
             csv_writer = csv.writer(f)
 
             for k in measure_dict[msr]:
-                csv_writer.writerow([k, measure_dict[msr][k][0], measure_dict[msr][k][1], measure_dict[msr][k][2]])
+                csv_writer.writerow([k] + [datum for datum in measure_dict[msr][k]])
 
 
 if __name__ == "__main__":
@@ -78,10 +82,12 @@ if __name__ == "__main__":
 
     query_terms = [""] + open('../d0_prep_query_terms/freq_dict_verbs.txt', 'r').read().split('\n')
     query_terms.remove('savrul')
+    # File indexes
     f_i = [""] + [('00'+str(i))[-3:] for i in range(len(query_terms))]
 
     i = 0
     for qt in query_terms:
+        print(qt)
         colloc_stats(right_parse_sign='Verb', suffix_boundary=r'[\|\+]', mboundary=r'.*:', query_term=qt, faffix=f_i[i])
         i += 1
 
