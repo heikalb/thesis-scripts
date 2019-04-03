@@ -2,10 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="74bfd74b-7a31-4538-b2e2-4693aae3470e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../data/all_verbs.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../data/target_indices.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ParseMorphemes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ParseMorphemes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../preprocess/window_corrections.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../d3_preprocess_data/collect_queries.py" beforeDir="false" afterPath="$PROJECT_DIR$/../d3_preprocess_data/collect_queries.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../d3_preprocess_data/spellcheck/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../d3_preprocess_data/spellcheck/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../d3_preprocess_data/spelling_sub.py" beforeDir="false" afterPath="$PROJECT_DIR$/../d3_preprocess_data/spelling_sub.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/parse/ParseMorphemes.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/parse/ParseMorphemes.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parses_all.txt" beforeDir="false" afterPath="$PROJECT_DIR$/archive/parses_all.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parses_verbs.txt" beforeDir="false" afterPath="$PROJECT_DIR$/archive/parses_verbs.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reduce_to_verbs.py" beforeDir="false" afterPath="$PROJECT_DIR$/reduce_to_verbs.py" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -19,8 +23,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ParseMorphemes.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+            <state relative-caret-position="285">
+              <caret line="19" column="32" selection-start-line="19" selection-start-column="32" selection-end-line="19" selection-end-column="32" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -51,27 +55,34 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="parse" type="b2602c69:ProjectViewProjectNode" />
-              <item name="parse" type="462c0819:PsiDirectoryNode" />
+              <item name="d4_parse" type="b2602c69:ProjectViewProjectNode" />
+              <item name="d4_parse" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="parse" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="d4_parse" type="b2602c69:ProjectViewProjectNode" />
+              <item name="d4_parse" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="d4_parse" type="b2602c69:ProjectViewProjectNode" />
+              <item name="d4_parse" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551764329445" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554141464512" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -134,13 +145,20 @@
       <option name="project" value="LOCAL" />
       <updated>1551469879161</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="meep">
+      <created>1553906243480</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1553906243480</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="777" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2657512" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15508886" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -187,18 +205,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/parses.txt">
-      <provider editor-type-id="text-editor" />
-      <provider selected="true" editor-type-id="LargeFileEditor">
-        <state relative-caret-position="55883">
-          <caret line="3830" column="29" lean-forward="true" selection-start-line="3830" selection-start-column="29" selection-end-line="3830" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/parses.txt" />
     <entry file="file://$PROJECT_DIR$/src/ParseMorphemes.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+        <state relative-caret-position="285">
+          <caret line="19" column="32" selection-start-line="19" selection-start-column="32" selection-end-line="19" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

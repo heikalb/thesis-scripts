@@ -6,6 +6,7 @@ def rr_rate(fpaths):
     save_rows = []
 
     for fpath in fpaths:
+        print(fpath)
         with open(os.path.join(fpath), 'r') as f:
             rows = [r for r in csv.reader(f)]
 
@@ -53,11 +54,31 @@ def top_pairs(fpaths):
             pair_count_byverbs[p] += 1
 
     top_pairs = [p for p in pair_count_byverbs if pair_count_byverbs[p] >= 600]
+    print(len(top_pairs))
+
+    top_pairs = [p for p in pair_count_byverbs if 500 <= pair_count_byverbs[p] < 600]
+    print(len(top_pairs))
+
+    top_pairs = [p for p in pair_count_byverbs if 400 <= pair_count_byverbs[p] < 500]
+    print(len(top_pairs))
+
+    top_pairs = [p for p in pair_count_byverbs if 300 <= pair_count_byverbs[p] < 400]
+    print(len(top_pairs))
+
+    top_pairs = [p for p in pair_count_byverbs if 200 <= pair_count_byverbs[p] < 300]
+    print(len(top_pairs))
+
+    top_pairs = [p for p in pair_count_byverbs if 100 <= pair_count_byverbs[p] < 200]
+    print(len(top_pairs))
+
+    top_pairs = [p for p in pair_count_byverbs if pair_count_byverbs[p] < 100]
+    print(len(top_pairs))
+    exit()
+
     top_pairs.sort(reverse=True, key=lambda x: pair_count_byverbs[x])
 
-    #for p in top_pairs[:20]:
-    #    print(p, pair_count_byverbs[p])
-
+    for p in top_pairs[:20]:
+        print(p + '\t'*4, pair_count_byverbs[p])
     return top_pairs[:20]
 
 
@@ -118,9 +139,9 @@ def main():
     data_dir.sort()
     data_file_paths = [os.path.join('relative_risk/', fp) for fp in data_dir]
 
-    # rr_rate(data_file_paths)
+    #rr_rate(data_file_paths)
     tops = top_pairs(data_file_paths)
-    top_pair_trend_(data_file_paths, tops)
+    #top_pair_trend_(data_file_paths, tops)
     #top_pair_trend(data_file_paths, tops)
 
 
