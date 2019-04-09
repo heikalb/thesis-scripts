@@ -42,7 +42,7 @@ def main():
 
     # Save data
     with open('morphs.txt', 'w') as f:
-        f.write('\n'.join(morphemes))
+        f.write('\n'.join(k + ": " + str(morphemes[k]) for k in morphemes))
 
 
 if __name__ == '__main__':

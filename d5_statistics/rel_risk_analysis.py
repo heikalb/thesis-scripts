@@ -2,6 +2,7 @@ import csv
 import os
 from collections import defaultdict
 
+
 def rr_rate(fpaths):
     save_rows = []
 
@@ -21,7 +22,7 @@ def rr_rate(fpaths):
         left_ci_below_1 = len([r for r in rows if float(r[2]) <= 1])
         rr_above_ci_below = len([r for r in rows if float(r[1]) > 1 and float(r[2]) <= 1])
         rr_above_ci_above = len([r for r in rows if float(r[1]) > 1 and float(r[2]) > 1])
-        save_rows.append([stem, rr_above_ci_above/len(rows)])
+        save_rows.append([stem, rr_above_1/len(rows)])
 
     with open('rel_risk_rates.csv', 'w') as f:
         csv.writer(f).writerows(save_rows)
@@ -40,46 +41,34 @@ def rr_rate_across_verbs(fpaths):
                 pair_stats[r[0]] = []
 
 
-
+# Show the how many collocate pairs appearr in how many verb types
 def top_pairs(fpaths):
     pair_count_byverbs = defaultdict(int)
 
+    # Tally verb type occurrences
     for fpath in fpaths:
         with open(os.path.join(fpath), 'r') as f:
             rows = [r for r in csv.reader(f)]
 
-        curr_pairs = [r[0] for r in rows if float(r[1]) > 1 and float(r[2]) > 1]
+        curr_pairs = [r[0] for r in rows if float(r[1]) > 1]
 
         for p in curr_pairs:
             pair_count_byverbs[p] += 1
 
-    top_pairs = [p for p in pair_count_byverbs if pair_count_byverbs[p] >= 600]
-    print(len(top_pairs))
+    # Display number of collocate pairs for different ranges of verb type numbers
+    for i in range(8):
+        pairs = [p for p in pair_count_byverbs if i*100 <= pair_count_byverbs[p] < (i+1)*100]
+        print(i*100, (i+1)*100)
+        print(len(pairs), '\n')
 
-    top_pairs = [p for p in pair_count_byverbs if 500 <= pair_count_byverbs[p] < 600]
-    print(len(top_pairs))
+    # Get most frequent collocate pairs
+    keys = [k for k in pair_count_byverbs]
+    keys.sort(reverse=True, key=lambda x: pair_count_byverbs[x])
 
-    top_pairs = [p for p in pair_count_byverbs if 400 <= pair_count_byverbs[p] < 500]
-    print(len(top_pairs))
-
-    top_pairs = [p for p in pair_count_byverbs if 300 <= pair_count_byverbs[p] < 400]
-    print(len(top_pairs))
-
-    top_pairs = [p for p in pair_count_byverbs if 200 <= pair_count_byverbs[p] < 300]
-    print(len(top_pairs))
-
-    top_pairs = [p for p in pair_count_byverbs if 100 <= pair_count_byverbs[p] < 200]
-    print(len(top_pairs))
-
-    top_pairs = [p for p in pair_count_byverbs if pair_count_byverbs[p] < 100]
-    print(len(top_pairs))
-    exit()
-
-    top_pairs.sort(reverse=True, key=lambda x: pair_count_byverbs[x])
-
-    for p in top_pairs[:20]:
+    for p in keys[:20]:
         print(p + '\t'*4, pair_count_byverbs[p])
-    return top_pairs[:20]
+
+    return keys[:20]
 
 
 def top_pair_trend(fpaths, top_pairs):
