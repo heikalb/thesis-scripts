@@ -41,10 +41,14 @@ def colloc_stats(right_parse_sign, suffix_boundary, mboundary, query_term="", fa
                 curr_pair = (suffixes[i], suffixes[j])
                 abs_msr['cooc_freq'][curr_pair] += 1
 
+    # Get number of suffix instances (size of sample)
     num_suffixes = sum(abs_msr['suff_freq'][s] for s in abs_msr['suff_freq'])
 
     # Get association measures
     for k in abs_msr['cooc_freq']:
+        if not k:
+            continue
+
         m1, m2 = k
 
         for msr in measures:
@@ -53,9 +57,9 @@ def colloc_stats(right_parse_sign, suffix_boundary, mboundary, query_term="", fa
             stat = measure_funct[msr](*args)
 
             if type(stat) == tuple:
-                measure_dict[msr][k] = (stat[0], stat[1][0], stat[1][1], abs_msr['suff_freq'][m1], abs_msr['suff_freq'][m2])
+                measure_dict[msr][k] = stat[0]
             else:
-                measure_dict[msr][k] = (stat, abs_msr['suff_freq'][m1], abs_msr['suff_freq'][m2])
+                measure_dict[msr][k] = stat
 
     # Save data
     for msr in abs_msr:
@@ -66,13 +70,12 @@ def colloc_stats(right_parse_sign, suffix_boundary, mboundary, query_term="", fa
             for k in abs_msr[msr]:
                 csv_writer.writerow([k, abs_msr[msr][k]])
 
-    for msr in measures:
-        new_dir(msr)
-        with open('{0}/{1}_{2}_{0}.csv'.format(msr, faffix, query_term), 'w') as f:
-            csv_writer = csv.writer(f)
+    with open('assoc_stats/{0}_{1}_assoc_stats.csv'.format(faffix, query_term), 'w') as f:
+        csv_writer = csv.writer(f)
+        csv_writer.writerow(["Collocate pair"] + [m for m in measures])
 
-            for k in measure_dict[msr]:
-                csv_writer.writerow([k] + [datum for datum in measure_dict[msr][k]])
+        for k in abs_msr['cooc_freq']:
+            csv_writer.writerow([k] + [measure_dict[msr][k] for msr in measure_dict])
 
 
 if __name__ == "__main__":
@@ -82,6 +85,7 @@ if __name__ == "__main__":
 
     query_terms = [""] + open('../d0_prep_query_terms/freq_dict_verbs.txt', 'r').read().split('\n')
     query_terms.remove('savrul')
+
     # File indexes
     f_i = [""] + [('00'+str(i))[-3:] for i in range(len(query_terms))]
 
