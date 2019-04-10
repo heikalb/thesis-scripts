@@ -61,21 +61,31 @@ def colloc_stats(right_parse_sign, suffix_boundary, mboundary, query_term="", fa
             else:
                 measure_dict[msr][k] = stat
 
-    # Save data
+    # Save absolute frequency data
     for msr in abs_msr:
-        new_dir(msr)
+        if not os.path.isdir(msr):
+            os.mkdir(msr)
+
         with open('{0}/{1}_{2}_{0}.csv'.format(msr, faffix, query_term), 'w') as f:
             csv_writer = csv.writer(f)
 
             for k in abs_msr[msr]:
                 csv_writer.writerow([k, abs_msr[msr][k]])
 
+    # Save association measures data
+    if not os.path.isdir('assoc_stats'):
+        os.mkdir('assoc_stats')
+
     with open('assoc_stats/{0}_{1}_assoc_stats.csv'.format(faffix, query_term), 'w') as f:
         csv_writer = csv.writer(f)
-        csv_writer.writerow(["Collocate pair"] + [m for m in measures])
+        csv_writer.writerow(["Collocate pair"] +
+                            [m for m in measure_dict] +
+                            ['s1_frequency', 's2_frequency', 's1s2_frequency'])
 
         for k in abs_msr['cooc_freq']:
-            csv_writer.writerow([k] + [measure_dict[msr][k] for msr in measure_dict])
+            csv_writer.writerow([k] +
+                                [measure_dict[msr][k] for msr in measure_dict] +
+                                [abs_msr['suff_freq'][suff] for suff in k] + [abs_msr['cooc_freq'][k]])
 
 
 if __name__ == "__main__":
