@@ -14,11 +14,7 @@ measures_w_ci = ['relative_risk']
 measure_funct = dict(zip(measures, [cm.rel_risk, cm.odds_ratio, cm.mutual_info, cm.t_score, cm.dice_coeff, cm.chi_squared]))
 
 
-def colloc_stats(right_parse_sign, suffix_boundary, mboundary, query_term="", faffix=""):
-    measure_dict = dict(zip(measures, [dict() for m in measures]))
-    ci_dict = dict(zip(measures_w_ci, [dict() for m in measures_w_ci]))
-    abs_msr = {'suff_freq': defaultdict(int), 'cooc_freq': defaultdict(int)}
-
+def tally(query_term, right_parse_sign, suffix_boundary, mboundary, abs_msr, bound=-1):
     # Go through parses
     for parse in parses:
         # Skip parses for a different stem or wrong parses
@@ -33,14 +29,17 @@ def colloc_stats(right_parse_sign, suffix_boundary, mboundary, query_term="", fa
         for i in range(len(suffixes)):
             abs_msr['suff_freq'][suffixes[i]] += 1
 
+            d = 0
             for j in range(i + 1, len(suffixes)):
                 curr_pair = (suffixes[i], suffixes[j])
                 abs_msr['cooc_freq'][curr_pair] += 1
+                d += 1
 
-    # Get number of suffix instances (size of sample)
-    num_suffixes = sum(abs_msr['suff_freq'][s] for s in abs_msr['suff_freq'])
+                if bound != -1 and d >= bound:
+                    break
 
-    # Get association measures
+
+def calc_assoc_score(abs_msr, num_suffixes, measure_dict, ci_dict):
     for k in abs_msr['cooc_freq']:
         if not k:
             continue
@@ -54,10 +53,12 @@ def colloc_stats(right_parse_sign, suffix_boundary, mboundary, query_term="", fa
 
             if type(stat) == tuple:
                 measure_dict[msr][k] = stat[0]
-                ci_dict[msr][k] = (stat[1][0], stat[1][1])
+                ci_dict[msr][k] = stat[1]
             else:
                 measure_dict[msr][k] = stat
 
+
+def save_data(abs_msr, faffix, query_term, measure_dict, ci_dict):
     # Save absolute frequency data
     for msr in abs_msr:
         if not os.path.isdir(msr):
@@ -85,6 +86,24 @@ def colloc_stats(right_parse_sign, suffix_boundary, mboundary, query_term="", fa
                                 [measure_dict[msr][k] for msr in measure_dict] +
                                 [ci_dict[c][k][i] for c in ci_dict for i in [0, 1]] +
                                 [abs_msr['suff_freq'][suff] for suff in k] + [abs_msr['cooc_freq'][k]])
+
+
+def colloc_stats(right_parse_sign, suffix_boundary, mboundary, query_term="", faffix=""):
+    measure_dict = dict(zip(measures, [dict() for m in measures]))
+    ci_dict = dict(zip(measures_w_ci, [dict() for m in measures_w_ci]))
+    abs_msr = {'suff_freq': defaultdict(int), 'cooc_freq': defaultdict(int)}
+
+    # Tally suffixes and suffix collocates
+    tally(query_term, right_parse_sign, suffix_boundary, mboundary, abs_msr)
+
+    # Get number of suffix instances (size of sample)
+    num_suffixes = sum(abs_msr['suff_freq'][s] for s in abs_msr['suff_freq'])
+
+    # Get association measures
+    calc_assoc_score(abs_msr, num_suffixes, measure_dict, ci_dict)
+
+    # Save stats in files
+    save_data(abs_msr, faffix, query_term, measure_dict, ci_dict)
 
 
 if __name__ == "__main__":
