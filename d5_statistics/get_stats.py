@@ -9,18 +9,14 @@ import colloc_measures as cm
 import os
 
 # Statistics
-measures = ['mutual_information', 't_score', 'dice_coefficient', 'chi_squared', 'relative_risk', 'odds_ratio']
-measure_funct = dict(zip(measures, [cm.mutual_info, cm.t_score, cm.dice_coeff, cm.chi_squared, cm.rel_risk,
-                                    cm.odds_ratio]))
-
-
-def new_dir(dir_name):
-    if not os.path.isdir(dir_name):
-        os.mkdir(dir_name)
+measures = ['relative_risk', 'odds_ratio', 'mutual_information', 't_score', 'dice_coefficient', 'chi_squared']
+measures_w_ci = ['relative_risk']
+measure_funct = dict(zip(measures, [cm.rel_risk, cm.odds_ratio, cm.mutual_info, cm.t_score, cm.dice_coeff, cm.chi_squared]))
 
 
 def colloc_stats(right_parse_sign, suffix_boundary, mboundary, query_term="", faffix=""):
     measure_dict = dict(zip(measures, [dict() for m in measures]))
+    ci_dict = dict(zip(measures_w_ci, [dict() for m in measures_w_ci]))
     abs_msr = {'suff_freq': defaultdict(int), 'cooc_freq': defaultdict(int)}
 
     # Go through parses
@@ -58,6 +54,7 @@ def colloc_stats(right_parse_sign, suffix_boundary, mboundary, query_term="", fa
 
             if type(stat) == tuple:
                 measure_dict[msr][k] = stat[0]
+                ci_dict[msr][k] = (stat[1][0], stat[1][1])
             else:
                 measure_dict[msr][k] = stat
 
@@ -78,13 +75,15 @@ def colloc_stats(right_parse_sign, suffix_boundary, mboundary, query_term="", fa
 
     with open('assoc_stats/{0}_{1}_assoc_stats.csv'.format(faffix, query_term), 'w') as f:
         csv_writer = csv.writer(f)
-        csv_writer.writerow(["Collocate pair"] +
-                            [m for m in measure_dict] +
+        csv_writer.writerow(["collocate_pair"] +
+                            [m for m in measures] +
+                            ['{0}_ci_{1}'.format(k, d) for k in measures_w_ci for d in ['left', 'right']] +
                             ['s1_frequency', 's2_frequency', 's1s2_frequency'])
 
         for k in abs_msr['cooc_freq']:
             csv_writer.writerow([k] +
                                 [measure_dict[msr][k] for msr in measure_dict] +
+                                [ci_dict[c][k][i] for c in ci_dict for i in [0, 1]] +
                                 [abs_msr['suff_freq'][suff] for suff in k] + [abs_msr['cooc_freq'][k]])
 
 

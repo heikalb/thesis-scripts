@@ -4,13 +4,13 @@ import os
 from collections import defaultdict
 
 
+# Get the formulaicity proportion associated with verb types
 def rr_rate(fpaths):
     save_rows = []
 
     for fpath in fpaths:
-        print(fpath)
-        with open(os.path.join(fpath), 'r') as f:
-            rows = [r for r in csv.reader(f)]
+        with open(fpath, 'r') as f:
+            rows = [r for r in csv.reader(f)][1:]
 
         stem = fpath.split('_')[2]
 
@@ -31,27 +31,14 @@ def rr_rate(fpaths):
         csv.writer(f).writerows(save_rows)
 
 
-def rr_rate_across_verbs(fpaths):
-    save_rows = []
-    pair_stats = {}
-
-    for fpath in fpaths:
-        with open(os.path.join(fpath), 'r') as f:
-            rows = [r for r in csv.reader(f)]
-
-        for r in rows:
-            if r[0] not in pair_stats:
-                pair_stats[r[0]] = []
-
-
-# Show the how many collocate pairs appearr in how many verb types
+# Show the how many collocate pairs appear with how many verb types
 def top_pairs(fpaths):
     pair_count_byverbs = defaultdict(int)
 
     # Tally verb type occurrences
     for fpath in fpaths:
-        with open(os.path.join(fpath), 'r') as f:
-            rows = [r for r in csv.reader(f)]
+        with open(fpath, 'r') as f:
+            rows = [r for r in csv.reader(f)][1:]
 
         curr_pairs = [r[0] for r in rows if float(r[1]) > 1]
 
@@ -74,36 +61,6 @@ def top_pairs(fpaths):
     return keys[:20]
 
 
-def top_pair_trend(fpaths, top_pairs):
-    verb_columns = {}
-    ranks = {}
-
-    for fpath in fpaths:
-        with open(os.path.join(fpath), 'r') as f:
-            rows = [r for r in csv.reader(f)]
-
-        curr_pairs = [r for r in rows if float(r[1]) > 1 and float(r[2]) > 1]
-        curr_pairs.sort(reverse=True, key=lambda x: x[1])
-        curr_pairs = [r[0] for r in curr_pairs]
-        verb_columns[fpath.split('_')[2]] = curr_pairs
-
-    for tp in top_pairs:
-        ranks[tp] = {}
-        for v in verb_columns:
-            try:
-                ranks[tp][v] = verb_columns[v].index(tp)
-            except:
-                continue
-
-    for pair in ranks:
-        print(pair)
-        for r in ranks[pair]:
-            print(r, ranks[pair][r])
-        print('\n')
-
-    return
-
-
 # Find the trend of the RR of a pair across verbs
 def cross_verb_trend(fpaths, target_pairs):
     target_rrs = {}
@@ -116,7 +73,7 @@ def cross_verb_trend(fpaths, target_pairs):
         for fpath in fpaths:
             curr_stem = fpath.split('_')[2]
 
-            with open(os.path.join(fpath), 'r') as f:
+            with open(fpath, 'r') as f:
                 curr_rr = [r for r in csv.reader(f) if r[0] == tp]
 
                 if curr_rr:
@@ -135,14 +92,12 @@ def cross_verb_trend(fpaths, target_pairs):
 
 
 def main():
-    data_dir = os.listdir('relative_risk/')
+    data_dir = os.listdir('assoc_stats/')
     data_dir.sort()
-    data_file_paths = [os.path.join('relative_risk/', fp) for fp in data_dir]
+    data_file_paths = [os.path.join('assoc_stats/', fp) for fp in data_dir]
 
     rr_rate(data_file_paths)
     # tops = top_pairs(data_file_paths)
-    # top_pair_trend_(data_file_paths, tops)
-    # top_pair_trend(data_file_paths, tops)
     trend_verbs = ["('Aor', 'While→Adv')", "('Aor', 'Cond')", "('Able→Verb', 'Aor')", "('Prog1', 'Past')"
                    , "('Pass→Verb', 'Aor')", "('Pass→Verb', 'Past')"]
     cross_verb_trend(data_file_paths, trend_verbs)
