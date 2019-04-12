@@ -12,8 +12,6 @@ def rr_rate(fpaths):
         with open(fpath, 'r') as f:
             rows = [r for r in csv.reader(f)][1:]
 
-        stem = fpath.split('_')[2]
-
         if not rows:
             continue
 
@@ -25,7 +23,7 @@ def rr_rate(fpaths):
         rr_above_ci_below = len([r for r in rows if float(r[1]) > 1 and float(r[2]) <= 1])
         rr_above_ci_above = len([r for r in rows if float(r[1]) > 1 and float(r[2]) > 1])
         """
-        save_rows.append([stem, rr_above_1/len(rows)])
+        save_rows.append([fpath.split('_')[2], rr_above_1/len(rows)])
 
     with open('rel_risk_rates.csv', 'w') as f:
         csv.writer(f).writerows(save_rows)
@@ -66,6 +64,13 @@ def cross_verb_trend(fpaths, target_pairs):
     target_rrs = {}
     stems = [fpath.split('_')[2] for fpath in fpaths]
 
+    # Get pairs
+    with open(fpaths[-1], 'r') as f:
+        target_pairs = [r[0] for r in csv.reader(f)][1:]
+
+    target_rrs = dict(zip(target_pairs, [defaultdict(lambda:'') for t in target_pairs]))
+
+    """
     # Get RR of the target verbs in each file
     for tp in target_pairs:
         target_rrs[tp] = {}
@@ -80,13 +85,28 @@ def cross_verb_trend(fpaths, target_pairs):
                     target_rrs[tp][curr_stem] = curr_rr[0][1]
                 else:
                     target_rrs[tp][curr_stem] = ''
+    """
+
+    # Get RR of the target verbs in each file
+    for fpath in fpaths:
+        curr_stem = fpath.split('_')[2]
+
+        with open(fpath, 'r') as f:
+            first_row = True
+
+            for r in csv.reader(f):
+                if first_row:
+                    first_row = False
+                    continue
+
+                target_rrs[r[0]][curr_stem] = r[1]
 
     # Save data
-    with open('rr_trend_of_specific_pairs.csv', 'w') as f:
+    with open('rr_trend_of_pairs.csv', 'w') as f:
         csv.writer(f).writerow(['Pair'] + [s for s in stems])
 
         for tp in target_rrs:
-            csv.writer(f).writerow([tp] + [target_rrs[tp][s] for s in target_rrs[tp]])
+            csv.writer(f).writerow([tp] + [target_rrs[tp][s] for s in stems])
 
     return
 
@@ -96,7 +116,7 @@ def main():
     data_dir.sort()
     data_file_paths = [os.path.join('assoc_stats/', fp) for fp in data_dir]
 
-    rr_rate(data_file_paths)
+    # rr_rate(data_file_paths)
     # tops = top_pairs(data_file_paths)
     trend_verbs = ["('Aor', 'While→Adv')", "('Aor', 'Cond')", "('Able→Verb', 'Aor')", "('Prog1', 'Past')"
                    , "('Pass→Verb', 'Aor')", "('Pass→Verb', 'Past')"]

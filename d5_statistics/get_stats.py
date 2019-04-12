@@ -24,6 +24,8 @@ def tally(query_term, right_parse_sign, suffix_boundary, mboundary, abs_msr, bou
         # Get suffixes, exclude stems. Collapse allomorphs
         suffixes = re.split(suffix_boundary, parse[1])[1:]
         suffixes = [re.sub(mboundary, '', s) for s in suffixes]
+        # Exclude some additional abstract suffixes the parser introduced
+        suffixes = remove_forbidden_suffixes(suffixes)
 
         # Count suffix (co)occurrences
         for i in range(len(suffixes)):
@@ -37,6 +39,19 @@ def tally(query_term, right_parse_sign, suffix_boundary, mboundary, abs_msr, bou
 
                 if bound != -1 and d >= bound:
                     break
+
+
+def remove_forbidden_suffixes(suffixes):
+    ret = []
+
+    i = 0
+    for s in suffixes:
+        if not ('Zero' in s or ('A3sg' in s and i < len(suffixes) - 1)):
+            ret.append(s)
+
+        i += 1
+
+    return ret
 
 
 def calc_assoc_score(abs_msr, num_suffixes, measure_dict, ci_dict):
@@ -64,7 +79,7 @@ def save_data(abs_msr, faffix, query_term, measure_dict, ci_dict):
         if not os.path.isdir(msr):
             os.mkdir(msr)
 
-        with open('{0}_adj/{1}_{2}_{0}.csv'.format(msr, faffix, query_term), 'w') as f:
+        with open('{0}/{1}_{2}_{0}.csv'.format(msr, faffix, query_term), 'w') as f:
             csv_writer = csv.writer(f)
 
             for k in abs_msr[msr]:
