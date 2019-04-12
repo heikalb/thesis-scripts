@@ -64,7 +64,7 @@ def save_data(abs_msr, faffix, query_term, measure_dict, ci_dict):
         if not os.path.isdir(msr):
             os.mkdir(msr)
 
-        with open('{0}/{1}_{2}_{0}.csv'.format(msr, faffix, query_term), 'w') as f:
+        with open('{0}_adj/{1}_{2}_{0}.csv'.format(msr, faffix, query_term), 'w') as f:
             csv_writer = csv.writer(f)
 
             for k in abs_msr[msr]:
@@ -88,13 +88,13 @@ def save_data(abs_msr, faffix, query_term, measure_dict, ci_dict):
                                 [abs_msr['suff_freq'][suff] for suff in k] + [abs_msr['cooc_freq'][k]])
 
 
-def colloc_stats(right_parse_sign, suffix_boundary, mboundary, query_term="", faffix=""):
+def colloc_stats(right_parse_sign, suffix_boundary, mboundary, query_term="", faffix="", bound=-1):
     measure_dict = dict(zip(measures, [dict() for m in measures]))
     ci_dict = dict(zip(measures_w_ci, [dict() for m in measures_w_ci]))
     abs_msr = {'suff_freq': defaultdict(int), 'cooc_freq': defaultdict(int)}
 
     # Tally suffixes and suffix collocates
-    tally(query_term, right_parse_sign, suffix_boundary, mboundary, abs_msr)
+    tally(query_term, right_parse_sign, suffix_boundary, mboundary, abs_msr, bound)
 
     # Get number of suffix instances (size of sample)
     num_suffixes = sum(abs_msr['suff_freq'][s] for s in abs_msr['suff_freq'])
@@ -120,7 +120,8 @@ if __name__ == "__main__":
     i = 0
     for qt in query_terms:
         print(qt)
-        colloc_stats(right_parse_sign='Verb', suffix_boundary=r'[\|\+]', mboundary=r'.*:', query_term=qt, faffix=f_i[i])
+        colloc_stats(right_parse_sign='Verb', suffix_boundary=r'[\|\+]', mboundary=r'.*:', query_term=qt, faffix=f_i[i],
+                     bound=-1)
         i += 1
 
     exit(0)
