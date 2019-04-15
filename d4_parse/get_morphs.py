@@ -1,28 +1,21 @@
-import csv
-import os
+# Get the morphs of morphemes
+# Heikal Badrulhisam, heikal93@gmail.com, 2019
 import re
 from collections import defaultdict
 
 
-# Get position of target verbs in the context windows
-def get_verb_indices(fpath):
-    with open(fpath) as f:
-        reader = csv.reader(f, delimiter='\t')
-        indices = [int(row[2]) for row in reader]
-
-    return indices
-
-
 def main():
+    # Open parse file
     with open('../d4_parse/verbs_parses.txt', 'r') as f:
         parses = [p.split() for p in f.read().split('\n')]
 
-    morphs = []
+    # Map morphemes to a list of allomorphs
     morphemes = defaultdict(list)
-    # Go through parses
+
+    # Go morphs attached to verbs
     for parse in parses:
-        # Get suffixes, exclude stems. Collapse allomorphs
-        cur_parse = re.split(r'[\|\+]', parse[1])[1:]
+        # Get suffixes, exclude stems
+        cur_parse = re.split(r'[|+]', parse[1])[1:]
 
         for cp in cur_parse:
             if len(cp.split(':')) == 2:
@@ -34,11 +27,6 @@ def main():
 
             if morph not in morphemes[morpheme]:
                 morphemes[morpheme].append(morph)
-
-    for k in morphemes:
-        print(k)
-        print(morphemes[k])
-        print('\n')
 
     # Save data
     with open('morphs.txt', 'w') as f:
