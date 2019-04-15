@@ -15,11 +15,14 @@ def rr_dist(fpaths=[], save_file_name='rr_dist_by_verbs.csv'):
         if not rows:
             continue
 
-        abs_freq = sum([int(r[-1]) for r in rows if float(r[1]) > 1])
-        proportion = len([r for r in rows if float(r[1]) > 1])
-        save_rows.append([fpath.split('_')[2], abs_freq, abs_freq/len(rows), proportion, proportion/len(rows)])
+        f_freq = sum([int(r[-1]) for r in rows if float(r[1]) > 1])
+        num_f_types = len([r for r in rows if float(r[1]) > 1])
+        inst_sum = sum([int(r[-1]) for r in rows])
+        type_sum = len([r for r in rows])
+        save_rows.append([fpath.split('_')[2], f_freq, f_freq/inst_sum, num_f_types, num_f_types/type_sum])
 
     with open(save_file_name, 'w') as f:
+        csv.writer(f).writerow(['verb_lemma', 'formula_freq', 'formula_freq_norm', 'num_formula', 'formula_prop'])
         csv.writer(f).writerows(save_rows)
 
 
