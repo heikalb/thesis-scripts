@@ -16,13 +16,6 @@ def rr_rate(fpaths):
             continue
 
         rr_above_1 = len([r for r in rows if float(r[1]) > 1])
-        """
-        rr_below_1 = len([r for r in rows if float(r[1]) <= 1])
-        left_ci_above_1 = len([r for r in rows if float(r[2]) > 1])
-        left_ci_below_1 = len([r for r in rows if float(r[2]) <= 1])
-        rr_above_ci_below = len([r for r in rows if float(r[1]) > 1 and float(r[2]) <= 1])
-        rr_above_ci_above = len([r for r in rows if float(r[1]) > 1 and float(r[2]) > 1])
-        """
         save_rows.append([fpath.split('_')[2], rr_above_1/len(rows)])
 
     with open('rel_risk_rates.csv', 'w') as f:
@@ -60,55 +53,26 @@ def top_pairs(fpaths):
 
 
 # Find the trend of the RR of a pair across verbs
-def cross_verb_trend(fpaths, target_pairs):
-    target_rrs = {}
-    stems = [fpath.split('_')[2] for fpath in fpaths]
-
-    # Get pairs
+def cross_verb_trend(fpaths):
+    # Get all pairs in whole dataset
     with open(fpaths[-1], 'r') as f:
         target_pairs = [r[0] for r in csv.reader(f)][1:]
 
     target_rrs = dict(zip(target_pairs, [defaultdict(lambda:'') for t in target_pairs]))
 
-    """
-    # Get RR of the target verbs in each file
-    for tp in target_pairs:
-        target_rrs[tp] = {}
-
-        for fpath in fpaths:
-            curr_stem = fpath.split('_')[2]
-
-            with open(fpath, 'r') as f:
-                curr_rr = [r for r in csv.reader(f) if r[0] == tp]
-
-                if curr_rr:
-                    target_rrs[tp][curr_stem] = curr_rr[0][1]
-                else:
-                    target_rrs[tp][curr_stem] = ''
-    """
-
-    # Get RR of the target verbs in each file
+    # Get RR of collocate pairs across verb files
     for fpath in fpaths:
         curr_stem = fpath.split('_')[2]
 
         with open(fpath, 'r') as f:
-            first_row = True
-
-            for r in csv.reader(f):
-                if first_row:
-                    first_row = False
-                    continue
-
+            for r in [r_ for r_ in csv.reader(f)][1:]:
                 target_rrs[r[0]][curr_stem] = r[1]
 
     # Save data
-    with open('rr_trend_of_pairs.csv', 'w') as f:
+    with open('cross_verb_trends.csv', 'w') as f:
+        stems = [fpath.split('_')[2] for fpath in fpaths]
         csv.writer(f).writerow(['Pair'] + [s for s in stems])
-
-        for tp in target_rrs:
-            csv.writer(f).writerow([tp] + [target_rrs[tp][s] for s in stems])
-
-    return
+        csv.writer(f).writerows([[k] + [target_rrs[k][s] for s in stems] for k in target_rrs])
 
 
 def main():
@@ -116,11 +80,9 @@ def main():
     data_dir.sort()
     data_file_paths = [os.path.join('assoc_stats/', fp) for fp in data_dir]
 
-    # rr_rate(data_file_paths)
+    rr_rate(data_file_paths)
     # tops = top_pairs(data_file_paths)
-    trend_verbs = ["('Aor', 'While→Adv')", "('Aor', 'Cond')", "('Able→Verb', 'Aor')", "('Prog1', 'Past')"
-                   , "('Pass→Verb', 'Aor')", "('Pass→Verb', 'Past')"]
-    cross_verb_trend(data_file_paths, trend_verbs)
+    cross_verb_trend(data_file_paths)
 
 
 if __name__ == '__main__':
