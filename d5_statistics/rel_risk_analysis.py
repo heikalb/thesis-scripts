@@ -4,8 +4,8 @@ import os
 from collections import defaultdict
 
 
-# Get the formulaicity proportion associated with verb types
-def rr_rate(fpaths):
+# Get the formula frequency and proportion associated with verb types
+def rr_dist(fpaths=[], save_file_name='rr_dist_by_verbs.csv'):
     save_rows = []
 
     for fpath in fpaths:
@@ -15,10 +15,11 @@ def rr_rate(fpaths):
         if not rows:
             continue
 
-        rr_above_1 = len([r for r in rows if float(r[1]) > 1])
-        save_rows.append([fpath.split('_')[2], rr_above_1/len(rows)])
+        abs_freq = sum([int(r[-1]) for r in rows if float(r[1]) > 1])
+        proportion = len([r for r in rows if float(r[1]) > 1])
+        save_rows.append([fpath.split('_')[2], abs_freq, abs_freq/len(rows), proportion, proportion/len(rows)])
 
-    with open('rel_risk_rates.csv', 'w') as f:
+    with open(save_file_name, 'w') as f:
         csv.writer(f).writerows(save_rows)
 
 
@@ -80,9 +81,9 @@ def main():
     data_dir.sort()
     data_file_paths = [os.path.join('assoc_stats/', fp) for fp in data_dir]
 
-    rr_rate(data_file_paths)
+    rr_dist(data_file_paths)
     # tops = top_pairs(data_file_paths)
-    cross_verb_trend(data_file_paths)
+    # cross_verb_trend(data_file_paths)
 
 
 if __name__ == '__main__':
