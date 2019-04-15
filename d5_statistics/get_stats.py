@@ -56,14 +56,12 @@ def remove_forbidden_suffixes(suffixes):
 
 def calc_assoc_score(abs_msr, num_suffixes, measure_dict, ci_dict):
     for k in abs_msr['cooc_freq']:
-        if not k:
-            continue
-
         m1, m2 = k
 
         for msr in measures:
             args = [abs_msr['suff_freq'][m1], abs_msr['suff_freq'][m2], abs_msr['cooc_freq'][k], num_suffixes,
                     m1, m2, abs_msr['cooc_freq']]
+
             stat = measure_funct[msr](*args)
 
             if type(stat) == tuple:
@@ -91,14 +89,12 @@ def save_data(abs_msr, faffix, query_term, measure_dict, ci_dict):
 
     with open('assoc_stats/{0}_{1}_assoc_stats.csv'.format(faffix, query_term), 'w') as f:
         csv_writer = csv.writer(f)
-        csv_writer.writerow(["collocate_pair"] +
-                            [m for m in measures] +
+        csv_writer.writerow(["collocate_pair"] + [m for m in measures] +
                             ['{0}_ci_{1}'.format(k, d) for k in measures_w_ci for d in ['left', 'right']] +
                             ['s1_frequency', 's2_frequency', 's1s2_frequency'])
 
         for k in abs_msr['cooc_freq']:
-            csv_writer.writerow([k] +
-                                [measure_dict[msr][k] for msr in measure_dict] +
+            csv_writer.writerow([k] + [measure_dict[msr][k] for msr in measure_dict] +
                                 [ci_dict[c][k][i] for c in ci_dict for i in [0, 1]] +
                                 [abs_msr['suff_freq'][suff] for suff in k] + [abs_msr['cooc_freq'][k]])
 
@@ -132,11 +128,8 @@ if __name__ == "__main__":
     # File indexes
     f_i = [""] + [('00'+str(i))[-3:] for i in range(len(query_terms))]
 
-    i = 0
     for qt in query_terms:
         print(qt)
-        colloc_stats(right_parse_sign='Verb', suffix_boundary=r'[\|\+]', mboundary=r'.*:', query_term=qt, faffix=f_i[i],
-                     bound=-1)
-        i += 1
+        colloc_stats('Verb', r'[\|\+]', r'.*:', qt, f_i[query_terms.index(qt)], -1)
 
     exit(0)
