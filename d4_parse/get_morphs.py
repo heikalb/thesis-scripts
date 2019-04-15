@@ -1,5 +1,7 @@
-# Get the morphs of morphemes
-# Heikal Badrulhisam, heikal93@gmail.com, 2019
+"""
+Get the morphs of morphemes
+Heikal Badrulhisam <heikal93@gmail.com>, 2019
+"""
 import re
 from collections import defaultdict
 
