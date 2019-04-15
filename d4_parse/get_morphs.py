@@ -6,7 +6,7 @@ from collections import defaultdict
 
 def main():
     # Open parse file
-    with open('../d4_parse/verbs_parses.txt', 'r') as f:
+    with open('verbs_parses.txt', 'r') as f:
         parses = [p.split() for p in f.read().split('\n')]
 
     # Map morphemes to a list of allomorphs
