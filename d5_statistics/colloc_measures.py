@@ -29,7 +29,7 @@ def dice_coeff(f_s1, f_s2, f_s1s2, *misc):
     return 2*f_s1s2/(f_s1 + f_s2)
 
 
-def chi_squared(f_s1, f_s2, f_s1s2, total, s1, s2, pairs):
+def chi_sq(f_s1, f_s2, f_s1s2, total, s1, s2, pairs):
     f_u = f_s1
     f_0u = total - f_u
     f_v = f_s2

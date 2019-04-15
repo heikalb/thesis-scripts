@@ -11,56 +11,56 @@ import os
 # Statistics
 measures = ['relative_risk', 'odds_ratio', 'mutual_information', 't_score', 'dice_coefficient', 'chi_squared']
 measures_w_ci = ['relative_risk']
-measure_funct = dict(zip(measures, [cm.rel_risk, cm.odds_ratio, cm.mutual_info, cm.t_score, cm.dice_coeff, cm.chi_squared]))
+measure_funct = dict(zip(measures, [cm.rel_risk, cm.odds_ratio, cm.mutual_info, cm.t_score, cm.dice_coeff, cm.chi_sq]))
 
 
-def tally(query_term, right_parse_sign, suffix_boundary, mboundary, abs_msr, bound=-1):
-    # Go through parses
+# Count suffixes and collocate pairs
+def tally(query_term, right_parse_sign, suffix_boundary, mboundary, freq, bound=-1):
     for parse in parses:
         # Skip parses for a different stem or wrong parses
         if query_term not in parse[0] or right_parse_sign not in parse[0]:
             continue
 
-        # Get suffixes, exclude stems. Collapse allomorphs
+        # Get suffixes, exclude stems. Collapse allomorphs. Remove unneeded suffixes the parser introduced
         suffixes = re.split(suffix_boundary, parse[1])[1:]
         suffixes = [re.sub(mboundary, '', s) for s in suffixes]
-        # Exclude some additional abstract suffixes the parser introduced
         suffixes = remove_forbidden_suffixes(suffixes)
 
         # Count suffix (co)occurrences
         for i in range(len(suffixes)):
-            abs_msr['suff_freq'][suffixes[i]] += 1
+            freq['suff'][suffixes[i]] += 1
 
             d = 0
             for j in range(i + 1, len(suffixes)):
                 curr_pair = (suffixes[i], suffixes[j])
-                abs_msr['cooc_freq'][curr_pair] += 1
+                freq['cooc'][curr_pair] += 1
                 d += 1
 
                 if bound != -1 and d >= bound:
                     break
 
 
+# Remove unneeded suffixes
 def remove_forbidden_suffixes(suffixes):
     ret = []
-
     i = 0
+    
     for s in suffixes:
         if not ('Zero' in s or ('A3sg' in s and i < len(suffixes) - 1)):
             ret.append(s)
-
         i += 1
 
     return ret
 
 
-def calc_assoc_score(abs_msr, num_suffixes, measure_dict, ci_dict):
-    for k in abs_msr['cooc_freq']:
+# Get various association score for collocate pairs
+def calc_assoc_score(freq, num_suffixes, measure_dict, ci_dict):
+    for k in freq['cooc']:
         m1, m2 = k
 
         for msr in measures:
-            args = [abs_msr['suff_freq'][m1], abs_msr['suff_freq'][m2], abs_msr['cooc_freq'][k], num_suffixes,
-                    m1, m2, abs_msr['cooc_freq']]
+            args = [freq['suff'][m1], freq['suff'][m2], freq['cooc'][k], num_suffixes,
+                    m1, m2, freq['cooc']]
 
             stat = measure_funct[msr](*args)
 
@@ -71,17 +71,18 @@ def calc_assoc_score(abs_msr, num_suffixes, measure_dict, ci_dict):
                 measure_dict[msr][k] = stat
 
 
-def save_data(abs_msr, faffix, query_term, measure_dict, ci_dict):
+# Save frequency data and association score in files
+def save_data(freq, faffix, query_term, measure_dict, ci_dict):
     # Save absolute frequency data
-    for msr in abs_msr:
+    for msr in freq:
         if not os.path.isdir(msr):
             os.mkdir(msr)
 
         with open('{0}/{1}_{2}_{0}.csv'.format(msr, faffix, query_term), 'w') as f:
             csv_writer = csv.writer(f)
 
-            for k in abs_msr[msr]:
-                csv_writer.writerow([k, abs_msr[msr][k]])
+            for k in freq[msr]:
+                csv_writer.writerow([k, freq[msr][k]])
 
     # Save association measures data
     if not os.path.isdir('assoc_stats'):
@@ -93,38 +94,39 @@ def save_data(abs_msr, faffix, query_term, measure_dict, ci_dict):
                             ['{0}_ci_{1}'.format(k, d) for k in measures_w_ci for d in ['left', 'right']] +
                             ['s1_frequency', 's2_frequency', 's1s2_frequency'])
 
-        for k in abs_msr['cooc_freq']:
+        for k in freq['cooc']:
             csv_writer.writerow([k] + [measure_dict[msr][k] for msr in measure_dict] +
                                 [ci_dict[c][k][i] for c in ci_dict for i in [0, 1]] +
-                                [abs_msr['suff_freq'][suff] for suff in k] + [abs_msr['cooc_freq'][k]])
+                                [freq['suff'][suff] for suff in k] + [freq['cooc'][k]])
 
 
 def colloc_stats(right_parse_sign, suffix_boundary, mboundary, query_term="", faffix="", bound=-1):
     measure_dict = dict(zip(measures, [dict() for m in measures]))
     ci_dict = dict(zip(measures_w_ci, [dict() for m in measures_w_ci]))
-    abs_msr = {'suff_freq': defaultdict(int), 'cooc_freq': defaultdict(int)}
+    freq = {'suff': defaultdict(int), 'cooc': defaultdict(int)}
 
     # Tally suffixes and suffix collocates
-    tally(query_term, right_parse_sign, suffix_boundary, mboundary, abs_msr, bound)
+    tally(query_term, right_parse_sign, suffix_boundary, mboundary, freq, bound)
 
     # Get number of suffix instances (size of sample)
-    num_suffixes = sum(abs_msr['suff_freq'][s] for s in abs_msr['suff_freq'])
+    num_suffixes = sum(freq['suff'][s] for s in freq['suff'])
 
     # Get association measures
-    calc_assoc_score(abs_msr, num_suffixes, measure_dict, ci_dict)
+    calc_assoc_score(freq, num_suffixes, measure_dict, ci_dict)
 
     # Save stats in files
-    save_data(abs_msr, faffix, query_term, measure_dict, ci_dict)
+    save_data(freq, faffix, query_term, measure_dict, ci_dict)
 
 
 if __name__ == "__main__":
-    # Open file of parses
+    # Get verb parses
     with open('../d4_parse/verbs_parses.txt', 'r') as f:
         parses = [p.split() for p in f.read().split('\n')]
 
+    # Get query terms
     query_terms = [""] + open('../d0_prep_query_terms/freq_dict_verbs.txt', 'r').read().split('\n')
+    # Data not available for this one
     query_terms.remove('savrul')
-
     # File indexes
     f_i = [""] + [('00'+str(i))[-3:] for i in range(len(query_terms))]
 
