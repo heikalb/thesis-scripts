@@ -11,7 +11,7 @@ def main():
     with open('verbs_parses.txt', 'r') as f:
         parses = [p.split() for p in f.read().split('\n')]
 
-    # Map morphemes to a list of allomorphs
+    # Map morphemes to lists of allomorphs
     morphemes = defaultdict(list)
 
     # Go morphs attached to verbs
