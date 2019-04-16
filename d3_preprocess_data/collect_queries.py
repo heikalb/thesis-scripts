@@ -1,6 +1,6 @@
 # —*— coding: utf—8 —*—
 """
-Gather all query results (verbs + context window) from different verbs into one file
+Create one file or multiple separate files with target verbs and their context windows are joined.
 Heikal Badrulhisham <heikal93@gmail.com>, 2019
 """
 import csv
@@ -23,6 +23,7 @@ def apply_correction(target_word):
 
 
 # Given a sentence that may span multiple sentence boundaries, return the sentence containing the target word only
+# and the index of the target word
 def to_one_sentence(sentence, target_i):
     tokens = sentence.split()
     right_sent = []
@@ -101,26 +102,27 @@ def main(data_dir, all_in_one_file=False):
 
         # Process data windows, skip first rows
         for row in rows[1:]:
-            # Spell correct target verb, remove punctuations
-            main_word = apply_correction(depunctuate(row[3]))
+            # Spell correct target verb, remove punctuations, get the register of the datum
             left_context = depunctuate(row[2])
+            main_word = apply_correction(depunctuate(row[3]))
             right_context = depunctuate(row[4])
+            register = row[0]
 
             # Fix main columns with multiple words. Fix cases of main words duplicated in context windows.
             left_context, main_word, right_context = fix_columns(left_context, main_word, right_context, curr_stem)
 
             # Join context windows, reduce to one sentence
             full_sentence = ' '.join([left_context, main_word, right_context])
-            single_sent = to_one_sentence(full_sentence, len(left_context.split()))
-            save_rows.append([single_sent[0], main_word, single_sent[1]])
+            single_sent, target_i = to_one_sentence(full_sentence, len(left_context.split()))
+            save_rows.append([single_sent, main_word, target_i, register])
 
+        # Option 1: Save data in individual files
         if not all_in_one_file:
-            # Save data in individual files
             save_file('../d2_data/joined/{0}_{1}_{2}.tsv'.format(filename[:3], curr_stem, 'joined'), save_rows)
             save_rows.clear()
             rows.clear()
 
-    # Save all data in one file
+    # Option 2: Save all data in one file
     if all_in_one_file:
         save_file('../d2_data/freq_dict_query_results_joined.tsv', save_rows)
 
