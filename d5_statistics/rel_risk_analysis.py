@@ -84,8 +84,8 @@ def main():
     data_dir.sort()
     data_file_paths = [os.path.join('assoc_stats/', fp) for fp in data_dir]
 
-    rr_dist(data_file_paths)
-    # tops = top_pairs(data_file_paths)
+    # rr_dist(data_file_paths)
+    tops = top_pairs(data_file_paths)
     # cross_verb_trend(data_file_paths)
 
 

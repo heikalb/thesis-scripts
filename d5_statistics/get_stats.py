@@ -15,14 +15,14 @@ measure_funct = dict(zip(measures, [cm.rel_risk, cm.odds_ratio, cm.mutual_info, 
 
 
 # Count suffixes and collocate pairs
-def tally(query_term, right_parse_sign, suffix_boundary, mboundary, freq, bound=-1):
+def tally(query_term, right_sign, suff_boundary, mboundary, freq, bound=-1, register=''):
     for parse in parses:
         # Skip parses for a different stem or wrong parses
-        if query_term not in parse[0] or right_parse_sign not in parse[0]:
+        if query_term not in parse[0] or right_sign not in parse[0] or (register and register != parse[2]):
             continue
 
         # Get suffixes, exclude stems. Collapse allomorphs. Remove unneeded suffixes the parser introduced
-        suffixes = re.split(suffix_boundary, parse[1])[1:]
+        suffixes = re.split(suff_boundary, parse[1])[1:]
         suffixes = [re.sub(mboundary, '', s) for s in suffixes]
         suffixes = remove_forbidden_suffixes(suffixes)
 
@@ -59,9 +59,7 @@ def calc_assoc_score(freq, num_suffixes, measure_dict, ci_dict):
         m1, m2 = k
 
         for msr in measures:
-            args = [freq['suff'][m1], freq['suff'][m2], freq['cooc'][k], num_suffixes,
-                    m1, m2, freq['cooc']]
-
+            args = [freq['suff'][m1], freq['suff'][m2], freq['cooc'][k], num_suffixes, m1, m2, freq['cooc']]
             stat = measure_funct[msr](*args)
 
             if type(stat) == tuple:
@@ -72,23 +70,23 @@ def calc_assoc_score(freq, num_suffixes, measure_dict, ci_dict):
 
 
 # Save frequency data and association score in files
-def save_data(freq, faffix, query_term, measure_dict, ci_dict):
+def save_data(freq, faffix, dir_affix, query_term, measure_dict, ci_dict):
     # Save absolute frequency data
     for msr in freq:
         if not os.path.isdir(msr):
             os.mkdir(msr)
 
-        with open('{0}/{1}_{2}_{0}.csv'.format(msr, faffix, query_term), 'w') as f:
+        with open('{0}{1}/{2}_{3}_{0}.csv'.format(msr, dir_affix, faffix, query_term), 'w') as f:
             csv_writer = csv.writer(f)
 
             for k in freq[msr]:
                 csv_writer.writerow([k, freq[msr][k]])
 
     # Save association measures data
-    if not os.path.isdir('assoc_stats'):
-        os.mkdir('assoc_stats')
+    if not os.path.isdir('assoc_stats{0}'.format(dir_affix)):
+        os.mkdir('assoc_stats{0}'.format(dir_affix))
 
-    with open('assoc_stats/{0}_{1}_assoc_stats.csv'.format(faffix, query_term), 'w') as f:
+    with open('assoc_stats{0}/{1}_{2}_assoc_stats.csv'.format(dir_affix, faffix, query_term), 'w') as f:
         csv_writer = csv.writer(f)
         csv_writer.writerow(["collocate_pair"] + [m for m in measures] +
                             ['{0}_ci_{1}'.format(k, d) for k in measures_w_ci for d in ['left', 'right']] +
@@ -100,13 +98,13 @@ def save_data(freq, faffix, query_term, measure_dict, ci_dict):
                                 [freq['suff'][suff] for suff in k] + [freq['cooc'][k]])
 
 
-def colloc_stats(right_parse_sign, suffix_boundary, mboundary, query_term="", faffix="", bound=-1):
+def colloc_stats(right_sign, suff_boundary, mboundary, query_term="", faffix="", dir_affix='', register='', bound=-1):
     measure_dict = dict(zip(measures, [dict() for m in measures]))
     ci_dict = dict(zip(measures_w_ci, [dict() for m in measures_w_ci]))
     freq = {'suff': defaultdict(int), 'cooc': defaultdict(int)}
 
     # Tally suffixes and suffix collocates
-    tally(query_term, right_parse_sign, suffix_boundary, mboundary, freq, bound)
+    tally(query_term, right_sign, suff_boundary, mboundary, freq, bound, register)
 
     # Get number of suffix instances (size of sample)
     num_suffixes = sum(freq['suff'][s] for s in freq['suff'])
@@ -115,12 +113,12 @@ def colloc_stats(right_parse_sign, suffix_boundary, mboundary, query_term="", fa
     calc_assoc_score(freq, num_suffixes, measure_dict, ci_dict)
 
     # Save stats in files
-    save_data(freq, faffix, query_term, measure_dict, ci_dict)
+    save_data(freq, faffix, dir_affix, query_term, measure_dict, ci_dict)
 
 
 if __name__ == "__main__":
     # Get verb parses
-    with open('../d4_parse/verbs_parses.txt', 'r') as f:
+    with open('../d4_parse/verb_parses.txt', 'r') as f:
         parses = [p.split() for p in f.read().split('\n')]
 
     # Get query terms
@@ -130,8 +128,9 @@ if __name__ == "__main__":
     # File indexes
     f_i = [""] + [('00'+str(i))[-3:] for i in range(len(query_terms))]
 
+    # Get statistics for each verb type
     for qt in query_terms:
         print(qt)
-        colloc_stats('Verb', r'[\|\+]', r'.*:', qt, f_i[query_terms.index(qt)], -1)
+        colloc_stats('Verb', r'[\|\+]', r'.*:', qt, f_i[query_terms.index(qt)], '', '')
 
     exit(0)
