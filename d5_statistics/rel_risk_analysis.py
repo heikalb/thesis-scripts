@@ -3,6 +3,7 @@ import csv
 import os
 from collections import defaultdict
 from scipy import stats
+import math
 
 
 # Get the formula frequency and proportion associated with verb types
@@ -83,6 +84,7 @@ def cross_verb_trend(fpaths):
 def test_normality(fpath):
     with open(fpath, 'r') as f:
         data = [r[1] for r in csv.reader(f)]
+        data = [math.log(float(d)) for d in data[1:]]
 
     print('Shapiro-Wilk test for normality:')
     print(stats.shapiro(data))
