@@ -93,7 +93,6 @@ def main(data_dir, all_in_one_file=False):
     for filename in filenames:
         # Get data windows
         with open(os.path.join(data_dir, filename), 'r') as f:
-            f = open(os.path.join(data_dir, filename), 'r')
             csv_reader = csv.reader(f, delimiter='\t')
             rows = [r for r in csv_reader]
 
