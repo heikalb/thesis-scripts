@@ -8,9 +8,12 @@ suggestions = {
     r'uyo$': 'uyor',
     r'üyo$': 'üyor',
     r'yolar': 'yorlar',
+    r'yodu$': 'yordu',
+    r'yomuş': 'yormuş',
 
     r'io(ru)?m$': 'iyorum',
     r'ıo(ru)?m$': 'ıyorum',
+    r'iyom$': 'iyorum',
     r'ıyom$': 'ıyorum',
     r'uyom$': 'uyorum',
     r'üyom$': 'üyorum',
@@ -48,6 +51,8 @@ suggestions = {
 
     r'[uı]cak': 'acak',
     r'icek': 'ecek',
+    r'lcek': 'lecek',
+    r'lcak': 'lacak',
     r'micek': 'meyecek',
     r'mıcek': 'mayacak',
     r'macak': 'mayacak',
@@ -71,18 +76,26 @@ suggestions = {
     r'iycez$': 'eyeceğiz',
     r'ıycaz$': 'ayacağız',
 
-    r'[au]cam$': 'acağım',
+    r'[auı]cam$': 'acağım',
     r'[ie]cem$': 'eceğim',
     r'mıcam$': 'mayacağım',
     r'micem$': 'meyeceğim',
     r'iycem': 'eyecem',
     r'ıycam': 'ayacam',
 
+    r'eğe$': 'eye',
+    r'ağa$': 'aya',
+
+    r'lari': 'ları',
+
     r'e?cen$': 'eceksin',
     r'[auı]?can$': 'acaksın',
 
-    r'###olca(k|ğ)': 'olacak',
-    r'###^söle?\S+': 'söyle',
+    r'olca(k|ğ)': 'olacak',
+    r'^isıt': 'ısıt',
+    r'^isit': 'ısıt',
+    r'^isın': 'ısın',
+    r'^isin': 'ısın',
 
     r'̇z': 'z',
     r'̇r': 'r',
