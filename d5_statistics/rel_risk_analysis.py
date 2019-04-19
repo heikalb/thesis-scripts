@@ -2,6 +2,7 @@
 import csv
 import os
 from collections import defaultdict
+from scipy import stats
 
 
 # Get the formula frequency and proportion associated with verb types
@@ -79,14 +80,23 @@ def cross_verb_trend(fpaths):
         csv.writer(f).writerows([[k] + [target_rrs[k][s] for s in stems] for k in target_rrs])
 
 
+def test_normality(fpath):
+    with open(fpath, 'r') as f:
+        data = [r[1] for r in csv.reader(f)]
+
+    print('Shapiro-Wilk test for normality:')
+    print(stats.shapiro(data))
+
+
 def main():
     data_dir = os.listdir('assoc_stats/')
     data_dir.sort()
     data_file_paths = [os.path.join('assoc_stats/', fp) for fp in data_dir]
 
     # rr_dist(data_file_paths)
-    tops = top_pairs(data_file_paths)
+    # tops = top_pairs(data_file_paths)
     # cross_verb_trend(data_file_paths)
+    test_normality('assoc_stats/__assoc_stats.csv')
 
 
 if __name__ == '__main__':

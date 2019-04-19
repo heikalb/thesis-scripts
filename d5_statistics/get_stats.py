@@ -23,8 +23,8 @@ def tally(query_term, right_sign, suff_boundary, mboundary, freq, bound=-1, regi
 
         # Get suffixes, exclude stems. Collapse allomorphs. Remove unneeded suffixes the parser introduced
         suffixes = re.split(suff_boundary, parse[1])[1:]
-        suffixes = [re.sub(mboundary, '', s) for s in suffixes]
         suffixes = remove_forbidden_suffixes(suffixes)
+        suffixes = [re.sub(mboundary, '', s) for s in suffixes]
 
         # Count suffix (co)occurrences
         for i in range(len(suffixes)):
@@ -46,7 +46,9 @@ def remove_forbidden_suffixes(suffixes):
     i = 0
     
     for s in suffixes:
-        if not ('Zero' in s or ('A3sg' in s and i < len(suffixes) - 1)):
+        # if not ('Zero' in s or ('A3sg' in s and i < len(suffixes) - 1)):
+        #    ret.append(s)
+        if ':' in s or ('A3sg' == s and i == len(suffixes)-1):
             ret.append(s)
         i += 1
 
@@ -131,6 +133,6 @@ if __name__ == "__main__":
     # Get statistics for each verb type
     for qt in query_terms:
         print(qt)
-        colloc_stats('Verb', r'[\|\+]', r'.*:', qt, f_i[query_terms.index(qt)], '', '')
+        colloc_stats('Verb', r'[\|\+]', r'.*:', qt, f_i[query_terms.index(qt)])
 
     exit(0)

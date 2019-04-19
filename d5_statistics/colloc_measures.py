@@ -45,14 +45,22 @@ def chi_sq(f_s1, f_s2, f_s1s2, total, s1, s2, pairs):
 
 def rel_risk(f_s1, f_s2, f_s1s2, total, s1, s2, pairs):
     a = f_s1s2
-    b = max(sum(pairs[k] for k in pairs if s1 == k[0] and s2 != k[1]), 1)
-    c = max(sum(pairs[k] for k in pairs if s1 != k[0] and s2 == k[1]), 1)
-    d = max(sum(pairs[k] for k in pairs if s1 != k[0] and s2 != k[1]), 1)
+    b = max(sum(pairs[k] for k in pairs if s1 == k[0] and s2 != k[1]), 0.5)
+    c = max(sum(pairs[k] for k in pairs if s1 != k[0] and s2 == k[1]), 0.5)
+    d = max(sum(pairs[k] for k in pairs if s1 != k[0] and s2 != k[1]), 0.5)
 
     rr = (a/(a+b))/(c/(c+d))
     ci = rel_risk_ci(a, b, c, d, rr)
 
     return rr, ci
+
+
+def rel_risk_ci(a, b, c, d, rr):
+    stand_err = math.sqrt(1/a + 1/b + 1/c + 1/d)
+    ci_r = math.log(rr) + 1.96*stand_err
+    ci_l = math.log(rr) - 1.96*stand_err
+
+    return math.exp(ci_l), math.exp(ci_r)
 
 
 def odds_ratio(f_s1, f_s2, f_s1s2, total, s1, s2, pairs):
@@ -64,11 +72,3 @@ def odds_ratio(f_s1, f_s2, f_s1s2, total, s1, s2, pairs):
     condp_s2_nots1 = c/(c + d)
 
     return (condp_s2_s1/(1-condp_s2_s1))/(condp_s2_nots1/(1-condp_s2_nots1))
-
-
-def rel_risk_ci(a, b, c, d, rr):
-    stand_err = math.sqrt(1/a + 1/b + 1/c + 1/d)
-    ci_r = math.log(rr) + 1.96*stand_err
-    ci_l = math.log(rr) - 1.96*stand_err
-
-    return math.exp(ci_l), math.exp(ci_r)

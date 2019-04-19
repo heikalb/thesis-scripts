@@ -7,6 +7,7 @@ suggestions = {
     r'ıyo$': 'ıyor',
     r'uyo$': 'uyor',
     r'üyo$': 'üyor',
+    r'yolar': 'yorlar',
 
     r'io(ru)?m$': 'iyorum',
     r'ıo(ru)?m$': 'ıyorum',
