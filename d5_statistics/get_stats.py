@@ -39,6 +39,7 @@ def tally(query_term, right_sign, suff_boundary, mboundary, freq, bound=-1, regi
                 if bound != -1 and d >= bound:
                     break
 
+    print(query_term, sum([freq['cooc'][k] for k in freq['cooc']]))
 
 # Remove unneeded suffixes
 def remove_forbidden_suffixes(suffixes):
@@ -75,10 +76,10 @@ def calc_assoc_score(freq, num_suffixes, measure_dict, ci_dict):
 def save_data(freq, faffix, dir_affix, query_term, measure_dict, ci_dict):
     # Save absolute frequency data
     for msr in freq:
-        if not os.path.isdir(msr):
-            os.mkdir(msr)
+        if not os.path.isdir('{0}{1}'.format(msr, dir_affix)):
+            os.mkdir('{0}{1}'.format(msr, dir_affix))
 
-        with open('{0}{1}/{2}_{3}_{0}.csv'.format(msr, dir_affix, faffix, query_term), 'w') as f:
+        with open('{0}{1}/{2}_{3}_{0}{4}.csv'.format(msr, dir_affix, faffix, query_term, dir_affix), 'w') as f:
             csv_writer = csv.writer(f)
 
             for k in freq[msr]:
@@ -88,7 +89,7 @@ def save_data(freq, faffix, dir_affix, query_term, measure_dict, ci_dict):
     if not os.path.isdir('assoc_stats{0}'.format(dir_affix)):
         os.mkdir('assoc_stats{0}'.format(dir_affix))
 
-    with open('assoc_stats{0}/{1}_{2}_assoc_stats.csv'.format(dir_affix, faffix, query_term), 'w') as f:
+    with open('assoc_stats{0}/{1}_{2}_assoc_stats{3}.csv'.format(dir_affix, faffix, query_term, dir_affix), 'w') as f:
         csv_writer = csv.writer(f)
         csv_writer.writerow(["collocate_pair"] + [m for m in measures] +
                             ['{0}_ci_{1}'.format(k, d) for k in measures_w_ci for d in ['left', 'right']] +
@@ -134,5 +135,7 @@ if __name__ == "__main__":
     for qt in query_terms:
         print(qt)
         colloc_stats('Verb', r'[\|\+]', r'.*:', qt, f_i[query_terms.index(qt)])
+        # colloc_stats('Verb', r'[\|\+]', r'.*:', qt, f_i[query_terms.index(qt)], '_written', 'w')
+        # colloc_stats('Verb', r'[\|\+]', r'.*:', qt, f_i[query_terms.index(qt)], '_spoken', 's')
 
     exit(0)
