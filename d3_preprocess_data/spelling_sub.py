@@ -1,4 +1,29 @@
 suggestions = {
+    r'^olca(k|ğ)': 'olacak',
+    r'^[iı]s[ıi]t': 'ısıt',
+    r'^[iı]s[iı]n': 'ısın',
+    r'^[iı]s[ıi]r': 'ısır',
+    r'^et[cç]e': 'edece',
+    r'^yapilaşma': 'yapılaşma',
+    r'^ismar': 'ısmar',
+    r'^gımıl': 'kımıl',
+    r'^isbat': 'ispat',
+    r'^miril': 'mıril',
+    r'^taptuk': 'taptık',
+    r'^yabanci': 'yabancı',
+    r'^heycan': 'heyecan',
+    r'^haykiriri': 'haykırırı',
+    r'^haykiri': 'haykırı',
+    r'^haykir': 'haykır',
+    r's[iı]n[iı]fland[iı]r[iı]lmas[iı]': 'sınıflandırılması',
+    r'^sinif': 'sınıf',
+    r'^farkli': 'farklı',
+    r'^tika': 'tıka',
+    r'^kacak': 'kucak',
+    r'^zayifl': 'zayıf',
+    r'^danişma': 'danış',
+    r'^aydin': 'aydın',
+
     r'uo$': 'uyor',
     r'ıo$': 'ıyor',
     r'io$': 'iyor',
@@ -8,7 +33,7 @@ suggestions = {
     r'uyo$': 'uyor',
     r'üyo$': 'üyor',
     r'yolar': 'yorlar',
-    r'yodu$': 'yordu',
+    r'yodu': 'yordu',
     r'yomuş': 'yormuş',
 
     r'io(ru)?m$': 'iyorum',
@@ -68,6 +93,7 @@ suggestions = {
     r'meceğ': 'meyeceğ',
     r'iyceğ': 'eyeceğ',
     r'ıycağ': 'ayacağ',
+    r'mıcanı':  'mayacağını',
 
     r'[ıau]caz$': 'acağız',
     r'[ie]cez$': 'eceğiz',
@@ -83,19 +109,13 @@ suggestions = {
     r'iycem': 'eyecem',
     r'ıycam': 'ayacam',
 
-    r'eğe$': 'eye',
-    r'ağa$': 'aya',
-
-    r'lari': 'ları',
-
     r'e?cen$': 'eceksin',
     r'[auı]?can$': 'acaksın',
 
-    r'olca(k|ğ)': 'olacak',
-    r'^isıt': 'ısıt',
-    r'^isit': 'ısıt',
-    r'^isın': 'ısın',
-    r'^isin': 'ısın',
+    r'eğe$': 'eye',
+    r'ağa$': 'aya',
+
+    r'lari$': 'ları',
 
     r'̇z': 'z',
     r'̇r': 'r',

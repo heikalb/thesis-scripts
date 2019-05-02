@@ -4,6 +4,9 @@ import os
 from collections import defaultdict
 from scipy import stats
 import math
+import numpy
+from scipy import stats
+from matplotlib import pyplot
 
 
 # Get the formula frequency and proportion associated with verb types
@@ -35,9 +38,9 @@ def top_pairs(fpaths):
     # Tally verb type occurrences
     for fpath in fpaths:
         with open(fpath, 'r') as f:
-            rows = [r for r in csv.reader(f)][1:]
+            rows = [r for r in csv.reader(f)]
 
-        curr_pairs = [r[0] for r in rows if float(r[1]) > 1]
+        curr_pairs = [r[0] for r in rows]
 
         for p in curr_pairs:
             pair_count_byverbs[p] += 1
@@ -77,8 +80,9 @@ def cross_verb_trend(fpaths):
     # Save data
     with open('cross_verb_trends.csv', 'w') as f:
         stems = [fpath.split('_')[2] for fpath in fpaths]
-        csv.writer(f).writerow(['Pair'] + [s for s in stems])
-        csv.writer(f).writerows([[k] + [target_rrs[k][s] for s in stems] for k in target_rrs])
+        csv.writer(f).writerow(['Pair'] + [s for s in stems] + ['Verb_type_frequency'])
+        csv.writer(f).writerows([[k] + [target_rrs[k][s] for s in stems] +
+                                 [len([s for s in target_rrs[k] if target_rrs[k][s]]) - 1] for k in target_rrs])
 
 
 def test_normality(fpath):
@@ -90,6 +94,62 @@ def test_normality(fpath):
     print(stats.shapiro(data))
 
 
+def register():
+    for reg in ['', '_written', '_spoken']:
+        with open(f'assoc_stats{reg}/__assoc_stats{reg}.csv', 'r') as f:
+            data = [r for r in csv.reader(f)][1:]
+
+        total = len(data)
+        up_to_1 = len([r for r in data if float(r[1]) <= 1])
+        more_than_1 = len([r for r in data if float(r[1]) > 1])
+
+        print(f'Pair types in {reg} register')
+        print('Up to 1:', up_to_1, up_to_1/total)
+        print('More than 1', more_than_1, more_than_1/total)
+        print(total, '\n')
+
+        total = sum([int(r[-2]) for r in data])
+        up_to_1 = sum([int(r[-2]) for r in data if float(r[1]) <= 1])
+        more_than_1 = sum([int(r[-2]) for r in data if float(r[1]) > 1])
+
+        print(f'Pair instances in {reg} register')
+        print('Up to 1:', up_to_1, up_to_1/total)
+        print('More than 1', more_than_1, more_than_1/total)
+        print(total, '\n')
+
+
+def adjacency():
+    with open(f'assoc_stats/__assoc_stats.csv', 'r') as f:
+        data = [r for r in csv.reader(f)][1:]
+
+    # adjacent = [math.log(float(r[1])) for r in data if int(r[-1])/int(r[-2]) > 0]
+    adjacent = [math.log(float(r[1])) for r in data if int(r[-1])/int(r[-2]) == 1]
+    sub_adjacent = [math.log(float(r[1])) for r in data if 0 < int(r[-1])/int(r[-2]) < 1]
+    nonadjacent = [math.log(float(r[1])) for r in data if int(r[-1])/int(r[-2]) == 0]
+
+    print('Pair frequency, average log RR,variance, standard deviation')
+    print('Adjacent:', len(adjacent), sum(adjacent) / len(adjacent), numpy.var(adjacent), numpy.std(adjacent))
+    print('Sub Adjacent:', len(sub_adjacent), sum(sub_adjacent) / len(sub_adjacent), numpy.var(sub_adjacent), numpy.std(sub_adjacent))
+    print('Non adjacent', len(nonadjacent), sum(nonadjacent) / len(nonadjacent), numpy.var(nonadjacent), numpy.std(nonadjacent))
+    # print(stats.ttest_ind(adjacent, nonadjacent, equal_var=True))
+    # print(stats.ttest_ind(adjacent, nonadjacent, equal_var=False))
+    print('Levene\'s test:', stats.levene(adjacent, sub_adjacent, nonadjacent))
+    print('One way ANOVA:',(stats.f_oneway(adjacent, sub_adjacent, nonadjacent)))
+    print('Pearson correlation:', stats.pearsonr([float(r[1]) for r in data], [int(r[-1]) for r in data]))
+
+
+def formulas():
+    with open(f'assoc_stats/__assoc_stats.csv', 'r') as f:
+        data = [r for r in csv.reader(f)][1:]
+
+    for r in data:
+        #if int(r[-3]) >= 100 and int(r[-4]) >= 100:
+        if int(r[-3]) == int(r[-2] or int(r[-4]) == int(r[-2])):
+            print(r[0])
+
+
+
+
 def main():
     data_dir = os.listdir('assoc_stats/')
     data_dir.sort()
@@ -98,7 +158,10 @@ def main():
     # rr_dist(data_file_paths)
     # tops = top_pairs(data_file_paths)
     # cross_verb_trend(data_file_paths)
-    test_normality('assoc_stats/__assoc_stats.csv')
+    # test_normality('assoc_stats/__assoc_stats.csv')
+    # register()
+    # adjacency()
+    formulas()
 
 
 if __name__ == '__main__':

@@ -3,7 +3,7 @@ Reduce the file of parses to parses of target verbs only.
 """
 import csv
 import os
-
+from collections import Counter
 
 # Get position of target verbs in the context windows
 def get_verb_indices(fpath):
@@ -52,8 +52,12 @@ def main():
     with open('verb_parses.txt', 'w') as f:
         f.write('\n'.join(verb_parses))
 
+    parse_error_counter = Counter(parse_errors)
+    parse_errors = sorted(list(set(parse_errors)), key=lambda x: parse_error_counter[x], reverse=True)
+
     with open('parse_errors.txt', 'w') as f:
-        f.write('\n'.join(parse_errors))
+        #f.write('\n'.join(parse_errors))
+        f.write('\n'.join([f'{k} {parse_error_counter[k]}' for k in parse_errors]))
 
 
 if __name__ == '__main__':

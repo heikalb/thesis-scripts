@@ -72,6 +72,8 @@ def calc_assoc_score(suff_freq, pair_freq, num_suffixes, measure_dict, ci_dict):
 
 # Save data
 def save_data(suff_freq, pair_freq, faffix, dir_affix, stem, measure_dict, ci_dict, adj_inst):
+    pairs = [p for p in pair_freq]
+
     if not os.path.isdir('assoc_stats{0}'.format(dir_affix)):
         os.mkdir('assoc_stats{0}'.format(dir_affix))
 
@@ -82,10 +84,11 @@ def save_data(suff_freq, pair_freq, faffix, dir_affix, stem, measure_dict, ci_di
                             ['{0}_ci_{1}'.format(k, d) for k in measures_w_ci for d in ['left', 'right']] +
                             ['s1_frequency', 's2_frequency', 's1s2_frequency', 's1s2_adjacent_frequency'])
 
-        for k in pair_freq:
-            csv_writer.writerow([k] + [measure_dict[msr][k] for msr in measure_dict] +
-                                [ci_dict[c][k][i] for c in ci_dict for i in [0, 1]] +
-                                [suff_freq[suff] for suff in k] + [pair_freq[k], adj_inst[k]])
+        for k in sorted(pair_freq, key=lambda x: measure_dict['relative_risk'][x], reverse=True):
+            if suff_freq[k[0]] >= 100 and suff_freq[k[1]] >= 100:
+                csv_writer.writerow([k] + [measure_dict[msr][k] for msr in measure_dict] +
+                                    [ci_dict[c][k][i] for c in ci_dict for i in [0, 1]] +
+                                    [suff_freq[suff] for suff in k] + [pair_freq[k], adj_inst[k]])
 
 
 def colloc_stats(pos, suff_boundary, morph_boundary, stem="", faffix="", dir_affix='', register='', bound=-1):
