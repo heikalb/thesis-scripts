@@ -87,8 +87,8 @@ def cross_verb_trend(fpaths):
 
 def test_normality(fpath):
     with open(fpath, 'r') as f:
-        data = [r[1] for r in csv.reader(f)]
-        data = [math.log(float(d)) for d in data[1:]]
+        data = [r[1] for r in csv.reader(f)][1:]
+        data = [math.log(float(d)) for d in data]
 
     print('Shapiro-Wilk test for normality:')
     print(stats.shapiro(data))
@@ -148,8 +148,6 @@ def formulas():
             print(r[0])
 
 
-
-
 def main():
     data_dir = os.listdir('assoc_stats/')
     data_dir.sort()
@@ -158,10 +156,10 @@ def main():
     # rr_dist(data_file_paths)
     # tops = top_pairs(data_file_paths)
     # cross_verb_trend(data_file_paths)
-    # test_normality('assoc_stats/__assoc_stats.csv')
+    test_normality('assoc_stats/__assoc_stats.csv')
     # register()
     # adjacency()
-    formulas()
+    # formulas()
 
 
 if __name__ == '__main__':
