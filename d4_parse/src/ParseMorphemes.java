@@ -52,42 +52,5 @@ public class ParseMorphemes
             writer.close();
             i++;
         }
-
-
-
-        /*
-        String dataFile = "../d2_data/freq_dict_query_results_joined.tsv";
-        FileReader fileReader = new FileReader(dataFile);
-        BufferedReader br = new BufferedReader(fileReader);
-
-        // For Turkish morphological processing
-        TurkishMorphology morphology = TurkishMorphology.createWithDefaults();
-
-        //Collect parses
-        ArrayList<List> parses = new ArrayList();
-
-        // Go through lines in file
-        String line;
-        while ((line = br.readLine()) != null)
-        {
-            String sentence = line.split("\t")[0];
-            List<WordAnalysis> analyses = morphology.analyzeSentence(sentence);
-            SentenceAnalysis result = morphology.disambiguate(sentence, analyses);
-            parses.add(result.bestAnalysis());
-            System.out.println(result.bestAnalysis());
-        }
-
-        // Save data
-        // File saveFile = new File("parses_all.txt");
-        File saveFile = new File("parses_all_freq_dict.txt");
-        FileWriter writer = new FileWriter(saveFile);
-
-        for(List parseList: parses)
-            writer.append(parseList.toString() + '\n');
-
-        writer.flush();
-        writer.close();
-        System.exit(0);
-        */
     }
 }
