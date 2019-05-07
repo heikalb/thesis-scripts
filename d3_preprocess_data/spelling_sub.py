@@ -1,4 +1,6 @@
 suggestions = {
+    r'kacaklayan': 'kucaklayan',
+    r'kacakladı': 'kucakladı',
     r'^olca(k|ğ)': 'olacak',
     r'^[iı]s[ıi]t': 'ısıt',
     r'^[iı]s[iı]n': 'ısın',
@@ -23,6 +25,9 @@ suggestions = {
     r'^zayifl': 'zayıf',
     r'^danişma': 'danış',
     r'^aydin': 'aydın',
+    r'koy{iı}m': 'koyayım',
+    r'çıkucak': 'çıkacak',
+    r'söyliyim': 'söyleyeyim',
 
     r'uo$': 'uyor',
     r'ıo$': 'ıyor',
