@@ -25,7 +25,7 @@ suggestions = {
     r'^zayifl': 'zayıf',
     r'^danişma': 'danış',
     r'^aydin': 'aydın',
-    r'koy{iı}m': 'koyayım',
+    r'koy[iı]m': 'koyayım',
     r'çıkucak': 'çıkacak',
     r'söyliyim': 'söyleyeyim',
 
