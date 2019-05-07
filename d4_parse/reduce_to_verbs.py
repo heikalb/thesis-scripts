@@ -5,6 +5,7 @@ import csv
 import os
 from collections import Counter
 
+
 # Get position of target verbs in the context windows
 def get_verb_indices(fpath):
     with open(fpath) as f:
@@ -48,7 +49,7 @@ def main():
             if 'UNK' in crnt_parses[indices[i]]:
                 parse_errors.append(crnt_parses[indices[i]])
 
-    # Save data
+    # Save data and parse errors
     with open('verb_parses.txt', 'w') as f:
         f.write('\n'.join(verb_parses))
 
@@ -56,7 +57,7 @@ def main():
     parse_errors = sorted(list(set(parse_errors)), key=lambda x: parse_error_counter[x], reverse=True)
 
     with open('parse_errors.txt', 'w') as f:
-        #f.write('\n'.join(parse_errors))
+        # f.write('\n'.join(parse_errors))
         f.write('\n'.join([f'{k} {parse_error_counter[k]}' for k in parse_errors]))
 
 
