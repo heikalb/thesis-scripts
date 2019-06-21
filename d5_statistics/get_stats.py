@@ -7,6 +7,8 @@ from collections import defaultdict
 import re
 import colloc_measures as cm
 import os
+from nltk import ngrams
+
 
 # Statistics
 measures = ['relative_risk', 'odds_ratio', 'mutual_information', 't_score', 'dice_coefficient', 'chi_squared']
@@ -43,8 +45,6 @@ def tally(stem, pos, suff_boundary, morph_boundary, suff_freq, pair_freq, adj_in
                 if bound != -1 and d >= bound:
                     break
 
-    print(sum([pair_freq[k] for k in pair_freq]), 'pairs')
-
 
 # Remove unneeded suffixes
 def remove_forbidden_suffixes(suffixes):
@@ -56,18 +56,18 @@ def remove_forbidden_suffixes(suffixes):
 
 # Get various association score for collocate pairs
 def calc_assoc_score(suff_freq, pair_freq, num_suffixes, measure_dict, ci_dict):
-    for k in pair_freq:
-        m1, m2 = k
+    for pair in pair_freq:
+        m1, m2 = pair
 
         for msr in measures:
-            args = [suff_freq[m1], suff_freq[m2], pair_freq[k], num_suffixes, m1, m2, pair_freq]
+            args = [suff_freq[m1], suff_freq[m2], pair_freq[pair], num_suffixes, m1, m2, pair_freq]
             stat = measure_funct[msr](*args)
 
             if type(stat) == tuple:
-                measure_dict[msr][k] = stat[0]
-                ci_dict[msr][k] = stat[1]
+                measure_dict[msr][pair] = stat[0]
+                ci_dict[msr][pair] = stat[1]
             else:
-                measure_dict[msr][k] = stat
+                measure_dict[msr][pair] = stat
 
 
 # Save data
@@ -116,14 +116,14 @@ if __name__ == "__main__":
         parses = [p.split() for p in f.read().split('\n')]
 
     stems = [""] + open('../d0_prep_query_terms/freq_dict_verbs.txt', 'r').read().split('\n')
-    stems.remove('savrul')
     f_i = [""] + [('00'+str(i))[-3:] for i in range(len(stems))]
+    trigrams = []
 
     # Get statistics for each verb type
     for stem in stems:
         print(stem)
-        # colloc_stats('Verb', r'[\|\+]', r'.*:', stem, f_i[stems.index(stem)])
+        colloc_stats('Verb', r'[\|\+]', r'.*:', stem, f_i[stems.index(stem)])
         # colloc_stats('Verb', r'[\|\+]', r'.*:', stem, f_i[stems.index(stem)], '_written', 'w')
-        colloc_stats('Verb', r'[\|\+]', r'.*:', stem, f_i[stems.index(stem)], '_spoken', 's')
+        # colloc_stats('Verb', r'[\|\+]', r'.*:', stem, f_i[stems.index(stem)], '_spoken', 's')
 
     exit(0)

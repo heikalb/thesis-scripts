@@ -51,7 +51,6 @@ def rel_risk(f_s1, f_s2, f_s1s2, total, s1, s2, pairs):
 
     rr = (a/(a+b))/(c/(c+d))
     ci = rel_risk_ci(a, b, c, d, rr)
-
     return rr, ci
 
 
