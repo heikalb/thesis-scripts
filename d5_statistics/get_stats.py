@@ -7,8 +7,6 @@ from collections import defaultdict
 import re
 import colloc_measures as cm
 import os
-from nltk import ngrams
-
 
 # Statistics
 measures = ['relative_risk', 'odds_ratio', 'mutual_information', 't_score', 'dice_coefficient', 'chi_squared']
@@ -45,6 +43,8 @@ def tally(stem, pos, suff_boundary, morph_boundary, suff_freq, pair_freq, adj_in
                 if bound != -1 and d >= bound:
                     break
 
+    print(f'Stem: {stem}\tPair types: {len(pair_freq)}\tPair instances: {sum([pair_freq[p] for p in pair_freq])}')
+
 
 # Remove unneeded suffixes
 def remove_forbidden_suffixes(suffixes):
@@ -57,10 +57,10 @@ def remove_forbidden_suffixes(suffixes):
 # Get various association score for collocate pairs
 def calc_assoc_score(suff_freq, pair_freq, num_suffixes, measure_dict, ci_dict):
     for pair in pair_freq:
-        m1, m2 = pair
+        suff_1, suff_2 = pair
 
         for msr in measures:
-            args = [suff_freq[m1], suff_freq[m2], pair_freq[pair], num_suffixes, m1, m2, pair_freq]
+            args = [suff_freq[suff_1], suff_freq[suff_2], pair_freq[pair], num_suffixes, suff_1, suff_2, pair_freq]
             stat = measure_funct[msr](*args)
 
             if type(stat) == tuple:
@@ -72,7 +72,6 @@ def calc_assoc_score(suff_freq, pair_freq, num_suffixes, measure_dict, ci_dict):
 
 # Save data
 def save_data(suff_freq, pair_freq, faffix, dir_affix, stem, measure_dict, ci_dict, adj_inst):
-    pairs = [p for p in pair_freq]
 
     if not os.path.isdir('assoc_stats{0}'.format(dir_affix)):
         os.mkdir('assoc_stats{0}'.format(dir_affix))
@@ -85,10 +84,9 @@ def save_data(suff_freq, pair_freq, faffix, dir_affix, stem, measure_dict, ci_di
                             ['s1_frequency', 's2_frequency', 's1s2_frequency', 's1s2_adjacent_frequency'])
 
         for k in sorted(pair_freq, key=lambda x: measure_dict['relative_risk'][x], reverse=True):
-            if suff_freq[k[0]] >= 100 and suff_freq[k[1]] >= 100:
-                csv_writer.writerow([k] + [measure_dict[msr][k] for msr in measure_dict] +
-                                    [ci_dict[c][k][i] for c in ci_dict for i in [0, 1]] +
-                                    [suff_freq[suff] for suff in k] + [pair_freq[k], adj_inst[k]])
+            csv_writer.writerow([k] + [measure_dict[msr][k] for msr in measure_dict] +
+                                [ci_dict[c][k][i] for c in ci_dict for i in [0, 1]] +
+                                [suff_freq[suff] for suff in k] + [pair_freq[k], adj_inst[k]])
 
 
 def colloc_stats(pos, suff_boundary, morph_boundary, stem="", faffix="", dir_affix='', register='', bound=-1):

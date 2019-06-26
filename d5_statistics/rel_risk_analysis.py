@@ -2,11 +2,9 @@
 import csv
 import os
 from collections import defaultdict
-from scipy import stats
 import math
 import numpy
 from scipy import stats
-from matplotlib import pyplot
 
 
 # Get the formula frequency and proportion associated with verb types
