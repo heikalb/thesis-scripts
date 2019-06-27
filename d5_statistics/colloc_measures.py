@@ -43,13 +43,24 @@ def chi_sq(f_s1, f_s2, f_s1s2, total, s1, s2, pairs):
             + (f_0u_v-f_0u*f_v)**2/f_0u*f_v + (f_0u_0v-f_0u*f_0v)**2/f_0u*f_0v
 
 
-def rel_risk(f_s1, f_s2, f_s1s2, total, s1, s2, pairs):
+def risk_ratio(f_s1, f_s2, f_s1s2, total, s1, s2, pairs):
     a = f_s1s2
     b = max(sum(pairs[k] for k in pairs if s1 == k[0] and s2 != k[1]), 0.5)
     c = max(sum(pairs[k] for k in pairs if s1 != k[0] and s2 == k[1]), 0.5)
     d = max(sum(pairs[k] for k in pairs if s1 != k[0] and s2 != k[1]), 0.5)
 
     rr = (a/(a+b))/(c/(c+d))
+    ci = rel_risk_ci(a, b, c, d, rr)
+    return rr, ci
+
+
+def risk_ratio_reverse(f_s1, f_s2, f_s1s2, total, s1, s2, pairs):
+    a = f_s1s2
+    b = max(sum(pairs[k] for k in pairs if s1 == k[0] and s2 != k[1]), 0.5)
+    c = max(sum(pairs[k] for k in pairs if s1 != k[0] and s2 == k[1]), 0.5)
+    d = max(sum(pairs[k] for k in pairs if s1 != k[0] and s2 != k[1]), 0.5)
+
+    rr = (a/(a+c))/(b/(b+d))
     ci = rel_risk_ci(a, b, c, d, rr)
     return rr, ci
 

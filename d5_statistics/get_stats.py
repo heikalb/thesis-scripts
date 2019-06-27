@@ -9,9 +9,11 @@ import colloc_measures as cm
 import os
 
 # Statistics
-measures = ['relative_risk', 'odds_ratio', 'mutual_information', 't_score', 'dice_coefficient', 'chi_squared']
-measures_w_ci = ['relative_risk']
-measure_funct = dict(zip(measures, [cm.rel_risk, cm.odds_ratio, cm.mutual_info, cm.t_score, cm.dice_coeff, cm.chi_sq]))
+measures = ['risk_ratio', 'risk_ratio_reverse', 'odds_ratio', 'mutual_information', 'dice_coefficient', 't_score',
+            'chi_squared']
+measure_confidence_interval = ['risk_ratio', 'risk_ratio_reverse']
+measure_funct = dict(zip(measures, [cm.risk_ratio, cm.risk_ratio_reverse, cm.odds_ratio, cm.mutual_info, cm.dice_coeff,
+                                    cm.t_score, cm.chi_sq]))
 
 
 # Count suffixes and collocate pairs
@@ -43,6 +45,7 @@ def tally(stem, pos, suff_boundary, morph_boundary, suff_freq, pair_freq, adj_in
                 if bound != -1 and d >= bound:
                     break
 
+    # Report frequencies
     print(f'Stem: {stem}\tPair types: {len(pair_freq)}\tPair instances: {sum([pair_freq[p] for p in pair_freq])}')
 
 
@@ -55,7 +58,7 @@ def remove_forbidden_suffixes(suffixes):
 
 
 # Get various association score for collocate pairs
-def calc_assoc_score(suff_freq, pair_freq, num_suffixes, measure_dict, ci_dict):
+def calc_assoc_score(suff_freq, pair_freq, num_suffixes, measure_vals, ci_dict):
     for pair in pair_freq:
         suff_1, suff_2 = pair
 
@@ -64,34 +67,38 @@ def calc_assoc_score(suff_freq, pair_freq, num_suffixes, measure_dict, ci_dict):
             stat = measure_funct[msr](*args)
 
             if type(stat) == tuple:
-                measure_dict[msr][pair] = stat[0]
+                measure_vals[msr][pair] = stat[0]
                 ci_dict[msr][pair] = stat[1]
             else:
-                measure_dict[msr][pair] = stat
+                measure_vals[msr][pair] = stat
 
 
 # Save data
-def save_data(suff_freq, pair_freq, faffix, dir_affix, stem, measure_dict, ci_dict, adj_inst):
+def save_data(suff_freq, pair_freq, faffix, dir_affix, stem, measure_vals, ci_dict, adj_inst):
+    # Create file if it's not alreeady there
+    if not os.path.isdir(f'association_stats{dir_affix}'):
+        os.mkdir(f'association_stats{dir_affix}')
 
-    if not os.path.isdir('assoc_stats{0}'.format(dir_affix)):
-        os.mkdir('assoc_stats{0}'.format(dir_affix))
-
-    with open('assoc_stats{0}/{1}_{2}_assoc_stats{3}.csv'.format(dir_affix, faffix, stem, dir_affix), 'w') as f:
+    # Fill up data
+    with open(f'association_stats{dir_affix}/{faffix}_{stem}_association_stats{dir_affix}.csv', 'w') as f:
         csv_writer = csv.writer(f)
 
-        csv_writer.writerow(["collocate_pair"] + [m for m in measures] +
-                            ['{0}_ci_{1}'.format(k, d) for k in measures_w_ci for d in ['left', 'right']] +
-                            ['s1_frequency', 's2_frequency', 's1s2_frequency', 's1s2_adjacent_frequency'])
+        # Column labels
+        csv_writer.writerow(["collocate_pair"] + [m for m in measure_vals] +
+                            ['{0}_confidence_interval_{1}'.format(k, d) for k in measure_confidence_interval for d in ['left', 'right']] +
+                            ['suffix1_frequency', 'suffix2_frequency', 'suffix1-suffix2_frequency',
+                             'suffix1-suffix2_adjacent_frequency'])
 
-        for k in sorted(pair_freq, key=lambda x: measure_dict['relative_risk'][x], reverse=True):
-            csv_writer.writerow([k] + [measure_dict[msr][k] for msr in measure_dict] +
+        # Fill in row values, sort by risk ratio
+        for k in sorted(pair_freq, key=lambda x: measure_vals['risk_ratio'][x], reverse=True):
+            csv_writer.writerow([k] + [measure_vals[msr][k] for msr in measure_vals] +
                                 [ci_dict[c][k][i] for c in ci_dict for i in [0, 1]] +
                                 [suff_freq[suff] for suff in k] + [pair_freq[k], adj_inst[k]])
 
 
 def colloc_stats(pos, suff_boundary, morph_boundary, stem="", faffix="", dir_affix='', register='', bound=-1):
-    measure_dict = dict(zip(measures, [dict() for m in measures]))
-    ci_dict = dict(zip(measures_w_ci, [dict() for m in measures_w_ci]))
+    measure_vals = dict(zip(measures, [dict() for m in measures]))
+    ci_dict = dict(zip(measure_confidence_interval, [dict() for m in measure_confidence_interval]))
     suff_freq, pair_freq = defaultdict(int), defaultdict(int)
     adj_inst = defaultdict(int)
 
@@ -102,10 +109,10 @@ def colloc_stats(pos, suff_boundary, morph_boundary, stem="", faffix="", dir_aff
     num_suffixes = sum(suff_freq[s] for s in suff_freq)
 
     # Get association measures
-    calc_assoc_score(suff_freq, pair_freq, num_suffixes, measure_dict, ci_dict)
+    calc_assoc_score(suff_freq, pair_freq, num_suffixes, measure_vals, ci_dict)
 
     # Save stats in files
-    save_data(suff_freq, pair_freq, faffix, dir_affix, stem, measure_dict, ci_dict, adj_inst)
+    save_data(suff_freq, pair_freq, faffix, dir_affix, stem, measure_vals, ci_dict, adj_inst)
 
 
 if __name__ == "__main__":
@@ -113,13 +120,12 @@ if __name__ == "__main__":
     with open('../d4_parse/verb_parses.txt', 'r') as f:
         parses = [p.split() for p in f.read().split('\n')]
 
+    # file stems and indices
     stems = [""] + open('../d0_prep_query_terms/freq_dict_verbs.txt', 'r').read().split('\n')
-    f_i = [""] + [('00'+str(i))[-3:] for i in range(len(stems))]
-    trigrams = []
+    f_i = [('00'+str(i))[-3:] for i in range(len(stems) + 1)]
 
     # Get statistics for each verb type
     for stem in stems:
-        print(stem)
         colloc_stats('Verb', r'[\|\+]', r'.*:', stem, f_i[stems.index(stem)])
         # colloc_stats('Verb', r'[\|\+]', r'.*:', stem, f_i[stems.index(stem)], '_written', 'w')
         # colloc_stats('Verb', r'[\|\+]', r'.*:', stem, f_i[stems.index(stem)], '_spoken', 's')
