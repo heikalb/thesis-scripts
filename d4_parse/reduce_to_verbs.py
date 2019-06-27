@@ -49,6 +49,9 @@ def main():
             if 'UNK' in crnt_parses[indices[i]]:
                 parse_errors.append(crnt_parses[indices[i]])
 
+    print(len(verb_parses), len(verb_parses)-len(parse_errors))
+    print(len(parse_errors))
+    exit()
     # Save data and parse errors
     with open('verb_parses.txt', 'w') as f:
         f.write('\n'.join(verb_parses))
