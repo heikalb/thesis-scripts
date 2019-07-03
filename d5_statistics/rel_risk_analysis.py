@@ -7,6 +7,20 @@ import numpy
 from scipy import stats
 
 
+def rr_ranges(fname):
+    with open(fname, 'r') as f:
+        data = [r[8] for r in csv.reader(f)][1:]
+
+    data = [float(d) for d in data]
+    upto_1 = len([d for d in data if d <= 1])
+    below_2 = len([d for d in data if 1 < d < 2])
+    above_2 = len([d for d in data if 2 <= d])
+
+    print(f'RR below 1: {upto_1} ({upto_1/len(data)}%)')
+    print(f'RR below 2: {below_2} ({below_2/len(data)}%)')
+    print(f'RR above 2: {above_2} ({above_2/len(data)}%)')
+
+
 # Get the formula frequency and proportion associated with verb types
 def rr_dist(fpaths=[], save_file_name='rr_dist_by_verbs.csv'):
     save_rows = []
@@ -32,16 +46,18 @@ def rr_dist(fpaths=[], save_file_name='rr_dist_by_verbs.csv'):
 # Show the how many collocate pairs appear with how many verb types
 def top_pairs(fpaths):
     pair_count_byverbs = defaultdict(int)
+    overall_rr = dict()
 
     # Tally verb type occurrences
     for fpath in fpaths:
         with open(fpath, 'r') as f:
-            rows = [r for r in csv.reader(f)]
+            rows = [r for r in csv.reader(f)][1:]
 
-        curr_pairs = [r[0] for r in rows]
+        for r in rows:
+            pair_count_byverbs[r[0]] += 1
 
-        for p in curr_pairs:
-            pair_count_byverbs[p] += 1
+            if '000' in fpath:
+                overall_rr[r[0]] = r[1]
 
     # Display number of collocate pairs for different ranges of verb type numbers
     for i in range(8):
@@ -54,7 +70,7 @@ def top_pairs(fpaths):
     keys.sort(reverse=True, key=lambda x: pair_count_byverbs[x])
 
     for p in keys[:81]:
-        print(p + '\t'*4, pair_count_byverbs[p])
+        print(f'{p}\t\t\t\t{pair_count_byverbs[p]}\t\t\t\t{overall_rr[p]}')
 
     return keys[:20]
 
@@ -94,7 +110,7 @@ def test_normality(fpath):
 
 def register():
     for reg in ['', '_written', '_spoken']:
-        with open(f'assoc_stats{reg}/__assoc_stats{reg}.csv', 'r') as f:
+        with open(f'association_stats{reg}/000__association_stats{reg}.csv', 'r') as f:
             data = [r for r in csv.reader(f)][1:]
 
         total = len(data)
@@ -102,28 +118,28 @@ def register():
         more_than_1 = len([r for r in data if float(r[1]) > 1])
 
         print(f'Pair types in {reg} register')
-        print('Up to 1:', up_to_1, up_to_1/total)
-        print('More than 1', more_than_1, more_than_1/total)
+        print(f'Up to 1: {up_to_1} ({round(100*up_to_1/total)}%)')
+        print(f'More than 1: {more_than_1} ({round(100*more_than_1/total)}%)')
         print(total, '\n')
 
-        total = sum([int(r[-2]) for r in data])
-        up_to_1 = sum([int(r[-2]) for r in data if float(r[1]) <= 1])
-        more_than_1 = sum([int(r[-2]) for r in data if float(r[1]) > 1])
+        total = sum([int(r[-3]) for r in data])
+        up_to_1 = sum([int(r[-3]) for r in data if float(r[1]) <= 1])
+        more_than_1 = sum([int(r[-3]) for r in data if float(r[1]) > 1])
 
         print(f'Pair instances in {reg} register')
-        print('Up to 1:', up_to_1, up_to_1/total)
-        print('More than 1', more_than_1, more_than_1/total)
+        print(f'Up to 1: {up_to_1} ({round(100*up_to_1/total)}%)')
+        print(f'More than 1 {more_than_1} ({round(100*more_than_1/total)}%)')
         print(total, '\n')
 
 
 def adjacency():
-    with open(f'assoc_stats/__assoc_stats.csv', 'r') as f:
+    with open(f'association_stats/000__association_stats.csv', 'r') as f:
         data = [r for r in csv.reader(f)][1:]
 
     # adjacent = [math.log(float(r[1])) for r in data if int(r[-1])/int(r[-2]) > 0]
-    adjacent = [math.log(float(r[1])) for r in data if int(r[-1])/int(r[-2]) == 1]
-    sub_adjacent = [math.log(float(r[1])) for r in data if 0 < int(r[-1])/int(r[-2]) < 1]
-    nonadjacent = [math.log(float(r[1])) for r in data if int(r[-1])/int(r[-2]) == 0]
+    adjacent = [math.log(float(r[1])) for r in data if int(r[-2])/int(r[-3]) == 1 if float(r[1]) > 1]
+    sub_adjacent = [math.log(float(r[1])) for r in data if 0 < int(r[-2])/int(r[-3]) < 1 if float(r[1]) > 1]
+    nonadjacent = [math.log(float(r[1])) for r in data if int(r[-2])/int(r[-3]) == 0 if float(r[1]) > 1]
 
     print('Pair frequency, average log RR,variance, standard deviation')
     print('Adjacent:', len(adjacent), sum(adjacent) / len(adjacent), numpy.var(adjacent), numpy.std(adjacent))
@@ -137,24 +153,25 @@ def adjacency():
 
 
 def formulas():
-    with open(f'assoc_stats/__assoc_stats.csv', 'r') as f:
+    with open(f'association_stats/__association_stats.csv', 'r') as f:
         data = [r for r in csv.reader(f)][1:]
 
     for r in data:
-        #if int(r[-3]) >= 100 and int(r[-4]) >= 100:
+        # if int(r[-3]) >= 100 and int(r[-4]) >= 100:
         if int(r[-3]) == int(r[-2] or int(r[-4]) == int(r[-2])):
             print(r[0])
 
 
 def main():
-    data_dir = os.listdir('assoc_stats/')
+    data_dir = os.listdir('association_stats/')
     data_dir.sort()
-    data_file_paths = [os.path.join('assoc_stats/', fp) for fp in data_dir]
+    data_file_paths = [os.path.join('association_stats/', fp) for fp in data_dir]
 
+    # rr_ranges('association_stats/000__association_stats.csv')
     # rr_dist(data_file_paths)
     # tops = top_pairs(data_file_paths)
     # cross_verb_trend(data_file_paths)
-    test_normality('assoc_stats/__assoc_stats.csv')
+    # test_normality('association_stats/__association_stats.csv')
     # register()
     # adjacency()
     # formulas()
