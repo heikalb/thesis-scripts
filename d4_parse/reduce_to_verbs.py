@@ -44,14 +44,15 @@ def main():
         # Get target verbs and parses with errors
         for i in range(len(indices)):
             crnt_parses = [p for p in parses[i][1:-1].split(', ') if ':Punc' not in p]
-            verb_parses.append('{0} {1}'.format(crnt_parses[indices[i]], registers[i]))
 
-            if 'UNK' in crnt_parses[indices[i]]:
+            if 'UNK' not in crnt_parses[indices[i]]:
+                verb_parses.append(f'{crnt_parses[indices[i]]} {registers[i]} {stem}')
+            else:
                 parse_errors.append(crnt_parses[indices[i]])
 
     print(len(verb_parses), len(verb_parses)-len(parse_errors))
     print(len(parse_errors))
-    exit()
+
     # Save data and parse errors
     with open('verb_parses.txt', 'w') as f:
         f.write('\n'.join(verb_parses))
