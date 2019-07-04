@@ -1,11 +1,12 @@
 """
 Make lemma-based queries on the TNC web interface based on a given list of lemmas
+Heikal Badrulhisham <heikal93@gmail.com>, 2019
 """
+import argparse
+import time
 from selenium import webdriver
 from selenium.common.exceptions import *
 from selenium.webdriver.support.ui import Select
-import argparse
-import time
 
 
 # Sign into a TNC account
@@ -109,25 +110,26 @@ if __name__ == '__main__':
     parse.add_argument('-s', '--start', help='Start index on query term list', default=0, type=int)
     parse.add_argument('-e', '--end', help='End index on query term list', default=-1, type=int)
     parse.add_argument('-f', '--file', help='File path of query terms', default='query_terms.txt', type=str)
-    parse.add_argument('-b', '--browser', help='Browser to use', default='safari', type=str,
-                       choices=['safari', 'firefox', 'chrome'])
-    parse.add_argument('-usr', '--username', help='Username on TNC', required=True, type=str)
-    parse.add_argument('-pw', '--password', help='Password of TNC account', required=True, type=str)
+    parse.add_argument('-b', '--browser', help='Browser to use', default='safari', type=str, choices=['safari', 'firefox', 'chrome'])
+    parse.add_argument('-usr', '--username', help='Username on TNC', default='user', required=True, type=str)
+    parse.add_argument('-pw', '--password', help='Password of TNC account', default='password', required=True, type=str)
     args = parse.parse_args()
 
     # TNC-related information
     url_1 = "https://v3.tnc.org.tr/login"
     url_2 = "https://v3.tnc.org.tr/basic-query"
-    # email = 'heikal93@gmail.com'
-    # password = 'kolipoki'
     email = args.username
     password = args.password
+
     # Browser to use
     browsers = {'safari': webdriver.Safari(), 'firefox': None, 'chrome': None}
     browser = browsers[args.browser]
 
+    # Get query terms
     with open(args.file, 'r') as f:
         query_terms = f.read().split('\n')
 
+    # Run queries
     main(query_terms, start=args.start, end=args.end)
+
     exit(0)
