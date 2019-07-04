@@ -110,7 +110,7 @@ if __name__ == '__main__':
     parse.add_argument('-s', '--start', help='Start index on query term list', default=0, type=int)
     parse.add_argument('-e', '--end', help='End index on query term list', default=-1, type=int)
     parse.add_argument('-f', '--file', help='File path of query terms', default='query_terms.txt', type=str)
-    parse.add_argument('-b', '--browser', help='Browser to use', default='safari', type=str, choices=['safari', 'firefox', 'chrome'])
+    parse.add_argument('-b', '--browser', help='Browser to use', default='safari', type=str, choices=['safari'])
     parse.add_argument('-usr', '--username', help='Username on TNC', default='user', required=True, type=str)
     parse.add_argument('-pw', '--password', help='Password of TNC account', default='password', required=True, type=str)
     args = parse.parse_args()
@@ -122,7 +122,7 @@ if __name__ == '__main__':
     password = args.password
 
     # Browser to use
-    browsers = {'safari': webdriver.Safari(), 'firefox': None, 'chrome': None}
+    browsers = {'safari': webdriver.Safari()}
     browser = browsers[args.browser]
 
     # Get query terms
