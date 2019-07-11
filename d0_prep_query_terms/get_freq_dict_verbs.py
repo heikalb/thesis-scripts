@@ -13,7 +13,9 @@ def get_indices_stems(freq_dict):
 
     # Isolate verb stems
     verb_lines = re.findall(r'\d+\s*\|\s*\d+\n*.+\sto.*', verb_section)
-    verb_lines = [line.replace('\n', ' ') for line in verb_lines if line.split()[4] == 'to']
+
+    verb_lines = [line.replace('\n', ' ') for line in verb_lines
+                  if line.split()[4] == 'to']
 
     # Pairs of frequency indices and stems
     indices_stems = []
@@ -34,11 +36,11 @@ def stem_correction(stem_n_index, h_words, h_corrections, morph_corrections):
 
     if stem not in h_words:
         stem = stem.replace('h', 'ş')
-    elif stem in h_correction:
-        stem = h_correction[stem]
+    elif stem in h_corrections:
+        stem = h_corrections[stem]
 
-    if stem in morph_correction:
-        stem = morph_correction[stem]
+    if stem in morph_corrections:
+        stem = morph_corrections[stem]
 
     return stem
 
@@ -62,21 +64,27 @@ def main():
                'mahvet', 'kamah', 'hırpala', 'hatırla', 'haberleh',
                'heyecanlan']
 
-    h_corrections = {'hohlan': 'hoşlan', 'hahla': 'haşla', 'buharlah': 'buharlaş',
-                     'hüphelen': 'şüphelen', 'kamah': 'kamaş', 'haberleh': 'haberleş'}
+    h_corrections = {'hohlan': 'hoşlan', 'hahla': 'haşla',
+                     'buharlah': 'buharlaş', 'hüphelen': 'şüphelen',
+                     'kamah': 'kamaş', 'haberleh': 'haberleş'}
 
-    morph_corrections = {'adlandır': 'adlan', 'bulundur': 'bulun', 'sınıflandır': 'sınıflan',
-                         'görevlendir': 'görevlen', 'haberleş': 'haberle', 'abart': 'abar',
-                         'kararlaştır': 'kararla', 'sınırlandır': 'sınırlan', 'ödüllendir': 'ödüllen',
-                         'savrul': 'savrul', 'biçimlendir': 'biçimlen', 'ilişkilendir': 'ilişkilen',
-                         'isimlendir': 'isimlen', 'anlamlandır': 'anlamlan', 'yardımlaş': 'yardımla'}
+    morph_corrections = {'adlandır': 'adlan', 'bulundur': 'bulun',
+                         'sınıflandır': 'sınıflan', 'görevlendir': 'görevlen',
+                         'haberleş': 'haberle', 'abart': 'abar',
+                         'kararlaştır': 'kararla', 'sınırlandır': 'sınırlan',
+                         'ödüllendir': 'ödüllen', 'savrul': 'savrul',
+                         'biçimlendir': 'biçimlen', 'ilişkilendir': 'ilişkilen',
+                         'isimlendir': 'isimlen', 'anlamlandır': 'anlamlan',
+                         'yardımlaş': 'yardımla'}
 
     # For storing corrected verb stems
     corrected_stems = []
 
     # Apply corrections to verb stems
     for index_stem in sorted(indices_stems):
-        corrected_stem = stem_correction(index_stem, h_words, h_corrections, morph_corrections)
+        corrected_stem = stem_correction(index_stem, h_words, h_corrections,
+                                         morph_corrections)
+
         corrected_stems.append(corrected_stem)
 
     # Save data
