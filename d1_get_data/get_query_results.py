@@ -1,5 +1,5 @@
 """
-Make lemma-based queries on the TNC web interface based on a given list of lemmas
+Make lemma-based queries on the TNC web interface based on a list of lemmas
 Heikal Badrulhisham <heikal93@gmail.com>, 2019
 """
 import argparse
@@ -13,7 +13,9 @@ from selenium.webdriver.support.ui import Select
 def sign_in():
     while True:
         try:
-            browser.find_element_by_css_selector('input[placeholder=Email]').send_keys(email)
+            browser.find_element_by_css_selector(
+                'input[placeholder=Email]').send_keys(email)
+
             browser.find_element_by_name('password').send_keys(password)
             browser.find_element_by_css_selector('input[type=submit]').click()
             break
@@ -28,7 +30,8 @@ def sign_in():
 def open_query():
     while True:
         try:
-            browser.find_elements_by_css_selector('.btn-group.col-md-12 .btn.btn-default')[1].click()
+            browser.find_elements_by_css_selector(
+                '.btn-group.col-md-12 .btn.btn-default')[1].click()
             break
         except Exception:
             time.sleep(1)
@@ -53,8 +56,9 @@ def download_file():
         time.sleep(1)
 
     j = 0
-    while (not browser.find_elements_by_id('dizilim_yakinlik_data_tablosu')) or \
+    while (not browser.find_elements_by_id('dizilim_yakinlik_data_tablosu')) or\
             not browser.find_elements_by_class_name('odd'):
+
         time.sleep(1)
         j += 1
         if j >= 10:
@@ -62,6 +66,7 @@ def download_file():
 
     attmpt = 0
     time.sleep(5)
+
     while True:
         try:
             attmpt += 1
@@ -97,7 +102,7 @@ def main(query_terms, start=0, end=-1):
         except Exception:
             # Warn about problem with query, create a file for indication
             print('Problem with query: ', search_term)
-            decoy_file = open('Problem with query_{0}_{1}.txt'.format(i, search_term), 'w')
+            decoy_file = open(f'Problem with query_{i}_{search_term}.txt', 'w')
             decoy_file.close()
         i += 1
 
@@ -106,13 +111,26 @@ def main(query_terms, start=0, end=-1):
 
 if __name__ == '__main__':
     # Command line arguments
-    parse = argparse.ArgumentParser(description='Get query results from the TNC')
-    parse.add_argument('-s', '--start', help='Start index on query term list', default=0, type=int)
-    parse.add_argument('-e', '--end', help='End index on query term list', default=-1, type=int)
-    parse.add_argument('-f', '--file', help='File path of query terms', default='query_terms.txt', type=str)
-    parse.add_argument('-b', '--browser', help='Browser to use', default='safari', type=str, choices=['safari'])
-    parse.add_argument('-usr', '--username', help='Username on TNC', default='user', required=True, type=str)
-    parse.add_argument('-pw', '--password', help='Password of TNC account', default='password', required=True, type=str)
+    parse = argparse.ArgumentParser(description='Get query results from TNC')
+
+    parse.add_argument('-s', '--start', help='Start index on query term list',
+                       default=0, type=int)
+
+    parse.add_argument('-e', '--end', help='End index on query term list',
+                       default=-1, type=int)
+
+    parse.add_argument('-f', '--file', help='File path of query terms',
+                       default='query_terms.txt', type=str)
+
+    parse.add_argument('-b', '--browser', help='Browser to use',
+                       default='safari', type=str, choices=['safari'])
+
+    parse.add_argument('-usr', '--username', help='Username on TNC',
+                       default='user', required=True, type=str)
+
+    parse.add_argument('-pw', '--password', help='Password of TNC account',
+                       default='password', required=True, type=str)
+
     args = parse.parse_args()
 
     # TNC-related information
