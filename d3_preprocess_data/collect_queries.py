@@ -22,8 +22,8 @@ def apply_correction(target_word):
     return target_word
 
 
-# Given a sentence that may span multiple sentence boundaries, return the sentence containing the target word only
-# and the index of the target word
+# Given a sentence that may span multiple sentence boundaries, return the 
+# sentence containing the target word only and the index of the target word
 def to_one_sentence(sentence, target_i):
     tokens = sentence.split()
     right_sent = []
@@ -81,6 +81,7 @@ def fix_columns(left, mid, right, stem):
 def save_file(fname, data_list):
     with open(fname, 'w') as f:
         csv_writer = csv.writer(f, delimiter='\t')
+
         for r in data_list:
             csv_writer.writerow(r)
 
@@ -101,29 +102,34 @@ def main(data_dir, all_in_one_file=False):
 
         # Process data windows, skip first rows
         for row in rows[1:]:
-            # Spell correct target verb, remove punctuations, get the register of the datum
-            left_context = depunctuate(row[2])
-            main_word = apply_correction(depunctuate(row[3]))
-            right_context = depunctuate(row[4])
+            # Orthographic processing, get the register of the datum
+            left_span = depunctuate(row[2])
+            mid_word = apply_correction(depunctuate(row[3]))
+            right_span = depunctuate(row[4])
             register = row[0]
 
-            # Fix main columns with multiple words. Fix cases of main words duplicated in context windows.
-            left_context, main_word, right_context = fix_columns(left_context, main_word, right_context, curr_stem)
+            # Fix main columns with multiple words. 
+            # Fix cases of main words duplicated in context windows.
+            columns = fix_columns(left_span, mid_word, right_span, curr_stem)
+            left_span, mid_word, right_context = columns
 
             # Join context windows, reduce to one sentence
-            full_sentence = ' '.join([left_context, main_word, right_context])
-            single_sent, target_i = to_one_sentence(full_sentence, len(left_context.split()))
-            save_rows.append([single_sent, main_word, target_i, register])
+            full_sentence = ' '.join([left_span, mid_word, right_context])
+            fixed_sent = to_one_sentence(full_sentence, len(left_span.split()))
+            single_sent, target_i = fixed_sent
+            save_rows.append([single_sent, mid_word, target_i, register])
 
         # Option 1: Save data in individual files
         if not all_in_one_file:
-            save_file('../d2_data/joined/{0}_{1}_{2}.tsv'.format(filename[:3], curr_stem, 'joined'), save_rows)
+            file = f'../d2_data/joined/{filename[:3]}_{curr_stem}_joined.tsv'
+            save_file(file, save_rows)
             save_rows.clear()
             rows.clear()
 
     # Option 2: Save all data in one file
     if all_in_one_file:
-        save_file('../d2_data/freq_dict_query_results_joined.tsv', save_rows)
+        file = '../d2_data/freq_dict_query_results_joined.tsv'
+        save_file(file, save_rows)
 
 
 if __name__ == "__main__":
