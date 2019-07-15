@@ -1,5 +1,5 @@
 """
-Extract highest frequency verb stems from the txt file of the Frequency Dictionary of Turkish.
+Extract highest frequency verb stems from the Frequency Dictionary of Turkish.
 Heikal Badrulhisham <heikal93gmail.com>, 2019
 """
 import re
