@@ -86,8 +86,10 @@ def save_file(fname, data_list):
             csv_writer.writerow(r)
 
 
-def main(data_dir, all_in_one_file=False):
+def main():
     save_rows = []
+    data_dir = '../d2_data/query_results_freq_dict/'
+
     filenames = os.listdir(data_dir)
     filenames.sort()
 
@@ -119,20 +121,13 @@ def main(data_dir, all_in_one_file=False):
             single_sent, target_i = fixed_sent
             save_rows.append([single_sent, mid_word, target_i, register])
 
-        # Option 1: Save data in individual files
-        if not all_in_one_file:
+            # Save data in individual files by verb
             file = f'../d2_data/joined/{filename[:3]}_{curr_stem}_joined.tsv'
             save_file(file, save_rows)
             save_rows.clear()
             rows.clear()
 
-    # Option 2: Save all data in one file
-    if all_in_one_file:
-        file = '../d2_data/freq_dict_query_results_joined.tsv'
-        save_file(file, save_rows)
-
 
 if __name__ == "__main__":
-    query_dir = '../d2_data/query_results_freq_dict/'
-    main(query_dir, False)
+    main()
     exit(0)
