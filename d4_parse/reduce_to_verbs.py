@@ -1,5 +1,6 @@
 """
 Reduce the file of parses to parses of target verbs only.
+Heikal Badrulhisham <heikal93@gmail.com>, 2019
 """
 import csv
 import os
@@ -7,7 +8,7 @@ from collections import Counter
 
 
 # Get position of target verbs in the context windows
-def get_verb_indices(fpath):
+def get_indices(fpath):
     with open(fpath) as f:
         reader = csv.reader(f, delimiter='\t')
         indices = [int(row[2]) for row in reader]
@@ -25,30 +26,34 @@ def get_register(fpath):
 
 def main():
     # Get individual verb parse files
-    parse_dir_path = 'parses/'
-    parse_fnames = [fn for fn in os.listdir(parse_dir_path) if 'parses.txt' in fn]
+    parse_dir = 'parses/'
+    parse_files = os.listdir(parse_dir)
+    parse_fnames = [fn for fn in parse_files if 'parses.txt' in fn]
     parse_fnames.sort()
+
     verb_parses = []
     parse_errors = []
-     
+
     for fname in parse_fnames:
         print(fname)
-        parses = open(os.path.join(parse_dir_path, fname), 'r').read().split('\n')
+        parses = open(os.path.join(parse_dir, fname), 'r').read().split('\n')
 
         # Get indices of target verbs
         fnum = fname.split('_')[0]
         stem = fname.split('_')[1]
-        indices = get_verb_indices('../d2_data/joined/{0}_{1}_joined.tsv'.format(fnum, stem))
-        registers = get_register('../d2_data/joined/{0}_{1}_joined.tsv'.format(fnum, stem))
+        indices = get_indices(f'../d2_data/joined/{fnum}_{stem}_joined.tsv')
+        registers = get_register(f'../d2_data/joined/{fnum}_{stem}_joined.tsv')
 
         # Get target verbs and parses with errors
         for i in range(len(indices)):
-            crnt_parses = [p for p in parses[i][1:-1].split(', ') if ':Punc' not in p]
+            cur_parses = [p for p in parses[i][1:-1].split(', ')
+                          if ':Punc' not in p]
 
-            if 'UNK' not in crnt_parses[indices[i]]:
-                verb_parses.append(f'{crnt_parses[indices[i]]} {registers[i]} {stem}')
+            if 'UNK' not in cur_parses[indices[i]]:
+                new_line = f'{cur_parses[indices[i]]} {registers[i]} {stem}'
+                verb_parses.append(new_line)
             else:
-                parse_errors.append(crnt_parses[indices[i]])
+                parse_errors.append(cur_parses[indices[i]])
 
     print(len(verb_parses), len(verb_parses)-len(parse_errors))
     print(len(parse_errors))
@@ -58,10 +63,10 @@ def main():
         f.write('\n'.join(verb_parses))
 
     parse_error_counter = Counter(parse_errors)
-    parse_errors = sorted(list(set(parse_errors)), key=lambda x: parse_error_counter[x], reverse=True)
+    parse_errors = sorted(list(set(parse_errors)),
+                          key=lambda x: parse_error_counter[x], reverse=True)
 
     with open('parse_errors.txt', 'w') as f:
-        # f.write('\n'.join(parse_errors))
         f.write('\n'.join([f'{k} {parse_error_counter[k]}' for k in parse_errors]))
 
 
