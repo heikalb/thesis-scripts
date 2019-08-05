@@ -9,8 +9,10 @@ from selenium.common.exceptions import *
 from selenium.webdriver.support.ui import Select
 
 
-# Sign into a TNC account
 def sign_in():
+    """
+    Sign into a TNC account
+    """
     while True:
         try:
             browser.find_element_by_css_selector(
@@ -26,8 +28,10 @@ def sign_in():
         time.sleep(1)
 
 
-# Open the page with the lemma-based queryy
 def open_query():
+    """
+    Open the page containing lemma-based query function on the TNC
+    """
     while True:
         try:
             browser.find_elements_by_css_selector(
@@ -37,8 +41,11 @@ def open_query():
             time.sleep(1)
 
 
-# Submit query
 def submit_query(search_term):
+    """
+    Submit query on the TNC
+    :param search_term: term to query on
+    """
     while True:
         try:
             browser.find_element_by_id('query').send_keys(search_term)
@@ -50,8 +57,11 @@ def submit_query(search_term):
             time.sleep(1)
 
 
-# Download data file
+#
 def download_file():
+    """
+    Download the data file from the TNC website
+    """
     while not browser.find_elements_by_id('sonuc_paneli'):
         time.sleep(1)
 
@@ -81,6 +91,12 @@ def download_file():
 
 
 def main(query_terms, start=0, end=-1):
+    """
+    Main method.
+    :param query_terms: list of query terms
+    :param start: index of first term to query on
+    :param end: index of last term to query on
+    """
     if end == -1:
         end = len(query_terms)
 
