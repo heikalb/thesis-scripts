@@ -5,8 +5,13 @@ Heikal Badrulhisham <heikal93gmail.com>, 2019
 import re
 
 
-# Get pairs of frequency indices and verb stems from the Frequency Dictionary
 def get_indices_stems(freq_dict):
+    """
+    Get pairs of frequency indices and verb stems from the Frequency Dictionary
+    :param freq_dict: .txt file of the Frequency Dictioary
+    :return: list of index-verb stem pairs
+    """
+
     # Section of the dictionary with the verb stems
     verb_section = freq_dict.read().split('\n')[75067:77349]
     verb_section = '\n'.join([line for line in verb_section if line])
@@ -29,9 +34,17 @@ def get_indices_stems(freq_dict):
     return indices_stems
 
 
-# Apply spelling and morphological corrections to stems
-def stem_correction(stem_n_index, h_words, h_corrections, morph_corrections):
-    stem = stem_n_index[1].split()[0]
+def stem_correction(stem_index, h_words, h_corrections, morph_corrections):
+    """
+    Apply spelling and morphological corrections to stems
+
+    :param stem_index: pair of verb stem and its index
+    :param h_words: list of misspelled words involving 'ş'
+    :param h_corrections: list of correct spelling for words involving 'ş'
+    :param morph_corrections: list of morphological mappings
+    :return: corrected stem
+    """
+    stem = stem_index[1].split()[0]
     stem = stem.replace('j', 'ğ')
 
     if stem not in h_words:
@@ -46,6 +59,8 @@ def stem_correction(stem_n_index, h_words, h_corrections, morph_corrections):
 
 
 def main():
+    """Main method"""
+
     # Open Frequency Disctionary file
     freq_dict = open('freq_dict.txt', 'r')
 
