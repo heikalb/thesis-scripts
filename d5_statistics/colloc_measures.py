@@ -6,6 +6,24 @@ Heikal Badrulhisham <heikal93@gmail.com>, 2019
 import math
 
 
+def get_freq(s1, s2, pairs):
+    a = max(sum(pairs[k] for k in pairs if s1 == k[0] and s2 == k[1]), 0.5)
+    b = max(sum(pairs[k] for k in pairs if s1 == k[0] and s2 != k[1]), 0.5)
+    c = max(sum(pairs[k] for k in pairs if s1 != k[0] and s2 == k[1]), 0.5)
+    d = max(sum(pairs[k] for k in pairs if s1 != k[0] and s2 != k[1]), 0.5)
+
+    return a, b, c, d
+
+
+def get_freq_(f_s1, f_s2, f_s1s2, total):
+    a = f_s1s2
+    b = max(f_s1 - f_s1s2, 0.5)
+    c = max(f_s2 - f_s1s2, 0.5)
+    d = max(total - a - b - c, 0.5)
+
+    return a, b, c, d
+
+
 def mutual_info(f_s1, f_s2, f_s1s2, total, *misc):
     p_1 = float(f_s1) / float(total)
     p_2 = float(f_s2) / float(total)
@@ -14,6 +32,7 @@ def mutual_info(f_s1, f_s2, f_s1s2, total, *misc):
     return math.log(p_1_2 / (p_1 * p_2), 2)
 
 
+# t-score
 def t_score(f_s1, f_s2, f_s1s2, total, *misc):
     x_bar = float(f_s1s2) / float(total)
     p_1 = float(f_s1) / float(total)
@@ -22,9 +41,9 @@ def t_score(f_s1, f_s2, f_s1s2, total, *misc):
     s_sq = x_bar*(1-x_bar)
 
     return (x_bar - mu)/math.sqrt(s_sq/total)
-    # return 1 - f_s1*f_s2/f_s1s2
 
 
+# Dice coefficient
 def dice_coeff(f_s1, f_s2, f_s1s2, *misc):
     return 2*f_s1s2/(f_s1 + f_s2)
 
@@ -44,24 +63,18 @@ def chi_sq(f_s1, f_s2, f_s1s2, total, s1, s2, pairs):
 
 
 def risk_ratio(f_s1, f_s2, f_s1s2, total, s1, s2, pairs):
-    a = f_s1s2
-    b = max(sum(pairs[k] for k in pairs if s1 == k[0] and s2 != k[1]), 0.5)
-    c = max(sum(pairs[k] for k in pairs if s1 != k[0] and s2 == k[1]), 0.5)
-    d = max(sum(pairs[k] for k in pairs if s1 != k[0] and s2 != k[1]), 0.5)
-
-    rr = (a/(a+b))/(c/(c+d))
+    a, b, c, d = get_freq(s1, s2, pairs)
+    rr = (a / (a + b)) / (c / (c + d))
     ci = rel_risk_ci(a, b, c, d, rr)
-    return rr, ci
+
+    return rr, ci, (b == 0.5 or c == 0.5 or d == 0.5)
 
 
 def risk_ratio_reverse(f_s1, f_s2, f_s1s2, total, s1, s2, pairs):
-    a = f_s1s2
-    b = max(sum(pairs[k] for k in pairs if s1 == k[0] and s2 != k[1]), 0.5)
-    c = max(sum(pairs[k] for k in pairs if s1 != k[0] and s2 == k[1]), 0.5)
-    d = max(sum(pairs[k] for k in pairs if s1 != k[0] and s2 != k[1]), 0.5)
-
-    rr = (a/(a+c))/(b/(b+d))
+    a, b, c, d = get_freq(s1, s2, pairs)
+    rr = (a / (a + c)) / (b / (b + d))
     ci = rel_risk_ci(a, b, c, d, rr)
+
     return rr, ci
 
 
@@ -74,10 +87,7 @@ def rel_risk_ci(a, b, c, d, rr):
 
 
 def odds_ratio(f_s1, f_s2, f_s1s2, total, s1, s2, pairs):
-    a = f_s1s2
-    b = max(sum(pairs[k] for k in pairs if s1 == k[0] and s2 != k[1]), 1)
-    c = max(sum(pairs[k] for k in pairs if s1 != k[0] and s2 == k[1]), 1)
-    d = max(sum(pairs[k] for k in pairs if s1 != k[0] and s2 != k[1]), 1)
+    a, b, c, d = get_freq(s1, s2, pairs)
     condp_s2_s1 = a/(a + b)
     condp_s2_nots1 = c/(c + d)
 
