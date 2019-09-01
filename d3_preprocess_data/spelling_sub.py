@@ -1,3 +1,8 @@
+"""
+Orthographic transformations for spell correction.
+Heikal Badrulhisham <heikal93@gmail.com>, 2019
+"""
+
 suggestions = {
     r'kacaklayan': 'kucaklayan',
     r'kacakladı': 'kucakladı',
