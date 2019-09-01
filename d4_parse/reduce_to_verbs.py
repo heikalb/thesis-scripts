@@ -67,7 +67,9 @@ def main():
                           key=lambda x: parse_error_counter[x], reverse=True)
 
     with open('parse_errors.txt', 'w') as f:
-        f.write('\n'.join([f'{k} {parse_error_counter[k]}' for k in parse_errors]))
+        lines = [f'{k} {parse_error_counter[k]}' for k in parse_errors]
+        f.write('\n'.join(lines))
+        f.wr
 
 
 if __name__ == '__main__':
