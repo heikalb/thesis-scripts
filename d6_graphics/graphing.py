@@ -22,9 +22,10 @@ def graph_it(title='', xlabel='', ylabel='', fname='', xticks=None, xlim=(),
     # Mandatory graph parameters
     pyplot.gcf().set_size_inches(dim)
     pyplot.grid(axis='y', alpha=0.5)
-    pyplot.title(title, fontsize='11')
-    pyplot.xlabel(xlabel, fontsize='11')
-    pyplot.ylabel(ylabel, fontsize='11')
+    font = {'fontname': 'Cormorant'}
+    pyplot.title(title, fontsize='11', ** font)
+    pyplot.xlabel(xlabel, fontsize='11', ** font)
+    pyplot.ylabel(ylabel, fontsize='11', ** font)
 
     # Optional graph parameters
     if xlim:
@@ -34,11 +35,13 @@ def graph_it(title='', xlabel='', ylabel='', fname='', xticks=None, xlim=(),
         pyplot.ylim(ylim[0], ylim[1])
 
     if xticks:
-        pyplot.xticks(xticks, rotation=90, fontsize='medium')
+        pyplot.xticks(xticks, rotation=90, fontsize='11', ** font)
+
+    pyplot.yticks(fontsize='11', ** font)
 
     # Final processing
     pyplot.tight_layout()
-    pyplot.savefig(fname)
+    pyplot.savefig(fname, dpi=300)
     pyplot.close()
 
 
@@ -66,7 +69,7 @@ def plot_num_datapoints():
              'Verb types',
              'Number of datapoints',
              'num_datapoints.png',
-             xticks=[s for s in stems if stems.index(s) % 20 == 0])
+             xticks=[s for s in stems if stems.index(s) % 30 == 0])
 
 
 def plot_rr():
@@ -195,7 +198,7 @@ def plot_verbtrends():
                 p[i] = round(float(p[i]), 1)
 
         pyplot.plot(x_vals, p[1:-1])
-        pyplot.axhline(y=p[-1], color='r', linestyle='-')
+        pyplot.axhline(y=p[-2], color='r', linestyle='-')
 
         graph_it('RR trend of {0}'.format(p[0]),
                  'Verb types',
