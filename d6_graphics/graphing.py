@@ -5,7 +5,7 @@ import os
 
 
 def graph_it(title='', xlabel='', ylabel='', fname='', xticks=None, xlim=(),
-             ylim=(), dim=(8, 6)):
+             ylim=(), dim=(6, 5)):
     """
     General graphing function.
 
@@ -20,11 +20,11 @@ def graph_it(title='', xlabel='', ylabel='', fname='', xticks=None, xlim=(),
     """
 
     # Mandatory graph parameters
-    pyplot.gcf().set_size_inches(dim[0], dim[1])
+    pyplot.gcf().set_size_inches(dim)
     pyplot.grid(axis='y', alpha=0.5)
-    pyplot.title(title, fontsize='x-large')
-    pyplot.xlabel(xlabel, fontsize='medium')
-    pyplot.ylabel(ylabel, fontsize='medium')
+    pyplot.title(title, fontsize='11')
+    pyplot.xlabel(xlabel, fontsize='11')
+    pyplot.ylabel(ylabel, fontsize='11')
 
     # Optional graph parameters
     if xlim:
@@ -253,14 +253,14 @@ if __name__ == '__main__':
 
     # Plot specific data
     plot_num_datapoints()
-    # plot_rr()
-    # plot_rrci()
-    # plot_logrr()
-    # plot_integrity()
-    # plot_stem_trigram_rr()
-    # plot_register()
-    # plot_verbtrends()
-    # plot_rr_verb_instance_freq()
-    # plot_rr_verb_type_freq()
+    plot_rr()
+    plot_rrci()
+    plot_logrr()
+    plot_integrity()
+    plot_stem_trigram_rr()
+    plot_register()
+    plot_verbtrends()
+    plot_rr_verb_instance_freq()
+    plot_rr_verb_type_freq()
 
     exit(0)
