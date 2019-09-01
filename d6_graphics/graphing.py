@@ -61,12 +61,7 @@ def plot_num_datapoints():
         stem = filename.split('_')[2]
         stems.append(stem)
 
-    print(len(nums_data))
-    print(sum(nums_data))
-    exit()
-
     pyplot.bar(stems, nums_data)
-
     graph_it('Distribution of datapoints by verb types',
              'Verb types',
              'Number of datapoints',
