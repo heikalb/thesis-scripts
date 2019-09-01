@@ -10,8 +10,7 @@ import os
 
 
 # Count suffixes and collocate pairs
-def tally(stem, suff_freq, pair_freq, adj_inst, stem_frequency=None,
-          register='', bound=-1):
+def tally(stem, suff_freq, pair_freq, adj_inst, stem_frequency, register=''):
 
     for parse in parses:
         parse = parse.split()
@@ -35,9 +34,6 @@ def tally(stem, suff_freq, pair_freq, adj_inst, stem_frequency=None,
             # Single suffix frequency
             suff_freq[suffixes[i]] += 1
 
-            # For keeping track of distance between suffixes
-            d = 0
-
             # Suffix pair cooccurrence frequency
             for j in range(i + 1, len(suffixes)):
                 curr_pair = (suffixes[i], suffixes[j])
@@ -46,11 +42,6 @@ def tally(stem, suff_freq, pair_freq, adj_inst, stem_frequency=None,
                 # Frequency of the two suffixes being adjacent
                 if j - i == 1:
                     adj_inst[curr_pair] += 1
-
-                # Keep tally within locality constraint
-                d += 1
-                if bound != -1 and d >= bound:
-                    break
 
                 # Count verb stem frequency of pairs
                 if parse[3] not in stem_frequency[curr_pair]:
@@ -96,18 +87,18 @@ def save_data(suff_freq, pair_freq, faffix, dir_affix, stem, measure_vals,
         os.mkdir(f'association_stats{dir_affix}')
 
     # Fill up data
-    file_path = f'association_stats{dir_affix}/{faffix}_{stem}\
-                  _association_stats{dir_affix}.csv'
+    file_path = f'association_stats{dir_affix}/{faffix}_{stem}' +\
+                f'_association_stats{dir_affix}.csv'
 
     with open(file_path, 'w') as f:
         csv_writer = csv.writer(f)
 
         # Column labels
-        first_row = ["collocate_pair"] + [m for m in measure_vals] +\
-                    [f'{k}_confidence_interval_{d}'
-                     for k in confidence_intervals
-                     for d in ['left', 'right']] +\
-                    ['suffix1_frequency', 'suffix2_frequency',
+        first_row = ["collocate_pair", *[m for m in measure_vals],
+                     *[f'{k}_confidence_interval_{d}'
+                       for k in confidence_intervals
+                       for d in ['left', 'right']],
+                     'suffix1_frequency', 'suffix2_frequency',
                      'suffix1-suffix2_frequency',
                      'suffix1-suffix2_adjacent_frequency', 'stem_frequency']
 
@@ -119,24 +110,27 @@ def save_data(suff_freq, pair_freq, faffix, dir_affix, stem, measure_vals,
                               reverse=True)
 
         for k in sorted_pairs:
-            row = [k] + [measure_vals[m][k] for m in measure_vals] + \
-                  [ci_dict[c][k][i] for c in ci_dict for i in [0, 1]] + \
-                  [suff_freq[suff] for suff in k] + \
-                  [pair_freq[k], adj_inst[k], len(stem_frequency[k])]
+            row = [k, *[measure_vals[m][k] for m in measure_vals],
+                   *[ci_dict[c][k][i] for c in ci_dict for i in [0, 1]],
+                   *[suff_freq[suff] for suff in k],
+                   pair_freq[k], adj_inst[k], len(stem_frequency[k])]
 
             csv_writer.writerow(row)
 
 
-def colloc_stats(stem="", file_affix="", dir_affix='', register='', bound=-1):
+def colloc_stats(stem="", file_affix="", dir_affix='', register=''):
     # Dictionaries for various frequency variables
     measure_vals = dict(zip(measures, [dict() for m in measures]))
-    ci_dict = dict(zip(confidence_intervals, [dict() for m in confidence_intervals]))
+
+    ci_dict = dict(zip(confidence_intervals,
+                       [dict() for m in confidence_intervals]))
+
     suff_freq, pair_freq = defaultdict(int), defaultdict(int)
     adj_inst = defaultdict(int)
     stem_frequency = defaultdict(list)
 
     # Tally suffixes and suffix collocates
-    tally(stem, suff_freq, pair_freq, adj_inst, bound, register, stem_frequency)
+    tally(stem, suff_freq, pair_freq, adj_inst, stem_frequency, register)
 
     # Get number of suffix instances (size of sample)
     num_suffixes = sum(suff_freq[s] for s in suff_freq)
@@ -177,6 +171,9 @@ if __name__ == "__main__":
     # Get statistics for each verb type
     for stem in stems:
         colloc_stats(stem, f'00{i}'[-3:])
+        # colloc_stats(stem, f'00{i}'[-3:], dir_affix='_written', register='w')
+        # colloc_stats(stem, f'00{i}'[-3:], dir_affix='_spoken', register='s')
+
         i += 1
 
     exit(0)
