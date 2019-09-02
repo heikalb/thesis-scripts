@@ -217,7 +217,7 @@ def plot_rr_verb_instance_freq():
     graph_it('Risk ratio by verb instance frequency',
              'Risk ratio',
              'Number of verb instances',
-             'rrvsfreq.png',)
+             'rrvsfreq.png')
 
 
 def plot_rr_verb_type_freq():
