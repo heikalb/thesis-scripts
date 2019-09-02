@@ -1,5 +1,6 @@
 """
-Reduce the file of parses to parses of target verbs only.
+Reduce the file of parses to parses of target verbs only, and separately
+save parsing errors.
 Heikal Badrulhisham <heikal93@gmail.com>, 2019
 """
 import csv
@@ -7,8 +8,13 @@ import os
 from collections import Counter
 
 
-# Get position of target verbs in the context windows
 def get_indices(fpath):
+    """
+    Get position of target verbs in the context windows in a data file.
+    :param fpath: path of data file
+    :return: list of indices of target verbs
+    """
+
     with open(fpath) as f:
         reader = csv.reader(f, delimiter='\t')
         indices = [int(row[2]) for row in reader]
@@ -17,6 +23,11 @@ def get_indices(fpath):
 
 
 def get_register(fpath):
+    """
+    Get register of data points in a data file.
+    :param fpath: path of data file
+    :return: list of registers for data points ('w' or 'r')
+    """
     with open(fpath) as f:
         reader = csv.reader(f, delimiter='\t')
         indices = [row[-1] for row in reader]
@@ -25,10 +36,13 @@ def get_register(fpath):
 
 
 def main():
+    """
+    Main method.
+    """
     # Get individual verb parse files
     parse_dir = 'parses/'
     parse_files = os.listdir(parse_dir)
-    parse_fnames = [fn for fn in parse_files if 'parses.txt' in fn]
+    parse_fnames = [f for f in parse_files if 'parses.txt' in f]
     parse_fnames.sort()
 
     verb_parses = []
