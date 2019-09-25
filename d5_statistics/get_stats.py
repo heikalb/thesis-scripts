@@ -47,6 +47,17 @@ def tally(stem, suff_freq, pair_freq, adj_inst, stem_frequency, register=''):
                 if parse[3] not in stem_frequency[curr_pair]:
                     stem_frequency[curr_pair].append(parse[3])
 
+    print(sum([suff_freq[s] for s in suff_freq]))
+    print(len([s for s in suff_freq]))
+
+    print(sum([pair_freq[p] for p in pair_freq]))
+    print(len([p for p in pair_freq]))
+
+    print(len(stems))
+    print(len(parses))
+
+    exit()
+
     # Report frequencies
     print(f'Stem: {stem}\tPair types: {len(pair_freq)}\t'
           f'Pair instances: {sum([pair_freq[p] for p in pair_freq])}')
@@ -144,7 +155,7 @@ def colloc_stats(stem="", file_affix="", dir_affix='', register=''):
 
 
 if __name__ == "__main__":
-    # Statistics
+    # Association measurements and confidence intervals
     measures = {'risk_ratio': cm.risk_ratio,
                 'risk_ratio_reverse':  cm.risk_ratio_reverse,
                 'odds_ratio': cm.odds_ratio,
