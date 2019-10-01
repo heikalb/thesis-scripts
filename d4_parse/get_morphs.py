@@ -7,6 +7,10 @@ from collections import defaultdict
 
 
 def main():
+    """
+    Get the morphs of morphemes in a file of morphological parses and save the
+    morphs found in a .txt file.
+    """
     # Open parse file
     with open('verb_parses.txt', 'r') as f:
         parses = [p.split() for p in f.read().split('\n')]
