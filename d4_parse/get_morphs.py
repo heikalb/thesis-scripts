@@ -8,8 +8,7 @@ from collections import defaultdict
 
 def main():
     """
-    Get the morphs of morphemes in a file of morphological parses and save the
-    morphs found in a .txt file.
+    Main method.
     """
     # Open parse file
     with open('verb_parses.txt', 'r') as f:
