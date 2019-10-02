@@ -63,7 +63,7 @@ def register():
 
 def adjacency():
     """
-    Display data related to risk ratio and suffix adjacency for Table 4.1-5.
+    Display data related to risk ratio and suffix adjacency for Table 13.
     Run ANOVA on effect of adjacency for Section 4.1.
     """
     # Get collocate pairs with risk ratio above 1
@@ -94,19 +94,26 @@ def adjacency():
                                                  [int(r[-1]) for r in data]))
 
 
-def risk_ratio_ratio():
+def asymmtery():
     """
-    Display ratios of risk ratio to risk ratio reverse for Table 4.1-7.
+    Display ratios of risk ratio to risk ratio reverse for Table 14.
     """
+    # Get collocate pairs with risk ratio above 1
+    data_ = [row for row in data if float(row[1]) > 1]
+
     # Get ratios
     def f(x): return max(float(x[1])/float(x[2]), float(x[2])/float(x[1]))
 
-    atleast_2 = [f(d) for d in data if f(d) >= 2]
-    below_2 = [f(d) for d in data if f(d) < 2]
+    atleast_2 = [f(d) for d in data_ if f(d) >= 2]
+    atleast_2_types = [d[0] for d in data_ if f(d) >= 2]
+    below_2 = [f(d) for d in data_ if f(d) < 2]
 
     # Display data
     print(len(atleast_2), min(atleast_2), max(atleast_2))
     print(len(below_2), min(below_2), max(below_2))
+
+    for e in atleast_2_types:
+        print(e)
 
 
 def has_subordinate():
@@ -147,30 +154,38 @@ def test_normality():
 
 def integrity():
     """
-    Display ranges of integrity ratios for Table 4.3-1.
+    Display ranges of integrity ratios for Table 18.
     """
-    def f(x): return len([r for r in data if x(float(r[-2])/float(r[-3]))])
+    # Get collocate pairs of different formulaicity
+    all_pairs = [row for row in data]
+    formulaic_pairs = [row for row in data if float(row[1]) > 1]
+    nonformulaic_pairs = [row for row in data if float(row[1]) <= 1]
 
-    exactly_1 = f(lambda x: x == 1)
-    half = f(lambda x: 0.5 <= x < 1)
-    below_half = f(lambda x: 0 < x < 0.5)
-    zero = f(lambda x: x == 0)
+    for subdataset in [all_pairs, formulaic_pairs, nonformulaic_pairs]:
 
-    print(exactly_1, half, below_half, zero)
-    print(exactly_1/len(data), half/len(data), below_half/len(data),
-          zero/len(data))
+        def f(x):
+            return len([r for r in subdataset if x(float(r[-2])/float(r[-3]))])
+
+        exactly_1 = f(lambda x: x == 1)
+        half = f(lambda x: 0.5 <= x < 1)
+        below_half = f(lambda x: 0 < x < 0.5)
+        zero = f(lambda x: x == 0)
+
+        print(exactly_1, half, below_half, zero)
+        print(exactly_1/len(subdataset), half/len(subdataset),
+              below_half/len(subdataset), zero/len(subdataset))
 
 
-def trigram_bigram_rr():
+def trigram_link_ratios():
     """
-    Display ranges of ratio of risk ratios in trigrams for Table 4.3-3.
+    Display ranges of trigram link ratios for Table 19.
     """
     # Get trigrams
     with open('trigram/suffix_trigrams.txt', 'r') as f:
         trigram_lines = f.read().split('\n')
 
     # Store risk ratio of suffix pairs
-    data_ = dict(zip([r[0] for r in data], [float(r[1]) for r in data]))
+    data_ = dict(zip([r[0] for r in data if float(r[1]) > 1], [float(r[1]) for r in data if float(r[1]) > 1]))
 
     # Store risk ratios
     risk_ratios = []
@@ -206,10 +221,10 @@ def trigram_bigram_rr():
     rr_ratio_4 = f(lambda x: x < 0.1)
 
     # Display data
-    print('0.9 ≤ x ≤ 1:', rr_ratio_1)
-    print('0.5 ≤ x < 0.9:', rr_ratio_2)
-    print('0.1 ≤ x < 0.5:', rr_ratio_3)
-    print('x < 0.1:', rr_ratio_4)
+    print('0.9 ≤ x ≤ 1:', rr_ratio_1, rr_ratio_1/len(risk_ratios))
+    print('0.5 ≤ x < 0.9:', rr_ratio_2, rr_ratio_2/len(risk_ratios))
+    print('0.1 ≤ x < 0.5:', rr_ratio_3, rr_ratio_3/len(risk_ratios))
+    print('x < 0.1:', rr_ratio_4, rr_ratio_4/len(risk_ratios))
 
 
 def stem_trigram_formulas():
@@ -379,13 +394,13 @@ if __name__ == '__main__':
     # rr_ranges()
     # register()
     # adjacency()
-    # risk_ratio_ratio()
+    # asymmtery()
     # has_subordinate()
     # test_normality()
     # integrity()
-    # trigram_bigram_rr()
+    trigram_link_ratios()
     # stem_trigram_formulas()
-    stem_by_trigram()
+    # stem_by_trigram()
     # rr_dist(data_files)
     # tops = top_pairs(data_files)
     # cross_verb_trend(data_files)

@@ -9,9 +9,16 @@ import colloc_measures as cm
 import os
 
 
-# Count suffixes and collocate pairs
 def tally(stem, suff_freq, pair_freq, adj_inst, stem_frequency, register=''):
-
+    """
+    Tally frequencies of suffixes and collocate pairs.
+    :param stem: verb stem (if given to narrow down data)
+    :param suff_freq: dictionary of suffix frequencies
+    :param pair_freq: dictionary of collocate pair frequencies
+    :param adj_inst: dictionary of collocate pair adjacency
+    :param stem_frequency: dictionary of stem frequencies
+    :param register: register (if given to narrow down data)
+    """
     for parse in parses:
         parse = parse.split()
 
@@ -47,32 +54,34 @@ def tally(stem, suff_freq, pair_freq, adj_inst, stem_frequency, register=''):
                 if parse[3] not in stem_frequency[curr_pair]:
                     stem_frequency[curr_pair].append(parse[3])
 
-    print(sum([suff_freq[s] for s in suff_freq]))
-    print(len([s for s in suff_freq]))
-
-    print(sum([pair_freq[p] for p in pair_freq]))
-    print(len([p for p in pair_freq]))
-
-    print(len(stems))
-    print(len(parses))
-
-    exit()
-
     # Report frequencies
     print(f'Stem: {stem}\tPair types: {len(pair_freq)}\t'
           f'Pair instances: {sum([pair_freq[p] for p in pair_freq])}')
 
 
-# Remove unneeded suffixes
 def remove_forbidden_suffixes(suffixes):
+    """
+    For a given sequence of suffixes, remove the following:
+    -word final 3rd person singular
+    Helper method for tally()
+    :param suffixes: list of suffixes
+    :return: list of suffixes with unneeded suffixes removed
+    """
     if suffixes[-1] == 'A3sg':
         return [suff for suff in suffixes if ':' in suff] + [suffixes[-1]]
     else:
         return [suff for suff in suffixes if ':' in suff]
 
 
-# Get various association score for collocate pairs
 def calc_assoc_score(suff_freq, pair_freq, num_suffixes, measure_vals, ci_dict):
+    """
+    Calculate association measurement values for collocate pairs
+    :param suff_freq: dictionary of suffix frequencies
+    :param pair_freq: dictionary of collocate pair frequencies
+    :param num_suffixes: number of suffix tokens in data
+    :param measure_vals: values of association measurements
+    :param ci_dict: confidence intervals
+    """
     for pair in pair_freq:
         suff_1, suff_2 = pair
 
@@ -89,10 +98,20 @@ def calc_assoc_score(suff_freq, pair_freq, num_suffixes, measure_vals, ci_dict):
                 measure_vals[msr][pair] = stat
 
 
-# Save data
 def save_data(suff_freq, pair_freq, faffix, dir_affix, stem, measure_vals,
               ci_dict, adj_inst, stem_frequency):
-
+    """
+    Save association values in .csv files.
+    :param suff_freq:
+    :param pair_freq:
+    :param faffix:
+    :param dir_affix:
+    :param stem:
+    :param measure_vals:
+    :param ci_dict:
+    :param adj_inst:
+    :param stem_frequency:
+    """
     # Create file if it's not alreeady there
     if not os.path.isdir(f'association_stats{dir_affix}'):
         os.mkdir(f'association_stats{dir_affix}')

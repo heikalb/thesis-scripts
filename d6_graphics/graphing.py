@@ -5,10 +5,9 @@ import os
 
 
 def graph_it(title='', xlabel='', ylabel='', fname='', xticks=None, xlim=(),
-             ylim=(), dim=(6, 5)):
+             ylim=(), dim=(6, 4)):
     """
     General graphing function.
-
     :param title: title of the figure
     :param xlabel: label for the x-axis
     :param ylabel: label for the y-axis
@@ -23,7 +22,7 @@ def graph_it(title='', xlabel='', ylabel='', fname='', xticks=None, xlim=(),
     pyplot.gcf().set_size_inches(dim)
     pyplot.grid(axis='y', alpha=0.5)
     font = {'fontname': 'Cormorant'}
-    pyplot.title(title, fontsize='11', ** font)
+    # pyplot.title(title, fontsize='11', ** font)
     pyplot.xlabel(xlabel, fontsize='11', ** font)
     pyplot.ylabel(ylabel, fontsize='11', ** font)
 
@@ -120,9 +119,9 @@ def plot_logrr():
 
 def plot_integrity():
     """
-    Plot integrity ratios for Figure 4.3-2.
+    Plot integrity ratios for Figure 7.
     """
-    data = [float(r[-2]) / float(r[-3]) for r in all_data]
+    data = [float(r[-2]) / float(r[-3]) for r in all_data if float(r[1]) > 1]
     bin_edges = [i * 0.1 for i in range(0, 11)]
     pyplot.hist(data, bins=bin_edges, histtype='bar', edgecolor='w', alpha=0.8)
 
@@ -135,7 +134,7 @@ def plot_integrity():
 
 def plot_stem_trigram_rr():
     """
-    Plot risk ratios of stem-trigram pairs for Figure 4.4-1.
+    Plot risk ratios of stem-trigram pairs for Figure 8.
     """
     with open('../d5_statistics/trigram/stem_trigram_rr.csv', 'r') as f:
         data = [r[2] for r in csv.reader(f)][1:]
@@ -255,15 +254,15 @@ if __name__ == '__main__':
                     if float(r[12]) >= 100 and float(r[13]) >= 100]
 
     # Plot specific data
-    plot_num_datapoints()
-    plot_rr()
-    plot_rrci()
-    plot_logrr()
+    # plot_num_datapoints()
+    # plot_rr()
+    # plot_rrci()
+    # plot_logrr()
     plot_integrity()
-    plot_stem_trigram_rr()
-    plot_register()
-    plot_verbtrends()
-    plot_rr_verb_instance_freq()
-    plot_rr_verb_type_freq()
+    # plot_stem_trigram_rr()
+    # plot_register()
+    # plot_verbtrends()
+    # plot_rr_verb_instance_freq()
+    # plot_rr_verb_type_freq()
 
     exit(0)

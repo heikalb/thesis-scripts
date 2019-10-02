@@ -1,5 +1,5 @@
 """
-Find trigrams in which both constituent trigrams are associated.
+Find trigrams in which both constituent bigrams are associated.
 Heikal Badrulhisham <heikal93@gmail.com>, 2019
 """
 import csv
@@ -37,7 +37,7 @@ def main():
             # Get risk ratio of each bigram
             curr_rr = [risk_ratio[str(bigram)] for bigram in bigrams]
 
-            # Save trigrams where the constituent trigams are association
+            # Save trigrams where the constituent trigams are associated
             if all([rr > 1 for rr in curr_rr]):
                 saved_trigrams.append(list(trigram) + curr_rr + [trigram_freq, min(curr_rr[0]/curr_rr[1], curr_rr[1]/curr_rr[0])])
         except KeyError:
