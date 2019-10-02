@@ -111,7 +111,8 @@ def chi_sq(f_s1, f_s2, f_s1s2, total, s1, s2, pairs):
 
 def risk_ratio(f_s1, f_s2, f_s1s2, total, s1, s2, pairs):
     """
-    Get the risk ratio of a collocate pair.
+    Get the risk ratio of a collocate pair, with the first element as the
+    conditioning variable.
     :param f_s1: frequency of the first suffix
     :param f_s2: frequency of the second suffix
     :param f_s1s2: frequency of the two suffixes together
@@ -130,7 +131,8 @@ def risk_ratio(f_s1, f_s2, f_s1s2, total, s1, s2, pairs):
 
 def risk_ratio_reverse(f_s1, f_s2, f_s1s2, total, s1, s2, pairs):
     """
-    Get the risk ratio reverse of a collocate pair.
+    Get the risk ratio reverse of a collocate pair. with the second element
+    as the conditioning variable.
     :param f_s1: frequency of the first suffix
     :param f_s2: frequency of the second suffix
     :param f_s1s2: frequency of the two suffixes together
