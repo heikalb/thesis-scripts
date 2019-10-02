@@ -20,18 +20,18 @@ def main():
     # Go morphs attached to verbs
     for parse in parses:
         # Get suffixes, exclude stems
-        cur_parse = re.split(r'[|+]', parse[1])[1:]
+        suffixes = re.split(r'[|+]', parse[1])[1:]
 
-        for cp in cur_parse:
-            if len(cp.split(':')) == 2:
-                morph = cp.split(':')[0]
-                morpheme = cp.split(':')[1]
+        for suffix in suffixes:
+            if len(suffix.split(':')) == 2:
+                exponent = suffix.split(':')[0]
+                morpheme = suffix.split(':')[1]
             else:
-                morph = cp[0]
+                exponent = suffix[0]
                 morpheme = ""
 
-            if morph not in morphemes[morpheme]:
-                morphemes[morpheme].append(morph)
+            if exponent not in morphemes[morpheme]:
+                morphemes[morpheme].append(exponent)
 
     # Save data
     with open('morphs.txt', 'w') as f:
