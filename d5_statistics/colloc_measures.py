@@ -8,11 +8,12 @@ import math
 
 def get_freq(s1, s2, pairs):
     """
-    Get the frequencies in a contingency table for a collocate pair.
+    Get the frequencies in a contingency table for a collocate pair. Substitute
+    0.5 for 0 frequencies.
     :param s1: the first suffix
     :param s2: the second suffix
     :param pairs: the collocate pair
-    :return: frequencies in a contingency table
+    :return: tuple of frequencies in a contingency table
     """
     a = max(sum(pairs[k] for k in pairs if s1 == k[0] and s2 == k[1]), 0.5)
     b = max(sum(pairs[k] for k in pairs if s1 == k[0] and s2 != k[1]), 0.5)
