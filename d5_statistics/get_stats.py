@@ -1,5 +1,5 @@
 """
-Get various collocation statistics from the corpus
+Get association data from morphological parses of verbs extracted from the TNC.
 Heikal Badrulhisham <heikal93@gmail.com>, 2019
 """
 import csv
@@ -19,10 +19,12 @@ def tally(freq, stem, register=''):
     for parse in parses:
         parse = parse.split()
 
-        # Skip parses for a different stem or wrong parses
+        # Stem that appears in the morphological parse
         stem_in_parse = parse[1].split(':')[0]
+        # Stem that is determined for the word prior to parsing
         stem_end_parse = parse[3]
 
+        # Skip parses for a different stem or wrong parses
         if (stem and stem_in_parse not in stem) or \
            (pos not in parse[0] and pos not in parse[1]) or \
            (register and register != parse[2]):
@@ -48,9 +50,8 @@ def update_freq(freq, suffixes, stem_end_parse):
     morpheme within.
     :param freq: various types of frequency data
     :param suffixes: list of suffixes in a morphological parse
-    :param parse:
+    :param stem_end_parse: stem of the current parse
     """
-    # Get counts
     for i in range(len(suffixes)):
         # Update single suffix frequency
         freq['suffix'][suffixes[i]] += 1
@@ -132,7 +133,8 @@ def save_data(freq, file_affix, dir_affix, stem, measure_vals, ci_dict):
         csv_writer = csv.writer(f)
 
         # Column labels
-        first_row = ["collocate_pair", *[m for m in measure_vals],
+        first_row = ["collocate_pair",
+                     *[m for m in measure_vals],
                      *[f'{k}_confidence_interval_{d}'
                        for k in confidence_intervals
                        for d in ['left', 'right']],
@@ -147,7 +149,8 @@ def save_data(freq, file_affix, dir_affix, stem, measure_vals, ci_dict):
                               key=lambda x: measure_vals['risk_ratio'][x])
 
         for k in sorted_pairs:
-            row = [k, *[measure_vals[m][k] for m in measure_vals],
+            row = [k,
+                   *[measure_vals[m][k] for m in measure_vals],
                    *[ci_dict[c][k][i] for c in ci_dict for i in [0, 1]],
                    *[freq['suffix'][suff] for suff in k],
                    freq['pair'][k], freq['adjacency'][k], len(freq['stem'][k])]
@@ -155,10 +158,20 @@ def save_data(freq, file_affix, dir_affix, stem, measure_vals, ci_dict):
             csv_writer.writerow(row)
 
 
-def colloc_stats(stem="", file_affix="", dir_affix='', register=''):
-    # Dictionaries for various frequency variables
+def main(stem="", file_affix="", dir_affix='', register=''):
+    """
+    Get frequencies of suffixes and collocate pairs and other frequency data
+    from morphological parses and filter out data based on stem and register (if
+    specified).
+    Then calculate association values on each collocate pair.
+    Then save association values and other frequency data in .csv files.
+    :param stem: stem for filtering the data (empty string for no filter)
+    :param file_affix: affix on data file to be saved (index)
+    :param dir_affix: affix on directory of data file (register)
+    :param register: register for filtering the data(empty string for no filter)
+    """
+    # Dictionaries for association values and confidence intervals
     measure_vals = dict(zip(measures, [dict() for m in measures]))
-
     ci_dict = dict(zip(confidence_intervals,
                        [dict() for m in confidence_intervals]))
     
@@ -177,6 +190,8 @@ def colloc_stats(stem="", file_affix="", dir_affix='', register=''):
 
 
 if __name__ == "__main__":
+    # Run main operations in main() interatively here by verb stem and register
+
     # Association measurements and measurement confidence intervals
     measures = {'risk_ratio': cm.risk_ratio,
                 'risk_ratio_reverse':  cm.risk_ratio_reverse,
@@ -205,10 +220,9 @@ if __name__ == "__main__":
 
     # Get statistics for each verb type
     for stem in stems:
-        colloc_stats(stem, f'00{i}'[-3:])
+        main(stem, f'00{i}'[-3:])
         # colloc_stats(stem, f'00{i}'[-3:], dir_affix='_written', register='w')
         # colloc_stats(stem, f'00{i}'[-3:], dir_affix='_spoken', register='s')
-
         i += 1
 
     exit(0)
