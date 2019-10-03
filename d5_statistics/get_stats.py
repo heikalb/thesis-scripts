@@ -9,21 +9,19 @@ import colloc_measures as cm
 import os
 
 
-def tally(stem, suff_freq, pair_freq, adj_inst, stem_frequency, register=''):
+def tally(freq, stem, register=''):
     """
-    Tally frequencies of suffixes and collocate pairs.
+    Tally frequencies of suffixes and collocate pairs in the dataset.
+    :param freq: various types of frequency data
     :param stem: verb stem (if given to narrow down data)
-    :param suff_freq: dictionary of suffix frequencies
-    :param pair_freq: dictionary of collocate pair frequencies
-    :param adj_inst: dictionary of collocate pair adjacency
-    :param stem_frequency: dictionary of stem frequencies
-    :param register: register (if given to narrow down data)
+    :param register: register of the subcorpus (if given to narrow down data)
     """
     for parse in parses:
         parse = parse.split()
 
         # Skip parses for a different stem or wrong parses
         stem_in_parse = parse[1].split(':')[0]
+        stem_end_parse = parse[3]
 
         if (stem and stem_in_parse not in stem) or \
            (pos not in parse[0] and pos not in parse[1]) or \
@@ -36,28 +34,40 @@ def tally(stem, suff_freq, pair_freq, adj_inst, stem_frequency, register=''):
         suffixes = remove_forbidden_suffixes(suffixes)
         suffixes = [re.sub(morph_boundary, '', s) for s in suffixes]
 
-        # Get counts
-        for i in range(len(suffixes)):
-            # Single suffix frequency
-            suff_freq[suffixes[i]] += 1
-
-            # Suffix pair cooccurrence frequency
-            for j in range(i + 1, len(suffixes)):
-                curr_pair = (suffixes[i], suffixes[j])
-                pair_freq[curr_pair] += 1
-
-                # Frequency of the two suffixes being adjacent
-                if j - i == 1:
-                    adj_inst[curr_pair] += 1
-
-                # Count verb stem frequency of pairs
-                if parse[3] not in stem_frequency[curr_pair]:
-                    stem_frequency[curr_pair].append(parse[3])
+        # Update frequencies
+        update_freq(freq, suffixes, stem_end_parse)
 
     # Report frequencies
-    print(f'Stem: {stem}\tPair types: {len(pair_freq)}\t'
-          f'Pair instances: {sum([pair_freq[p] for p in pair_freq])}')
+    print(f'Stem: {stem}\tPair types: {len(freq["pair"])}\t'
+          f'Pair instances: {sum([freq["pair"][p] for p in freq["pair"]])}')
 
+
+def update_freq(freq, suffixes, stem_end_parse):
+    """
+    For a given morphologically parsed word, update frequencies based on each
+    morpheme within.
+    :param freq: various types of frequency data
+    :param suffixes: list of suffixes in a morphological parse
+    :param parse:
+    """
+    # Get counts
+    for i in range(len(suffixes)):
+        # Update single suffix frequency
+        freq['suffix'][suffixes[i]] += 1
+
+        # Update suffix pair cooccurrence frequency
+        for j in range(i + 1, len(suffixes)):
+            curr_pair = (suffixes[i], suffixes[j])
+            freq['pair'][curr_pair] += 1
+
+            # Update frequency of the two suffixes being adjacent
+            if j - i == 1:
+                freq['adjacency'][curr_pair] += 1
+
+            # Update verb stem-wise frequency of pairs
+            if stem_end_parse not in freq['stem'][curr_pair]:
+                freq['stem'][curr_pair].append(stem_end_parse)
+    
 
 def remove_forbidden_suffixes(suffixes):
     """
@@ -73,21 +83,22 @@ def remove_forbidden_suffixes(suffixes):
         return [suff for suff in suffixes if ':' in suff]
 
 
-def calc_assoc_score(suff_freq, pair_freq, num_suffixes, measure_vals, ci_dict):
+def get_association(freq, measure_vals, ci_dict):
     """
-    Calculate association measurement values for collocate pairs
-    :param suff_freq: dictionary of suffix frequencies
-    :param pair_freq: dictionary of collocate pair frequencies
-    :param num_suffixes: number of suffix tokens in data
+    Calculate association measurement values for collocate pairs.
+    :param freq: various types of frequency data
     :param measure_vals: values of association measurements
-    :param ci_dict: confidence intervals
+    :param ci_dict: confidence intervals on association values
     """
-    for pair in pair_freq:
+    num_suffixes = sum(freq['suffix'][s] for s in freq['suffix'])
+
+    for pair in freq['pair']:
         suff_1, suff_2 = pair
 
         for msr in measures:
-            args = [suff_freq[suff_1], suff_freq[suff_2], pair_freq[pair],
-                    num_suffixes, suff_1, suff_2, pair_freq]
+            args = [freq['suffix'][suff_1], freq['suffix'][suff_2],
+                    freq['pair'][pair], num_suffixes,
+                    suff_1, suff_2, freq['pair']]
 
             stat = measures[msr](*args)
 
@@ -98,26 +109,23 @@ def calc_assoc_score(suff_freq, pair_freq, num_suffixes, measure_vals, ci_dict):
                 measure_vals[msr][pair] = stat
 
 
-def save_data(suff_freq, pair_freq, faffix, dir_affix, stem, measure_vals,
-              ci_dict, adj_inst, stem_frequency):
+def save_data(freq, file_affix, dir_affix, stem, measure_vals, ci_dict):
     """
     Save association values in .csv files.
-    :param suff_freq:
-    :param pair_freq:
-    :param faffix:
-    :param dir_affix:
-    :param stem:
-    :param measure_vals:
-    :param ci_dict:
-    :param adj_inst:
-    :param stem_frequency:
+    :param freq: various types of frequency data
+    :param file_affix: affix on data file to save (index)
+    :param dir_affix: affix on directory of data file (register)
+    :param stem: verb stem of the current subdataset (if given)
+    :param measure_vals: values of association measurements
+    :param ci_dict: onfidence intervals on association values
     """
+
     # Create file if it's not alreeady there
     if not os.path.isdir(f'association_stats{dir_affix}'):
         os.mkdir(f'association_stats{dir_affix}')
 
     # Fill up data
-    file_path = f'association_stats{dir_affix}/{faffix}_{stem}' +\
+    file_path = f'association_stats{dir_affix}/{file_affix}_{stem}' +\
                 f'_association_stats{dir_affix}.csv'
 
     with open(file_path, 'w') as f:
@@ -130,20 +138,19 @@ def save_data(suff_freq, pair_freq, faffix, dir_affix, stem, measure_vals,
                        for d in ['left', 'right']],
                      'suffix1_frequency', 'suffix2_frequency',
                      'suffix1-suffix2_frequency',
-                     'suffix1-suffix2_adjacent_frequency', 'stem_frequency']
+                     'suffix1-suffix2_adjacent_frequency', 'stem_freq']
 
         csv_writer.writerow(first_row)
 
         # Fill in row values, sort by risk ratio
-        sorted_pairs = sorted(pair_freq,
-                              key=lambda x: measure_vals['risk_ratio'][x],
-                              reverse=True)
+        sorted_pairs = sorted(freq['pair'], reverse=True,
+                              key=lambda x: measure_vals['risk_ratio'][x])
 
         for k in sorted_pairs:
             row = [k, *[measure_vals[m][k] for m in measure_vals],
                    *[ci_dict[c][k][i] for c in ci_dict for i in [0, 1]],
-                   *[suff_freq[suff] for suff in k],
-                   pair_freq[k], adj_inst[k], len(stem_frequency[k])]
+                   *[freq['suffix'][suff] for suff in k],
+                   freq['pair'][k], freq['adjacency'][k], len(freq['stem'][k])]
 
             csv_writer.writerow(row)
 
@@ -154,27 +161,23 @@ def colloc_stats(stem="", file_affix="", dir_affix='', register=''):
 
     ci_dict = dict(zip(confidence_intervals,
                        [dict() for m in confidence_intervals]))
-
-    suff_freq, pair_freq = defaultdict(int), defaultdict(int)
-    adj_inst = defaultdict(int)
-    stem_frequency = defaultdict(list)
+    
+    # Various types of frequency data to collect
+    freq = {'suffix': defaultdict(int), 'pair': defaultdict(int),
+            'adjacency': defaultdict(int), 'stem': defaultdict(list)}
 
     # Tally suffixes and suffix collocates
-    tally(stem, suff_freq, pair_freq, adj_inst, stem_frequency, register)
-
-    # Get number of suffix instances (size of sample)
-    num_suffixes = sum(suff_freq[s] for s in suff_freq)
+    tally(freq, stem, register)
 
     # Get association measures
-    calc_assoc_score(suff_freq, pair_freq, num_suffixes, measure_vals, ci_dict)
+    get_association(freq, measure_vals, ci_dict)
 
     # Save stats in files
-    save_data(suff_freq, pair_freq, file_affix, dir_affix, stem, measure_vals,
-              ci_dict, adj_inst, stem_frequency)
+    save_data(freq, file_affix, dir_affix, stem, measure_vals, ci_dict)
 
 
 if __name__ == "__main__":
-    # Association measurements and confidence intervals
+    # Association measurements and measurement confidence intervals
     measures = {'risk_ratio': cm.risk_ratio,
                 'risk_ratio_reverse':  cm.risk_ratio_reverse,
                 'odds_ratio': cm.odds_ratio,
@@ -182,20 +185,22 @@ if __name__ == "__main__":
                 'dice_coefficient': cm.dice_coeff,
                 't_score': cm.t_score,
                 'chi_squared': cm.chi_sq}
-
+    
+    # Association measurements with confidence intervals
     confidence_intervals = ['risk_ratio', 'risk_ratio_reverse']
-
+    
+    # Information for segmenting parse data
     pos = 'Verb'
     suffix_boundary = r'[\|\+]'
     morph_boundary = r'.*:'
 
-    # Get parses, stems, and file indices
+    # Get parses
     with open('../d4_parse/verb_parses.txt', 'r') as f:
-        parses = [p for p in f.read().split('\n')]
+        parses = f.read().split('\n')
     
-    # File stems and indices. Empty string for selecting all verb stems
-    verb_stems = open('../d0_prep_query_terms/freq_dict_verbs.txt', 'r')
-    stems = [""] + verb_stems.read().split('\n')
+    # Get verb stems and indices. Use empty string for selecting all verb stems
+    verb_stem_file = open('../d0_prep_query_terms/freq_dict_verbs.txt', 'r')
+    stems = [""] + verb_stem_file.read().split('\n')
     i = 0
 
     # Get statistics for each verb type
