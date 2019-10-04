@@ -1,28 +1,25 @@
 """
-Get various collocation statistics on stems and trigrams
+Get association data on stems and trigrams
 Heikal Badrulhisham <heikal93@gmail.com>, 2019
 """
 import csv
 import re
 import sys
-from collections import defaultdict
 from nltk import ngrams
+from collections import defaultdict
 from collections import Counter
 sys.path.append('../')
 import colloc_measures as cm
 import get_stats
 
 
-# Count trigrams and stem-trigram pairs
-def tally(pos, suff_boundary, morph_boundary, register=''):
+def tally():
+    """
+    Get frequency of stems, trigrams and stem-trigram pairs
+    """
     for parse in parses:
         # Decompose information on parse file line
         parse = parse.split()
-
-        # Skip parses for a different stem or wrong parses
-        if (pos not in parse[0] and pos not in parse[1]) or \
-           (register and register != parse[2]):
-            continue
 
         # Get suffixes
         stem = parse[-1]
@@ -30,8 +27,8 @@ def tally(pos, suff_boundary, morph_boundary, register=''):
         suffixes = get_stats.remove_forbidden_suffixes(suffixes)
         suffixes = [re.sub(morph_boundary, '', s) for s in suffixes]
 
-        # curr_trigrams = ngrams(suffixes, 3)
-        curr_trigrams = tuple(suffixes)
+        curr_trigrams = ngrams(suffixes, 3)
+        # curr_trigrams = tuple(suffixes)
 
         # Update frequency data
         frequency[stem] += 1
@@ -41,15 +38,20 @@ def tally(pos, suff_boundary, morph_boundary, register=''):
             pair_frequency[(stem, g)] += 1
 
 
-# Get risk ratios of collocate pairs
-def calc_assoc_score(total, risk_ratio, risk_ratio_reverse):
+def calc_association():
+    """
+    Calculate risk ratios of stem-trigram pairs
+    """
     for pair in pair_frequency:
         # Only do for specified trigrams
-        # if pair[1] not in target_trigrams:
-        #    continue
+        if pair[1] not in target_trigrams:
+            continue
 
         # Get collocate members
         stem, trigram = pair
+
+        # Get total number of stem-trigram pairs
+        total = sum(pair_frequency[p] for p in pair_frequency)
 
         # Calculate risk ratio, even in reverse orientation
         args = [frequency[stem], frequency[trigram], pair_frequency[pair],
@@ -59,22 +61,30 @@ def calc_assoc_score(total, risk_ratio, risk_ratio_reverse):
         risk_ratio_reverse[pair] = cm.risk_ratio_reverse(*args)[0]
 
 
-# Save data
-def save_data(risk_ratio, risk_ratio_reverse):
+def save_data():
+    """
+    Save risk ratio data in a .csv file
+    """
     # Save stem-trigram association data
     with open('stem_trigram_rr_.csv', 'w') as f:
         csv_writer = csv.writer(f)
+
+        # Write file header
         header = ['stem', 'trigram', 'risk_ratio', 'risk_ratio_reverse',
                   'stem_frequency', 'trigram_frequency', 'pair_frequency']
+
         csv_writer.writerow(header)
 
+        # Sort pairs by risk ratio
         pairs = [k for k in pair_frequency if type(k) == tuple and
                  len(k) == 2 and k[1] in target_trigrams]
+
         pairs.sort(key=lambda x: risk_ratio[x], reverse=True)
 
+        # Write conntent data
         for k in pairs:
-            row = [k[0], k[1], risk_ratio[k], risk_ratio_reverse[k]] + \
-                  [frequency[s] for s in k] + [pair_frequency[k]]
+            row = [k[0], k[1], risk_ratio[k], risk_ratio_reverse[k],
+                   *[frequency[s] for s in k], pair_frequency[k]]
 
             csv_writer.writerow(row)
 
@@ -82,25 +92,6 @@ def save_data(risk_ratio, risk_ratio_reverse):
     with open('suffix_trigrams_.txt', 'w') as f:
         f.write('\n'.join([f'{e} {frequency[e]}'
                            for e in frequency if type(e) == tuple]))
-
-
-# Main procedures
-def colloc_stats(pos, suff_boundary, morph_boundary):
-    # Store risk ratio values
-    risk_ratio = dict()
-    risk_ratio_reverse = dict()
-
-    # Tally trigrams and stem-trigram collocates
-    tally(pos, suff_boundary, morph_boundary)
-
-    # Get total number of trigrams/stems
-    total = sum(pair_frequency[p] for p in pair_frequency)
-
-    # Get risk ratio
-    calc_assoc_score(total, risk_ratio, risk_ratio_reverse)
-
-    # Save data in files
-    save_data(risk_ratio, risk_ratio_reverse)
 
 
 if __name__ == "__main__":
@@ -128,6 +119,21 @@ if __name__ == "__main__":
                        ('PastPart→Noun', 'P3pl', 'Acc'),
                        ('PastPart→Noun', 'P3sg', 'Dat')]
 
-    # Get data
-    colloc_stats('Verb', r'[\|\+]', r'.*:')
+    # For segmenting parses
+    pos = 'Verb'
+    suff_boundary = r'[\|\+]'
+    morph_boundary = r'.*:'
+
+    # Store risk ratio values
+    risk_ratio = dict()
+    risk_ratio_reverse = dict()
+
+    # Tally trigrams and stem-trigram collocates
+    tally()
+
+    # Get risk ratio
+    calc_association()
+
+    # Save data in files
+    save_data()
     exit(0)
