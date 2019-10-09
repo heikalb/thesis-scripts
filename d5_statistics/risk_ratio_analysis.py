@@ -1,9 +1,13 @@
 # -*- coding: UTF-8 -*-
+"""
+Display data for steps of analysis in Section 4.
+Heikal Badrulhisham <heikal93@gmail.com>, 2019
+"""
 import csv
 import os
-from collections import defaultdict
 import math
 import numpy
+from collections import defaultdict
 from scipy import stats
 
 
@@ -13,52 +17,64 @@ def freq_filter(rows):
 
 def rr_ranges():
     """
-    Display risk ratio by ranges for Table 4.1-1.
+    Display risk ratio by ranges for Table 10.
     """
+    # Get risk ratios and risk ratio confidence intervals
     rr = [float(d[1]) for d in data]
     rr_ci = [float(d[8]) for d in data]
 
+    # Pair up data with correct label
     measures = [(rr, 'Risk ratio'), (rr_ci, 'Risk ratio CI')]
 
+    # Display ranges of data
     for measure in measures:
+        # Divide data into ranges
         upto_1 = len([d for d in measure[0] if d <= 1])
         below_2 = len([d for d in measure[0] if 1 < d < 2])
         above_2 = len([d for d in measure[0] if 2 <= d])
 
+        # Display ranges
         print(measure[1])
         print(f'RR below 1: {upto_1} ({upto_1 / len(measure[0])}%)')
         print(f'RR below 2: {below_2} ({below_2 / len(measure[0])}%)')
         print(f'RR above 2: {above_2} ({above_2 / len(measure[0])}%)')
 
 
-def register():
+def rr_ranges_by_register():
     """
-    Show ranges of risk ratio by register for Table 4.1-4.
+    Show ranges of risk ratios by register for Table 12.
     """
+    # Iterate by register. Use empty string for entire dataset
     for reg in ['', '_written', '_spoken']:
+        # Get correct path to data file
         file_path = f'association_stats{reg}/000__association_stats{reg}.csv'
 
+        # Get data
         with open(file_path, 'r') as f:
-            data = [r for r in csv.reader(f)][1:]
-            data = freq_filter(data)
+            reg_data = [r for r in csv.reader(f)][1:]
+            reg_data = freq_filter(reg_data)
 
-        total = len(data)
-        up_to_1 = len([r for r in data if float(r[1]) <= 1])
-        more_than_1 = len([r for r in data if float(r[1]) > 1])
+        # Get frequencies in ranges (type frequency)
+        total = len(reg_data)
+        up_to_1 = len([r for r in reg_data if float(r[1]) <= 1])
+        more_than_1 = len([r for r in reg_data if float(r[1]) > 1])
 
+        # Display ranges (type frequency)
         print(f'Pair types in {reg} register')
         print(f'Up to 1: {up_to_1} ({round(100*up_to_1/total)}%)')
         print(f'More than 1: {more_than_1} ({round(100*more_than_1/total)}%)')
-        print(total, '\n')
+        print('Total:', total, '\n')
 
-        total = sum([int(r[-3]) for r in data])
-        up_to_1 = sum([int(r[-3]) for r in data if float(r[1]) <= 1])
-        more_than_1 = sum([int(r[-3]) for r in data if float(r[1]) > 1])
+        # Get frequencies in ranges (token frequency)
+        total = sum([int(r[-3]) for r in reg_data])
+        up_to_1 = sum([int(r[-3]) for r in reg_data if float(r[1]) <= 1])
+        more_than_1 = sum([int(r[-3]) for r in reg_data if float(r[1]) > 1])
 
+        # Display ranges (token frequency)
         print(f'Pair instances in {reg} register')
         print(f'Up to 1: {up_to_1} ({round(100*up_to_1/total)}%)')
         print(f'More than 1 {more_than_1} ({round(100*more_than_1/total)}%)')
-        print(total, '\n')
+        print('Total:', total, '\n')
 
 
 def adjacency():
@@ -118,8 +134,7 @@ def asymmtery():
 
 def has_subordinate():
     """
-    Count trigrams containing one of the subordinate suffixes for Section 4.2,
-    approximately on page 57.
+    Count trigrams containing one of the subordinate suffixes for Section 4.2.
     """
     # Open data files
     with open('trigram/suffix_trigrams.txt', 'r') as f:
@@ -127,22 +142,21 @@ def has_subordinate():
 
     # Count trigrams with a subordinate suffix
     subordinates = ['Inf2→Noun', 'PastPart→Noun', 'FutPart→Noun']
-    has_subordinate = 0
+    num_has_subordinate = 0
 
     for trigram_line in trigram_lines:
         # Get information from trigram file line
         trigram, trigram_freq = trigram_line.split(') ')
 
         if any([suffix in trigram for suffix in subordinates]):
-            has_subordinate += 1
+            num_has_subordinate += 1
 
-    print('Number of trigrams with a subordinate marker: ', has_subordinate)
+    print('Number of trigrams with a subordinate marker: ', num_has_subordinate)
 
 
 def test_normality():
     """
-    Test the main risk ratio data for normality for Section 4.3, approximately
-    on page 58.
+    Test the main risk ratio data for normality for Section 4.3.
     """
     # Get risk ratios
     data_ = [d[1] for d in data]
@@ -157,20 +171,25 @@ def integrity():
     Display ranges of integrity ratios for Table 18.
     """
     # Get collocate pairs of different formulaicity
-    all_pairs = [row for row in data]
+    all_pairs = data
     formulaic_pairs = [row for row in data if float(row[1]) > 1]
     nonformulaic_pairs = [row for row in data if float(row[1]) <= 1]
 
+    # Iterate over different subsets of collocate pairs
     for subdataset in [all_pairs, formulaic_pairs, nonformulaic_pairs]:
 
+        # For a given list of collocate pairs, return the number of collocate
+        # pairs whose integrity ratio meet a threshold given by x().
         def f(x):
             return len([r for r in subdataset if x(float(r[-2])/float(r[-3]))])
 
+        # Get frequencies of different integrity ratio categories
         exactly_1 = f(lambda x: x == 1)
         half = f(lambda x: 0.5 <= x < 1)
         below_half = f(lambda x: 0 < x < 0.5)
         zero = f(lambda x: x == 0)
 
+        # Display data
         print(exactly_1, half, below_half, zero)
         print(exactly_1/len(subdataset), half/len(subdataset),
               below_half/len(subdataset), zero/len(subdataset))
@@ -392,7 +411,7 @@ if __name__ == '__main__':
         data = freq_filter(data)
 
     # rr_ranges()
-    # register()
+    # rr_ranges_by_register()
     # adjacency()
     # asymmtery()
     # has_subordinate()
