@@ -25,7 +25,7 @@ def get_indices_stems(freq_dict):
     # Pairs of frequency indices and stems
     indices_stems = []
 
-    # Get frequency indicesfrom the dictionary for sorting the stems
+    # Get frequency indices from the dictionary for sorting the stems
     for line in verb_lines:
         index = int(line.split('|')[0].strip())
         stem_line = ' '.join(line.split()[3:])
@@ -59,7 +59,9 @@ def stem_correction(stem_index, h_words, h_corrections, morph_corrections):
 
 
 def main():
-    """Main method"""
+    """
+    Extract verbs from the Frequency Dictionary and save them.
+    """
 
     # Open Frequency Disctionary file
     freq_dict = open('freq_dict.txt', 'r')
@@ -94,6 +96,7 @@ def main():
 
     # For storing corrected verb stems
     corrected_stems = []
+    show_curr = True
 
     # Apply corrections to verb stems
     for index_stem in sorted(indices_stems):
@@ -101,6 +104,32 @@ def main():
                                          morph_corrections)
 
         corrected_stems.append(corrected_stem)
+
+        translations_words = index_stem[1].split()[1:]
+        translations_words = [w for w in translations_words if w != 'to']
+        translations_words = re.sub(r',$', '', ' '.join(translations_words).replace(';', ','))
+
+        """
+        if 40 < int(index_stem[0]) <= 80:
+            # print(index_stem[0])
+            # print(corrected_stem)
+            print(translations_words)
+        """
+
+        if int(index_stem[0]) > 80 and (int(index_stem[0]) - 81) % 45 == 0:
+            if show_curr:
+                show_curr = False
+            else:
+                show_curr = True
+
+        # if int(index_stem[0]) > 80 and show_curr:
+            # print(index_stem[0])
+            # print(corrected_stem)
+            # print(translations_words)
+        if translations_words:
+            print(f'{index_stem[0]}\t{corrected_stem}\t\t\t{translations_words}')
+        else:
+            print(f'{index_stem[0]}\t{corrected_stem}\t\t\t####')
 
     # Save data
     with open('freq_dict_verbs.txt', 'w') as f:
