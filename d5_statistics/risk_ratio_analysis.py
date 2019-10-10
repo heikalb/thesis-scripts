@@ -4,7 +4,6 @@ Display data for steps of analysis in Section 4.
 Heikal Badrulhisham <heikal93@gmail.com>, 2019
 """
 import csv
-import os
 import math
 import numpy
 from collections import defaultdict
