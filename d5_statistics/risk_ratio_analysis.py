@@ -10,10 +10,6 @@ from collections import defaultdict
 from scipy import stats
 
 
-def freq_filter(rows):
-    return [r for r in rows if float(r[12]) >= 100 and float(r[13]) >= 100]
-
-
 def rr_ranges():
     """
     Display risk ratio by ranges for Table 10.
@@ -48,10 +44,11 @@ def rr_ranges_by_register():
         # Get correct path to data file
         file_path = f'association_stats{reg}/000__association_stats{reg}.csv'
 
-        # Get data
+        # Get data, filter out low frequency pairs
         with open(file_path, 'r') as f:
             reg_data = [r for r in csv.reader(f)][1:]
-            reg_data = freq_filter(reg_data)
+            reg_data = [r for r in reg_data if float(r[12]) >= 100
+                        and float(r[13]) >= 100]
 
         # Get frequencies in ranges (type frequency)
         total = len(reg_data)
@@ -315,10 +312,10 @@ def stem_by_trigram():
 
 
 if __name__ == '__main__':
-    # Get data
+    # Get data, filter out low frequency pairs
     with open(f'association_stats/000__association_stats.csv', 'r') as f:
         data = [row for row in csv.reader(f)][1:]
-        data = freq_filter(data)
+        data = [r for r in data if float(r[12]) >= 100 and float(r[13]) >= 100]
 
     # Run analysis
     # rr_ranges()
@@ -331,10 +328,5 @@ if __name__ == '__main__':
     trigram_link_ratios()
     # stem_trigram_formulas()
     # stem_by_trigram()
-    # rr_dist(data_files)
-    # tops = top_pairs(data_files)
-    # cross_verb_trend(data_files)
-    # test_normality('association_stats/000__association_stats.csv')
-    # formulas()
 
     exit(0)
