@@ -148,9 +148,11 @@ def has_subordinate():
         # Get information from trigram file line
         trigram, trigram_freq = trigram_line.split(') ')
 
+        # Update count
         if any([suffix in trigram for suffix in subordinates]):
             num_has_subordinate += 1
 
+    # Display data
     print('Number of trigrams with a subordinate marker: ', num_has_subordinate)
 
 
@@ -204,7 +206,9 @@ def trigram_link_ratios():
         trigram_lines = f.read().split('\n')
 
     # Store risk ratio of suffix pairs
-    data_ = dict(zip([r[0] for r in data if float(r[1]) > 1], [float(r[1]) for r in data if float(r[1]) > 1]))
+    collocate_pairs = [r[0] for r in data if float(r[1]) > 1]
+    risk_ratios = [float(r[1]) for r in data if float(r[1]) > 1]
+    data_ = dict(zip(collocate_pairs, risk_ratios))
 
     # Store risk ratios
     risk_ratios = []
@@ -248,30 +252,37 @@ def trigram_link_ratios():
 
 def stem_trigram_formulas():
     """
-    Tell how many stem-trigram pairs have a risk ratio above 1 for
-    approximately page 62.
+    Tell how many stem-trigram pairs have a risk ratio above 1 for Section 4.4.
     """
+    # Get stem-trigram pairs
     with open('trigram/stem_trigram_rr.csv', 'r') as f:
         data = [row for row in csv.reader(f)][1:]
         data = [r for r in data if float(r[4]) >= 100 and float(r[5]) >= 100]
 
-    print(len([r for r in data if float(r[2]) > 1]))
-    print(len(data))
+    # Count stem-trigram pairs with risk ratio above 1
+    num_above_1 = len([r for r in data if float(r[2]) > 1])
+
+    # Display data
+    print('Stem-trigram pairs with risk ratio above 1:', num_above_1)
+    print('Total number of stem-trigram pairs', len(data))
 
 
 def stem_by_trigram():
     """
     Tell how many verbs are associated with certain trigrams for Table 20.
     """
+    # Get stem-trigram pairs
     with open('trigram/stem_trigram_rr.csv', 'r') as f:
         data = [row for row in csv.reader(f)][1:]
         data = [r for r in data if float(r[4]) >= 100 and float(r[5]) >= 100]
 
+    # Categories of association
     above_1 = defaultdict(int)
     up_to_1 = defaultdict(int)
     num_hosting_verbs = defaultdict(int)
     risk_ratios = defaultdict(list)
 
+    # Get frequencies
     for row in data:
         trigram = row[1]
         risk_ratio = float(row[2])
@@ -284,132 +295,33 @@ def stem_by_trigram():
         if risk_ratio <= 1:
             up_to_1[trigram] += 1
 
+    # Display data
+    # Display trigrams
     for trigram in above_1:
         print(trigram)
 
-    print('\n')
-
+    # Display absolute and relative frequencies
     for trigram in above_1:
         print(up_to_1[trigram],
               '({0:.0%})'.format(up_to_1[trigram]/num_hosting_verbs[trigram]))
-
-    print('\n')
 
     for trigram in above_1:
         print(above_1[trigram],
               '({0:.0%})'.format(above_1[trigram] / num_hosting_verbs[trigram]))
 
-    print('\n')
-
+    # Display range of log risk ratio for above 1 category
     for trigram in above_1:
         print(f'{round(math.log(min(risk_ratios[trigram]), 2), 2)}'
               f'  -  {round(math.log(max(risk_ratios[trigram]), 2), 2)}')
 
 
-# Get the formula frequency and proportion associated with verb types
-def rr_dist(fpaths=[], save_file_name='rr_dist_by_verbs.csv'):
-    save_rows = []
-
-    for fpath in fpaths:
-        with open(fpath, 'r') as f:
-            rows = [r for r in csv.reader(f)][1:]
-
-        if not rows:
-            continue
-
-        f_freq = sum([int(r[-1]) for r in rows if float(r[1]) > 1])
-        num_f_types = len([r for r in rows if float(r[1]) > 1])
-        inst_sum = sum([int(r[-1]) for r in rows])
-        type_sum = len([r for r in rows])
-        save_rows.append([fpath.split('_')[2], f_freq, f_freq/inst_sum,
-                          num_f_types, num_f_types/type_sum])
-
-    with open(save_file_name, 'w') as f:
-        row_1 = ['verb_lemma', 'formula_freq', 'formula_freq_norm',
-                 'num_formula', 'formula_prop']
-
-        csv.writer(f).writerow(row_1)
-        csv.writer(f).writerows(save_rows)
-
-
-# Show how many collocate pairs appear with how many verb types
-def top_pairs(fpaths):
-    pair_count_byverbs = defaultdict(int)
-    overall_rr = dict()
-
-    # Tally verb type occurrences
-    for fpath in fpaths:
-        with open(fpath, 'r') as f:
-            rows = [r for r in csv.reader(f)][1:]
-
-        for r in rows:
-            pair_count_byverbs[r[0]] += 1
-
-            if '000' in fpath:
-                overall_rr[r[0]] = r[1]
-
-    # Display number of collocate pairs in different ranges of verb type freq.
-    for i in range(8):
-        pairs = [p for p in pair_count_byverbs
-                 if i*100 <= pair_count_byverbs[p] < (i+1)*100]
-
-        print(i*100, (i+1)*100)
-        print(len(pairs), '\n')
-
-    # Get the most verb-frequent collocate pairs
-    keys = [k for k in pair_count_byverbs]
-    keys.sort(reverse=True, key=lambda x: pair_count_byverbs[x])
-
-    for p in keys[:81]:
-        print(f'{p}\t\t\t\t{pair_count_byverbs[p]}\t\t\t\t{overall_rr[p]}')
-
-    return keys[:20]
-
-
-# Find the trend of the RR of a pair across verbs
-def cross_verb_trend(fpaths):
-    # Get all pairs in whole dataset
-    with open(fpaths[-1], 'r') as f:
-        target_pairs = [r[0] for r in csv.reader(f)][1:]
-
-    target_rrs = dict(zip(target_pairs,
-                          [defaultdict(lambda:'') for t in target_pairs]))
-
-    # Get RR of collocate pairs across verb files
-    for fpath in fpaths:
-        curr_stem = fpath.split('_')[2]
-
-        with open(fpath, 'r') as f:
-            for r in [r_ for r_ in csv.reader(f)][1:]:
-                target_rrs[r[0]][curr_stem] = r[1]
-
-    # Save data
-    with open('cross_verb_trends.csv', 'w') as f:
-        stems = [fpath.split('_')[2] for fpath in fpaths]
-        row_1 = ['Pair'] + [s for s in stems] + ['Verb_type_frequency']
-        rows = [[k] + [target_rrs[k][s] for s in stems] +
-                [len([s for s in target_rrs[k] if target_rrs[k][s]]) - 1]
-                for k in target_rrs]
-
-        csv.writer(f).writerow(row_1)
-        csv.writer(f).writerows(rows)
-
-
-def formulas():
-    for r in data:
-        if int(r[-3]) == int(r[-2] or int(r[-4]) == int(r[-2])):
-            print(r[0])
-
-
 if __name__ == '__main__':
-    data_dir = os.listdir('association_stats/')
-    data_dir.sort()
-    data_files = [os.path.join('association_stats/', fp) for fp in data_dir]
-
+    # Get data
     with open(f'association_stats/000__association_stats.csv', 'r') as f:
         data = [row for row in csv.reader(f)][1:]
         data = freq_filter(data)
 
+    # Run analysis
     # rr_ranges()
     # rr_ranges_by_register()
     # adjacency()
