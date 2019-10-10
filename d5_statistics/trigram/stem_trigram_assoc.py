@@ -27,10 +27,10 @@ def tally():
         suffixes = get_stats.remove_forbidden_suffixes(suffixes)
         suffixes = [re.sub(morph_boundary, '', s) for s in suffixes]
 
+        # Get suffix trigrams
         curr_trigrams = ngrams(suffixes, 3)
-        # curr_trigrams = tuple(suffixes)
 
-        # Update frequency data
+        # Update frequencies
         frequency[stem] += 1
 
         for g in curr_trigrams:
@@ -136,4 +136,5 @@ if __name__ == "__main__":
 
     # Save data in files
     save_data()
+
     exit(0)
