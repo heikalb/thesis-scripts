@@ -1,5 +1,5 @@
 """
-Orthographic transformations for spell correction.
+Orthographic transformations for spell correction in collect_queries.py.
 Heikal Badrulhisham <heikal93@gmail.com>, 2019
 """
 
