@@ -131,7 +131,10 @@ def save_file(fname, data_list):
 
 def main():
     """
-    Main method.
+    For each query result file, do the following. Apply spell correction to data
+    within. Fix column-related formatting errors. Join context windows and
+    target words into single sentences. Save modified version of data file in
+    a separate directory.
     """
     save_rows = []
     data_dir = '../d2_data/query_results_freq_dict/'
