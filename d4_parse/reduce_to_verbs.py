@@ -3,8 +3,8 @@ Reduce the file of parses to parses of target verbs only, and separately
 save parsing errors.
 Heikal Badrulhisham <heikal93@gmail.com>, 2019
 """
-import csv
 import os
+import csv
 from collections import Counter
 
 
@@ -90,7 +90,9 @@ def save_data(verb_parses, parse_errors):
 
 def main():
     """
-    Main method.
+    From files of morphological parses of the entire dataset, derive files
+    of morphological parses of target verbs only. Save derived parse files
+    in a separate directory.
     """
     # Get individual verb parse files
     parse_dir = 'parses/'
