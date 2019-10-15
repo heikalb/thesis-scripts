@@ -92,7 +92,9 @@ def download_file():
 
 def main(query_terms, start=0, end=-1):
     """
-    Main method.
+    Open browser. Sign in into a TNC account. Iteratively submit queries on the
+    TNC based on verbs. Download data file of the results of each query.
+    Data files will be in the browser's default download folder.
     :param query_terms: list of query terms
     :param start: index of first term to query on
     :param end: index of last term to query on
