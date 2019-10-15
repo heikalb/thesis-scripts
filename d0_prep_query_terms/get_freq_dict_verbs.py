@@ -60,7 +60,7 @@ def stem_correction(stem_index, h_words, h_corrections, morph_corrections):
 
 def main():
     """
-    Extract verbs from the Frequency Dictionary and save them.
+    Extract verbs from the Frequency Dictionary and save them in a .txt file.
     """
 
     # Open Frequency Disctionary file
