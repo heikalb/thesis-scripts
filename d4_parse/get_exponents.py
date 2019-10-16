@@ -2,8 +2,8 @@
 Get the exponents of morphemes from morphological parses in the TNC.
 Heikal Badrulhisam <heikal93@gmail.com>, 2019
 """
-import re
 from collections import defaultdict
+import re
 
 
 def main():
