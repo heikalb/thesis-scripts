@@ -1,5 +1,5 @@
 """
-Get the morphs of morphemes
+Get the exponents of morphemes from morphological parses in the TNC.
 Heikal Badrulhisam <heikal93@gmail.com>, 2019
 """
 import re
@@ -8,7 +8,8 @@ from collections import defaultdict
 
 def main():
     """
-    Main method.
+    Get the exponents of morphemes from the file of morphological parses of
+    verbs and save the exponents in a file.
     """
     # Open parse file
     with open('verb_parses.txt', 'r') as f:
@@ -17,7 +18,7 @@ def main():
     # Map morphemes to lists of allomorphs
     morphemes = defaultdict(list)
 
-    # Go morphs attached to verbs
+    # Get morphs attached to verbs
     for parse in parses:
         # Get suffixes, exclude stems
         suffixes = re.split(r'[|+]', parse[1])[1:]
@@ -34,8 +35,9 @@ def main():
                 morphemes[morpheme].append(exponent)
 
     # Save data
-    with open('morphs.txt', 'w') as f:
-        f.write('\n'.join(k + ": " + str(morphemes[k]) for k in morphemes))
+    with open('exponents.txt', 'w') as f:
+        lines = [k + ": " + str(morphemes[k]) for k in morphemes]
+        f.write('\n'.join(lines))
 
 
 if __name__ == '__main__':
