@@ -2,11 +2,10 @@
 Create figures on specific subsets of the data.
 Heikal Badrulhisham <heikal93@gmail.com>, 2019
 """
-
-import matplotlib.pyplot as pyplot
 import csv
-import math
 import os
+import matplotlib.pyplot as pyplot
+import math
 
 
 def graph_it(title='', xlabel='', ylabel='', fname='', xticks=None, xlim=(),
