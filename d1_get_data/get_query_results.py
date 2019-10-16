@@ -3,9 +3,9 @@ Make lemma-based queries on the TNC web interface based on a list of lemmas
 Heikal Badrulhisham <heikal93@gmail.com>, 2019
 """
 import argparse
-import time
 from selenium import webdriver
 from selenium.common.exceptions import *
+import time
 from selenium.webdriver.support.ui import Select
 
 
