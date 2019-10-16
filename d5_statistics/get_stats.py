@@ -2,11 +2,11 @@
 Get association data from morphological parses of verbs extracted from the TNC.
 Heikal Badrulhisham <heikal93@gmail.com>, 2019
 """
-import csv
+import colloc_measures as cm
 from collections import defaultdict
 import re
-import colloc_measures as cm
 import os
+import csv
 
 
 def tally(freq, stem, register=''):
