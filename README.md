@@ -8,8 +8,7 @@ sequences of multiple items (e.g., words) psycholinguistically function as
 units, despite their apparent decompositionality. This thesis project examines 
 whether formulaicity also occurs among affixes, using the Turkish National 
 Corpus (TNC) as a dataset. Although formulaicity is a psycholinguistic concept, 
-this project looks for an evidence for it through the distribution of affixes in 
-a corpus.
+this project looks for an evidence for it in distributional data in a corpus.
 
 The main questions explored in this project are:
 
@@ -78,8 +77,41 @@ for morphological parsing.
 
 ## Usage
 ### Using available data
-### Generating data yourself
+The risk ratio dataset analyzed in the thesis are readily available in this 
+repository. The data are in the following files, which also contain values of
+other association measures:
 
+* d5_statistics/association_stats/000__association_stats.csv
+* d5_statistics/association_stats_spoken/000__association_stats_spoken.csv
+* d5_statistics/association_stats_written/000__association_stats_written.csv
+* d5_statistics/trigram/stem_trigram_rr.csv
+
+These files can be downloaded and opened in a spreadsheet software.
+
+### Generating data yourself
+Most of the data files including ones containing query results, morphological
+parses and association values by verbs are not available in this repository 
+due to memory restriction. To generate data files yourself (including the ones
+listed in the previous section) run the following programs in the following
+order:
+
+1. d0_prep_query_terms/get_freq_dict_verbs.py
+2. d1_get_data/get_query_results.py
+3. d3_preprocess_data/collect_queries.py
+4. d4_parse/reduce_to_verbs.py
+5. d4_parse/src/ParseMorphemes.java
+6. d5_statistics/get_stats.py
+7. d5_statistics/risk_ratio_analysis.py
+8. d5_statistics/trigram/stem_trigram_assoc.py
+
+For running the Java file in step 5, you may need to add the 
+JAR file for Zemberek-NLP to the build path first. The above programs can be run
+from an integrated development environment (IDE) or the command line. However, for the
+program in step 2, you have to run it in a command line to specify your username
+and password of your TNC account (which you need to obtain beforehand). The 
+minimum you need to enter is `python3 get_query_results.py -u exusername -p expassword`,
+for example. You may tinker with d1_get_data/get_query_results.py so that you
+can run it in an IDE with your user information
 
 ## Project status
 This project is no longer in active development.
