@@ -187,12 +187,12 @@ if __name__ == '__main__':
         all_data = [r for r in all_data
                     if float(r[12]) >= 100 and float(r[13]) >= 100]
 
-    # Plot specific data
-    # plot_num_datapoints()
-    # plot_rr()
-    # plot_rrci()
-    # plot_logrr()
+    # Plot data
+    plot_num_datapoints()
+    plot_rr()
+    plot_rrci()
+    plot_logrr()
     plot_integrity()
-    # plot_stem_trigram_rr()
+    plot_stem_trigram_rr()
 
     exit(0)
