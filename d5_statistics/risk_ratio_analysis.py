@@ -317,16 +317,16 @@ if __name__ == '__main__':
         data = [row for row in csv.reader(f)][1:]
         data = [r for r in data if float(r[12]) >= 100 and float(r[13]) >= 100]
 
-    # Run analysis
-    # rr_ranges()
-    # rr_ranges_by_register()
-    # adjacency()
-    # asymmtery()
-    # has_subordinate()
-    # test_normality()
-    # integrity()
+    # Run analyses
+    rr_ranges()
+    rr_ranges_by_register()
+    adjacency()
+    asymmtery()
+    has_subordinate()
+    test_normality()
+    integrity()
     trigram_link_ratios()
-    # stem_trigram_formulas()
-    # stem_by_trigram()
+    stem_trigram_formulas()
+    stem_by_trigram()
 
     exit(0)
