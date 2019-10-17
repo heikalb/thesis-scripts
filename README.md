@@ -111,7 +111,7 @@ program in step 2, you have to run it in a command line to specify your username
 and password of your TNC account (which you need to obtain beforehand). The 
 minimum you need to enter is `python3 get_query_results.py -u exusername -p expassword`,
 for example. You may tinker with d1_get_data/get_query_results.py so that you
-can run it in an IDE with your user information
+can run it in an IDE with your user information.
 
 ## Project status
 This project is no longer in active development.
