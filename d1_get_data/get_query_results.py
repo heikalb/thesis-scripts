@@ -143,11 +143,11 @@ if __name__ == '__main__':
     parse.add_argument('-b', '--browser', help='Browser to use',
                        default='safari', type=str, choices=['safari'])
 
-    parse.add_argument('-usr', '--username', help='Username on TNC',
-                       default='user', required=True, type=str)
+    parse.add_argument('-u', '--username', help='Username on TNC',
+                       required=True, type=str)
 
-    parse.add_argument('-pw', '--password', help='Password of TNC account',
-                       default='password', required=True, type=str)
+    parse.add_argument('-p', '--password', help='Password of TNC account',
+                       required=True, type=str)
 
     args = parse.parse_args()
 
