@@ -81,11 +81,11 @@ for morphological parsing.
 ### Generating data yourself
 
 
-##Project status
+## Project status
 This project is no longer in active development.
 
 
-##Author
+## Author
 Heikal Badrulhisham <heikal93@gmail.com>
 
 ## License
