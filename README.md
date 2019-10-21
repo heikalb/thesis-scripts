@@ -61,8 +61,9 @@ Python dependencies:
 * nltk
 * matplotlib
 
-The above packages can be installed with pip by entering, for example, 
-`pip install nltk` in a command line.
+The above packages can be individually installed with pip by entering, for example, 
+`pip install nltk` in a command line. Alternatively, install the packages en masse
+by entering `pip install -r requirements.txt` in a command line.
 
 Java dependency:
 * [Zemberek-NLP](https://github.com/ahmetaa/zemberek-nlp)
