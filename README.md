@@ -104,18 +104,23 @@ order:
 7. d5_statistics/risk_ratio_analysis.py
 8. d5_statistics/trigram/stem_trigram_assoc.py
 
-For running the Java file in step 5, you may need to add the 
+Additional instructions:
+
+* For running the Java file in step 5, you may need to add the 
 JAR file for Zemberek-NLP to the build path first. The above programs can be run
-from an integrated development environment (IDE) or the command line. However, for the
-program in step 2, you have to run it in a command line to specify your username
+from an integrated development environment (IDE) or the command line. 
+* However, for the program in step 2, you have to run it in a command line to specify your username
 and password of your TNC account (which you need to obtain beforehand). The 
 minimum you need to enter is `python3 get_query_results.py -u exusername -p expassword`,
 for example. You may tinker with d1_get_data/get_query_results.py so that you
 can run it in an IDE with your user information.
+* In step 2, when the program downloads data files, the data files will be saved
+to the default download folder of the browser. You need to move those files to the directory
+d2_data/query_results_freq_dict so that it could be used by programs in the next steps.
+* In step 2, the program is currently designed to work only with Safari (the browser).
 
 ## Project status
-This project is no longer in active development.
-
+This project is complete and is no longer in active development.
 
 ## Author
 Heikal Badrulhisham <heikal93@gmail.com>
@@ -123,4 +128,4 @@ Heikal Badrulhisham <heikal93@gmail.com>
 ## License
 MIT License 
 
-Copyright (c) 2019 Heikal Badrulhisham 
+Copyright © 2019 Heikal Badrulhisham 
