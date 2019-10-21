@@ -1,0 +1,5 @@
+selenium
+numpy
+scipy
+nltk
+matplotlib
