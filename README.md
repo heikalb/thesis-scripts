@@ -1,6 +1,7 @@
 # Formulaicity of Affixes in Turkish
 This project contains scripts written for extracting and processing data on 
-suffixes in the Turkish National Corpus for a Master's in Linguistics thesis.
+suffixes in the Turkish National Corpus for a Master's in Linguistics thesis. 
+The thesis can be accessed here: http://summit.sfu.ca/item/19822
 
 ## Motivation
 The main idea of this project is formulaicity, which is the notion that some
